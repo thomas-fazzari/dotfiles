@@ -1,0 +1,360 @@
+{
+  // ══════════════════════════════════════════════════════════════
+  // Editor Appearance
+  // ══════════════════════════════════════════════════════════════
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "line",
+  "editor.cursorSurroundingLines": 8,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.letterSpacing": 0.3,
+  "editor.lineHeight": 25,
+  "editor.minimap.enabled": false,
+  "editor.smoothScrolling": true,
+  "fontshortcuts.defaultFontSize": 14,
+  "fontshortcuts.defaultTerminalFontSize": 14,
+  "fontshortcuts.step": 1,
+
+  // ══════════════════════════════════════════════════════════════
+  // Editor Behavior
+  // ══════════════════════════════════════════════════════════════
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.linkedEditing": true,
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "first",
+  "editor.accessibilitySupport": "off",
+
+  // ══════════════════════════════════════════════════════════════
+  // Workbench
+  // ══════════════════════════════════════════════════════════════
+  "workbench.colorTheme": "Experimental Dark",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  "workbench.tree.indent": 20,
+  "workbench.editor.enablePreview": false,
+  "workbench.colorCustomizations": {
+    // Backgrounds
+    "editor.background": "#09090B",
+    "sideBar.background": "#0C0C0E",
+    "sideBarSectionHeader.background": "#0C0C0E",
+    "activityBar.background": "#0C0C0E",
+    "panelTitle.activeBorder": "#2563EB",
+    "panel.background": "#09090B",
+    "terminal.background": "#09090B",
+    "titleBar.activeBackground": "#0C0C0E",
+    "titleBar.inactiveBackground": "#0C0C0E",
+    "tab.activeBackground": "#09090B",
+    "tab.inactiveBackground": "#0C0C0E",
+    "editorGroupHeader.tabsBackground": "#0C0C0E",
+    "statusBar.background": "#09090B",
+    "statusBar.noFolderBackground": "#09090B",
+    "statusBar.debuggingBackground": "#09090B",
+    "input.background": "#18181B",
+    "dropdown.background": "#18181B",
+    "quickInput.background": "#0C0C0E",
+    "editorWidget.background": "#0C0C0E",
+    "editorSuggestWidget.background": "#0C0C0E",
+    "editorHoverWidget.background": "#0C0C0E",
+    "peekViewEditor.background": "#09090B",
+    "peekViewResult.background": "#0C0C0E",
+    "notifications.background": "#18181B",
+    "notificationCenterHeader.background": "#18181B",
+
+    // Borders
+    "sideBar.border": "#27272A",
+    "panel.border": "#27272A",
+    "activityBar.border": "#27272A",
+    "tab.border": "#00000000",
+    "editorGroup.border": "#27272A",
+    "titleBar.border": "#27272A",
+    "editorWidget.border": "#3F3F46",
+    "sash.hoverBorder": "#3B82F6",
+    "peekView.border": "#2563EB",
+
+    // Accents
+    "focusBorder": "#2563EB80",
+    "activityBarBadge.background": "#2563EB",
+    "button.background": "#2563EB",
+    "button.hoverBackground": "#3B82F6",
+    "progressBar.background": "#2563EB",
+    "editorCursor.foreground": "#3B82F6",
+    "tab.activeBorderTop": "#2563EB",
+    "list.activeSelectionBackground": "#2563EB25",
+    "list.highlightForeground": "#3B82F6",
+    "badge.background": "#2563EB",
+    "textLink.foreground": "#3B82F6",
+    "textLink.activeForeground": "#60A5FA",
+
+    // Editor highlights
+    "editor.selectionBackground": "#2563EB30",
+    "editor.selectionHighlightBackground": "#2563EB18",
+    "editor.wordHighlightBackground": "#2563EB20",
+    "editor.findMatchBackground": "#2563EB50",
+    "editor.findMatchHighlightBackground": "#2563EB28",
+    "editor.lineHighlightBackground": "#FAFAFA06",
+    "editorLineNumber.activeForeground": "#3B82F6",
+    "editorBracketMatch.background": "#2563EB20",
+    "editorBracketMatch.border": "#2563EB60",
+
+    // Git & diff
+    "editorGutter.addedBackground": "#22C55E",
+    "editorGutter.modifiedBackground": "#3B82F6",
+    "editorGutter.deletedBackground": "#EF4444",
+    "gitDecoration.deletedResourceForeground": "#EF4444",
+    "gitDecoration.stageDeletedResourceForeground": "#EF4444",
+    "gitDecoration.modifiedResourceForeground": "#3B82F6",
+    "gitDecoration.untrackedResourceForeground": "#22C55E",
+    "diffEditor.insertedTextBackground": "#22C55E20",
+    "diffEditor.insertedLineBackground": "#22C55E12",
+    "diffEditor.removedTextBackground": "#EF444430",
+    "diffEditor.removedLineBackground": "#EF444418"
+  },
+  "zenMode.centerLayout": false,
+
+  // ══════════════════════════════════════════════════════════════
+  // Files
+  // ══════════════════════════════════════════════════════════════
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/*.pyc": true,
+    "**/__pycache__": true,
+    "**/node_modules": true,
+    "**/.pytest_cache": true,
+    "**/dist": true,
+    "**/.next": true,
+    "**/out": true,
+    "**/bin": true,
+    "**/obj": true
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Search
+  // ══════════════════════════════════════════════════════════════
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.svelte-kit": true,
+    "**/bin": true,
+    "**/obj": true
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Explorer
+  // ══════════════════════════════════════════════════════════════
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmPasteNative": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "*.cs": "${capture}.designer.cs, ${capture}.g.cs, ${capture}.generated.cs",
+    "*.csproj": "${capture}.csproj.user",
+    "*.cshtml": "${capture}.cshtml.cs, ${capture}.cshtml.css",
+    "*.razor": "${capture}.razor.cs, ${capture}.razor.css",
+    "*.resx": "${capture}.Designer.cs",
+    "Cargo.toml": "Cargo.lock",
+    "go.mod": "go.sum, go.work, go.work.sum"
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Terminal
+  // ══════════════════════════════════════════════════════════════
+  "terminal.integrated.fontFamily": "monospace",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": ["--login", "-i"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+
+  // ══════════════════════════════════════════════════════════════
+  // Git
+  // ══════════════════════════════════════════════════════════════
+  "git.openRepositoryInParentFolders": "always",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+
+  // ══════════════════════════════════════════════════════════════
+  // Languages
+  // ══════════════════════════════════════════════════════════════
+  // JavaScript / TypeScript
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "eslint.validate": ["javascript", "typescript", "svelte"],
+
+  // Svelte
+  "svelte.enable-ts-plugin": true,
+  "emmet.includeLanguages": {
+    "svelte": "html"
+  },
+  "prettier.documentSelectors": ["**/*.svelte"],
+
+  // Python
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "ruff.lint.enable": true,
+  "ruff.format.enable": false,
+
+  // Go
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+  "go.toolsManagement.autoUpdate": true,
+  "gopls": {
+    "ui.semanticTokens": true,
+    "formatting.gofumpt": true
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Formatters
+  // ══════════════════════════════════════════════════════════════
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    }
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[swift]": {
+    "editor.defaultFormatter": "swiftlang.swift-vscode",
+    "editor.tabSize": 4
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.tabSize": 4,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[go.mod]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Vim
+  // ══════════════════════════════════════════════════════════════
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "vim.useSystemClipboard": true,
+  "vim.easymotion": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 200,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "block",
+
+  "vim.handleKeys": {
+    "<C-c>": false,
+    "<C-v>": false,
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-p>": false,
+    "<C-w>": false
+  },
+
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "s"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "g"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    }
+  ],
+
+  // ══════════════════════════════════════════════════════════════
+  // Misc
+  // ══════════════════════════════════════════════════════════════
+  "telemetry.telemetryLevel": "off",
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://biomejs.dev": true,
+    "https://ui.shadcn.com": true
+  },
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.selectedModel": "claude-opus-4-6"
+}

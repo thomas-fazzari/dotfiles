@@ -1,0 +1,10 @@
+frontend-design@claude-plugins-official
+code-review@claude-plugins-official
+typescript-lsp@claude-plugins-official
+code-simplifier@claude-plugins-official
+security-guidance@claude-plugins-official
+csharp-lsp@claude-plugins-official
+rust-analyzer-lsp@claude-plugins-official
+superpowers@superpowers-dev
+gopls@claude-code-lsps
+dotnet-skills
