@@ -1,0 +1,8 @@
+alias crgb='cargo build'
+alias crgr='cargo run'
+alias crgb-r='cargo build --release'
+alias crgr-r='cargo run --release'
+alias crgt='cargo test -- --nocapture'
+alias crgf='cargo fmt'
+alias crgc='cargo check'
+alias crgc-f='cargo clippy --fix'
