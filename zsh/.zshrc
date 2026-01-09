@@ -12,6 +12,11 @@ setopt AUTO_CD
 
 # ALIASES
 alias reload='. ~/.zshrc'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ll='ls -lah'
+alias la='ls -A'
+alias c='clear'
 
 # Source alias files
 if [ -f "$DOTFILES/zsh/aliases/docker.zsh" ]; then
