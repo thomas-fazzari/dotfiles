@@ -154,5 +154,9 @@
   },
 
   // Misc
-  "claudeCode.preferredLocation": "panel"
+  "claudeCode.preferredLocation": "panel",
+  "editor.lineHeight": 0,
+  "fontshortcuts.defaultFontSize": 14,
+  "fontshortcuts.defaultTerminalFontSize": 14,
+  "fontshortcuts.step": 1
 }

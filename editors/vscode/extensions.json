@@ -59,6 +59,7 @@
     "twxs.cmake",
     "wayou.vscode-icons-mac",
     "xaver.clang-format",
-    "ziglang.vscode-zig"
+    "ziglang.vscode-zig",
+    "fosshaas.fontsize-shortcuts"
   ]
 }
