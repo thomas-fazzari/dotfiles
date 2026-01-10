@@ -107,6 +107,8 @@
   // Python
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoImportCompletions": true,
+  "ruff.lint.enable": true,
+  "ruff.format.enable": false,
 
   // Language-specific formatters
   "[javascript]": {
@@ -134,10 +136,11 @@
     "editor.defaultFormatter": "csharpier.csharpier-vscode"
   },
   "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
     }
   },
   "[rust]": {
