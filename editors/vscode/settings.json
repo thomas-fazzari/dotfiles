@@ -17,9 +17,8 @@
   "editor.inlineSuggest.enabled": true,
 
   "workbench.colorTheme": "Jetbrains Fleet",
-  "workbench.iconTheme": "vscode-icons-mac",
+  "workbench.iconTheme": "icons",
   "workbench.startupEditor": "none",
-  "workbench.editor.enablePreview": false,
   "workbench.tree.indent": 20,
 
   "files.autoSave": "onFocusChange",
@@ -152,11 +151,30 @@
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+    "editor.tabSize": 4
+  },
+  "[kotlin]": {
+    "editor.defaultFormatter": "esafirm.kotlin-formatter",
+    "editor.tabSize": 4
+  },
+
+  // Java
+  "java.configuration.detectJdksAtStart": true,
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.codeGeneration.hashCodeEquals.useJava7Objects": true,
+  "java.codeGeneration.useBlocks": true,
+  "java.saveActions.organizeImports": true,
+
+  // Kotlin
+  "kotlin.languageServer.enabled": true,
 
   // Misc
   "claudeCode.preferredLocation": "panel",
   "editor.lineHeight": 0,
   "fontshortcuts.defaultFontSize": 14,
   "fontshortcuts.defaultTerminalFontSize": 14,
-  "fontshortcuts.step": 1
+  "fontshortcuts.step": 1,
+  "redhat.telemetry.enabled": false
 }

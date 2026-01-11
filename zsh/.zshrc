@@ -46,3 +46,7 @@ fpath=(~/.zfunc $fpath)
 autoload -Uz compinit && compinit
 
 export PATH="$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"
+
+# SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
