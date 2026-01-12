@@ -27,6 +27,10 @@ if [ -f "$DOTFILES/zsh/aliases/rust.zsh" ]; then
     source "$DOTFILES/zsh/aliases/rust.zsh"
 fi
 
+if [ -f "$DOTFILES/zsh/aliases/java.zsh" ]; then
+    source "$DOTFILES/zsh/aliases/java.zsh"
+fi
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
