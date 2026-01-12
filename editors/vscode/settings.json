@@ -159,6 +159,10 @@
     "editor.defaultFormatter": "cstef.kotlin-formatter",
     "editor.tabSize": 4
   },
+  "[swift]": {
+    "editor.defaultFormatter": "swiftlang.swift-vscode",
+    "editor.tabSize": 4
+  },
 
   // Java
   "java.configuration.detectJdksAtStart": true,
