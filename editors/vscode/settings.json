@@ -156,7 +156,7 @@
     "editor.tabSize": 4
   },
   "[kotlin]": {
-    "editor.defaultFormatter": "esafirm.kotlin-formatter",
+    "editor.defaultFormatter": "cstef.kotlin-formatter",
     "editor.tabSize": 4
   },
 
@@ -168,7 +168,7 @@
   "java.saveActions.organizeImports": true,
 
   // Kotlin
-  "kotlin.languageServer.enabled": true,
+  "kotlin.languageServer.enabled": false,
 
   // Misc
   "claudeCode.preferredLocation": "panel",
