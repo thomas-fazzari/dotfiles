@@ -53,6 +53,10 @@ autoload -Uz compinit && compinit
 export NIMBLE_DIR="$HOME/.nimble"
 export PATH="$NIMBLE_DIR/bin:$HOME/.cargo/bin:$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"
 
+# .NET
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+export PATH="$HOME/.dotnet/tools:$PATH"
+
 # SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
