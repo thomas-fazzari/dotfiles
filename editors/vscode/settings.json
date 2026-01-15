@@ -36,7 +36,8 @@
     "**/.next": true,
     "**/out": true,
     "**/bin": true,
-    "**/obj": true
+    "**/obj": true,
+    "**/nimcache": true
   },
 
   "search.exclude": {
@@ -45,7 +46,8 @@
     "**/build": true,
     "**/.svelte-kit": true,
     "**/bin": true,
-    "**/obj": true
+    "**/obj": true,
+    "**/nimcache": true
   },
 
   "explorer.confirmDragAndDrop": false,
@@ -64,7 +66,8 @@
     "*.cshtml": "${capture}.cshtml.cs, ${capture}.cshtml.css",
     "*.razor": "${capture}.razor.cs, ${capture}.razor.css",
     "*.resx": "${capture}.Designer.cs",
-    "Cargo.toml": "Cargo.lock"
+    "Cargo.toml": "Cargo.lock",
+    "*.nimble": "nim.cfg, config.nims"
   },
 
   "terminal.integrated.fontFamily": "MesloLGS NF",
@@ -108,6 +111,10 @@
   "python.analysis.autoImportCompletions": true,
   "ruff.lint.enable": true,
   "ruff.format.enable": false,
+
+  // Nim
+  "nim.formatOnSave": true,
+  "nim.lintOnSave": true,
 
   // Language-specific formatters
   "[javascript]": {
@@ -162,6 +169,10 @@
   "[swift]": {
     "editor.defaultFormatter": "swiftlang.swift-vscode",
     "editor.tabSize": 4
+  },
+  "[nim]": {
+    "editor.defaultFormatter": "NimLang.nimlang",
+    "editor.tabSize": 2
   },
 
   // Java

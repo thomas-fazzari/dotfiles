@@ -54,6 +54,7 @@
     "ms-vscode.cpptools",
     "ms-vscode.makefile-tools",
     "ms-vscode.test-adapter-converter",
+    "NimLang.nimlang",
     "njpwerner.autodocstring",
     "oleksandrhavrysh.vscode-intellij-theme",
     "redhat.java",

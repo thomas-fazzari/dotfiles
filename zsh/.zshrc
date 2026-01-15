@@ -49,7 +49,9 @@ command -v pyenv >/dev/null && eval "$(pyenv init -)"
 fpath=(~/.zfunc $fpath)
 autoload -Uz compinit && compinit
 
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"
+# Nim
+export NIMBLE_DIR="$HOME/.nimble"
+export PATH="$NIMBLE_DIR/bin:$HOME/.cargo/bin:$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"
 
 # SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
