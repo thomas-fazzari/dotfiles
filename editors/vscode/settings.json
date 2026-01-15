@@ -115,6 +115,8 @@
   // Nim
   "nim.formatOnSave": true,
   "nim.lintOnSave": true,
+  "nim.enableNimsuggest": false,
+  "nim.useNimCheck": true,
 
   // Language-specific formatters
   "[javascript]": {
