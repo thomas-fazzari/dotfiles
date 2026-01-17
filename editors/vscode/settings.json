@@ -67,7 +67,8 @@
     "*.razor": "${capture}.razor.cs, ${capture}.razor.css",
     "*.resx": "${capture}.Designer.cs",
     "Cargo.toml": "Cargo.lock",
-    "*.nimble": "nim.cfg, config.nims"
+    "*.nimble": "nim.cfg, config.nims",
+    "go.mod": "go.sum, go.work, go.work.sum"
   },
 
   "terminal.integrated.fontFamily": "MesloLGS NF",
@@ -111,6 +112,15 @@
   "python.analysis.autoImportCompletions": true,
   "ruff.lint.enable": true,
   "ruff.format.enable": false,
+
+  // Go
+  "go.useLanguageServer": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+  "gopls": {
+    "ui.semanticTokens": true,
+    "formatting.gofumpt": true
+  },
 
   // Nim
   "nim.formatOnSave": true,
@@ -176,6 +186,26 @@
     "editor.defaultFormatter": "NimLang.nimlang",
     "editor.tabSize": 2
   },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.tabSize": 4,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[go.mod]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[dart]": {
+    "editor.defaultFormatter": "dart-code.dart-code",
+    "editor.tabSize": 2
+  },
+  "[zig]": {
+    "editor.defaultFormatter": "ziglang.vscode-zig"
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
+  },
 
   // Java
   "java.configuration.detectJdksAtStart": true,
@@ -193,5 +223,8 @@
   "fontshortcuts.defaultFontSize": 14,
   "fontshortcuts.defaultTerminalFontSize": 14,
   "fontshortcuts.step": 1,
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "[xml]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  }
 }
