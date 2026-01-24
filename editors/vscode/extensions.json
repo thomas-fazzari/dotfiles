@@ -44,7 +44,6 @@
     "lior-chamla.google-fonts",
     "llvm-vs-code-extensions.lldb-dap",
     "llvm-vs-code-extensions.vscode-clangd",
-    "michaelzhou.fleet-theme",
     "ms-azuretools.vscode-containers",
     "ms-azuretools.vscode-docker",
     "ms-dotnettools.csdevkit",
@@ -63,6 +62,7 @@
     "njpwerner.autodocstring",
     "oleksandrhavrysh.vscode-intellij-theme",
     "openai.chatgpt",
+    "otovo-oss.htmx-tags",
     "premparihar.gotestexplorer",
     "redhat.java",
     "redhat.vscode-yaml",
@@ -82,6 +82,7 @@
     "vscjava.vscode-java-pack",
     "vscjava.vscode-java-test",
     "vscjava.vscode-maven",
+    "vscodevim.vim",
     "xaver.clang-format",
     "yinfei.luahelper",
     "ziglang.vscode-zig"

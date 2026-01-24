@@ -16,7 +16,7 @@
   "editor.suggestSelection": "first",
   "editor.inlineSuggest.enabled": true,
 
-  "workbench.colorTheme": "Jetbrains Fleet",
+  "workbench.colorTheme": "IntelliJ IDEA Islands Dark",
   "workbench.iconTheme": "icons",
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 20,
@@ -220,5 +220,46 @@
   "redhat.telemetry.enabled": false,
   "[xml]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode"
-  }
+  },
+
+  // Vim
+  "vim.handleKeys": {
+    "<C-c>": false,
+    "<C-v>": false,
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-p>": false,
+    "<C-w>": false
+  },
+
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+
+  "vim.leader": "<space>",
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "s"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    }
+  ],
+
+  "vim.hlsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "editor.cursorSurroundingLines": 8,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "line"
 }
