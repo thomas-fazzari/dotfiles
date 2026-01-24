@@ -124,8 +124,6 @@
 
   // Nim
   "nim.formatOnSave": true,
-  "nim.lintOnSave": true,
-  "nim.enableNimsuggest": false,
   "nim.useNimCheck": true,
 
   // Language-specific formatters
@@ -195,10 +193,6 @@
   },
   "[go.mod]": {
     "editor.defaultFormatter": "golang.go"
-  },
-  "[dart]": {
-    "editor.defaultFormatter": "dart-code.dart-code",
-    "editor.tabSize": 2
   },
   "[zig]": {
     "editor.defaultFormatter": "ziglang.vscode-zig"
