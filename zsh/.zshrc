@@ -55,25 +55,39 @@ export PYENV_ROOT="$HOME/.pyenv"
 # SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
 
-# Skip slow operations when VSCode is resolving shell env
-if [[ -z "$VSCODE_RESOLVING_ENVIRONMENT" ]]; then
-  # NVM
+# Lazy loading slow tools
+_lazy_nvm() {
+  unset -f nvm node npm npx
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+}
+nvm() { _lazy_nvm && nvm "$@"; }
+node() { _lazy_nvm && node "$@"; }
+npm() { _lazy_nvm && npm "$@"; }
+npx() { _lazy_nvm && npx "$@"; }
 
-  # Bun completions
-  [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
-
-  # pyenv
+_lazy_pyenv() {
+  unset -f pyenv
   command -v pyenv >/dev/null && eval "$(pyenv init -)"
+}
+pyenv() { _lazy_pyenv && pyenv "$@"; }
 
-  # uv completions
-  fpath=(~/.zfunc $fpath)
-  autoload -Uz compinit && compinit
-
-  # SDKMAN
+_lazy_sdk() {
+  unset -f sdk
   [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+}
+sdk() { _lazy_sdk && sdk "$@"; }
+
+# Cached completions
+fpath=(~/.zfunc $fpath)
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
 fi
+
+# Bun completions
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
 # Android SDK
 export ANDROID_HOME="$HOME/Library/Android/sdk"
