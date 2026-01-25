@@ -261,5 +261,7 @@
   "vim.smartcase": true,
   "editor.cursorSurroundingLines": 8,
   "vim.cursorStylePerMode.normal": "block",
-  "vim.cursorStylePerMode.insert": "line"
+  "vim.cursorStylePerMode.insert": "line",
+
+  "explorer.confirmPasteNative": false
 }

@@ -1,0 +1,4 @@
+anthropics/claude-plugins-official
+anthropics/claude-code
+obra/superpowers
+boostvolt/claude-code-lsps
