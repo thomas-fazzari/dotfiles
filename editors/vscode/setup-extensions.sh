@@ -5,43 +5,46 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EXTENSIONS_FILE="$SCRIPT_DIR/extensions.json"
 
-if [ ! -f "$EXTENSIONS_FILE" ]; then
-    echo "Error: extensions.json not found at $EXTENSIONS_FILE"
-    exit 1
+if [[ ! -f "$EXTENSIONS_FILE" ]]; then
+  echo "Error: extensions.json not found at $EXTENSIONS_FILE"
+  exit 1
 fi
 
-# Determine which VSCode command to use between insiders and regular version
-if command -v code-insiders &> /dev/null; then
-    VSCODE_CMD="code-insiders"
-elif command -v code &> /dev/null; then
-    VSCODE_CMD="code"
+# Detect VS Code command
+
+if command -v code-insiders &>/dev/null; then
+  VSCODE_CMD="code-insiders"
+elif command -v code &>/dev/null; then
+  VSCODE_CMD="code"
 else
-    echo "Error: Neither 'code-insiders' nor 'code' command found."
+  echo "Error: Neither 'code-insiders' nor 'code' command found."
+  exit 1
+fi
+
+# Ensure jq is installed
+
+if ! command -v jq &>/dev/null; then
+  echo "Installing jq..."
+  if command -v brew &>/dev/null; then
+    brew install jq
+  elif command -v choco &>/dev/null; then
+    choco install jq -y
+  else
+    echo "Error: Could not install jq."
     exit 1
+  fi
 fi
 
-# Ensure jq is installed for JSON parsing
-if ! command -v jq &> /dev/null; then
-    echo "Installing jq..."
-    if command -v brew &> /dev/null; then
-        brew install jq
-    elif command -v choco &> /dev/null; then
-        choco install jq -y
-    else
-        echo "Error: Could not install jq."
-        exit 1
-    fi
-fi
+# Extract and install extensions
 
-# Extract extensions from the file
 extensions=()
 while IFS= read -r extension; do
-    extensions+=("$extension")
+  extensions+=("$extension")
 done < <(jq -r '.recommendations[]' "$EXTENSIONS_FILE")
 
-if [ ${#extensions[@]} -eq 0 ]; then
-    echo "Error: No extensions found in $EXTENSIONS_FILE"
-    exit 1
+if [[ ${#extensions[@]} -eq 0 ]]; then
+  echo "Error: No extensions found in $EXTENSIONS_FILE"
+  exit 1
 fi
 
 echo ""
@@ -52,16 +55,15 @@ success_count=0
 failed_count=0
 
 for extension in "${extensions[@]}"; do
-    # Skip empty lines
-    [ -z "$extension" ] && continue
+  [[ -z "$extension" ]] && continue
 
-    echo "Installing: $extension"
-    if $VSCODE_CMD --install-extension "$extension" 2>&1 | grep -q "successfully installed\|already installed"; then
-        ((success_count++))
-    else
-        echo "  Warning: Failed to install $extension"
-        ((failed_count++))
-    fi
+  echo "Installing: $extension"
+  if $VSCODE_CMD --install-extension "$extension" 2>&1 | grep -q "successfully installed\|already installed"; then
+    ((success_count++))
+  else
+    echo "  Warning: Failed to install $extension"
+    ((failed_count++))
+  fi
 done
 
 echo ""

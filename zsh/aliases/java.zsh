@@ -1,5 +1,0 @@
-alias j17='sdk use java 17.0.13-tem'
-alias j21='sdk use java 21.0.5-tem'
-alias j25='sdk use java 25.0.1-graalce'
-alias jv='java -version'
-alias jlist='sdk list java'

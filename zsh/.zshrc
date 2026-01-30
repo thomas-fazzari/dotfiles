@@ -5,12 +5,12 @@ DOTFILES="$HOME/Dev/dotfiles"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
-# SHELL OPTIONS
-setopt AUTO_CD
+# Shell options
+setopt AUTO_CD EXTENDED_GLOB
 
-# ALIASES
+# Aliases
 alias reload='. ~/.zshrc'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -19,24 +19,13 @@ alias la='ls -A'
 alias c='clear'
 
 # Source alias files
-if [ -f "$DOTFILES/zsh/aliases/docker.zsh" ]; then
-    source "$DOTFILES/zsh/aliases/docker.zsh"
-fi
-
-if [ -f "$DOTFILES/zsh/aliases/rust.zsh" ]; then
-    source "$DOTFILES/zsh/aliases/rust.zsh"
-fi
-
-if [ -f "$DOTFILES/zsh/aliases/java.zsh" ]; then
-    source "$DOTFILES/zsh/aliases/java.zsh"
-fi
+for f in "$DOTFILES"/zsh/aliases/*.zsh; do
+  [[ -f "$f" ]] && source "$f"
+done
 
 # Bun
 export BUN_INSTALL="$HOME/.bun"
-
-# Nim
-export NIMBLE_DIR="$HOME/.nimble"
-export PATH="$NIMBLE_DIR/bin:$HOME/.cargo/bin:$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"
 
 # Go
 export PATH="$HOME/go/bin:$PATH"
@@ -48,12 +37,9 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 # NVM
 export NVM_DIR="$HOME/.nvm"
 
-# pyenv
+# Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [ -d "$PYENV_ROOT/bin" ] && export PATH="$PYENV_ROOT/bin:$PATH"
-
-# SDKMAN
-export SDKMAN_DIR="$HOME/.sdkman"
 
 # Lazy loading slow tools
 _lazy_nvm() {
@@ -66,16 +52,12 @@ npm() { _lazy_nvm && npm "$@"; }
 npx() { _lazy_nvm && npx "$@"; }
 
 _lazy_pyenv() {
-  unset -f pyenv
+  unset -f pyenv python python3
   command -v pyenv >/dev/null && eval "$(pyenv init -)"
 }
 pyenv() { _lazy_pyenv && pyenv "$@"; }
-
-_lazy_sdk() {
-  unset -f sdk
-  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-}
-sdk() { _lazy_sdk && sdk "$@"; }
+python() { _lazy_pyenv && python "$@"; }
+python3() { _lazy_pyenv && python3 "$@"; }
 
 # Cached completions
 fpath=(~/.zfunc $fpath)

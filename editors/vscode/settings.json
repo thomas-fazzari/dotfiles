@@ -36,8 +36,7 @@
     "**/.next": true,
     "**/out": true,
     "**/bin": true,
-    "**/obj": true,
-    "**/nimcache": true
+    "**/obj": true
   },
 
   "search.exclude": {
@@ -46,8 +45,7 @@
     "**/build": true,
     "**/.svelte-kit": true,
     "**/bin": true,
-    "**/obj": true,
-    "**/nimcache": true
+    "**/obj": true
   },
 
   "explorer.confirmDragAndDrop": false,
@@ -67,7 +65,6 @@
     "*.razor": "${capture}.razor.cs, ${capture}.razor.css",
     "*.resx": "${capture}.Designer.cs",
     "Cargo.toml": "Cargo.lock",
-    "*.nimble": "nim.cfg, config.nims",
     "go.mod": "go.sum, go.work, go.work.sum"
   },
 
@@ -122,10 +119,6 @@
     "formatting.gofumpt": true
   },
 
-  // Nim
-  "nim.formatOnSave": true,
-  "nim.useNimCheck": true,
-
   // Language-specific formatters
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -168,21 +161,9 @@
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
-  "[java]": {
-    "editor.defaultFormatter": "redhat.java",
-    "editor.tabSize": 4
-  },
-  "[kotlin]": {
-    "editor.defaultFormatter": "cstef.kotlin-formatter",
-    "editor.tabSize": 4
-  },
   "[swift]": {
     "editor.defaultFormatter": "swiftlang.swift-vscode",
     "editor.tabSize": 4
-  },
-  "[nim]": {
-    "editor.defaultFormatter": "NimLang.nimlang",
-    "editor.tabSize": 2
   },
   "[go]": {
     "editor.defaultFormatter": "golang.go",
@@ -194,22 +175,9 @@
   "[go.mod]": {
     "editor.defaultFormatter": "golang.go"
   },
-  "[zig]": {
-    "editor.defaultFormatter": "ziglang.vscode-zig"
-  },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
   },
-
-  // Java
-  "java.configuration.detectJdksAtStart": true,
-  "java.compile.nullAnalysis.mode": "automatic",
-  "java.codeGeneration.hashCodeEquals.useJava7Objects": true,
-  "java.codeGeneration.useBlocks": true,
-  "java.saveActions.organizeImports": true,
-
-  // Kotlin
-  "kotlin.languageServer.enabled": false,
 
   // Misc
   "claudeCode.preferredLocation": "panel",
@@ -253,6 +221,10 @@
     {
       "before": ["<leader>", "e"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
     }
   ],
 
@@ -262,6 +234,18 @@
   "editor.cursorSurroundingLines": 8,
   "vim.cursorStylePerMode.normal": "block",
   "vim.cursorStylePerMode.insert": "line",
+  "explorer.confirmPasteNative": false,
 
-  "explorer.confirmPasteNative": false
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://biomejs.dev": true,
+    "https://ui.shadcn.com": true
+  },
+
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false
 }
