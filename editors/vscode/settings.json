@@ -1,26 +1,44 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // ══════════════════════════════════════════════════════════════
+  // Editor Appearance
+  // ══════════════════════════════════════════════════════════════
   "editor.fontFamily": "Jetbrains Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "editor.wordWrap": "on",
+  "editor.lineHeight": 0,
   "editor.minimap.enabled": false,
   "editor.smoothScrolling": true,
   "editor.cursorBlinking": "solid",
+  "editor.cursorSurroundingLines": 8,
+
+  // ══════════════════════════════════════════════════════════════
+  // Editor Behavior
+  // ══════════════════════════════════════════════════════════════
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "on",
   "editor.linkedEditing": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.inlineSuggest.enabled": true,
+  "editor.accessibilitySupport": "off",
 
-  "workbench.colorTheme": "IntelliJ IDEA Islands Dark",
+  // ══════════════════════════════════════════════════════════════
+  // Workbench
+  // ══════════════════════════════════════════════════════════════
+  "workbench.colorTheme": "Aura Dark",
   "workbench.iconTheme": "icons",
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 20,
+  "workbench.editor.enablePreview": false,
+  "breadcrumbs.enabled": true,
 
+  // ══════════════════════════════════════════════════════════════
+  // Files
+  // ══════════════════════════════════════════════════════════════
   "files.autoSave": "onFocusChange",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
@@ -39,6 +57,9 @@
     "**/obj": true
   },
 
+  // ══════════════════════════════════════════════════════════════
+  // Search
+  // ══════════════════════════════════════════════════════════════
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true,
@@ -48,8 +69,12 @@
     "**/obj": true
   },
 
+  // ══════════════════════════════════════════════════════════════
+  // Explorer
+  // ══════════════════════════════════════════════════════════════
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
+  "explorer.confirmPasteNative": false,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
@@ -68,6 +93,9 @@
     "go.mod": "go.sum, go.work, go.work.sum"
   },
 
+  // ══════════════════════════════════════════════════════════════
+  // Terminal
+  // ══════════════════════════════════════════════════════════════
   "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.smoothScrolling": true,
@@ -84,13 +112,21 @@
     }
   },
   "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.osx": "zsh",
 
+  // ══════════════════════════════════════════════════════════════
+  // Git
+  // ══════════════════════════════════════════════════════════════
   "git.openRepositoryInParentFolders": "always",
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
 
-  // JS/TS
+  // ══════════════════════════════════════════════════════════════
+  // Languages
+  // ══════════════════════════════════════════════════════════════
+
+  // JavaScript / TypeScript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "relative",
@@ -119,7 +155,9 @@
     "formatting.gofumpt": true
   },
 
-  // Language-specific formatters
+  // ══════════════════════════════════════════════════════════════
+  // Formatters
+  // ══════════════════════════════════════════════════════════════
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -141,9 +179,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[csharp]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode"
-  },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
@@ -151,6 +186,12 @@
       "source.organizeImports": "explicit",
       "source.fixAll": "explicit"
     }
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
@@ -179,18 +220,93 @@
     "editor.defaultFormatter": "sumneko.lua"
   },
 
-  // Misc
-  "claudeCode.preferredLocation": "panel",
-  "editor.lineHeight": 0,
-  "fontshortcuts.defaultFontSize": 14,
-  "fontshortcuts.defaultTerminalFontSize": 14,
-  "fontshortcuts.step": 1,
-  "redhat.telemetry.enabled": false,
-  "[xml]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  // ══════════════════════════════════════════════════════════════
+  // Custom Theme
+  // ══════════════════════════════════════════════════════════════
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#569CD6",
+    "editor.selectionBackground": "#264F7840",
+    "editor.selectionHighlightBackground": "#ADD6FF26",
+    "editor.wordHighlightBackground": "#575757B8",
+    "editor.findMatchBackground": "#515C6A",
+    "editor.findMatchHighlightBackground": "#EA5C0055",
+    "editor.lineHighlightBackground": "#ffffff0A",
+    "editorLineNumber.activeForeground": "#C6C6C6",
+    "editorBracketMatch.background": "#0064001A",
+    "editorBracketMatch.border": "#888888",
+    "scrollbarSlider.background": "#79797966",
+    "scrollbarSlider.hoverBackground": "#646464B3",
+    "scrollbarSlider.activeBackground": "#BFBFBF66",
+    "statusBar.background": "#1e3a5f",
+    "statusBar.noFolderBackground": "#1e3a5f",
+    "statusBar.debuggingBackground": "#1e3a5f",
+    "statusBar.foreground": "#edecee",
+    "statusBar.debuggingForeground": "#edecee"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": ["comment", "punctuation.definition.comment"],
+        "settings": { "foreground": "#6A9955", "fontStyle": "italic" }
+      },
+      {
+        "scope": ["string", "string.quoted"],
+        "settings": { "foreground": "#CE9178" }
+      },
+      {
+        "scope": ["keyword", "storage.type", "storage.modifier"],
+        "settings": { "foreground": "#569CD6" }
+      },
+      {
+        "scope": ["entity.name.function", "support.function"],
+        "settings": { "foreground": "#DCDCAA" }
+      },
+      {
+        "scope": ["variable", "variable.other"],
+        "settings": { "foreground": "#9CDCFE" }
+      },
+      {
+        "scope": ["constant.numeric"],
+        "settings": { "foreground": "#B5CEA8" }
+      },
+      {
+        "scope": [
+          "entity.name.type",
+          "entity.name.class",
+          "support.type",
+          "support.class"
+        ],
+        "settings": { "foreground": "#4EC9B0" }
+      },
+      {
+        "scope": ["constant.language"],
+        "settings": { "foreground": "#569CD6" }
+      },
+      {
+        "scope": ["entity.name.tag"],
+        "settings": { "foreground": "#569CD6" }
+      },
+      {
+        "scope": ["entity.other.attribute-name"],
+        "settings": { "foreground": "#9CDCFE" }
+      }
+    ]
   },
 
+  // ══════════════════════════════════════════════════════════════
   // Vim
+  // ══════════════════════════════════════════════════════════════
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "vim.useSystemClipboard": true,
+  "vim.easymotion": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 200,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "block",
+
   "vim.handleKeys": {
     "<C-c>": false,
     "<C-v>": false,
@@ -206,8 +322,6 @@
       "after": ["<Esc>"]
     }
   ],
-
-  "vim.leader": "<space>",
 
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -225,17 +339,41 @@
     {
       "before": ["<leader>", "r"],
       "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
     }
   ],
 
-  "vim.hlsearch": true,
-  "vim.ignorecase": true,
-  "vim.smartcase": true,
-  "editor.cursorSurroundingLines": 8,
-  "vim.cursorStylePerMode.normal": "block",
-  "vim.cursorStylePerMode.insert": "line",
-  "explorer.confirmPasteNative": false,
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors.normal": ["#1e1e1e", "#edecee"],
+  "vim.statusBarColors.insert": ["#1e3a5f", "#edecee"],
+  "vim.statusBarColors.visual": ["#3bb889", "#15141b"],
+  "vim.statusBarColors.visualline": ["#3bb889", "#15141b"],
+  "vim.statusBarColors.visualblock": ["#3bb889", "#15141b"],
+  "vim.statusBarColors.replace": ["#ff6767", "#15141b"],
+  "vim.statusBarColors.commandlineinprogress": ["#ffca85", "#15141b"],
+  "vim.statusBarColors.searchinprogressmode": ["#ffca85", "#15141b"],
+  "vim.statusBarColors.easymotionmode": ["#ffca85", "#15141b"],
+  "vim.statusBarColors.easymotioninputmode": ["#ffca85", "#15141b"],
+  "vim.statusBarColors.surroundinputmode": ["#ffca85", "#15141b"],
 
+  // ══════════════════════════════════════════════════════════════
+  // Misc
+  // ══════════════════════════════════════════════════════════════
+  "telemetry.telemetryLevel": "off",
+  "claudeCode.preferredLocation": "panel",
+  "fontshortcuts.defaultFontSize": 14,
+  "fontshortcuts.defaultTerminalFontSize": 14,
+  "fontshortcuts.step": 1,
+  "redhat.telemetry.enabled": false,
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
   "json.schemaDownload.trustedDomains": {
     "https://schemastore.azurewebsites.net/": true,
     "https://raw.githubusercontent.com/": true,
@@ -244,8 +382,5 @@
     "https://json-schema.org/": true,
     "https://biomejs.dev": true,
     "https://ui.shadcn.com": true
-  },
-
-  "extensions.autoUpdate": false,
-  "extensions.autoCheckUpdates": false
+  }
 }
