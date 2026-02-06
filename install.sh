@@ -26,6 +26,10 @@ ln -sf "$DOTFILES_DIR/git/.gitignore_global" "$HOME/.gitignore_global"
 echo "Configuring Zsh..."
 ln -sf "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 
+# IdeaVim (JetBrains IDEs)
+echo "Configuring IdeaVim..."
+ln -sf "$DOTFILES_DIR/editors/ideavim/.ideavimrc" "$HOME/.ideavimrc"
+
 # --- VS Code ---
 
 echo "Configuring VS Code..."
@@ -58,6 +62,7 @@ echo "Symlinks created:"
 echo "  ~/.gitconfig -> $DOTFILES_DIR/git/.gitconfig"
 echo "  ~/.gitignore_global -> $DOTFILES_DIR/git/.gitignore_global"
 echo "  ~/.zshrc -> $DOTFILES_DIR/zsh/.zshrc"
+echo "  ~/.ideavimrc -> $DOTFILES_DIR/editors/ideavim/.ideavimrc"
 
 if [[ -n "$VSCODE_USER_DIR" && -d "$VSCODE_USER_DIR" ]]; then
   echo "  $VSCODE_USER_DIR/settings.json -> $DOTFILES_DIR/editors/vscode/settings.json"

@@ -1,0 +1,63 @@
+" ══════════════════════════════════════════════════════════════
+" IdeaVim Configuration
+" ══════════════════════════════════════════════════════════════
+
+" Leader key
+let mapleader = " "
+
+" ══════════════════════════════════════════════════════════════
+" Basic Settings
+" ══════════════════════════════════════════════════════════════
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set scrolloff=8
+set clipboard=unnamedplus
+set showmode
+set number
+set relativenumber
+
+" ══════════════════════════════════════════════════════════════
+" Plugins
+" ══════════════════════════════════════════════════════════════
+set easymotion
+set surround
+set commentary
+set highlightedyank
+
+" Highlighted yank duration
+let g:highlightedyank_highlight_duration = "200"
+
+" ══════════════════════════════════════════════════════════════
+" Key Handlers (let IDE handle these)
+" ══════════════════════════════════════════════════════════════
+sethandler <C-c> a:ide
+sethandler <C-v> a:ide
+sethandler <C-a> a:ide
+sethandler <C-f> a:ide
+sethandler <C-w> a:ide
+
+" ══════════════════════════════════════════════════════════════
+" Insert Mode
+" ══════════════════════════════════════════════════════════════
+inoremap jk <Esc>
+
+" ══════════════════════════════════════════════════════════════
+" Normal Mode - Leader Mappings
+" ══════════════════════════════════════════════════════════════
+nnoremap <leader>s :w<CR>
+nnoremap <leader>q :action CloseContent<CR>
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+nnoremap <leader>r :action FindUsages<CR>
+nnoremap <leader>d :action GotoDeclaration<CR>
+nnoremap <leader>f :action GotoFile<CR>
+
+" ══════════════════════════════════════════════════════════════
+" Extra Useful Mappings
+" ══════════════════════════════════════════════════════════════
+nnoremap <leader>a :action GotoAction<CR>
+nnoremap <leader>g :action FindInPath<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gr :action FindUsages<CR>
