@@ -1,0 +1,206 @@
+{
+  // ══════════════════════════════════════════════════════════════
+  // Session
+  // ══════════════════════════════════════════════════════════════
+  "prettier": {
+    "allowed": true
+  },
+  "ui_font_family": ".ZedSans",
+  "session": {
+    "trust_all_worktrees": true
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Editor Appearance
+  // ══════════════════════════════════════════════════════════════
+  "theme": "The Dark Side",
+  "icon_theme": "VSCode Great Icons Theme",
+  "base_keymap": "VSCode",
+  "ui_font_size": 16.0,
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 14.0,
+  "buffer_font_features": {
+    "liga": true,
+    "calt": true
+  },
+  "cursor_blink": false,
+  "vertical_scroll_margin": 8.0,
+  "minimap": {
+    "show": "never"
+  },
+  "colorize_brackets": true,
+
+  // ══════════════════════════════════════════════════════════════
+  // Editor Behavior
+  // ══════════════════════════════════════════════════════════════
+  "format_on_save": "on",
+  "tab_size": 2,
+  "hard_tabs": false,
+  "soft_wrap": "editor_width",
+  "linked_edits": true,
+  "show_edit_predictions": true,
+  "preview_tabs": {
+    "enabled": false
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Files
+  // ══════════════════════════════════════════════════════════════
+  "autosave": "on_focus_change",
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.DS_Store",
+    "**/*.pyc",
+    "**/__pycache__",
+    "**/node_modules",
+    "**/.pytest_cache",
+    "**/dist",
+    "**/.next",
+    "**/out",
+    "**/bin",
+    "**/obj",
+    "**/.svelte-kit"
+  ],
+
+  // ══════════════════════════════════════════════════════════════
+  // Terminal
+  // ══════════════════════════════════════════════════════════════
+  "terminal": {
+    "font_family": "MesloLGS Nerd Font",
+    "font_size": 14.0,
+    "blinking": "on"
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Git
+  // ══════════════════════════════════════════════════════════════
+  "git": {
+    "git_gutter": "tracked_files"
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Languages
+  // ══════════════════════════════════════════════════════════════
+  "languages": {
+    "JavaScript": {
+      "tab_size": 2,
+      "formatter": "prettier"
+    },
+    "TypeScript": {
+      "tab_size": 2,
+      "formatter": "prettier"
+    },
+    "TSX": {
+      "tab_size": 2,
+      "formatter": "prettier"
+    },
+    "JSON": {
+      "tab_size": 2,
+      "formatter": "prettier"
+    },
+    "JSONC": {
+      "tab_size": 2,
+      "formatter": "prettier"
+    },
+    "Svelte": {
+      "tab_size": 2,
+      "formatter": "prettier"
+    },
+    "Python": {
+      "tab_size": 4,
+      "formatter": {
+        "external": {
+          "command": "black",
+          "arguments": ["-"]
+        }
+      }
+    },
+    "Go": {
+      "tab_size": 4,
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      }
+    },
+    "Rust": {
+      "tab_size": 4,
+      "formatter": "language_server"
+    },
+    "CSharp": {
+      "tab_size": 4
+    },
+    "TOML": {
+      "formatter": "language_server"
+    }
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // LSP
+  // ══════════════════════════════════════════════════════════════
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "formatting.gofumpt": true,
+        "ui.semanticTokens": true
+      }
+    }
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Vim
+  // ══════════════════════════════════════════════════════════════
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Theme Overrides
+  // ══════════════════════════════════════════════════════════════
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "color": "#6A9955",
+        "font_style": "italic"
+      },
+      "string": {
+        "color": "#CE9178"
+      },
+      "keyword": {
+        "color": "#569CD6"
+      },
+      "function": {
+        "color": "#DCDCAA"
+      },
+      "variable": {
+        "color": "#9CDCFE"
+      },
+      "number": {
+        "color": "#B5CEA8"
+      },
+      "type": {
+        "color": "#4EC9B0"
+      },
+      "constant": {
+        "color": "#569CD6"
+      },
+      "tag": {
+        "color": "#569CD6"
+      },
+      "attribute": {
+        "color": "#9CDCFE"
+      }
+    }
+  },
+
+  // ══════════════════════════════════════════════════════════════
+  // Telemetry
+  // ══════════════════════════════════════════════════════════════
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+}
