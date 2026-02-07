@@ -4,7 +4,7 @@
   // ══════════════════════════════════════════════════════════════
   "editor.fontFamily": "Jetbrains Mono",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "editor.lineHeight": 0,
   "editor.minimap.enabled": false,
   "editor.smoothScrolling": true,
@@ -237,9 +237,9 @@
     "scrollbarSlider.background": "#79797966",
     "scrollbarSlider.hoverBackground": "#646464B3",
     "scrollbarSlider.activeBackground": "#BFBFBF66",
-    "statusBar.background": "#7c3aed",
-    "statusBar.noFolderBackground": "#7c3aed",
-    "statusBar.debuggingBackground": "#7c3aed",
+    "statusBar.background": "#121212",
+    "statusBar.noFolderBackground": "#121212",
+    "statusBar.debuggingBackground": "#121212",
     "statusBar.foreground": "#edecee",
     "statusBar.debuggingForeground": "#edecee",
   },
@@ -383,4 +383,5 @@
     "https://biomejs.dev": true,
     "https://ui.shadcn.com": true,
   },
+  "makefile.configureOnOpen": false,
 }

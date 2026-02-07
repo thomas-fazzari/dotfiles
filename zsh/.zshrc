@@ -31,8 +31,8 @@ export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 # .NET
-export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
-export PATH="$HOME/.dotnet/tools:$PATH"
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
