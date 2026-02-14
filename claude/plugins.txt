@@ -7,3 +7,4 @@ csharp-lsp@claude-plugins-official
 rust-analyzer-lsp@claude-plugins-official
 superpowers@superpowers-dev
 gopls@claude-code-lsps
+dotnet-skills
