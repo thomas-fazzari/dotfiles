@@ -113,7 +113,7 @@
     "diffEditor.insertedTextBackground": "#22C55E20",
     "diffEditor.insertedLineBackground": "#22C55E12",
     "diffEditor.removedTextBackground": "#EF444430",
-    "diffEditor.removedLineBackground": "#EF444418"
+    "diffEditor.removedLineBackground": "#EF444418",
   },
   "zenMode.centerLayout": false,
 
@@ -136,7 +136,7 @@
     "**/.next": true,
     "**/out": true,
     "**/bin": true,
-    "**/obj": true
+    "**/obj": true,
   },
 
   // ══════════════════════════════════════════════════════════════
@@ -148,7 +148,7 @@
     "**/build": true,
     "**/.svelte-kit": true,
     "**/bin": true,
-    "**/obj": true
+    "**/obj": true,
   },
 
   // ══════════════════════════════════════════════════════════════
@@ -172,7 +172,7 @@
     "*.razor": "${capture}.razor.cs, ${capture}.razor.css",
     "*.resx": "${capture}.Designer.cs",
     "Cargo.toml": "Cargo.lock",
-    "go.mod": "go.sum, go.work, go.work.sum"
+    "go.mod": "go.sum, go.work, go.work.sum",
   },
 
   // ══════════════════════════════════════════════════════════════
@@ -186,12 +186,12 @@
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
       "source": "PowerShell",
-      "icon": "terminal-powershell"
+      "icon": "terminal-powershell",
     },
     "Git Bash": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
-      "args": ["--login", "-i"]
-    }
+      "args": ["--login", "-i"],
+    },
   },
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.defaultProfile.osx": "zsh",
@@ -216,7 +216,7 @@
   // Svelte
   "svelte.enable-ts-plugin": true,
   "emmet.includeLanguages": {
-    "svelte": "html"
+    "svelte": "html",
   },
   "prettier.documentSelectors": ["**/*.svelte"],
 
@@ -232,7 +232,7 @@
   "go.toolsManagement.autoUpdate": true,
   "gopls": {
     "ui.semanticTokens": true,
-    "formatting.gofumpt": true
+    "formatting.gofumpt": true,
   },
 
   // ══════════════════════════════════════════════════════════════
@@ -243,40 +243,40 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit",
-      "source.fixAll": "explicit"
-    }
+      "source.fixAll": "explicit",
+    },
   },
   "[csharp]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
   },
   "[xml]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
   },
   "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
   },
   "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
   },
   "[cpp]": {
-    "editor.defaultFormatter": "xaver.clang-format"
+    "editor.defaultFormatter": "xaver.clang-format",
   },
   "[swift]": {
     "editor.defaultFormatter": "swiftlang.swift-vscode",
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.tabSize": 4,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
+      "source.organizeImports": "explicit",
+    },
   },
   "[go.mod]": {
-    "editor.defaultFormatter": "golang.go"
+    "editor.defaultFormatter": "golang.go",
   },
   "[lua]": {
-    "editor.defaultFormatter": "sumneko.lua"
+    "editor.defaultFormatter": "sumneko.lua",
   },
 
   // ══════════════════════════════════════════════════════════════
@@ -299,45 +299,45 @@
     "<C-a>": false,
     "<C-f>": false,
     "<C-p>": false,
-    "<C-w>": false
+    "<C-w>": false,
   },
 
   "vim.insertModeKeyBindings": [
     {
       "before": ["j", "k"],
-      "after": ["<Esc>"]
-    }
+      "after": ["<Esc>"],
+    },
   ],
 
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<leader>", "s"],
-      "commands": ["workbench.action.files.save"]
+      "commands": ["workbench.action.files.save"],
     },
     {
       "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "commands": ["workbench.action.closeActiveEditor"],
     },
     {
       "before": ["<leader>", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
+      "commands": ["workbench.action.toggleSidebarVisibility"],
     },
     {
       "before": ["<leader>", "r"],
-      "commands": ["editor.action.referenceSearch.trigger"]
+      "commands": ["editor.action.referenceSearch.trigger"],
     },
     {
       "before": ["<leader>", "d"],
-      "commands": ["editor.action.revealDefinition"]
+      "commands": ["editor.action.revealDefinition"],
     },
     {
       "before": ["<leader>", "p"],
-      "commands": ["workbench.action.quickOpen"]
+      "commands": ["workbench.action.quickOpen"],
     },
     {
       "before": ["<leader>", "g"],
-      "commands": ["workbench.action.terminal.toggleTerminal"]
-    }
+      "commands": ["workbench.action.terminal.toggleTerminal"],
+    },
   ],
 
   // ══════════════════════════════════════════════════════════════
@@ -353,8 +353,8 @@
     "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
     "https://biomejs.dev": true,
-    "https://ui.shadcn.com": true
+    "https://ui.shadcn.com": true,
   },
   "claudeCode.preferredLocation": "panel",
-  "claudeCode.selectedModel": "claude-opus-4-6"
+  "claudeCode.selectedModel": "default",
 }
