@@ -1,33 +1,118 @@
 version: "2"
 
-run:
-  timeout: 5m
-  go: "1.26"
-
 linters:
   default: standard
   enable:
-    - errcheck
-    - govet
-    - staticcheck
-    - unused
-    - ineffassign
+    # Code quality
+    - gosec # Security checks
+    - staticcheck # Static analysis
+    - revive # Linter
+    - gocritic # Diagnostics and code smells
+
+    # Common bug patterns
+    - bodyclose # Ensure HTTP response bodies are closed
+    - noctx # Require context-aware HTTP calls
+    - errname # Enforce error type naming conventions
+    - errorlint # Enforce proper Go 1.13+ error wrapping
+
+    # Performance
+    - prealloc # Detect slices that should be preallocated
+    - unparam # Detect unused function parameters
+
+    # Style
     - misspell
+    - unconvert # Remove redundant conversions
+
+    # Complexity
+    - gocyclo # Cyclomatic complexity checks
+    - nestif
+
+  disable:
+    - lll
+    - funlen
+
+  settings:
+    staticcheck:
+      checks: ["all", "-ST1003"]
+
+    govet:
+      enable:
+        - assign
+        - atomic
+        - bools
+        - composites
+        - copylocks
+        - errorsas
+        - httpresponse
+        - loopclosure
+        - lostcancel
+        - nilfunc
+        - printf
+        - stdmethods
+        - structtag
+        - tests
+        - unmarshal
+        - unreachable
+        - unsafeptr
+        - unusedresult
+
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+
+    gocyclo:
+      min-complexity: 15
+
+    nestif:
+      min-complexity: 5
+
+    revive:
+      rules:
+        - name: exported
+          severity: warning
+        - name: var-naming
+          severity: warning
+          arguments:
+            - [
+                "ID",
+                "URL",
+                "HTTP",
+                "HTTPS",
+                "API",
+                "URI",
+                "JWT",
+                "TOTP",
+                "ISRC",
+                "JSON",
+              ]
+
+    errorlint:
+      errorf: true
+      asserts: true
+      comparison: true
+
   exclusions:
-    generated: lax
+    generated: strict
     rules:
+      # Ignore tests
       - path: _test\.go
         linters:
           - errcheck
+          - gosec
+          - gocyclo
+          - nestif
 
 formatters:
   enable:
-    - gofmt
+    - gofumpt
     - goimports
 
 issues:
   max-issues-per-linter: 50
   max-same-issues: 3
+  uniq-by-line: true
+  new: false
+  fix: false
 
 output:
   formats:
@@ -35,6 +120,11 @@ output:
       path: stdout
       print-linter-name: true
       colors: true
-  sort-order:
-    - linter
-    - file
+
+run:
+  timeout: 5m
+  go: "1.26"
+  tests: true
+
+severity:
+  default: warning
