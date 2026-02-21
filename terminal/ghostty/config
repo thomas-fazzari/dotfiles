@@ -1,9 +1,32 @@
 theme = Builtin Dark
 
+# Typography
 font-family = JetBrainsMono Nerd Font
 font-size = 14
+font-thicken = true
+adjust-cell-height = 2
 
+# Window
 window-padding-x = 12
 window-padding-y = 10
+window-width = 110
+window-height = 25
+background-opacity = 0.85
+background-blur-radius = 20
+
+# Cursor
 cursor-style = block
 cursor-style-blink = true
+shell-integration-features = no-cursor
+
+# Splits
+split-divider-color = #555555
+
+# Shell
+shell-integration = zsh
+
+# Keybinds
+keybind = cmd+s=new_split:right
+keybind = cmd+shift+s=new_split:down
+keybind = cmd+w=close_surface
+confirm-close-surface = false
