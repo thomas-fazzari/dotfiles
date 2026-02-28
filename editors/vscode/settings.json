@@ -266,13 +266,14 @@
     "editor.formatOnSave": false,
     "editor.tabSize": 4,
   },
-  "runOnSave.commands": [
-    {
-      "match": ".*\\.swift$",
-      "command": "swiftformat ${file}",
-      "runIn": "backend",
-    },
-  ],
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.swift$",
+        "cmd": "swiftformat ${file}"
+      }
+    ]
+  },
 
   "[go]": {
     "editor.defaultFormatter": "golang.go",
