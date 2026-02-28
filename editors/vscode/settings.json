@@ -262,9 +262,18 @@
     "editor.defaultFormatter": "xaver.clang-format",
   },
   "[swift]": {
-    "editor.defaultFormatter": "swiftlang.swift-vscode",
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
     "editor.tabSize": 4,
   },
+  "runOnSave.commands": [
+    {
+      "match": ".*\\.swift$",
+      "command": "swiftformat ${file}",
+      "runIn": "backend",
+    },
+  ],
+
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.tabSize": 4,
@@ -356,5 +365,7 @@
     "https://ui.shadcn.com": true,
   },
   "claudeCode.preferredLocation": "panel",
-  "claudeCode.selectedModel": "default",
+  "claudeCode.selectedModel": "opus",
+  "biome.suggestInstallingGlobally": false,
+  "chat.viewSessions.orientation": "stacked",
 }
