@@ -1,0 +1,29 @@
+[user]
+	name = thomas-fazzari
+	email = thomas.fazzari@pm.me
+
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[alias]
+	s = status
+	co = checkout
+	b = branch
+	c = commit
+	cm = commit -m
+	ca = commit --amend
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	lg = log --graph --oneline --decorate --all
+	aliases = config --get-regexp ^alias\\.
