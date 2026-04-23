@@ -1,0 +1,54 @@
+# Colors
+background = 1a1c2e
+foreground = c0caf5
+selection-background = 364a82
+selection-foreground = c0caf5
+split-divider-color = 101014
+
+# ANSI palette
+palette = 0=#15161e
+palette = 1=#ff7a98
+palette = 2=#a7e368
+palette = 3=#ffb0ee
+palette = 4=#86abff
+palette = 5=#c8a1ff
+palette = 6=#8ce0ff
+palette = 7=#a9b1d6
+palette = 8=#414868
+palette = 9=#ff7a98
+palette = 10=#a7e368
+palette = 11=#ffb0ee
+palette = 12=#86abff
+palette = 13=#c8a1ff
+palette = 14=#8ce0ff
+palette = 15=#c0caf5
+
+# Typography
+font-family = 0xProto Nerd Font
+font-size = 16
+font-thicken = true
+adjust-cell-height = 2
+
+# Window
+window-padding-x = 12
+window-padding-y = 10
+window-width = 110
+window-height = 25
+background-opacity = 1
+background-blur-radius = 20
+
+# Cursor
+cursor-color = c0caf5
+cursor-text = 1a1b26
+cursor-style = block
+cursor-style-blink = true
+shell-integration-features = no-cursor
+
+# Shell
+shell-integration = zsh
+
+# Keybinds
+keybind = cmd+s=new_split:right
+keybind = cmd+shift+s=new_split:down
+keybind = cmd+w=close_surface
+confirm-close-surface = false

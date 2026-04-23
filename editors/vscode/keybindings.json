@@ -1,0 +1,22 @@
+[
+  {
+    "key": "ctrl+cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+cmd+s",
+    "command": "workbench.action.terminal.split"
+  },
+  {
+    "key": "ctrl+cmd+k",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "ctrl+cmd+h",
+    "command": "workbench.action.terminal.focusPreviousPane"
+  },
+  {
+    "key": "ctrl+cmd+l",
+    "command": "workbench.action.terminal.focusNextPane"
+  }
+]
