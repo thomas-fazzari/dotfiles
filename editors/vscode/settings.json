@@ -328,6 +328,7 @@
 	"biome.suggestInstallingGlobally": false,
 	"biome.requireConfiguration": false,
 	"json.schemaDownload.trustedDomains": {
+		"https://alirezanet.github.io": true,
 		"https://biomejs.dev": true,
 		"https://developer.microsoft.com/json-schemas/": true,
 		"https://json-schema.org/": true,
