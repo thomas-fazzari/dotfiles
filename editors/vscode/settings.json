@@ -38,14 +38,14 @@
 	// Workbench
 	// ══════════════════════════════════════════════════════════════
 	"workbench.settings.editor": "json",
-	"workbench.colorTheme": "Tokyo Night Storm Custom",
+	"workbench.colorTheme": "Ariake Dark",
 	"workbench.browser.showInTitleBar": false,
 	"workbench.editor.editorActionsLocation": "hidden",
 	"workbench.layoutControl.enabled": false,
 	"window.commandCenter": false,
 	"breadcrumbs.enabled": true,
 	"workbench.iconTheme": "a-file-icon-vscode",
-	"workbench.productIconTheme": "material-product-icons",
+	"workbench.productIconTheme": "jetbrains-idea-product-icon-theme",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.tree.indent": 20,
 	"workbench.activityBar.location": "bottom",
@@ -371,5 +371,6 @@
 		"jq": true,
 		"bat": true,
 		"pwd": true
-	}
+	},
+	"workbench.editor.empty.hint": "hidden"
 }
