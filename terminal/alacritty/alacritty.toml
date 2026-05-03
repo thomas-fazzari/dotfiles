@@ -23,36 +23,36 @@ family = "0xProto Nerd Font"
 y = 2
 
 [colors.primary]
-background = "#1a1c2e"
-foreground = "#c0caf5"
+background = "#1F212A"
+foreground = "#a6accd"
 
 [colors.cursor]
-cursor = "#c0caf5"
-text = "#1a1b26"
+cursor = "#a6accd"
+text = "#1F212A"
 
 [colors.selection]
-background = "#364a82"
-text = "#c0caf5"
+background = "#303340"
+text = "#a6accd"
 
 [colors.normal]
-black = "#15161e"
-red = "#ff7a98"
-green = "#a7e368"
-yellow = "#ffb0ee"
-blue = "#86abff"
-magenta = "#c8a1ff"
-cyan = "#8ce0ff"
-white = "#a9b1d6"
+black = "#1b1e28"
+red = "#d0679d"
+green = "#5DE4c7"
+yellow = "#fffac2"
+blue = "#89ddff"
+magenta = "#f087bd"
+cyan = "#89ddff"
+white = "#a6accd"
 
 [colors.bright]
-black = "#414868"
-red = "#ff7a98"
-green = "#a7e368"
-yellow = "#ffb0ee"
-blue = "#86abff"
-magenta = "#c8a1ff"
-cyan = "#8ce0ff"
-white = "#c0caf5"
+black = "#a6accd"
+red = "#d0679d"
+green = "#5DE4c7"
+yellow = "#fffac2"
+blue = "#ADD7FF"
+magenta = "#f087bd"
+cyan = "#ADD7FF"
+white = "#ffffff"
 
 [cursor]
 style = { shape = "Block", blinking = "On" }
