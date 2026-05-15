@@ -1,0 +1,147 @@
+{
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/.idea",
+    "**/.vscode",
+    "**/node_modules",
+    "**/bin",
+    "**/obj",
+    "**/dist",
+    "**/out",
+    "**/.vite",
+    "**/TestResults",
+    "**/artifacts",
+    "**/*.dmp",
+  ],
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+    "opencode": {
+      "type": "registry",
+      "favorite_config_option_values": {
+        "model": ["openai/gpt-5.5"],
+      },
+    },
+  },
+  "show_wrap_guides": true,
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "terminal": {
+    "scrollbar": {
+      "show": "system",
+    },
+    "toolbar": {
+      "breadcrumbs": false,
+    },
+  },
+  "collaboration_panel": {
+    "dock": "left",
+    "button": false,
+  },
+  "tab_bar": {
+    "show": false,
+    "show_tab_bar_buttons": true,
+    "show_nav_history_buttons": false,
+  },
+  "tabs": {
+    "file_icons": false,
+  },
+  "title_bar": {
+    "show_user_picture": true,
+    "show_user_menu": true,
+    "show_sign_in": false,
+    "show_onboarding_banner": false,
+    "show_branch_name": true,
+  },
+  "debugger": {
+    "button": false,
+  },
+  "search": {
+    "button": false,
+  },
+  "diagnostics": {
+    "button": true,
+  },
+  "status_bar": {
+    "cursor_position_button": true,
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 2000,
+    },
+  },
+  "cursor_shape": "block",
+  "ui_font_family": ".ZedSans",
+  "buffer_font_family": "0xProto Nerd Font",
+  "restore_on_startup": "empty_tab",
+  "when_closing_with_no_tabs": "keep_window_open",
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5-mini",
+      "enable_thinking": false,
+      "effort": "high",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "icon_theme": "Material Icon Theme",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+  },
+  "base_keymap": "VSCode",
+  "ui_font_size": 15.0,
+  "buffer_font_size": 14.0,
+  "theme": "Ariake Dark",
+  "experimental.theme_overrides": {
+    "terminal.ansi.yellow": "#89ddff",
+    "terminal.ansi.bright_yellow": "#89ddff",
+    "syntax": {
+      "constant": {
+        "color": "#bb9af7",
+      },
+      "number": {
+        "color": "#bb9af7",
+      },
+      "variable": {
+        "color": "#bb9af7",
+      },
+      "tag": {
+        "color": "#7aa2f7",
+      },
+      "type": {
+        "color": "#89ddff",
+      },
+      "property": {
+        "color": "#7dcfff",
+      },
+    },
+  },
+}

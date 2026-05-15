@@ -1,0 +1,26 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-cmd-t": "terminal_panel::Toggle",
+      "ctrl-cmd-s": "pane::SplitDown",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space s": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "space e": "project_panel::ToggleFocus",
+      "space r": "editor::FindAllReferences",
+      "space d": "editor::GoToDefinition",
+      "space p": "file_finder::Toggle",
+    },
+  },
+]
