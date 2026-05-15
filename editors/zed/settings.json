@@ -94,14 +94,6 @@
   "agent": {
     "sidebar_side": "right",
     "dock": "right",
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5-mini",
-      "enable_thinking": false,
-      "effort": "high",
-    },
-    "favorite_models": [],
-    "model_parameters": [],
   },
   "icon_theme": "Material Icon Theme",
   "telemetry": {
