@@ -10,6 +10,9 @@
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+.apdisk
+.Icon?
+__MACOSX/
 
 # Windows
 Thumbs.db
@@ -18,22 +21,77 @@ ehthumbs.db
 ehthumbs_vista.db
 Desktop.ini
 $RECYCLE.BIN/
+*.lnk
 
-# IDEs
+# Linux
+*~
+.directory
+.Trash-*
+
+# Editors and IDEs
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .idea/
+.idea_modules/
 *.iml
 *.iws
 *.ipr
-out/
-.idea_modules/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+auto-save-list/
+tramp
+.\#*
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+*.local
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.pid
+*.pid.lock
+.tmp/
+tmp/
+temp/
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dumps and reports
+*.dmp
+*.stackdump
+*.crash
+*.ips
+
+# Coverage
+coverage/
+.coverage
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
