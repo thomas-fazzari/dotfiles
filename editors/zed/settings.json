@@ -21,6 +21,11 @@
     "**/artifacts",
     "**/*.dmp",
   ],
+  "languages": {
+    "CSharp": {
+      "language_servers": ["omnisharp", "!roslyn", "..."],
+    },
+  },
   "agent_servers": {
     "codex-acp": {
       "type": "registry",
