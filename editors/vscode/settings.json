@@ -44,8 +44,8 @@
 	"workbench.layoutControl.enabled": false,
 	"window.commandCenter": false,
 	"breadcrumbs.enabled": true,
-	"workbench.iconTheme": "a-file-icon-vscode",
-	"workbench.productIconTheme": "jetbrains-idea-product-icon-theme",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.productIconTheme": "feather-vscode",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.tree.indent": 20,
 	"workbench.activityBar.location": "bottom",
@@ -347,34 +347,5 @@
 		"https://www.schemastore.org/": true,
 		"https://xunit.net": true
 	},
-	"chat.viewSessions.orientation": "stacked",
-	"chat.tools.urls.autoApprove": {
-		"https://code.visualstudio.com": true,
-		"https://github.com/microsoft/vscode/wiki/*": true,
-		"https://learn.microsoft.com": true,
-		"https://react.dev": true,
-		"https://vite.dev": true,
-		"https://context7.com/docs/resources": true,
-		"https://context7.com/docs": true,
-		"https://context7.com": true,
-		"https://opencode.ai": {
-			"approveRequest": true,
-			"approveResponse": true
-		}
-	},
-	"chat.instructionsFilesLocations": {
-		".github/": true,
-		"~/.config/opencode/": true
-	},
-	"chat.includeApplyingInstructions": true,
-	"chat.tools.terminal.autoApprove": {
-		"qmd": true,
-		"rg": true,
-		"fd": true,
-		"fzf": true,
-		"jq": true,
-		"bat": true,
-		"pwd": true
-	},
-	"workbench.editor.empty.hint": "hidden"
+	"chat.disableAIFeatures": true
 }
