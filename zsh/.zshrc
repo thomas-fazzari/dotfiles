@@ -28,10 +28,10 @@ path=(
   "$HOME/.ameba/bin"
   "$HOME/go/bin"
   "$DOTNET_ROOT"
-  "$DOTNET_ROOT/tools"
   "/opt/homebrew/opt/postgresql@18/bin"
   $path
 )
+[[ -d "$DOTNET_ROOT/tools" ]] && path=("$DOTNET_ROOT/tools" $path)
 [[ -d "$PYENV_ROOT/bin" ]] && path=("$PYENV_ROOT/bin" $path)
 
 # Shell options
@@ -99,8 +99,7 @@ _lazy_pyenv() {
 }
 pyenv() { _lazy_pyenv || return 127; command pyenv "$@" }
 python() { _lazy_pyenv >/dev/null 2>&1 || true; command python "$@" }
-python3() {
-  _lazy_pyenv >/dev/null 2>&1 || true; command python3 "$@" }
+python3() { _lazy_pyenv >/dev/null 2>&1 || true; command python3 "$@" }
 
 # fzf
 if command -v fzf >/dev/null 2>&1; then
