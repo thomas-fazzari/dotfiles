@@ -176,6 +176,13 @@
 	"editor.defaultFormatter": "biomejs.biome",
 	"resharper.region.region": "Europe",
 	"resharper.dataSharing.allowDataSharing": false,
+	"resharper.trace.server": "off",
+	"resharper.build.useResharperBuild": true,
+	"resharper.build.outputVerbosityLevel": "Quiet",
+	"resharper.build.restorePackagesOnBuild": false,
+	"resharper.build.smartNugetRestore": true,
+	"resharper.completion.fullCompletionListWaitTime": 50,
+	"resharper.completion.preLoadItemCount": 0,
 	"[javascript]": {
 		"editor.defaultFormatter": "biomejs.biome",
 		"editor.codeActionsOnSave": {
