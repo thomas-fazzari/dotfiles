@@ -16,6 +16,7 @@ plugins=(
 
 # Environment
 export DOTNET_ROOT="/usr/local/share/dotnet"
+export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 export NVM_DIR="$HOME/.nvm"
 export PYENV_ROOT="$HOME/.pyenv"
 
