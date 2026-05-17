@@ -15,7 +15,6 @@ plugins=(
 )
 
 # Environment
-export BUN_INSTALL="$HOME/.bun"
 export DOTNET_ROOT="/usr/local/share/dotnet"
 export NVM_DIR="$HOME/.nvm"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -26,7 +25,6 @@ path=(
   "$HOME/.cargo/bin"
   "$HOME/.local/bin"
   "$HOME/.ameba/bin"
-  "$BUN_INSTALL/bin"
   "$HOME/go/bin"
   "$DOTNET_ROOT"
   "$DOTNET_ROOT/tools"
@@ -102,9 +100,6 @@ pyenv() { _lazy_pyenv || return 127; command pyenv "$@" }
 python() { _lazy_pyenv >/dev/null 2>&1 || true; command python "$@" }
 python3() {
   _lazy_pyenv >/dev/null 2>&1 || true; command python3 "$@" }
-
-# Bun completions
-[[ -s "$BUN_INSTALL/_bun" ]] && source "$BUN_INSTALL/_bun"
 
 # fzf
 if command -v fzf >/dev/null 2>&1; then
