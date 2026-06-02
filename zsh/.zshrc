@@ -42,14 +42,14 @@ setopt AUTO_CD EXTENDED_GLOB HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS
 
 source "$ZSH/oh-my-zsh.sh"
 
-ZSH_HIGHLIGHT_STYLES[default]='fg=white'
-ZSH_HIGHLIGHT_STYLES[command]='fg=#8ce0ff,bold'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=#8ce0ff,bold'
-ZSH_HIGHLIGHT_STYLES[function]='fg=#8ce0ff,bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=#8ce0ff,bold'
-ZSH_HIGHLIGHT_STYLES[path]='fg=#86abff'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#c8a1ff'
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#565f89,italic'
+ZSH_HIGHLIGHT_STYLES[default]='fg=#bec6f2'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#7bb1e0,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#7bb1e0,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#7bb1e0,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#7bb1e0,bold'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#85b1e0'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#dda2d8'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#8f98c2,italic'
 
 # Aliases
 alias reload='. ~/.zshrc'
@@ -109,9 +109,9 @@ if command -v fzf >/dev/null 2>&1; then
   export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
   export FZF_DEFAULT_OPTS="
     --height 40% --layout=reverse --border
-    --color=bg+:#292e42,bg:#24283b,spinner:#9ece6a,hl:#7aa2f7
-    --color=fg:#c0caf5,header:#7aa2f7,info:#7aa2f7,pointer:#ff007c
-    --color=marker:#ff007c,fg+:#c0caf5,prompt:#7aa2f7,hl+:#7dcfff
+    --color=bg+:#171b2f,bg:#101424,spinner:#5dc9dc,hl:#7bb1e0
+    --color=fg:#bec6f2,header:#7bb1e0,info:#8f98c2,pointer:#dda2d8
+    --color=marker:#dda2d8,fg+:#ffffff,prompt:#7bb1e0,hl+:#93ddfb
   "
 fi
 

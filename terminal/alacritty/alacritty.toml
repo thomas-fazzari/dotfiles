@@ -23,35 +23,35 @@ family = "0xProto Nerd Font"
 y = 2
 
 [colors.primary]
-background = "#1F212A"
-foreground = "#a6accd"
+background = "#101424"
+foreground = "#bec6f2"
 
 [colors.cursor]
-cursor = "#a6accd"
-text = "#1F212A"
+cursor = "#bec6f2"
+text = "#101424"
 
 [colors.selection]
-background = "#303340"
-text = "#a6accd"
+background = "#2d3b63"
+text = "#ffffff"
 
 [colors.normal]
-black = "#1b1e28"
-red = "#d0679d"
-green = "#5DE4c7"
-yellow = "#fffac2"
-blue = "#89ddff"
-magenta = "#f087bd"
-cyan = "#89ddff"
-white = "#a6accd"
+black = "#0d1020"
+red = "#ff9499"
+green = "#c1f0cc"
+yellow = "#f0e4c1"
+blue = "#7bb1e0"
+magenta = "#dda2d8"
+cyan = "#5dc9dc"
+white = "#bec6f2"
 
 [colors.bright]
-black = "#a6accd"
-red = "#d0679d"
-green = "#5DE4c7"
-yellow = "#fffac2"
-blue = "#ADD7FF"
-magenta = "#f087bd"
-cyan = "#ADD7FF"
+black = "#8f98c2"
+red = "#ffb0bd"
+green = "#d5f5dc"
+yellow = "#fff0c8"
+blue = "#93ddfb"
+magenta = "#dda2f6"
+cyan = "#89ddff"
 white = "#ffffff"
 
 [cursor]
