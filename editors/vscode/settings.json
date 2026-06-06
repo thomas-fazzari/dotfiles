@@ -507,5 +507,6 @@
 		"https://www.schemastore.org/": true,
 		"https://xunit.net": true
 	},
-	"chat.disableAIFeatures": true
+	"chat.disableAIFeatures": true,
+	"extensions.ignoreRecommendations": true
 }
