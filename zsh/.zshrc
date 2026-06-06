@@ -19,10 +19,12 @@ export DOTNET_ROOT="/usr/local/share/dotnet"
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 export NVM_DIR="$HOME/.nvm"
 export PYENV_ROOT="$HOME/.pyenv"
+export PNPM_HOME="$HOME/Library/pnpm"
 
 # PATH
 typeset -U path PATH
 path=(
+  "$PNPM_HOME/bin"
   "$HOME/.cargo/bin"
   "$HOME/.local/bin"
   "$HOME/.ameba/bin"
@@ -97,7 +99,7 @@ _lazy_pyenv() {
 
   return 1
 }
-pyenv() { _lazy_pyenv || return 127; command pyenv "$@" }
+pyenv() { _lazy_pyenv || return 127; pyenv "$@" }
 python() { _lazy_pyenv >/dev/null 2>&1 || true; command python "$@" }
 python3() { _lazy_pyenv >/dev/null 2>&1 || true; command python3 "$@" }
 
@@ -109,7 +111,7 @@ if command -v fzf >/dev/null 2>&1; then
   export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
   export FZF_DEFAULT_OPTS="
     --height 40% --layout=reverse --border
-    --color=bg+:#171b2f,bg:#101424,spinner:#5dc9dc,hl:#7bb1e0
+    --color=bg+:#161922,bg:#101218,spinner:#5dc9dc,hl:#7bb1e0
     --color=fg:#bec6f2,header:#7bb1e0,info:#8f98c2,pointer:#dda2d8
     --color=marker:#dda2d8,fg+:#ffffff,prompt:#7bb1e0,hl+:#93ddfb
   "

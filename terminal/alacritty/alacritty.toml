@@ -23,19 +23,19 @@ family = "0xProto Nerd Font"
 y = 2
 
 [colors.primary]
-background = "#101424"
+background = "#101218"
 foreground = "#bec6f2"
 
 [colors.cursor]
 cursor = "#bec6f2"
-text = "#101424"
+text = "#101218"
 
 [colors.selection]
-background = "#2d3b63"
+background = "#2d3850"
 text = "#ffffff"
 
 [colors.normal]
-black = "#0d1020"
+black = "#0d0f15"
 red = "#ff9499"
 green = "#c1f0cc"
 yellow = "#f0e4c1"

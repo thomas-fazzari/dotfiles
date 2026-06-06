@@ -81,8 +81,8 @@ keybinds clear-defaults=true {
 themes {
     ariake-clean {
         fg "#bec6f2"
-        bg "#101424"
-        black "#0d1020"
+        bg "#101218"
+        black "#0d0f15"
         red "#ff9499"
         green "#c1f0cc"
         yellow "#f0e4c1"
