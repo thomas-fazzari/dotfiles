@@ -1,25 +1,37 @@
-providers: 
+providers:
   webSearch: codex
 setupVersion: 1
-modelRoles: 
+modelRoles:
   default: gpt-5.5:xhigh
-retry: 
+  plan: openai-codex/gpt-5.5:xhigh
+retry:
   enabled: true
   maxRetries: 3
-compaction: 
+compaction:
   enabled: true
   reserveTokens: 16384
   keepRecentTokens: 20000
-skills: 
+skills:
   enabled: true
   enableClaudeUser: false
-async: 
+async:
   enabled: false
-task: 
-  isolation: 
+task:
+  isolation:
     mode: none
-display: 
+  agentModelOverrides:
+    explore: openai-codex/gpt-5.3-codex:high
+    task: openai-codex/gpt-5.3-codex:high
+    default: openai-codex/gpt-5.3-codex:high
+display:
   tabWidth: 4
-commands: 
+commands:
   enableClaudeUser: false
   enableClaudeProject: false
+disabledExtensions:
+  - rule:rs-box-leak
+  - rule:rs-future-prelude
+  - rule:rs-lazylock
+  - rule:rs-match-ergonomics
+  - rule:rs-parking-lot
+  - rule:rs-result-type
