@@ -20,9 +20,9 @@ task:
   isolation:
     mode: none
   agentModelOverrides:
-    explore: openai-codex/gpt-5.3-codex:high
-    task: openai-codex/gpt-5.3-codex:high
-    default: openai-codex/gpt-5.3-codex:high
+    explore: openai-codex/gpt-5.4-mini:high
+    task: openai-codex/gpt-5.5:high
+    default: openai-codex/gpt-5.5:high
 display:
   tabWidth: 4
 commands:

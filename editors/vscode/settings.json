@@ -484,7 +484,7 @@
 	// Misc
 	// ══════════════════════════════════════════════════════════════
 	"telemetry.telemetryLevel": "off",
-	"extensions.autoUpdate": false,
+	"extensions.autoUpdate": "off",
 	"extensions.autoCheckUpdates": false,
 	"gitlens.ai.model": "vscode",
 	"gitlens.ai.vscode.model": "copilot:gpt-4.1",
@@ -508,5 +508,13 @@
 		"https://xunit.net": true
 	},
 	"chat.disableAIFeatures": true,
-	"extensions.ignoreRecommendations": true
+	"extensions.ignoreRecommendations": true,
+	"yaml.disableSchemaDetection": [
+		"**/.github/workflows/*.yml",
+		"**/.github/workflows/*.yaml",
+		"**/.gitea/workflows/*.yml",
+		"**/.gitea/workflows/*.yaml",
+		"**/.forgejo/workflows/*.yml",
+		"**/.forgejo/workflows/*.yaml"
+	]
 }
