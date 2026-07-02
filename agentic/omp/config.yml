@@ -1,0 +1,47 @@
+providers:
+  webSearch: codex
+setupVersion: 1
+modelRoles:
+  default: openai-codex/gpt-5.5:high
+  plan: openai-codex/gpt-5.5:xhigh
+retry:
+  enabled: true
+  maxRetries: 3
+compaction:
+  enabled: true
+  reserveTokens: 16384
+  keepRecentTokens: 20000
+skills:
+  enabled: true
+  enableClaudeUser: false
+async:
+  enabled: false
+task:
+  isolation:
+    mode: none
+  agentModelOverrides:
+    explore: openai-codex/gpt-5.4-mini:high
+    task: openai-codex/gpt-5.5:high
+    default: openai-codex/gpt-5.5:high
+display:
+  tabWidth: 4
+commands:
+  enableClaudeUser: false
+  enableClaudeProject: false
+disabledExtensions:
+  - rule:rs-box-leak
+  - rule:rs-future-prelude
+  - rule:rs-lazylock
+  - rule:rs-match-ergonomics
+  - rule:rs-parking-lot
+  - rule:rs-result-type
+theme:
+  dark: dark-tokyo-night
+memory:
+  backend: mnemopi
+mnemopi:
+  scoping: per-project-tagged
+dev:
+  autoqa:
+    consent: granted
+symbolPreset: nerd

@@ -1,0 +1,27 @@
+[
+	{
+		"key": "cmd+w",
+		"command": "-workbench.action.closeWindow",
+		"when": "!editorIsOpen && !multipleEditorGroups"
+	},
+	{
+		"key": "ctrl+x t",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+x s",
+		"command": "workbench.action.terminal.split"
+	},
+	{
+		"key": "ctrl+x k",
+		"command": "workbench.action.terminal.kill"
+	},
+	{
+		"key": "ctrl+x h",
+		"command": "workbench.action.terminal.focusPreviousPane"
+	},
+	{
+		"key": "ctrl+x l",
+		"command": "workbench.action.terminal.focusNextPane"
+	}
+]

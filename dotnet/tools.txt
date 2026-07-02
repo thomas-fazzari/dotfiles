@@ -1,0 +1,3 @@
+csharp-ls
+csharpier
+fsautocomplete

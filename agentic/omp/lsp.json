@@ -1,0 +1,19 @@
+{
+	"servers": {
+		"omnisharp": {
+			"disabled": true
+		},
+		"csharp-ls": {
+			"command": "csharp-ls",
+			"fileTypes": [".cs"],
+			"rootMarkers": ["*.sln", "*.slnx", "*.csproj", ".git"],
+			"warmupTimeoutMs": 30000
+		},
+		"ocamllsp": {
+			"command": "/Users/thomas/.opam/5.4.1/bin/ocamllsp",
+			"fileTypes": [".ml", ".mli"],
+			"rootMarkers": ["dune-project", "*.opam", "dune", ".git"],
+			"warmupTimeoutMs": 30000
+		}
+	}
+}
