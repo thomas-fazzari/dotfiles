@@ -1,0 +1,138 @@
+providers:
+  webSearchOrder:
+    - codex
+    - perplexity
+    - gemini
+    - anthropic
+    - xai
+    - zai
+    - exa
+    - tinyfish
+    - jina
+    - kagi
+    - tavily
+    - firecrawl
+    - brave
+    - kimi
+    - parallel
+    - synthetic
+    - searxng
+    - startpage
+    - duckduckgo
+    - ecosia
+    - google
+    - mojeek
+    - public
+  openaiWebsockets: auto
+  autoThinkingMaxEffort: high
+setupVersion: 1
+defaultThinkingLevel: auto
+modelRoles:
+  default: openai-codex/gpt-5.6-sol:medium
+  plan: openai-codex/gpt-5.6-sol:xhigh
+  slow: openai-codex/gpt-5.6-sol:max
+  smol: openai-codex/gpt-5.6-luna:high
+  tiny: openai-codex/gpt-5.6-luna:high
+  commit: openai-codex/gpt-5.6-luna:low
+  task: openai-codex/gpt-5.6-terra:high
+  vision: openai-codex/gpt-5.6-sol:medium
+  designer: openai-codex/gpt-5.6-sol:medium
+  advisor: openai-codex/gpt-5.6-sol:high
+retry:
+  enabled: true
+  maxRetries: 3
+compaction:
+  enabled: true
+  reserveTokens: 16384
+  keepRecentTokens: 20000
+  idleEnabled: true
+skills:
+  enabled: true
+  enableClaudeUser: false
+async:
+  enabled: false
+task:
+  isolation:
+    mode: none
+  agentModelOverrides:
+    explore: openai-codex/gpt-5.6-luna:medium
+    task: openai-codex/gpt-5.6-terra:high
+    reviewer: openai-codex/gpt-5.6-sol:high
+  eager: preferred
+  enableLsp: true
+display:
+  tabWidth: 4
+  shimmer: kitt
+  showTokenUsage: true
+  cacheMissMarker: true
+commands:
+  enableClaudeUser: false
+  enableClaudeProject: false
+  enableOpencodeUser: false
+  enableOpencodeProject: false
+disabledExtensions:
+  - rule:rs-box-leak
+  - rule:rs-future-prelude
+  - rule:rs-lazylock
+  - rule:rs-match-ergonomics
+  - rule:rs-parking-lot
+  - rule:rs-result-type
+theme:
+  dark: dark-abyss
+memory:
+  backend: mnemopi
+mnemopi:
+  scoping: per-project-tagged
+dev:
+  autoqa: false
+symbolPreset: nerd
+statusLine:
+  preset: compact
+  separator: powerline-thin
+  sessionAccent: true
+  transparent: true
+terminal:
+  showProgress: false
+tui:
+  textSizing: true
+contextPromotion:
+  enabled: false
+hideThinkingBlock: true
+omitThinking: false
+textVerbosity: low
+personality: pragmatic
+autocompleteMaxVisible: 7
+emojiAutocomplete: false
+autoResume: false
+startup:
+  quiet: false
+branchSummary:
+  enabled: true
+edit:
+  streamingAbort: true
+  mode: hashline
+readLineNumbers: true
+github:
+  enabled: true
+inspect_image:
+  mode: auto
+checkpoint:
+  enabled: true
+grep:
+  contextBefore: 1
+  contextAfter: 1
+bashInterceptor:
+  enabled: true
+astGrep:
+  enabled: true
+advisor:
+  enabled: true
+  subagents: false
+  syncBacklog: "off"
+  immuneTurns: 3
+lsp:
+  diagnosticsOnEdit: true
+autolearn:
+  enabled: true
+snapcompact:
+  toolResults: true

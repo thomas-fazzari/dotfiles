@@ -1,0 +1,47 @@
+[
+	{
+		"key": "cmd+w",
+		"command": "-workbench.action.closeWindow",
+		"when": "isMac && !editorIsOpen && !multipleEditorGroups"
+	},
+	{
+		"key": "ctrl+l",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "isMac && sideBarFocus"
+	},
+	{
+		"key": "ctrl+cmd+enter",
+		"command": "workbench.action.terminal.toggleTerminal",
+		"when": "isMac"
+	},
+	{
+		"key": "ctrl+cmd+s",
+		"command": "workbench.action.terminal.split",
+		"when": "isMac"
+	},
+	{
+		"key": "ctrl+cmd+k",
+		"command": "workbench.action.terminal.kill",
+		"when": "isMac"
+	},
+	{
+		"key": "ctrl+cmd+h",
+		"command": "workbench.action.terminal.focusPreviousPane",
+		"when": "isMac"
+	},
+	{
+		"key": "ctrl+cmd+l",
+		"command": "workbench.action.terminal.focusNextPane",
+		"when": "isMac"
+	},
+	{
+		"key": "enter",
+		"command": "list.select",
+		"when": "isMac && filesExplorerFocus && !inputFocus"
+	},
+	{
+		"key": "escape",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "sideBarFocus"
+	}
+]

@@ -1,0 +1,6 @@
+csharpier
+fantomas
+fsautocomplete
+ilspycmd
+Microsoft.AITools.BinlogMcp
+roslyn-language-server

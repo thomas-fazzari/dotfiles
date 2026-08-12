@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion": 1,
+  "app": {
+    "appearance": "dark",
+    "hideTabCloseButton": true,
+    "workspaceInheritWorkingDirectory": true
+  },
+  "terminal": {
+    "copyOnSelect": true,
+    "showScrollBar": false
+  },
+  "sidebar": {
+    "hideAllDetails": true
+  },
+  "sidebarAppearance": {
+    "matchTerminalBackground": true
+  },
+  "workspaceColors": {
+    "indicatorStyle": "leftRail",
+    "selectionColor": "#121E35",
+    "notificationBadgeColor": "#FF2D6F"
+  },
+  "shortcuts": {
+    "bindings": {
+      "splitRight": "ctrl+shift+return",
+      "toggleSplitZoom": "ctrl+shift+f",
+      "focusLeft": "ctrl+shift+h",
+      "focusDown": "ctrl+shift+j",
+      "focusUp": "ctrl+shift+k",
+      "focusRight": "ctrl+shift+l",
+      "newSurface": "ctrl+shift+t",
+      "nextSurface": "ctrl+shift+n",
+      "prevSurface": "ctrl+shift+p",
+      "closeTab": "ctrl+shift+w"
+    }
+  }
+}

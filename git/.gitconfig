@@ -1,0 +1,35 @@
+[user]
+	name = thomas-fazzari
+	email = 122701528+thomas-fazzari@users.noreply.github.com
+
+[core]
+  autocrlf = input
+  excludesfile = ~/.gitignore_global
+  fsmonitor = true
+  untrackedcache = true
+
+[init]
+	defaultBranch = master
+
+[fetch]
+	prune = true
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[alias]
+	s = status
+	co = checkout
+	b = branch
+	c = commit
+	cm = commit -m
+	ca = commit --amend
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	lg = log --graph --oneline --decorate --all
+	aliases = config --get-regexp ^alias\\.
+	undo = reset HEAD~1 --mixed

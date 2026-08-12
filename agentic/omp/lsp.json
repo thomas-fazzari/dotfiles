@@ -1,0 +1,62 @@
+{
+	"servers": {
+		"omnisharp": {
+			"disabled": true
+		},
+		"roslyn": {
+			"command": "env",
+			"args": [
+				"DOTNET_ROOT=/opt/homebrew/opt/dotnet/libexec",
+				"roslyn-language-server",
+				"--stdio",
+				"--autoLoadProjects",
+				"--logLevel",
+				"Warning",
+				"--telemetryLevel",
+				"off"
+			],
+			"fileTypes": [
+				".cs",
+				".razor",
+				".cshtml"
+			],
+			"rootMarkers": [
+				"*.sln",
+				"*.slnx",
+				"*.csproj",
+				".git"
+			],
+			"warmupTimeoutMs": 120000
+		},
+		"ocamllsp": {
+			"command": "opam exec -- ocamllsp",
+			"fileTypes": [
+				".ml",
+				".mli"
+			],
+			"rootMarkers": [
+				"dune-project",
+				"*.opam",
+				"dune",
+				".git"
+			],
+			"warmupTimeoutMs": 30000
+		},
+		"typescript-language-server": {
+			"command": "typescript-language-server --stdio",
+			"fileTypes": [
+				".ts",
+				".tsx",
+				".js",
+				".jsx"
+			],
+			"rootMarkers": [
+				"package.json",
+				"tsconfig.json",
+				"jsconfig.json",
+				".git"
+			],
+			"warmupTimeoutMs": 30000
+		}
+	}
+}

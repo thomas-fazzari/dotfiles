@@ -1,0 +1,576 @@
+{
+	// Fonts
+	"editor.fontFamily": "'FiraCode Nerd Font Mono', monospace",
+	"terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono'",
+	"terminal.integrated.fontSize": 14,
+	"editor.fontSize": 16,
+	"editor.fontLigatures": true,
+	// Editor Appearance
+	"workbench.colorTheme": "Edgerunners",
+	"workbench.colorCustomizations": {
+		"[VS Code Edgerunners]": {
+			"terminal.ansiBlack": "#070B11",
+			"terminal.ansiRed": "#FF5A5A",
+			"terminal.ansiGreen": "#79EAF2",
+			"terminal.ansiYellow": "#E5BA6F",
+			"terminal.ansiBlue": "#79EAF2",
+			"terminal.ansiMagenta": "#FF2D6F",
+			"terminal.ansiCyan": "#79EAF2",
+			"terminal.ansiWhite": "#D8D4CC",
+			"terminal.ansiBrightBlack": "#3E455C",
+			"terminal.ansiBrightRed": "#FF6B8B",
+			"terminal.ansiBrightGreen": "#79EAF2",
+			"terminal.ansiBrightYellow": "#E5BA6F",
+			"terminal.ansiBrightBlue": "#79EAF2",
+			"terminal.ansiBrightMagenta": "#FF6B8B",
+			"terminal.ansiBrightCyan": "#79EAF2",
+			"terminal.ansiBrightWhite": "#E6ECFF"
+		}
+	},
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.productIconTheme": "material-product-icons",
+	"editor.cursorSurroundingLines": 6,
+	"editor.cursorWidth": 2,
+	"editor.letterSpacing": 0.3,
+	"editor.lineHeight": 22,
+	"editor.renderLineHighlight": "gutter",
+	"editor.minimap.enabled": false,
+	"editor.stickyScroll.enabled": false,
+	// Editor Behavior
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.tabSize": 2,
+	"editor.wordWrap": "on",
+	"editor.linkedEditing": true,
+	"editor.snippetSuggestions": "top",
+	"editor.accessibilitySupport": "off",
+	"workbench.editor.showTabs": "none",
+	"workbench.tree.renderIndentGuides": "always",
+	"workbench.tree.indent": 22,
+	"workbench.browser.showInTitleBar": false,
+	"workbench.editor.editorActionsLocation": "hidden",
+	"workbench.layoutControl.enabled": false,
+	"breadcrumbs.enabled": false,
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.editor.enablePreview": false,
+	"workbench.settings.editor": "json",
+	"window.commandCenter": false,
+	// Files
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 2000,
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"files.eol": "\n",
+	"files.associations": {
+		"**/editors/vscode/settings*.json": "jsonc",
+		"**/editors/vscode/keybindings.json": "jsonc",
+		"*.code-workspace": "jsonc",
+		"**/SKILL.md": "markdown",
+		"*.axaml": "xml",
+		"*.config": "xml",
+		"*.csproj": "xml",
+		"*.props": "xml",
+		"*.resx": "xml",
+		"*.slnx": "xml",
+		"*.targets": "xml",
+		"*.xaml": "xml"
+	},
+	"files.exclude": {
+		"**/.idea": true,
+		"**/.vs": true,
+		"**/__pycache__": true,
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/build": true,
+		"**/bin": true,
+		"**/.cache": true,
+		"**/out": true,
+		"**/obj": true,
+		"**/coverage": true
+	},
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/.idea/**": true,
+		"**/.vs/**": true,
+		"**/node_modules/**": true,
+		"**/dist/**": true,
+		"**/build/**": true,
+		"**/bin/**": true,
+		"**/out/**": true,
+		"**/.cache/**": true,
+		"**/__pycache__/**": true,
+		"**/obj/**": true,
+		"**/coverage/**": true
+	},
+	"search.followSymlinks": false,
+	"search.smartCase": true,
+	"search.exclude": {
+		"**/.next": true,
+		"**/.svelte-kit": true,
+		"**/.turbo": true,
+		"**/.ruff_cache": true,
+		"**/.pytest_cache": true
+	},
+	// Explorer
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"explorer.confirmPasteNative": false,
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.expand": false,
+	"explorer.fileNesting.patterns": {
+		"*.cs": "${capture}.designer.cs, ${capture}.g.cs, ${capture}.generated.cs",
+		"*.csproj": "${capture}.csproj.user",
+		"*.cshtml": "${capture}.cshtml.cs, ${capture}.cshtml.css",
+		"*.razor": "${capture}.razor.cs, ${capture}.razor.css",
+		"*.resx": "${capture}.Designer.cs",
+		"go.mod": "go.sum, go.work, go.work.sum",
+		"*.ml": "${capture}.mli",
+		"dune-project": "*.opam, dune.lock, .ocamlformat, .ocamlversion"
+	},
+	// Terminal
+	"terminal.integrated.cursorBlinking": true,
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	"terminal.integrated.persistentSessionReviveProcess": "never",
+	// Dev Containers
+	"dev.containers.dockerPath": "podman",
+	"dev.containers.dockerComposePath": "podman-compose",
+	// Git
+	"git.openRepositoryInParentFolders": "always",
+	"git.autofetch": true,
+	"git.confirmSync": false,
+	"git.enableSmartCommit": true,
+	// Svelte
+	"svelte.enable-ts-plugin": true,
+	// Python
+	"python.analysis.typeCheckingMode": "basic",
+	"python.analysis.autoImportCompletions": true,
+	// Go
+	"go.lintTool": "golangci-lint-v2",
+	"go.lintFlags": [
+		"--fast-only"
+	],
+	"go.toolsManagement.autoUpdate": true,
+	"gopls": {
+		"ui.semanticTokens": true,
+		"ui.semanticTokenTypes": {
+			"namespace": false
+		}
+	},
+	// Formatters
+	"[csharp][xml]": {
+		"editor.defaultFormatter": "csharpier.csharpier-vscode"
+	},
+	"[fsharp]": {
+		"editor.defaultFormatter": "Ionide.Ionide-fsharp"
+	},
+	"[css][tailwindcss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.stylelint": "explicit"
+		}
+	},
+	"[github-actions-workflow][html][yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript][javascriptreact][typescript][typescriptreact]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode",
+		"editor.formatOnSave": false,
+		"editor.codeActionsOnSave": {
+			"source.format.oxc": "always",
+			"source.fixAll.oxc": "always"
+		}
+	},
+	"[json][jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[go.mod]": {
+		"editor.defaultFormatter": "golang.go"
+	},
+	"[go]": {
+		"editor.defaultFormatter": "golang.go",
+		"editor.tabSize": 4,
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": "explicit"
+		}
+	},
+	"[python]": {
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports.ruff": "explicit",
+			"source.fixAll.ruff": "explicit"
+		}
+	},
+	"[lua]": {
+		"editor.defaultFormatter": "sumneko.lua"
+	},
+	"[ocaml]": {
+		"editor.defaultFormatter": "ocamllabs.ocaml-platform"
+	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "mkhl.shfmt"
+	},
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+	"[toml]": {
+		"editor.defaultFormatter": "tamasfe.even-better-toml"
+	},
+	"[typst]": {
+		"editor.defaultFormatter": "myriad-dreamin.tinymist"
+	},
+	// Vim Motions
+	"keyboard.dispatch": "keyCode",
+	"vim.easymotion": true,
+	"vim.hlsearch": true,
+	"vim.highlightedyank.enable": true,
+	"vim.highlightedyank.color": "#79EAF299",
+	"vim.highlightedyank.textColor": "#070B11",
+	"vim.highlightedyank.duration": 250,
+	"vim.leader": "<space>",
+	"vim.useSystemClipboard": true,
+	"vim.handleKeys": {
+		"<C-a>": false,
+		"<C-c>": false,
+		"<C-f>": false,
+		"<C-v>": false,
+		"<C-w>": false
+	},
+	"vim.insertModeKeyBindings": [
+		{
+			"before": [
+				"j",
+				"k"
+			],
+			"after": [
+				"<Esc>"
+			]
+		}
+	],
+	"vim.visualModeKeyBindings": [
+		{
+			"before": [
+				"<leader>",
+				"c"
+			],
+			"commands": [
+				"editor.action.commentLine"
+			]
+		}
+	],
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				"g",
+				"p",
+				"d"
+			],
+			"commands": [
+				"editor.action.peekDefinition"
+			]
+		},
+		{
+			"before": [
+				"g",
+				"r"
+			],
+			"commands": [
+				"editor.action.referenceSearch.trigger"
+			]
+		},
+		{
+			"before": [
+				"g",
+				"i"
+			],
+			"commands": [
+				"editor.action.goToImplementation"
+			]
+		},
+		{
+			"before": [
+				"g",
+				"p",
+				"i"
+			],
+			"commands": [
+				"editor.action.peekImplementation"
+			]
+		},
+		{
+			"before": [
+				"g",
+				"t"
+			],
+			"commands": [
+				"editor.action.goToTypeDefinition"
+			]
+		},
+		{
+			"before": [
+				"g",
+				"p",
+				"t"
+			],
+			"commands": [
+				"editor.action.peekTypeDefinition"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"q"
+			],
+			"commands": [
+				"editor.action.quickFix"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"x"
+			],
+			"commands": [
+				"workbench.action.closeActiveEditor"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"c"
+			],
+			"commands": [
+				"editor.action.commentLine"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"e"
+			],
+			"commands": [
+				"workbench.action.toggleSidebarVisibility"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"f",
+				"e"
+			],
+			"commands": [
+				"workbench.files.action.focusFilesExplorer"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"f",
+				"f"
+			],
+			"commands": [
+				"workbench.action.quickOpen"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"f",
+				"g"
+			],
+			"commands": [
+				"workbench.action.findInFiles"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"f",
+				"r"
+			],
+			"commands": [
+				"workbench.view.search"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"f",
+				"p"
+			],
+			"commands": [
+				"workbench.action.showCommands"
+			]
+		},
+		// File Utils
+		{
+			"before": [
+				"<leader>",
+				"f",
+				"n"
+			],
+			"commands": [
+				"fileutils.newFile"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"f",
+				"d"
+			],
+			"commands": [
+				"fileutils.removeFile"
+			]
+		},
+		// Git
+		{
+			"before": [
+				"<leader>",
+				"g",
+				"c"
+			],
+			"commands": [
+				"git.checkout"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"g",
+				"n"
+			],
+			"commands": [
+				"git.branch"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"g",
+				"p"
+			],
+			"commands": [
+				"git.pull"
+			]
+		},
+		// Harpoon
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"a"
+			],
+			"commands": [
+				"vscode-harpoon.addEditor"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"h"
+			],
+			"commands": [
+				"vscode-harpoon.editorQuickPick"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"e"
+			],
+			"commands": [
+				"vscode-harpoon.editEditors"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"p"
+			],
+			"commands": [
+				"vscode-harpoon.gotoPreviousHarpoonEditor"
+			]
+		},
+		// Harpoon quick jumps
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"1"
+			],
+			"commands": [
+				"vscode-harpoon.gotoEditor1"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"2"
+			],
+			"commands": [
+				"vscode-harpoon.gotoEditor2"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"3"
+			],
+			"commands": [
+				"vscode-harpoon.gotoEditor3"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"4"
+			],
+			"commands": [
+				"vscode-harpoon.gotoEditor4"
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"h",
+				"5"
+			],
+			"commands": [
+				"vscode-harpoon.gotoEditor5"
+			]
+		}
+	],
+	"extensions.experimental.affinity": {
+		"vscodevim.vim": 1
+	},
+	// Misc
+	"telemetry.telemetryLevel": "off",
+	"extensions.autoUpdate": "off",
+	"extensions.autoCheckUpdates": false,
+	"extensions.ignoreRecommendations": true,
+	"chat.disableAIFeatures": true,
+	"resharper.region.region": "Europe",
+	"resharper.editor.enterMovesToNextPlaceholder": false,
+	"resharper.runAndDebug.dotnet.buildBeforeLaunch": false,
+	"sonarlint.rules": {
+		"csharpsquid:S6640": {
+			"level": "off"
+		},
+		"csharpsquid:S107": {
+			"level": "off"
+		},
+		"csharpsquid:S2325": {
+			"level": "off"
+		}
+	}
+}

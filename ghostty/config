@@ -1,0 +1,49 @@
+font-family = FiraCode Nerd Font Mono
+font-size = 16
+
+background = #070B11
+foreground = #E6ECFF
+cursor-color = #79EAF2
+cursor-text = #070B11
+selection-background = #1E383E
+selection-foreground = #E6ECFF
+
+palette = 0=#070B11
+palette = 1=#FF5A5A
+palette = 2=#79EAF2
+palette = 3=#E5BA6F
+palette = 4=#79EAF2
+palette = 5=#FF2D6F
+palette = 6=#79EAF2
+palette = 7=#D8D4CC
+palette = 8=#3E455C
+palette = 9=#FF6B8B
+palette = 10=#79EAF2
+palette = 11=#E5BA6F
+palette = 12=#79EAF2
+palette = 13=#FF6B8B
+palette = 14=#79EAF2
+palette = 15=#E6ECFF
+
+window-padding-x = 12
+window-padding-y = 12
+split-divider-color = #121829
+macos-option-as-alt = true
+copy-on-select = true
+
+keybind = ctrl+v=paste_from_clipboard
+keybind = ctrl+shift+enter=new_split:right
+keybind = ctrl+shift+backspace=close_surface
+keybind = ctrl+shift+f=toggle_split_zoom
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+arrow_left=resize_split:left,10
+keybind = ctrl+shift+arrow_right=resize_split:right,10
+keybind = ctrl+shift+arrow_up=resize_split:up,10
+keybind = ctrl+shift+arrow_down=resize_split:down,10
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+n=next_tab
+keybind = ctrl+shift+p=previous_tab
+keybind = ctrl+shift+w=close_tab:this
