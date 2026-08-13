@@ -17,6 +17,7 @@ links=(
 	"$HOME/.omp/agent/lsp.json|$dotfiles/agentic/omp/lsp.json"
 	"$HOME/.omp/agent/models.yml|$dotfiles/agentic/omp/models.yml"
 	"$HOME/.omp/agent/RULES.md|$dotfiles/agentic/omp/agents/RULES.md"
+	"$HOME/.omp/agent/themes/edgerunners.json|$dotfiles/agentic/omp/themes/edgerunners.json"
 	"$HOME/.gitconfig|$dotfiles/git/.gitconfig"
 	"$HOME/.gitignore_global|$dotfiles/git/.gitignore_global"
 )

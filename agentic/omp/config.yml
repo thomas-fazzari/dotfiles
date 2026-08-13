@@ -60,6 +60,8 @@ task:
     reviewer: openai-codex/gpt-5.6-sol:high
   eager: preferred
   enableLsp: true
+  agentAdvisor:
+    task: "off"
 display:
   tabWidth: 4
   shimmer: kitt
@@ -78,7 +80,7 @@ disabledExtensions:
   - rule:rs-parking-lot
   - rule:rs-result-type
 theme:
-  dark: dark-abyss
+  dark: edgerunners
 memory:
   backend: mnemopi
 mnemopi:
@@ -95,6 +97,7 @@ terminal:
   showProgress: false
 tui:
   textSizing: true
+  imeSafeCursor: true
 contextPromotion:
   enabled: false
 hideThinkingBlock: true
@@ -127,7 +130,6 @@ astGrep:
   enabled: true
 advisor:
   enabled: true
-  subagents: false
   syncBacklog: "off"
   immuneTurns: 3
 lsp:
