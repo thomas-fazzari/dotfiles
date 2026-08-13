@@ -1,32 +1,13 @@
 {
 	// Fonts
-	"editor.fontFamily": "'FiraCode Nerd Font Mono', monospace",
-	"terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono'",
+	"editor.fontFamily": "'Iosevka Nerd Font Mono', monospace",
+	"terminal.integrated.fontFamily": "'Iosevka Nerd Font Mono'",
 	"terminal.integrated.fontSize": 14,
 	"editor.fontSize": 16,
+	"editor.fontWeight": "500",
 	"editor.fontLigatures": true,
 	// Editor Appearance
 	"workbench.colorTheme": "Edgerunners",
-	"workbench.colorCustomizations": {
-		"[VS Code Edgerunners]": {
-			"terminal.ansiBlack": "#070B11",
-			"terminal.ansiRed": "#FF5A5A",
-			"terminal.ansiGreen": "#79EAF2",
-			"terminal.ansiYellow": "#E5BA6F",
-			"terminal.ansiBlue": "#79EAF2",
-			"terminal.ansiMagenta": "#FF2D6F",
-			"terminal.ansiCyan": "#79EAF2",
-			"terminal.ansiWhite": "#D8D4CC",
-			"terminal.ansiBrightBlack": "#3E455C",
-			"terminal.ansiBrightRed": "#FF6B8B",
-			"terminal.ansiBrightGreen": "#79EAF2",
-			"terminal.ansiBrightYellow": "#E5BA6F",
-			"terminal.ansiBrightBlue": "#79EAF2",
-			"terminal.ansiBrightMagenta": "#FF6B8B",
-			"terminal.ansiBrightCyan": "#79EAF2",
-			"terminal.ansiBrightWhite": "#E6ECFF"
-		}
-	},
 	"workbench.iconTheme": "material-icon-theme",
 	"workbench.productIconTheme": "material-product-icons",
 	"editor.cursorSurroundingLines": 6,
@@ -158,7 +139,11 @@
 		}
 	},
 	// Formatters
-	"[csharp][xml]": {
+	"[csharp]": {
+		"editor.defaultFormatter": "csharpier.csharpier-vscode",
+		"editor.inlayHints.enabled": "off"
+	},
+	"[xml]": {
 		"editor.defaultFormatter": "csharpier.csharpier-vscode"
 	},
 	"[fsharp]": {

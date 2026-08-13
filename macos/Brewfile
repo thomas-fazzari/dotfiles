@@ -85,4 +85,4 @@ cask "transmission"
 cask "visual-studio-code@insiders"
 
 # Fonts
-cask "font-fira-code-nerd-font"
+cask "font-iosevka-nerd-font"

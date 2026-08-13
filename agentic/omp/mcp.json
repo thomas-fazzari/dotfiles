@@ -16,7 +16,7 @@
       "type": "stdio",
       "command": "dnx",
       "args": [
-        "NuGet.Mcp.Server",
+        "NuGet.Mcp.Server@1.4.15",
         "--source",
         "https://api.nuget.org/v3/index.json",
         "--yes"
