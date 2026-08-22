@@ -56,17 +56,17 @@ fi
 
 # Syntax highlighting
 typeset -gA ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[default]='fg=#D8D4CC'
-ZSH_HIGHLIGHT_STYLES[command]='fg=#79EAF2,bold'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=#79EAF2,bold'
-ZSH_HIGHLIGHT_STYLES[function]='fg=#79EAF2,bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=#79EAF2,bold'
+ZSH_HIGHLIGHT_STYLES[default]='fg=#A8A49D'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#FF6B8B,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#E75A7C,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#FF6B8B,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#FF6B8B,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=#79EAF2'
 ZSH_HIGHLIGHT_STYLES+=(
-	double-quoted-argument 'fg=#FF6B8B'
-	single-quoted-argument 'fg=#FF6B8B'
+	double-quoted-argument 'fg=#D8647D'
+	single-quoted-argument 'fg=#D8647D'
 )
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#747982,italic'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#71798A,italic'
 
 # Aliases
 alias reload='. ~/.zshrc'
@@ -117,7 +117,7 @@ if command -v fzf >/dev/null 2>&1; then
 	export FZF_DEFAULT_OPTS="
     --height 40% --layout=reverse --border
     --color=bg+:#121E35,bg:#070B11,spinner:#79EAF2,hl:#FF2D6F
-    --color=fg:#D8D4CC,header:#E6ECFF,info:#8891A5,pointer:#FF2D6F
+    --color=fg:#A8A49D,header:#E6ECFF,info:#8891A5,pointer:#FF2D6F
     --color=marker:#E5BA6F,fg+:#E6ECFF,prompt:#79EAF2,hl+:#FF6B8B
   "
 fi

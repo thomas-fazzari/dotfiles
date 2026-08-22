@@ -62,6 +62,18 @@ providers:
           supportsReasoningEffort: true
           thinkingFormat: openai
 
+      - id: deepseek-v4-flash
+        name: DeepSeek V4 Flash
+        reasoning: true
+        supportsTools: true
+        input: [text]
+        contextWindow: 1050000
+        maxTokens: 65536
+
+        compat:
+          supportsReasoningEffort: true
+          thinkingFormat: openai
+
       - id: minimax-m3
         name: MiniMax M3
         reasoning: true

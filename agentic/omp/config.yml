@@ -25,19 +25,19 @@ providers:
     - public
   openaiWebsockets: auto
   autoThinkingMaxEffort: high
-setupVersion: 1
-defaultThinkingLevel: auto
+setupVersion: 2
+defaultThinkingLevel: high
 modelRoles:
-  default: openai-codex/gpt-5.6-sol:medium
   plan: openai-codex/gpt-5.6-sol:xhigh
-  slow: openai-codex/gpt-5.6-sol:max
-  smol: openai-codex/gpt-5.6-luna:high
-  tiny: openai-codex/gpt-5.6-luna:high
+  smol: openai-codex/gpt-5.6-luna:max
   commit: openai-codex/gpt-5.6-luna:low
-  task: openai-codex/gpt-5.6-terra:high
-  vision: openai-codex/gpt-5.6-sol:medium
+  task: openai-codex/gpt-5.6-luna:max
   designer: openai-codex/gpt-5.6-sol:medium
-  advisor: openai-codex/gpt-5.6-sol:high
+  tiny: openai-codex/gpt-5.6-luna:high
+  default: openai-codex/gpt-5.6-sol:high
+  slow: openai-codex/gpt-5.6-sol:max
+  vision: openai-codex/gpt-5.6-sol:medium
+  advisor: openai-codex/gpt-5.6-sol:medium
 retry:
   enabled: true
   maxRetries: 3
@@ -93,6 +93,7 @@ statusLine:
   separator: powerline-thin
   sessionAccent: true
   transparent: true
+  compactThinkingLevel: false
 terminal:
   showProgress: false
 tui:
@@ -138,3 +139,7 @@ autolearn:
   enabled: true
 snapcompact:
   toolResults: true
+marketplace:
+  autoUpdate: auto
+composer:
+  shape: box

@@ -8,7 +8,7 @@
 	"editor.fontLigatures": true,
 	// Editor Appearance
 	"workbench.colorTheme": "Edgerunners",
-	"workbench.iconTheme": "material-icon-theme",
+	"workbench.iconTheme": "flow-dim",
 	"workbench.productIconTheme": "material-product-icons",
 	"editor.cursorSurroundingLines": 6,
 	"editor.cursorWidth": 2,
@@ -155,10 +155,7 @@
 			"source.fixAll.stylelint": "explicit"
 		}
 	},
-	"[github-actions-workflow][html][yaml]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[markdown]": {
+	"[github-actions-workflow][html][yaml][markdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"[javascript][javascriptreact][typescript][typescriptreact]": {
@@ -168,6 +165,9 @@
 			"source.format.oxc": "always",
 			"source.fixAll.oxc": "always"
 		}
+	},
+	"[html]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[json][jsonc]": {
 		"editor.defaultFormatter": "vscode.json-language-features"
