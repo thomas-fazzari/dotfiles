@@ -4,6 +4,7 @@ bradlc.vscode-tailwindcss
 charliermarsh.ruff
 codezombiech.gitignore
 csharpier.csharpier-vscode
+drewxs.tokyo-night-dark
 editorconfig.editorconfig
 esbenp.prettier-vscode
 fill-labs.dependi

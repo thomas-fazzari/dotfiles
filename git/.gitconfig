@@ -6,7 +6,15 @@
   autocrlf = input
   excludesfile = ~/.gitignore_global
   fsmonitor = true
+  pager = delta
   untrackedcache = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
 
 [init]
 	defaultBranch = master
@@ -33,3 +41,10 @@
 	lg = log --graph --oneline --decorate --all
 	aliases = config --get-regexp ^alias\\.
 	undo = reset HEAD~1 --mixed
+
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential

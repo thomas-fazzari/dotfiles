@@ -7,8 +7,8 @@
 	"editor.fontWeight": "500",
 	"editor.fontLigatures": true,
 	// Editor Appearance
-	"workbench.colorTheme": "Edgerunners",
-	"workbench.iconTheme": "flow-dim",
+	"workbench.colorTheme": "Tokyo Night Dark",
+	"workbench.iconTheme": "flow-deep",
 	"workbench.productIconTheme": "material-product-icons",
 	"editor.cursorSurroundingLines": 6,
 	"editor.cursorWidth": 2,

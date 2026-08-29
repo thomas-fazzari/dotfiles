@@ -1,37 +1,38 @@
 font-family = Iosevka Nerd Font Mono
 font-size = 16
 
-background = #070B11
-foreground = #E6ECFF
-cursor-color = #79EAF2
-cursor-text = #070B11
-selection-background = #244349
-selection-foreground = #E6ECFF
+background = #08080B
+foreground = #787C99
+cursor-color = #C0CAF5
+cursor-text = #08080B
+selection-background = #515C7E
+selection-foreground = #C0CAF5
 
-palette = 0=#070B11
-palette = 1=#FF5A5A
-palette = 2=#79EAF2
-palette = 3=#E5BA6F
-palette = 4=#79EAF2
-palette = 5=#FF2D6F
-palette = 6=#79EAF2
-palette = 7=#D8D4CC
-palette = 8=#3E455C
-palette = 9=#FF6B8B
-palette = 10=#79EAF2
-palette = 11=#E5BA6F
-palette = 12=#79EAF2
-palette = 13=#FF6B8B
-palette = 14=#79EAF2
-palette = 15=#E6ECFF
+palette = 0=#363B54
+palette = 1=#F7768E
+palette = 2=#41A6B5
+palette = 3=#E0AF68
+palette = 4=#7AA2F7
+palette = 5=#BB9AF7
+palette = 6=#7DCFFF
+palette = 7=#787C99
+palette = 8=#363B54
+palette = 9=#F7768E
+palette = 10=#41A6B5
+palette = 11=#E0AF68
+palette = 12=#7AA2F7
+palette = 13=#BB9AF7
+palette = 14=#7DCFFF
+palette = 15=#ACB0D0
 
 window-padding-x = 12
 window-padding-y = 12
-split-divider-color = #121829
+split-divider-color = #363B54
 macos-option-as-alt = true
 copy-on-select = true
 
 keybind = ctrl+v=paste_from_clipboard
+keybind = performable:ctrl+c=copy_to_clipboard:mixed
 keybind = ctrl+shift+enter=new_split:right
 keybind = ctrl+shift+backspace=close_surface
 keybind = ctrl+shift+f=toggle_split_zoom
