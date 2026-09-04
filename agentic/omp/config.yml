@@ -99,6 +99,7 @@ terminal:
 tui:
   textSizing: true
   imeSafeCursor: true
+  codexResetFireworks: true
 contextPromotion:
   enabled: false
 hideThinkingBlock: true
