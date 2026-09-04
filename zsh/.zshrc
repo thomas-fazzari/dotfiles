@@ -62,9 +62,9 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=#E75A7C,bold'
 ZSH_HIGHLIGHT_STYLES[function]='fg=#FF6B8B,bold'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=#FF6B8B,bold'
 ZSH_HIGHLIGHT_STYLES[path]='fg=#79EAF2'
-ZSH_HIGHLIGHT_STYLES[single - quoted - argument]='fg=#84D0B7'
-ZSH_HIGHLIGHT_STYLES[double - quoted - argument]='fg=#84D0B7'
-ZSH_HIGHLIGHT_STYLES[dollar - quoted - argument]='fg=#84D0B7'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#84D0B7'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#84D0B7'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#84D0B7'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=#71798A,italic'
 
 # Aliases
