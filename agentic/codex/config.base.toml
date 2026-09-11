@@ -1,0 +1,187 @@
+# Personal Codex starting point.
+# This file defines my preferred baseline for model behavior, tooling, MCPs, and token-efficient defaults.
+# Machine-specific values are represented with placeholders and must be replaced during setup.
+
+developer_instructions = """
+COMMUNICATION
+- $caveman ultra is always on by default. Honor requests to disable it or change style.
+- Write human-facing prose in short, grammatical sentences using familiar words where technical meaning allows. Avoid em dashes and semicolons.
+- Use the appropriate professional style for deliverables rather than caveman fragments.
+
+CODE NAVIGATION
+- Prefer the configured Roslyn MCP for C# semantic navigation, diagnostics, and semantic edits.
+- Prefer FFF MCP for repository discovery and cross-file text/path searches. Use grep for contents, find_files for paths, and multi_grep for multiple patterns.
+- Use rg for cheap exact checks on known paths, or when Roslyn/FFF is unsuitable.
+- Keep searches and tool output narrowly scoped. Expand only when needed.
+
+ENGINEERING
+- Deliver a coherent solution for the requested scope. Avoid disposable stopgaps and speculative future-proofing.
+- Prefer suitable BCL APIs, maintained libraries, and repository conventions over custom machinery unless there is a concrete reason to depart.
+- Do not add backward compatibility unless requested. Surface breaking changes that exceed scope.
+- Complete the authorized change, fix issues it introduces, and validate proportionally to risk. Reuse credible results and expand checks only for a concrete risk or required gate. Stop only for a concrete blocker or unresolved material decision.
+
+DURABLE CONTENT
+- Write comments, documentation, commit messages, and PR text as standalone material for readers without conversation context. Do not mention chat history, user requests, agent activity, or temporary implementation narratives unless explicitly required.
+- Preserve relevant decisions as standalone technical rationale. Comments should explain non-obvious intent, invariants, or trade-offs, not narrate edits or restate code.
+- Keep execution reports and task-specific caveats in the handoff unless they belong in maintained documentation.
+"""
+
+# =============================================================================
+# Model
+# =============================================================================
+
+model = "gpt-6-astra"
+model_reasoning_effort = "medium"
+model_verbosity = "low"
+personality = "pragmatic"
+service_tier = "default"
+
+tool_output_token_limit = 8000
+
+# =============================================================================
+# Execution
+# =============================================================================
+
+approval_policy = "never"
+approvals_reviewer = "user"
+sandbox_mode = "danger-full-access"
+
+# =============================================================================
+# Subagents
+# =============================================================================
+
+[agents]
+default_subagent_model = "gpt-5.6-luna"
+default_subagent_reasoning_effort = "xhigh"
+
+# =============================================================================
+# Skills
+# =============================================================================
+
+[skills]
+max_context_tokens = 2000
+
+# =============================================================================
+# TUI
+# =============================================================================
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir"]
+status_line_use_colors = true
+
+# =============================================================================
+# Features
+# =============================================================================
+
+[features]
+hooks = false
+js_repl = false
+memories = false
+chronicle = false
+
+[memories]
+generate_memories = false
+use_memories = false
+
+# =============================================================================
+# Plugins
+# =============================================================================
+
+# Enabled
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."svelte@svelte"]
+enabled = true
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+# Disabled
+[plugins."documents@openai-primary-runtime"]
+enabled = false
+
+[plugins."coderabbit@openai-curated"]
+enabled = false
+
+[plugins."computer-use@openai-bundled"]
+enabled = false
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = false
+
+[plugins."visualize@openai-bundled"]
+enabled = false
+
+[plugins."sites@openai-bundled"]
+enabled = false
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = false
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = false
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = false
+
+# =============================================================================
+# MCP
+# =============================================================================
+
+[mcp_servers.context7.env_http_headers]
+CONTEXT7_API_KEY = "CONTEXT7_API_KEY"
+
+[mcp_servers.nuget]
+command = "dnx"
+args = [
+  "NuGet.Mcp.Server",
+  "--source",
+  "https://api.nuget.org/v3/index.json",
+  "--yes",
+]
+[mcp_servers.nuget.tools.get_package_context]
+approval_mode = "approve"
+
+[mcp_servers.fff]
+command = "fff-mcp"
+[mcp_servers.fff.tools.grep]
+output_token_limit = 4000
+[mcp_servers.fff.tools.find_files]
+output_token_limit = 2000
+[mcp_servers.fff.tools.multi_grep]
+approval_mode = "approve"
+output_token_limit = 4000
+
+[mcp_servers.roslyn]
+command = "{{HOME}}/.local/share/roslyn-codex-lsp/bridge/RoslynCodexLsp"
+args = [
+  "--server",
+  "{{HOME}}/.local/share/roslyn-codex-lsp/roslyn/roslyn-language-server",
+]
+[mcp_servers.roslyn.env]
+DOTNET_ROOT = "{{DOTNET_ROOT}}"
+PATH = "{{DOTNET_ROOT}}:{{HOME}}/.local/share/roslyn-codex-lsp/roslyn:{{PATH}}"
+
+[mcp_servers.node_repl]
+command = "{{CHATGPT_APP}}/Contents/Resources/cua_node/bin/node_repl"
+args = []
+startup_timeout_sec = 120
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "{{CHATGPT_APP}}/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "{{CHATGPT_APP}}/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "{{HOME}}/.codex:{{CHATGPT_APP}}/Contents/Resources/cua_node/lib/node_modules"
+CODEX_HOME = "{{HOME}}/.codex"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"{{BROWSER_PLUGIN_SCRIPT}}"}'
+CODEX_CLI_PATH = "{{CHATGPT_APP}}/Contents/Resources/codex"
+
+notify = ["{{CODEX_COMPUTER_USE_CLIENT}}", "turn-ended"]
