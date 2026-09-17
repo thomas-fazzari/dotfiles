@@ -18,7 +18,6 @@ plugins=(
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 export PYENV_ROOT="$HOME/.pyenv"
 export TERMINAL="/Applications/Ghostty.app/Contents/MacOS/ghostty"
-export PODMAN_COMPOSE_PROVIDER="podman-compose"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 export PNPM_HOME="$HOME/Library/pnpm"
 
@@ -56,16 +55,16 @@ fi
 
 # Syntax highlighting
 typeset -gA ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[default]='fg=#A8A49D'
-ZSH_HIGHLIGHT_STYLES[command]='fg=#FF6B8B,bold'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=#E75A7C,bold'
-ZSH_HIGHLIGHT_STYLES[function]='fg=#FF6B8B,bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=#FF6B8B,bold'
-ZSH_HIGHLIGHT_STYLES[path]='fg=#79EAF2'
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#84D0B7'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#84D0B7'
-ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#84D0B7'
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#71798A,italic'
+ZSH_HIGHLIGHT_STYLES[default]='fg=#A9B1D6'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#7AA2F7,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#7AA2F7'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#7AA2F7'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#BB9AF7'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#7DCFFF'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#9ECE6A'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#9ECE6A'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#9ECE6A'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#565F89,italic'
 
 # Aliases
 alias reload='. ~/.zshrc'
@@ -115,25 +114,10 @@ if command -v fzf >/dev/null 2>&1; then
 	export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 	export FZF_DEFAULT_OPTS="
     --height 40% --layout=reverse --border
-    --color=bg+:#121E35,bg:#070B11,spinner:#79EAF2,hl:#FF2D6F
-    --color=fg:#A8A49D,header:#E6ECFF,info:#8891A5,pointer:#FF2D6F
-    --color=marker:#E5BA6F,fg+:#E6ECFF,prompt:#79EAF2,hl+:#FF6B8B
+    --color=bg+:#292E42,bg:#16161E,spinner:#7DCFFF,hl:#F7768E
+    --color=fg:#A9B1D6,header:#C0CAF5,info:#7B88A1,pointer:#F7768E
+    --color=marker:#E0AF68,fg+:#C0CAF5,prompt:#7DCFFF,hl+:#BB9AF7
   "
-fi
-
-# Cache OMP completion and refresh in background if missing (slow to generate)
-if command -v omp >/dev/null 2>&1; then
-	omp_completion="${XDG_CACHE_HOME:-$HOME/.cache}/omp/completions.zsh"
-
-	if [[ -r "$omp_completion" ]]; then
-		source "$omp_completion"
-	else
-		{ mkdir -p "${omp_completion:h}" && omp completions zsh >|"$omp_completion"; } >/dev/null 2>&1 &|
-	fi
-
-	omp-completions-refresh() {
-		mkdir -p "${omp_completion:h}" && omp completions zsh >|"$omp_completion"
-	}
 fi
 
 if [[ -f "$HOME/.prime/agent/.env" ]]; then

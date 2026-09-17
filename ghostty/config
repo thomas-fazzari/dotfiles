@@ -1,33 +1,33 @@
 font-family = Iosevka Nerd Font Mono
 font-size = 16
 
-background = #08080B
-foreground = #787C99
+background = #1A1B26
+foreground = #A9B1D6
 cursor-color = #C0CAF5
-cursor-text = #08080B
-selection-background = #515C7E
-selection-foreground = #C0CAF5
+cursor-text = #1A1B26
+selection-background = #28344A
+selection-foreground = cell-foreground
 
-palette = 0=#363B54
+palette = 0=#414868
 palette = 1=#F7768E
-palette = 2=#41A6B5
+palette = 2=#73DACA
 palette = 3=#E0AF68
 palette = 4=#7AA2F7
 palette = 5=#BB9AF7
 palette = 6=#7DCFFF
-palette = 7=#787C99
-palette = 8=#363B54
+palette = 7=#C0CAF5
+palette = 8=#414868
 palette = 9=#F7768E
-palette = 10=#41A6B5
+palette = 10=#73DACA
 palette = 11=#E0AF68
 palette = 12=#7AA2F7
 palette = 13=#BB9AF7
 palette = 14=#7DCFFF
-palette = 15=#ACB0D0
+palette = 15=#C0CAF5
 
 window-padding-x = 12
 window-padding-y = 12
-split-divider-color = #363B54
+split-divider-color = #414868
 macos-option-as-alt = true
 copy-on-select = true
 

@@ -58,6 +58,32 @@ cask_outdated() {
 	[[ -n "$(brew outdated --cask "$cask" 2>/dev/null)" ]]
 }
 
+netcoredbg_dir="$HOME/.local/share/netcoredbg"
+netcoredbg_url="https://github.com/Samsung/netcoredbg/releases/latest/download/netcoredbg-osx-arm64.zip"
+
+netcoredbg_installed() {
+	[[ -x "$netcoredbg_dir/netcoredbg" ]]
+}
+
+netcoredbg_report() {
+	if netcoredbg_installed; then
+		printf '✅ [OK] netcoredbg\n'
+	else
+		printf '🧪 [DRY-RUN] Would install netcoredbg\n'
+	fi
+}
+
+netcoredbg_install() {
+	local tmp_dir
+	tmp_dir="$(mktemp -d)"
+	curl -fsSL -o "$tmp_dir/netcoredbg.zip" "$netcoredbg_url"
+	unzip -oq "$tmp_dir/netcoredbg.zip" -d "$tmp_dir" -x '__MACOSX/*'
+	mkdir -p -- "$(dirname -- "$netcoredbg_dir")"
+	rm -rf -- "$netcoredbg_dir"
+	mv -- "$tmp_dir/netcoredbg" "$netcoredbg_dir"
+	rm -rf -- "$tmp_dir"
+}
+
 if [[ "${INSTALL:-0}" == "1" ]]; then
 	printf '🍺 [INFO] Installing/updating Brewfile dependencies.\n'
 
@@ -89,7 +115,12 @@ if [[ "${INSTALL:-0}" == "1" ]]; then
 		fi
 	done
 
-	go install golang.org/x/tools/gopls@latest
+	if netcoredbg_installed; then
+		printf '✅ [OK] netcoredbg\n'
+	else
+		printf '📦 [INFO] Installing netcoredbg\n'
+		netcoredbg_install
+	fi
 
 	exit 0
 fi
@@ -123,7 +154,7 @@ done
 work_count=$((${#missing_taps[@]} + ${#missing_formulae[@]} + ${#missing_casks[@]} + ${#outdated_formulae[@]} + ${#outdated_casks[@]}))
 if ((work_count == 0)); then
 	printf '✅ [OK] Brewfile dependencies are already installed and current.\n'
-	printf '🧪 [DRY-RUN] Would install golang.org/x/tools/gopls@latest\n'
+	netcoredbg_report
 	exit 0
 fi
 
@@ -149,7 +180,7 @@ if ((${#outdated_casks[@]} > 0)); then
 	printf '    %s\n' "${outdated_casks[@]}"
 fi
 
-printf '🧪 [DRY-RUN] Would install golang.org/x/tools/gopls@latest\n'
+netcoredbg_report
 
 printf '\n🧪 [DRY-RUN] No packages installed. Run this when ready:\n'
-printf '  INSTALL=1 make app-setup\n'
+printf '  INSTALL=1 just app-setup\n'

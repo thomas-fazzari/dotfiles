@@ -1,6 +1,4 @@
 {
-  "vscode-just.justPath": "/opt/homebrew/bin/just",
-  "vscode-just.lspPath": "/opt/homebrew/bin/just-lsp",
   // Fonts
   "editor.fontFamily": "'Iosevka Nerd Font Mono', monospace",
   "terminal.integrated.fontFamily": "'Iosevka Nerd Font Mono'",
@@ -9,7 +7,7 @@
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   // Editor Appearance
-  "workbench.colorTheme": "Tokyo Night Dark",
+  "workbench.colorTheme": "Tokyo Night",
   "workbench.iconTheme": "flow-deep",
   "workbench.productIconTheme": "material-product-icons",
   "editor.cursorSurroundingLines": 6,
@@ -56,7 +54,7 @@
     "*.resx": "xml",
     "*.slnx": "xml",
     "*.targets": "xml",
-    "*.xaml": "xml",
+    "*.xaml": "xml"
   },
   "files.exclude": {
     "**/.idea": true,
@@ -69,7 +67,7 @@
     "**/.cache": true,
     "**/out": true,
     "**/obj": true,
-    "**/coverage": true,
+    "**/coverage": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -84,7 +82,7 @@
     "**/.cache/**": true,
     "**/__pycache__/**": true,
     "**/obj/**": true,
-    "**/coverage/**": true,
+    "**/coverage/**": true
   },
   "search.followSymlinks": false,
   "search.smartCase": true,
@@ -93,7 +91,15 @@
     "**/.svelte-kit": true,
     "**/.turbo": true,
     "**/.ruff_cache": true,
-    "**/.pytest_cache": true,
+    "**/.pytest_cache": true
+  },
+  // Background
+  "background.enabled": true,
+  "background.fullscreen": {
+    "images": ["/Users/thomas/Pictures/Wallpapers/bigboss.jpg"],
+    "opacity": 0.075,
+    "size": "cover",
+    "position": "100% 100%"
   },
   // Explorer
   "explorer.confirmDragAndDrop": false,
@@ -124,7 +130,7 @@
     "*.sqlite3": "${capture}.${extname}-*",
     "*.db3": "${capture}.${extname}-*",
     "*.sdb": "${capture}.${extname}-*",
-    "*.s3db": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
   },
   // Terminal
   "terminal.integrated.cursorBlinking": true,
@@ -147,77 +153,66 @@
   "gopls": {
     "ui.semanticTokens": true,
     "ui.semanticTokenTypes": {
-      "namespace": false,
-    },
+      "namespace": false
+    }
   },
   // Formatters
+  "csharpier.dev.disableCSharpierServer": true,
+  "oxc.path.oxfmt": "/opt/homebrew/bin/oxfmt",
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode",
-    "editor.inlayHints.enabled": "off",
+    "editor.inlayHints.enabled": "off"
   },
   "[xml]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
   },
   "[fsharp]": {
-    "editor.defaultFormatter": "Ionide.Ionide-fsharp",
-  },
-  "[css][tailwindcss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": "explicit",
-    },
-  },
-  "[github-actions-workflow][html][yaml][markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "Ionide.Ionide-fsharp"
   },
   "[javascript][javascriptreact][typescript][typescriptreact]": {
     "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
       "source.format.oxc": "always",
-      "source.fixAll.oxc": "always",
-    },
+      "source.fixAll.oxc": "always"
+    }
   },
-  "[html]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
+  "[html][css][scss][less][json][jsonc][yaml][markdown][toml]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-  "[json][jsonc]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
+  "[css][scss][less]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": "explicit"
+    }
   },
   "[go.mod]": {
-    "editor.defaultFormatter": "golang.go",
+    "editor.defaultFormatter": "golang.go"
   },
   "[go]": {
     "editor.defaultFormatter": "golang.go",
     "editor.tabSize": 4,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit",
-    },
+      "source.organizeImports": "explicit"
+    }
   },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
       "source.organizeImports.ruff": "explicit",
-      "source.fixAll.ruff": "explicit",
-    },
+      "source.fixAll.ruff": "explicit"
+    }
   },
   "[lua]": {
-    "editor.defaultFormatter": "sumneko.lua",
+    "editor.defaultFormatter": "sumneko.lua"
   },
   "[ocaml]": {
-    "editor.defaultFormatter": "ocamllabs.ocaml-platform",
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "mkhl.shfmt",
+    "editor.defaultFormatter": "ocamllabs.ocaml-platform"
   },
   "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode",
-  },
-  "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml",
+    "editor.defaultFormatter": "svelte.svelte-vscode"
   },
   "[typst]": {
-    "editor.defaultFormatter": "myriad-dreamin.tinymist",
+    "editor.defaultFormatter": "myriad-dreamin.tinymist"
   },
   // Vim Motions
   "keyboard.dispatch": "keyCode",
@@ -234,144 +229,144 @@
     "<C-c>": false,
     "<C-f>": false,
     "<C-v>": false,
-    "<C-w>": false,
+    "<C-w>": false
   },
   "vim.insertModeKeyBindings": [
     {
       "before": ["j", "k"],
-      "after": ["<Esc>"],
-    },
+      "after": ["<Esc>"]
+    }
   ],
   "vim.visualModeKeyBindings": [
     {
       "before": ["<leader>", "c"],
-      "commands": ["editor.action.commentLine"],
-    },
+      "commands": ["editor.action.commentLine"]
+    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["g", "p", "d"],
-      "commands": ["editor.action.peekDefinition"],
+      "commands": ["editor.action.peekDefinition"]
     },
     {
       "before": ["g", "r"],
-      "commands": ["editor.action.referenceSearch.trigger"],
+      "commands": ["editor.action.referenceSearch.trigger"]
     },
     {
       "before": ["g", "i"],
-      "commands": ["editor.action.goToImplementation"],
+      "commands": ["editor.action.goToImplementation"]
     },
     {
       "before": ["g", "p", "i"],
-      "commands": ["editor.action.peekImplementation"],
+      "commands": ["editor.action.peekImplementation"]
     },
     {
       "before": ["g", "t"],
-      "commands": ["editor.action.goToTypeDefinition"],
+      "commands": ["editor.action.goToTypeDefinition"]
     },
     {
       "before": ["g", "p", "t"],
-      "commands": ["editor.action.peekTypeDefinition"],
+      "commands": ["editor.action.peekTypeDefinition"]
     },
     {
       "before": ["<leader>", "q"],
-      "commands": ["editor.action.quickFix"],
+      "commands": ["editor.action.quickFix"]
     },
     {
       "before": ["<leader>", "x"],
-      "commands": ["workbench.action.closeActiveEditor"],
+      "commands": ["workbench.action.closeActiveEditor"]
     },
     {
       "before": ["<leader>", "c"],
-      "commands": ["editor.action.commentLine"],
+      "commands": ["editor.action.commentLine"]
     },
     {
       "before": ["<leader>", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
     },
     {
       "before": ["<leader>", "f", "e"],
-      "commands": ["workbench.files.action.focusFilesExplorer"],
+      "commands": ["workbench.files.action.focusFilesExplorer"]
     },
     {
       "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
       "before": ["<leader>", "f", "g"],
-      "commands": ["workbench.action.findInFiles"],
+      "commands": ["workbench.action.findInFiles"]
     },
     {
       "before": ["<leader>", "f", "r"],
-      "commands": ["workbench.view.search"],
+      "commands": ["workbench.view.search"]
     },
     {
       "before": ["<leader>", "f", "p"],
-      "commands": ["workbench.action.showCommands"],
+      "commands": ["workbench.action.showCommands"]
     },
     // File Utils
     {
       "before": ["<leader>", "f", "n"],
-      "commands": ["fileutils.newFile"],
+      "commands": ["fileutils.newFile"]
     },
     {
       "before": ["<leader>", "f", "d"],
-      "commands": ["fileutils.removeFile"],
+      "commands": ["fileutils.removeFile"]
     },
     // Git
     {
       "before": ["<leader>", "g", "c"],
-      "commands": ["git.checkout"],
+      "commands": ["git.checkout"]
     },
     {
       "before": ["<leader>", "g", "n"],
-      "commands": ["git.branch"],
+      "commands": ["git.branch"]
     },
     {
       "before": ["<leader>", "g", "p"],
-      "commands": ["git.pull"],
+      "commands": ["git.pull"]
     },
     // Harpoon
     {
       "before": ["<leader>", "h", "a"],
-      "commands": ["vscode-harpoon.addEditor"],
+      "commands": ["vscode-harpoon.addEditor"]
     },
     {
       "before": ["<leader>", "h", "h"],
-      "commands": ["vscode-harpoon.editorQuickPick"],
+      "commands": ["vscode-harpoon.editorQuickPick"]
     },
     {
       "before": ["<leader>", "h", "e"],
-      "commands": ["vscode-harpoon.editEditors"],
+      "commands": ["vscode-harpoon.editEditors"]
     },
     {
       "before": ["<leader>", "h", "p"],
-      "commands": ["vscode-harpoon.gotoPreviousHarpoonEditor"],
+      "commands": ["vscode-harpoon.gotoPreviousHarpoonEditor"]
     },
     // Harpoon quick jumps
     {
       "before": ["<leader>", "h", "1"],
-      "commands": ["vscode-harpoon.gotoEditor1"],
+      "commands": ["vscode-harpoon.gotoEditor1"]
     },
     {
       "before": ["<leader>", "h", "2"],
-      "commands": ["vscode-harpoon.gotoEditor2"],
+      "commands": ["vscode-harpoon.gotoEditor2"]
     },
     {
       "before": ["<leader>", "h", "3"],
-      "commands": ["vscode-harpoon.gotoEditor3"],
+      "commands": ["vscode-harpoon.gotoEditor3"]
     },
     {
       "before": ["<leader>", "h", "4"],
-      "commands": ["vscode-harpoon.gotoEditor4"],
+      "commands": ["vscode-harpoon.gotoEditor4"]
     },
     {
       "before": ["<leader>", "h", "5"],
-      "commands": ["vscode-harpoon.gotoEditor5"],
-    },
+      "commands": ["vscode-harpoon.gotoEditor5"]
+    }
   ],
   "extensions.experimental.affinity": {
-    "vscodevim.vim": 1,
+    "vscodevim.vim": 1
   },
   // Misc
   "telemetry.telemetryLevel": "off",
@@ -379,6 +374,5 @@
   "extensions.autoCheckUpdates": false,
   "extensions.ignoreRecommendations": true,
   "chat.disableAIFeatures": true,
-  "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/Users/thomas/.dotnet/dotnet",
-  "resharper.region.region": "Europe",
+  "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/Users/thomas/.dotnet/dotnet"
 }
