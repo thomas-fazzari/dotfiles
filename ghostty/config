@@ -8,6 +8,11 @@ cursor-text = #1A1B26
 selection-background = #28344A
 selection-foreground = cell-foreground
 
+background-image = /Users/thomas/Pictures/Wallpapers/bigboss.jpg
+background-image-opacity = 0.075
+background-image-position = bottom-right
+background-image-fit = cover
+
 palette = 0=#414868
 palette = 1=#F7768E
 palette = 2=#73DACA
