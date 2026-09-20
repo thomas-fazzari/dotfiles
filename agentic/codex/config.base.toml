@@ -3,27 +3,17 @@
 # Machine-specific values are represented with placeholders and must be replaced during setup.
 
 developer_instructions = """
-COMMUNICATION
-- $caveman ultra is always on by default. Honor requests to disable it or change style.
-- Write human-facing prose in short, grammatical sentences using familiar words where technical meaning allows. Avoid em dashes and semicolons.
-- Use the appropriate professional style for deliverables rather than caveman fragments.
-
-CODE NAVIGATION
 - Prefer the configured Roslyn MCP for C# semantic navigation, diagnostics, and semantic edits.
 - Prefer FFF MCP for repository discovery and cross-file text/path searches. Use grep for contents, find_files for paths, and multi_grep for multiple patterns.
 - Use rg for cheap exact checks on known paths, or when Roslyn/FFF is unsuitable.
-- Keep searches and tool output narrowly scoped. Expand only when needed.
 
 ENGINEERING
 - Deliver a coherent solution for the requested scope. Avoid disposable stopgaps and speculative future-proofing.
-- Prefer suitable BCL APIs, maintained libraries, and repository conventions over custom machinery unless there is a concrete reason to depart.
+- Prefer suitable BCL APIs, maintained libraries, and repository conventions over custom machinery.
 - Do not add backward compatibility unless requested. Surface breaking changes that exceed scope.
-- Complete the authorized change, fix issues it introduces, and validate proportionally to risk. Reuse credible results and expand checks only for a concrete risk or required gate. Stop only for a concrete blocker or unresolved material decision.
 
 DURABLE CONTENT
-- Write comments, documentation, commit messages, and PR text as standalone material for readers without conversation context. Do not mention chat history, user requests, agent activity, or temporary implementation narratives unless explicitly required.
-- Preserve relevant decisions as standalone technical rationale. Comments should explain non-obvious intent, invariants, or trade-offs, not narrate edits or restate code.
-- Keep execution reports and task-specific caveats in the handoff unless they belong in maintained documentation.
+- Write comments, documentation, commit messages, and PR text as standalone material for readers without conversation context. Never mention chat history, user requests, agent activity, or temporary implementation narratives unless explicitly required.
 """
 
 # =============================================================================
@@ -137,12 +127,7 @@ CONTEXT7_API_KEY = "CONTEXT7_API_KEY"
 
 [mcp_servers.nuget]
 command = "dnx"
-args = [
-  "NuGet.Mcp.Server",
-  "--source",
-  "https://api.nuget.org/v3/index.json",
-  "--yes",
-]
+args = ["NuGet.Mcp.Server", "--source", "https://api.nuget.org/v3/index.json", "--yes"]
 [mcp_servers.nuget.tools.get_package_context]
 approval_mode = "approve"
 
@@ -158,10 +143,7 @@ output_token_limit = 4000
 
 [mcp_servers.roslyn]
 command = "{{HOME}}/.local/share/roslyn-codex-lsp/bridge/RoslynCodexLsp"
-args = [
-  "--server",
-  "{{HOME}}/.local/share/roslyn-codex-lsp/roslyn/roslyn-language-server",
-]
+args = ["--server", "{{HOME}}/.local/share/roslyn-codex-lsp/roslyn/roslyn-language-server"]
 [mcp_servers.roslyn.env]
 DOTNET_ROOT = "{{DOTNET_ROOT}}"
 PATH = "{{DOTNET_ROOT}}:{{HOME}}/.local/share/roslyn-codex-lsp/roslyn:{{PATH}}"
