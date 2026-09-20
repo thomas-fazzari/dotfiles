@@ -8,6 +8,7 @@ links=(
 	"$HOME/Library/Application Support/Code - Insiders/User/settings.json|$dotfiles/editors/vscode/settings.json"
 	"$HOME/Library/Application Support/Code - Insiders/User/keybindings.json|$dotfiles/editors/vscode/keybindings.json"
 	"$HOME/.config/ghostty/config.ghostty|$dotfiles/ghostty/config"
+	"$HOME/.config/btop/btop.conf|$dotfiles/btop/btop.conf"
 	"$HOME/.config/btop/themes/tokyonight.theme|$dotfiles/btop/tokyonight.theme"
 	"$HOME/.zshrc|$dotfiles/zsh/.zshrc"
 	"$HOME/.p10k.zsh|$dotfiles/zsh/.p10k.zsh"
