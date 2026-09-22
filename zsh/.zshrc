@@ -26,6 +26,7 @@ typeset -U path PATH
 for dir in \
 	"$PNPM_HOME" \
 	"$PNPM_HOME/bin" \
+	"$HOME/.cargo/bin" \
 	"$HOME/.local/bin" \
 	"$HOME/go/bin" \
 	"${DOTNET_ROOT:-}" \
