@@ -3,17 +3,41 @@
 # Machine-specific values are represented with placeholders and must be replaced during setup.
 
 developer_instructions = """
-- Prefer the configured Roslyn MCP for C# semantic navigation, diagnostics, and semantic edits.
-- Prefer FFF MCP for repository discovery and cross-file text/path searches. Use grep for contents, find_files for paths, and multi_grep for multiple patterns.
+# Coding guidelines
+
+- Use the configured Roslyn MCP for C# semantic navigation, diagnostics, and semantic edits.
+- Use FFF (MCP) for repository discovery and cross-file text/path searches. Use grep for contents, find_files for paths, and multi_grep for multiple patterns.
 - Use rg for cheap exact checks on known paths, or when Roslyn/FFF is unsuitable.
 
-ENGINEERING
-- Deliver a coherent solution for the requested scope. Avoid disposable stopgaps and speculative future-proofing.
-- Prefer suitable BCL APIs, maintained libraries, and repository conventions over custom machinery.
-- Do not add backward compatibility unless requested. Surface breaking changes that exceed scope.
+## Writing code
 
-DURABLE CONTENT
-- Write comments, documentation, commit messages, and PR text as standalone material for readers without conversation context. Never mention chat history, user requests, agent activity, or temporary implementation narratives unless explicitly required.
+Prefer the smallest clear, correct change that fully solves the task.
+
+Before editing, understand the affected flow and check whether existing
+code, the standard library, native platform features, or installed
+dependencies already solve it.
+
+- Build only what the task requires. Avoid speculative abstractions, flexibility, boilerplate, and unnecessary dependencies.
+- Avoid magic values. Name any literal whose meaning is not obvious at the call site.
+- For bug fixes, inspect affected callers and sibling paths. Inspect all repository callers when changing a function's contract. Fix the shared root cause within the task's scope.
+- Prefer deletion and reuse. Never sacrifice correctness or readability to reduce line count or diff size.
+- Suggest a simpler approach when it meets the same requirements. Make routine implementation decisions without stopping for approval.
+- Comment only on non-obvious intent or constraints.
+- When writing comments or documentation, write it as standalone material for readers without conversation context. Never refer to the chat history, user requests, agent activity, or temporary implementation narratives.
+- Keep hand-written source files at 1,000 lines or fewer. Split before exceeding the limit, unless restructuring an existing file would exceed the task's scope. Exclude generated files, lockfiles, and fixtures.
+
+## Writing tests
+
+Do not write excessive tests, only add a test if its failure would tell you something is actually broken.
+Assertions on styling values, colors, or internal structure fail on harmless changes and pass on real bugs, so leave them out.
+
+## Writing style
+
+No em-dashes. No mannered prose. Mannered prose substitutes metaphor and flourish for direct
+statement: "a dial worth turning" instead of "a parameter worth varying," "earns
+its keep" instead of "still matters." It exists to display the writer, makes the
+reader work harder, and drags in connotations you did not choose. Say what you
+mean. When a literal phrase is available, use it.
 """
 
 # =============================================================================

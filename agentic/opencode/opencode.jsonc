@@ -1,0 +1,39 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "compaction": {
+    "auto": true,
+    "prune": true,
+  },
+  "agent": {
+    "explore": {
+      "permission": {
+        "fff_*": "allow",
+        "lsp": "allow",
+      },
+    },
+  },
+  "formatter": {
+    "csharpier": {
+      "command": ["csharpier", "format", "$FILE"],
+      "extensions": [".cs"],
+    },
+  },
+  "lsp": {
+    "rust": {
+      "command": ["rust-analyzer"],
+    },
+    "csharp": {
+      "command": ["roslyn-language-server", "--stdio", "--autoLoadProjects"],
+    },
+    "typescript": {
+      "command": ["tsc", "--lsp", "--stdio"],
+    },
+  },
+  "mcp": {
+    "fff": {
+      "type": "local",
+      "command": ["fff-mcp"],
+      "enabled": true,
+    },
+  },
+}

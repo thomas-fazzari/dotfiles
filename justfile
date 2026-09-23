@@ -2,6 +2,7 @@ setup:
 	INSTALL=1 macos/setup-apps.sh
 	editors/vscode/setup-extensions.sh
 	dotnet/setup-tools.sh
+	rust/setup-tools.sh
 	macos/setup-symlinks.sh
 
 app-setup:
@@ -12,6 +13,9 @@ vscode:
 
 dotnet:
 	dotnet/setup-tools.sh
+
+rust:
+	rust/setup-tools.sh
 
 symlinks:
 	macos/setup-symlinks.sh

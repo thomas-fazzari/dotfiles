@@ -17,11 +17,12 @@ while IFS= read -r tool || [[ -n "$tool" ]]; do
 
 	[[ -z "$tool" ]] && continue
 
-	tool_args=()
-	[[ "$tool" == "roslyn-language-server" ]] && tool_args+=(--prerelease)
-
 	printf '🔄 [INFO] Installing/updating dotnet tool: %s\n' "$tool"
-	if ! dotnet tool update --global "$tool" "${tool_args[@]}"; then
-		dotnet tool install --global "$tool" "${tool_args[@]}"
+	if [[ "$tool" == "roslyn-language-server" ]]; then
+		if ! dotnet tool update --global "$tool" --prerelease; then
+			dotnet tool install --global "$tool" --prerelease
+		fi
+	elif ! dotnet tool update --global "$tool"; then
+		dotnet tool install --global "$tool"
 	fi
 done <"$tools_file"

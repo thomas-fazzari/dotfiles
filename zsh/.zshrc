@@ -20,6 +20,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 export TERMINAL="/Applications/Ghostty.app/Contents/MacOS/ghostty"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 export PNPM_HOME="$HOME/Library/pnpm"
+export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
+export OPENCODE_EXPERIMENTAL_OXFMT=true
+export OPENCODE_ENABLE_EXA=1
 
 # PATH
 typeset -U path PATH

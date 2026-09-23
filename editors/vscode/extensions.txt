@@ -39,6 +39,7 @@ tobias-z.vscode-harpoon
 tomoki1207.pdf
 twxs.cmake
 usernamehw.errorlens
+vadimcn.vscode-lldb
 vitest.explorer
 vscodevim.vim
 yoavbls.pretty-ts-errors
