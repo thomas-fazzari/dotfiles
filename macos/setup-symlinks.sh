@@ -14,6 +14,7 @@ links=(
 	"$HOME/.config/nvim|$dotfiles/nvim"
 	"$HOME/.config/opencode/opencode.jsonc|$dotfiles/agentic/opencode/opencode.jsonc"
 	"$HOME/.config/opencode/AGENTS.md|$dotfiles/agentic/opencode/AGENTS.md"
+	"$HOME/.zshenv|$dotfiles/zsh/.zshenv"
 	"$HOME/.zshrc|$dotfiles/zsh/.zshrc"
 	"$HOME/.p10k.zsh|$dotfiles/zsh/.p10k.zsh"
 	"$HOME/.gitconfig|$dotfiles/git/.gitconfig"
