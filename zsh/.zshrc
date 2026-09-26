@@ -123,9 +123,3 @@ if command -v fzf >/dev/null 2>&1; then
     --color=marker:#E0AF68,fg+:#C0CAF5,prompt:#7DCFFF,hl+:#BB9AF7
   "
 fi
-
-if [[ -f "$HOME/.prime/agent/.env" ]]; then
-	set -a
-	source "$HOME/.prime/agent/.env"
-	set +a
-fi
