@@ -3,41 +3,40 @@
 # Machine-specific values are represented with placeholders and must be replaced during setup.
 
 developer_instructions = """
-# Coding guidelines
+# Code navigation
 
-- Use the configured Roslyn MCP for C# semantic navigation, diagnostics, and semantic edits.
-- Use FFF (MCP) for repository discovery and cross-file text/path searches. Use grep for contents, find_files for paths, and multi_grep for multiple patterns.
-- Use rg for cheap exact checks on known paths, or when Roslyn/FFF is unsuitable.
+C# -> use LSP.
+File locations, text search for literals, comments, or configuration -> use fff.
 
-## Writing code
+If LSP fails or cannot resolve a symbol, use regular searches as a fallback and report the LSP failure.
 
-Prefer the smallest clear, correct change that fully solves the task.
+## Core principles
 
-Before editing, understand the affected flow and check whether existing
-code, the standard library, native platform features, or installed
-dependencies already solve it.
-
-- Build only what the task requires. Avoid speculative abstractions, flexibility, boilerplate, and unnecessary dependencies.
-- Avoid magic values. Name any literal whose meaning is not obvious at the call site.
-- For bug fixes, inspect affected callers and sibling paths. Inspect all repository callers when changing a function's contract. Fix the shared root cause within the task's scope.
-- Prefer deletion and reuse. Never sacrifice correctness or readability to reduce line count or diff size.
+- Check whether existing code, the standard library, native platform features, or installed dependencies already solve the problem.
+- Build only what the task requires. Avoid speculative abstractions, configurability, boilerplate, and unrelated cleanup.
+- Prefer deletion and reuse over new code. Add dependencies only when existing options do not adequately meet the requirements.
+- Name literals whose meaning is unclear at the call site. Leave self-explanatory literals inline.
+- For bug fixes, inspect affected callers and sibling paths. Fix the shared root cause within the task's scope rather than patching individual symptoms.
+- When changing a function's contract, inspect all repository callers and update affected ones.
 - Suggest a simpler approach when it meets the same requirements. Make routine implementation decisions without stopping for approval.
-- Comment only on non-obvious intent or constraints.
-- When writing comments or documentation, write it as standalone material for readers without conversation context. Never refer to the chat history, user requests, agent activity, or temporary implementation narratives.
-- Keep hand-written source files at 1,000 lines or fewer. Split before exceeding the limit, unless restructuring an existing file would exceed the task's scope. Exclude generated files, lockfiles, and fixtures.
+- Keep hand-written source files at 1,000 lines or fewer. Split before exceeding the limit, unless restructuring an existing file would exceed the task's scope. Generated files, lockfiles, and fixtures are exempt.
 
-## Writing tests
+### Writing tests
 
-Do not write excessive tests, only add a test if its failure would tell you something is actually broken.
-Assertions on styling values, colors, or internal structure fail on harmless changes and pass on real bugs, so leave them out.
+Test meaningful behavior, not implementation details.
 
-## Writing style
+- Add or modify a test only when its failure would identify a real bug, broken requirement, or violated contract.
+- Prefer a small number of focused tests covering distinct, relevant failure modes. Reuse existing coverage instead of duplicating it.
+- Do not assert incidental styling values, colors, private state, or internal structure. Assertions should survive harmless refactoring and fail when required behavior breaks.
+- For bug fixes, prefer a focused regression test that fails before the fix and passes after it, when practical.
+- Run relevant tests and checks when possible. Report what actually ran and any verification gaps. Never imply that unrun checks passed.
 
-No em-dashes. No mannered prose. Mannered prose substitutes metaphor and flourish for direct
-statement: "a dial worth turning" instead of "a parameter worth varying," "earns
-its keep" instead of "still matters." It exists to display the writer, makes the
-reader work harder, and drags in connotations you did not choose. Say what you
-mean. When a literal phrase is available, use it.
+### Comments, documentation, and prose
+
+- Use direct, literal language. No em-dashes or mannered prose.
+- Prefer precise statements over metaphor, flourish, or clever phrasing. Write "a parameter worth varying," not "a dial worth turning"; "still matters," not "earns its keep."
+- Comment only on non-obvious intent or constraints. Do not narrate what the code already makes clear.
+- Write comments and documentation as standalone material for readers without conversation context. Never refer to chat history, user requests, agent activity, or temporary implementation narratives.
 """
 
 # =============================================================================
@@ -145,9 +144,6 @@ enabled = false
 # =============================================================================
 # MCP
 # =============================================================================
-
-[mcp_servers.context7.env_http_headers]
-CONTEXT7_API_KEY = "CONTEXT7_API_KEY"
 
 [mcp_servers.nuget]
 command = "dnx"
