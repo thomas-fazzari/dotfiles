@@ -162,11 +162,11 @@ approval_mode = "approve"
 output_token_limit = 4000
 
 [mcp_servers.roslyn]
-command = "{{HOME}}/.local/share/roslyn-codex-lsp/bridge/RoslynCodexLsp"
-args = ["--server", "{{HOME}}/.local/share/roslyn-codex-lsp/roslyn/roslyn-language-server"]
+command = "{{HOME}}/.local/share/roslyn-for-clankers/bridge/Roslyn4Clankers"
+args = ["--server", "{{HOME}}/.local/share/roslyn-for-clankers/roslyn/roslyn-language-server"]
 [mcp_servers.roslyn.env]
 DOTNET_ROOT = "{{DOTNET_ROOT}}"
-PATH = "{{DOTNET_ROOT}}:{{HOME}}/.local/share/roslyn-codex-lsp/roslyn:{{PATH}}"
+PATH = "{{DOTNET_ROOT}}:{{HOME}}/.local/share/roslyn-for-clankers/roslyn:{{PATH}}"
 
 [mcp_servers.node_repl]
 command = "{{CHATGPT_APP}}/Contents/Resources/cua_node/bin/node_repl"

@@ -9,6 +9,7 @@
       "Skill",
       "mcp__fff__*",
       "mcp__nuget__*",
+      "mcp__roslyn__*",
       "Bash(rg *)",
       "Bash(fd *)",
       "Bash(fzf *)",

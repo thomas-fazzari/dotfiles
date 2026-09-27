@@ -1,9 +1,10 @@
 # Code navigation
 
-C#, Rust, and TypeScript -> use LSP.
+C# -> use the roslyn MCP: `navigate` (prefer `symbol` names), `symbols`, `diagnostics`, and `edit` for renames and code actions.
+Rust and TypeScript -> use LSP.
 File locations, text search for literals, comments, or configuration -> use fff.
 
-If LSP fails or cannot resolve a symbol, use regular searches as a fallback and report the LSP failure.
+If LSP or roslyn MCP fails, use regular searches as a fallback and report the failure.
 
 ## Core principles
 
