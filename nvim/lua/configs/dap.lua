@@ -1,14 +1,9 @@
 local dap = require "dap"
 local dapui = require "dapui"
 
-local command = vim.fn.exepath "netcoredbg"
-if command == "" then
-  command = vim.fn.expand "~/.local/share/netcoredbg/netcoredbg"
-end
-
 local adapter = {
   type = "executable",
-  command = command,
+  command = vim.fn.exepath "netcoredbg",
   args = { "--interpreter=vscode" },
 }
 

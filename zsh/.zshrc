@@ -16,10 +16,7 @@ plugins=(
 
 # Environment
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
-export PYENV_ROOT="$HOME/.pyenv"
 export TERMINAL="/Applications/Ghostty.app/Contents/MacOS/ghostty"
-export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
-export PNPM_HOME="$HOME/Library/pnpm"
 export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 export OPENCODE_EXPERIMENTAL_OXFMT=true
 export OPENCODE_ENABLE_EXA=1
@@ -27,18 +24,13 @@ export OPENCODE_ENABLE_EXA=1
 # PATH
 typeset -U path PATH
 for dir in \
-	"$PNPM_HOME" \
-	"$PNPM_HOME/bin" \
 	"$HOME/.cargo/bin" \
 	"$HOME/.local/bin" \
-	"$HOME/go/bin" \
-	"${DOTNET_ROOT:-}" \
-	"$HOME/.dotnet/tools" \
-	"$PYENV_ROOT/bin"; do
+	"$HOME/go/bin"; do
 	[[ -n "$dir" && -d "$dir" ]] && path=("$dir" $path)
 done
 
-for dir in /opt/homebrew/opt/bun/bin /opt/homebrew/opt/postgresql@18/bin; do
+for dir in /opt/homebrew/opt/bun/bin ; do
 	[[ -d "$dir" ]] && path=("$dir" $path)
 done
 
@@ -78,13 +70,12 @@ alias ll='ls -lah'
 alias la='ls -A'
 alias c='clear'
 alias home='cd "$HOME"'
-alias dev='cd ~/dev'
+alias dev='cd ~/Dev'
 alias dot='cd "$DOTFILES"'
 alias desk='cd ~/Desktop'
 alias docs='cd ~/Documents'
 alias dl='cd ~/Downloads'
 alias tmp='cd "${TMPDIR:-/tmp}"'
-alias which='command -v'
 alias code='code-insiders'
 e() {
 	nvim "${1:-.}"
@@ -93,16 +84,8 @@ e() {
 [[ -r "$DOTFILES/zsh/aliases/media.zsh" ]] && source "$DOTFILES/zsh/aliases/media.zsh"
 
 # Tool init
-if command -v fnm >/dev/null 2>&1; then
-	eval "$(fnm env --use-on-cd --shell zsh)"
-fi
-
 if command -v zoxide >/dev/null 2>&1; then
 	eval "$(zoxide init zsh)"
-fi
-
-if command -v pyenv >/dev/null 2>&1; then
-	eval "$(pyenv init --no-rehash -)"
 fi
 
 if [[ -r "$HOME/.opam/opam-init/init.zsh" ]]; then
@@ -122,4 +105,8 @@ if command -v fzf >/dev/null 2>&1; then
     --color=fg:#A9B1D6,header:#C0CAF5,info:#7B88A1,pointer:#F7768E
     --color=marker:#E0AF68,fg+:#C0CAF5,prompt:#7DCFFF,hl+:#BB9AF7
   "
+fi
+
+if command -v mise >/dev/null 2>&1; then
+	eval "$(mise activate zsh)"
 fi

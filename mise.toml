@@ -1,0 +1,72 @@
+min_version = "2026.9.0"
+
+# Symlinked to ~/.config/mise/config.toml
+[tools]
+node = "26"
+python = "3.14"
+go = "1.27"
+dotnet = "10.0.400"
+"dotnet:csharpier" = "latest"
+"dotnet:dotnet-ef" = "latest"
+"dotnet:dotnet-outdated-tool" = "latest"
+"dotnet:ElectronNET.CLI" = "latest"
+"dotnet:fantomas" = "latest"
+"dotnet:fsautocomplete" = "latest"
+"dotnet:ilspycmd" = "latest"
+"dotnet:Microsoft.AITools.BinlogMcp" = "latest"
+"dotnet:roslyn-language-server" = "latest"
+"dotnet:vpk" = "latest"
+cargo-deny = "latest"
+"aqua:taiki-e/cargo-llvm-cov" = "latest"
+"github:bnjbvr/cargo-machete" = "latest"
+"github:nextest-rs/nextest" = { version = "latest", version_prefix = "cargo-nextest-" }
+"github:Samsung/netcoredbg" = { version = "latest", asset_pattern = "netcoredbg-osx-arm64.zip" }
+
+[task_config]
+dir = "~/Dev/dotfiles"
+
+[tasks.setup]
+description = "Full machine setup: apps, editor extensions, language tools, symlinks and the Roslyn MCP"
+run = [
+  { task = "apps:install" },
+  { task = "vscode" },
+  { task = "tools" },
+  { task = "rust" },
+  { task = "symlinks" },
+  { task = "roslyn-mcp" },
+]
+
+[tasks.apps]
+description = "Reports missing or outdated Brewfile dependencies without installing anything"
+run = "brew bundle check --verbose --file macos/Brewfile"
+
+[tasks."apps:install"]
+description = "Installs and upgrades Brewfile dependencies"
+run = "brew bundle install --file macos/Brewfile"
+
+[tasks."apps:prune"]
+description = "Lists Homebrew packages that are not in the Brewfile (pass --force to uninstall them)"
+run = "brew bundle cleanup --file macos/Brewfile"
+
+[tasks.tools]
+description = "Installs the mise-managed tools listed under [tools]"
+run = "mise install"
+
+[tasks.vscode]
+description = "Installs the VS Code Insiders extensions listed in editors/vscode/extensions.txt"
+run = "editors/vscode/setup-extensions.sh"
+
+[tasks.rust]
+description = "Installs the stable toolchain and its components through rustup"
+run = [
+  "rustup show active-toolchain >/dev/null 2>&1 || rustup toolchain install stable --profile minimal",
+  "rustup component add rust-analyzer rust-src rustfmt clippy llvm-tools-preview",
+]
+
+[tasks.symlinks]
+description = "Links the tracked config files into their expected locations"
+run = "macos/setup-symlinks.sh"
+
+[tasks.roslyn-mcp]
+description = "Installs the Roslyn MCP server for coding agents"
+run = "curl -fsSL https://raw.githubusercontent.com/thomas-fazzari/roslyn-for-clankers/master/install.sh | bash -s -- --yes"

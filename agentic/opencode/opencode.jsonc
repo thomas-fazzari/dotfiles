@@ -38,7 +38,7 @@
     "nuget": {
       "type": "local",
       "command": [
-        "/opt/homebrew/opt/dotnet/libexec/dnx",
+        "dnx",
         "NuGet.Mcp.Server",
         "--source",
         "https://api.nuget.org/v3/index.json",
@@ -107,6 +107,8 @@
       "bunx vitest *": "allow",
       "just": "allow",
       "just *": "allow",
+      "mise": "allow",
+      "mise *": "allow",
       "bun": "allow",
       "bun *": "allow",
       "rm -rf": "deny",
