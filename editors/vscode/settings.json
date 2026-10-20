@@ -7,7 +7,7 @@
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   // Editor Appearance
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "Tokyo Night Dark",
   "workbench.iconTheme": "flow-deep",
   "workbench.productIconTheme": "material-product-icons",
   "editor.cursorSurroundingLines": 6,
@@ -98,8 +98,8 @@
   "background.fullscreen": {
     "images": ["/Users/thomas/Dev/dotfiles/editors/vscode/background.png"],
     "opacity": 0.12,
-    "size": "contain",
-    "position": "50% 100%",
+    "size": "cover",
+    "position": "center",
   },
   // Explorer
   "explorer.confirmDragAndDrop": false,

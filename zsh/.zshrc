@@ -57,7 +57,7 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=#7DCFFF'
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#9ECE6A'
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#9ECE6A'
 ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#9ECE6A'
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#565F89,italic'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#444B6A,italic'
 
 # Aliases
 alias reload='. ~/.zshrc'
@@ -98,8 +98,8 @@ if command -v fzf >/dev/null 2>&1; then
 	export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 	export FZF_DEFAULT_OPTS="
     --height 40% --layout=reverse --border
-    --color=bg+:#292E42,bg:#16161E,spinner:#7DCFFF,hl:#F7768E
-    --color=fg:#A9B1D6,header:#C0CAF5,info:#7B88A1,pointer:#F7768E
+    --color=bg+:#1E202E,bg:#08080B,spinner:#7DCFFF,hl:#F7768E
+    --color=fg:#A9B1D6,header:#C0CAF5,info:#787C99,pointer:#F7768E
     --color=marker:#E0AF68,fg+:#C0CAF5,prompt:#7DCFFF,hl+:#BB9AF7
   "
 fi

@@ -1,38 +1,38 @@
 font-family = Iosevka Nerd Font Mono
 font-size = 16
 
-background = #1A1B26
+background = #08080B
 foreground = #A9B1D6
 cursor-color = #C0CAF5
-cursor-text = #1A1B26
-selection-background = #28344A
+cursor-text = #08080B
+selection-background = #202330
 selection-foreground = cell-foreground
 
 background-image = /Users/thomas/Dev/dotfiles/editors/vscode/background.png
 background-image-opacity = 0.12
-background-image-position = bottom-center
-background-image-fit = contain
+background-image-position = center
+background-image-fit = cover
 
-palette = 0=#414868
+palette = 0=#363B54
 palette = 1=#F7768E
-palette = 2=#73DACA
+palette = 2=#41A6B5
 palette = 3=#E0AF68
 palette = 4=#7AA2F7
 palette = 5=#BB9AF7
 palette = 6=#7DCFFF
-palette = 7=#C0CAF5
-palette = 8=#414868
+palette = 7=#787C99
+palette = 8=#444B6A
 palette = 9=#F7768E
-palette = 10=#73DACA
+palette = 10=#41A6B5
 palette = 11=#E0AF68
 palette = 12=#7AA2F7
 palette = 13=#BB9AF7
 palette = 14=#7DCFFF
-palette = 15=#C0CAF5
+palette = 15=#ACB0D0
 
 window-padding-x = 12
 window-padding-y = 12
-split-divider-color = #414868
+split-divider-color = #1E202E
 macos-option-as-alt = true
 copy-on-select = true
 
