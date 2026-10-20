@@ -17,9 +17,6 @@ plugins=(
 # Environment
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 export TERMINAL="/Applications/Ghostty.app/Contents/MacOS/ghostty"
-export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
-export OPENCODE_EXPERIMENTAL_OXFMT=true
-export OPENCODE_ENABLE_EXA=1
 
 # PATH
 typeset -U path PATH

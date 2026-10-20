@@ -1,0 +1,7 @@
+{
+  "ignorePatterns": [
+    "editors/vscode/settings.json",
+    "editors/vscode/keybindings.json",
+    "nvim/lazy-lock.json"
+  ]
+}

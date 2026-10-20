@@ -10,7 +10,6 @@ local options = {
     jsonc = { "oxfmt" },
     lua = { "stylua" },
     markdown = { "oxfmt" },
-    svelte = { "prettier" },
     toml = { "oxfmt" },
     typescript = { "oxfmt" },
     typescriptreact = { "oxfmt" },

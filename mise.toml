@@ -13,7 +13,6 @@ dotnet = "10.0.400"
 "dotnet:fantomas" = "latest"
 "dotnet:fsautocomplete" = "latest"
 "dotnet:ilspycmd" = "latest"
-"dotnet:Microsoft.AITools.BinlogMcp" = "latest"
 "dotnet:roslyn-language-server" = "latest"
 "dotnet:vpk" = "latest"
 cargo-deny = "latest"
@@ -26,14 +25,13 @@ cargo-deny = "latest"
 dir = "~/Dev/dotfiles"
 
 [tasks.setup]
-description = "Full machine setup: apps, editor extensions, language tools, symlinks and the Roslyn MCP"
+description = "Full machine setup"
 run = [
   { task = "apps:install" },
   { task = "vscode" },
   { task = "tools" },
   { task = "rust" },
   { task = "symlinks" },
-  { task = "roslyn-mcp" },
 ]
 
 [tasks.apps]
@@ -54,7 +52,7 @@ run = "mise install"
 
 [tasks.vscode]
 description = "Installs the VS Code Insiders extensions listed in editors/vscode/extensions.txt"
-run = "editors/vscode/setup-extensions.sh"
+run = "editors/vscode/setup-extensions.pl"
 
 [tasks.rust]
 description = "Installs the stable toolchain and its components through rustup"
@@ -65,8 +63,8 @@ run = [
 
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
-run = "macos/setup-symlinks.sh"
+run = "macos/setup-symlinks.pl"
 
-[tasks.roslyn-mcp]
-description = "Installs the Roslyn MCP server for coding agents"
-run = "curl -fsSL https://raw.githubusercontent.com/thomas-fazzari/roslyn-for-clankers/master/install.sh | bash -s -- --yes"
+[tasks."hooks:test"]
+description = "Tests the Claude Code hooks"
+run = "prove agentic/claude/hooks/t"
