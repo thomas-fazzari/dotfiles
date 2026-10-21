@@ -5,16 +5,13 @@
   "buffer_font_family": "Iosevka Nerd Font Mono",
   "buffer_font_size": 16,
   "buffer_font_weight": 500,
-  "buffer_line_height": { "custom": 1.375 },
-  "ui_font_family": ".ZedSans",
-  "ui_font_size": 15,
+  "buffer_line_height": { "custom": 1.3 },
+  "ui_font_size": 16,
+  "text_rendering_mode": "platform_default",
+  "markdown_preview": { "code_font_family": "Iosevka Nerd Font Mono" },
 
   // appearance
-  "theme": {
-    "mode": "dark",
-    "light": "Tokyo Night Light",
-    "dark": "Tokyo Night",
-  },
+  "theme": "Tokyo Night",
   // custom Tokyo Night Dark port
   // only the window background is tinted, the rest is transparent over the OS wallpaper
   "theme_overrides": {
@@ -44,11 +41,8 @@
       },
     },
   },
-  "icon_theme": {
-    "mode": "dark",
-    "light": "Material Icon Theme",
-    "dark": "Material Icon Theme",
-  },
+  "icon_theme": "Material Icon Theme",
+  "cursor_shape": "bar",
   "current_line_highlight": "gutter",
   "vertical_scroll_margin": 6,
   "show_wrap_guides": true,
@@ -60,12 +54,19 @@
     "show": false,
     "show_nav_history_buttons": false,
   },
-  "tabs": { "file_icons": false },
+  "tabs": { "file_icons": false, "git_status": false },
   "title_bar": {
     "show_sign_in": false,
     "show_onboarding_banner": false,
     "show_branch_name": true,
+    "show_branch_status_icon": false,
   },
+  "status_bar": {
+    "line_endings_button": false,
+    "active_encoding_button": "disabled",
+    "active_language_button": false,
+  },
+  "git": { "git_gutter": "hide" },
   "colorize_brackets": true,
   "inlay_hints": { "enabled": true },
 
@@ -76,20 +77,38 @@
   },
 
   // panels
-  "project_panel": { "dock": "left", "indent_size": 22, "auto_reveal_entries": true },
-  "outline_panel": { "dock": "left" },
-  "git_panel": { "dock": "left" },
+  "project_panel": {
+    "dock": "left",
+    "indent_size": 22,
+    "auto_reveal_entries": true,
+    "default_width": 240,
+    "button": true,
+    "hide_root": true,
+    "hide_gitignore": false,
+    "sort_mode": "directories_first",
+    "entry_spacing": "standard",
+    "folder_indicator": "icon",
+    "bold_folder_labels": false,
+    "diagnostic_badges": true,
+    "git_status_indicator": false,
+    "indent_guides": { "show": "never" },
+    "scrollbar": { "show": "never" },
+  },
+  "outline_panel": { "dock": "left", "indent_size": 20 },
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true,
+    "file_icons": true,
+    "status_style": "icon",
+    "sort_by": "path",
+    "group_by": "staging",
+    "show_count_badge": true,
+    "fallback_branch_name": "master",
+    "entry_primary_click_action": "file_diff",
+  },
   "collaboration_panel": { "dock": "left", "button": false },
   "debugger": { "button": false },
   "search": { "button": false },
-  "agent": { "threads_sidebar": {
-                   "position": "right"
-             },
-             "dock": "right" },
-  "agent_servers": {
-    "codex-acp": { "type": "registry" },
-    "opencode": { "type": "registry" },
-  },
 
   // editor behavior
   "format_on_save": "on",
@@ -101,6 +120,7 @@
   "ensure_final_newline_on_save": true,
   "restore_on_startup": "empty_tab",
   "when_closing_with_no_tabs": "keep_window_open",
+  "on_last_window_closed": "quit_app",
   "confirm_quit": false,
   "session": { "trust_all_worktrees": true },
   "file_scan_exclusions": [
@@ -119,6 +139,8 @@
     "font_size": 14,
     "blinking": "on",
     "copy_on_select": true,
+    "button": false,
+    "show_count_badge": false,
     "scrollbar": { "show": "never" },
     "toolbar": { "breadcrumbs": false },
   },
