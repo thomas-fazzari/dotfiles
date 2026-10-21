@@ -10,6 +10,7 @@
   "workbench.colorTheme": "Tokyo Night Dark",
   "workbench.iconTheme": "flow-deep",
   "workbench.productIconTheme": "material-product-icons",
+  "workbench.activityBar.location": "bottom",
   "editor.cursorSurroundingLines": 6,
   "editor.cursorWidth": 2,
   "editor.letterSpacing": 0.3,
@@ -96,7 +97,7 @@
   // Background
   "background.enabled": true,
   "background.fullscreen": {
-    "images": ["/Users/thomas/Dev/dotfiles/editors/vscode/background.png"],
+    "images": ["/Users/thomas/Dev/dotfiles/macos/wallpaper.png"],
     "opacity": 0.12,
     "size": "cover",
     "position": "center",
@@ -387,5 +388,5 @@
     "https://schemastore.azurewebsites.net/": true,
     "https://spec.openapis.org/": true,
     "https://www.schemastore.org/": true,
-  },
+  }
 }

@@ -8,7 +8,7 @@ cursor-text = #08080B
 selection-background = #202330
 selection-foreground = cell-foreground
 
-background-image = /Users/thomas/Dev/dotfiles/editors/vscode/background.png
+background-image = /Users/thomas/Dev/dotfiles/macos/wallpaper.png
 background-image-opacity = 0.12
 background-image-position = center
 background-image-fit = cover

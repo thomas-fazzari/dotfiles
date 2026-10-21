@@ -2,6 +2,9 @@
   "ignorePatterns": [
     "editors/vscode/settings.json",
     "editors/vscode/keybindings.json",
+    "editors/zed/settings.json",
+    "editors/zed/keymap.json",
+    ".zed/settings.json",
     "nvim/lazy-lock.json"
   ]
 }

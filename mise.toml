@@ -31,7 +31,9 @@ run = [
   { task = "vscode" },
   { task = "tools" },
   { task = "rust" },
+  { task = "perl" },
   { task = "symlinks" },
+  { task = "wallpaper" },
 ]
 
 [tasks.apps]
@@ -61,9 +63,17 @@ run = [
   "rustup component add rust-analyzer rust-src rustfmt clippy llvm-tools-preview",
 ]
 
+[tasks.perl]
+description = "Installs Perl::Critic into the Homebrew perl for PerlNavigator (Perl::Tidy ships with it)"
+run = "cpanm --notest --quiet Perl::Critic"
+
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
 run = "macos/setup-symlinks.pl"
+
+[tasks.wallpaper]
+description = "Sets macos/wallpaper.png as the desktop picture"
+run = "osascript -e 'tell application \"Finder\" to set desktop picture to (POSIX file \"'\"$PWD/macos/wallpaper.png\"'\" as alias)'"
 
 [tasks."hooks:test"]
 description = "Tests the Claude Code hooks"
