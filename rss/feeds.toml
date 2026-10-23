@@ -1,0 +1,114 @@
+# Root keys are Miniflux user filters that apply to every feed
+# Each table is a category and each key a feed URL
+# Settings use the Miniflux API names, and Fil::Feeds lists them
+
+block_filter_entry_rules = "EntryDate=max-age:30d"
+
+[blogs]
+"https://lucumr.pocoo.org/feed.atom" = { title = "Armin Ronacher" }
+"https://mitchellh.com/feed.xml" = { crawler = true }
+"https://danluu.com/atom.xml" = { title = "Dan Luu" }
+"https://simonwillison.net/atom/everything/" = { title = "Simon Willison" }
+"https://www.hillelwayne.com/index.xml" = { title = "Hillel Wayne" }
+"https://fabiensanglard.net/rss.xml" = { title = "Fabien Sanglard" }
+"https://www.computerenhance.com/feed" = { title = "Casey Muratori" }
+"https://registerspill.thorstenball.com/feed" = { title = "Thorsten Ball" }
+"https://drewdevault.com/blog/index.xml" = { title = "Drew DeVault" }
+"https://xvw.lol/en/atom.xml" = { title = "Xavier Van de Woestyne" }
+"https://xn--gckvb8fzb.com/index.xml" = { title = "マリウス" }
+"https://www.righto.com/feeds/posts/default" = { title = "Ken Shirriff" }
+"https://journal.stuffwithstuff.com/rss.xml" = { title = "Bob Nystrom" }
+"https://steveklabnik.com/feed.xml" = { title = "Steve Klabnik" }
+"https://charity.wtf/feed/" = { title = "Charity Majors" }
+"https://xeiaso.net/blog.rss" = { title = "Xe Iaso" }
+"https://tonsky.me/atom.xml" = { title = "Nikita Prokopov" }
+
+[rust]
+"https://blog.rust-lang.org/feed.xml" = {}
+"https://fasterthanli.me/index.xml" = {}
+"https://matklad.github.io/feed.xml" = {}
+"https://this-week-in-rust.org/atom.xml" = {}
+"https://lobste.rs/t/rust.rss" = { title = "Lobsters", crawler = true }
+"https://smallcultfollowing.com/babysteps/index.xml" = { title = "Niko Matsakis" }
+"https://blog.rust-lang.org/inside-rust/feed.xml" = { title = "Inside Rust" }
+"https://www.ralfj.de/blog/feed.xml" = { title = "Ralf Jung" }
+"https://corrode.dev/rss.xml" = { title = "corrode" }
+"https://tokio.rs/blog/index.xml" = { title = "Tokio" }
+"https://burntsushi.net/index.xml" = { title = "Andrew Gallant" }
+"https://nnethercote.github.io/feed.xml" = { title = "Nicholas Nethercote" }
+"https://blog.yoshuawuyts.com/rss.xml" = { title = "Yoshua Wuyts" }
+"https://jdx.dev/posts/index.xml" = { title = "jdx" }
+
+[dotnet]
+"https://andrewlock.net/rss.xml" = {}
+"https://devblogs.microsoft.com/dotnet/feed/" = {}
+"https://medium.com/feed/@neuecc" = { title = "Yoshifumi Kawai" }
+"https://www.meziantou.net/feed.atom" = { title = "Gérald Barré" }
+"https://khalidabuhakmeh.com/feed.xml" = { title = "Khalid Abuhakmeh" }
+"https://blog.marcgravell.com/feeds/posts/default" = { title = "Marc Gravell" }
+"https://codeblog.jonskeet.uk/feed/" = { title = "Jon Skeet" }
+"https://blog.ploeh.dk/rss.xml" = { title = "Mark Seemann" }
+"https://www.jimmybogard.com/rss/" = { title = "Jimmy Bogard" }
+"https://www.milanjovanovic.tech/rss/feed.xml" = { title = "Milan Jovanović" }
+"https://minidump.net/index.xml" = { title = "Kevin Gosse" }
+"https://blog.nerdbank.net/feed/" = { title = "Andrew Arnott" }
+"https://jeremydmiller.com/feed/" = { title = "Jeremy D. Miller" }
+"https://www.aaronstannard.com/feed.xml" = { title = "Aaron Stannard" }
+"https://blog.stephencleary.com/feed.xml" = { title = "Stephen Cleary" }
+"https://feeds.feedburner.com/rickstrahl" = { title = "Rick Strahl" }
+"https://www.hanselman.com/blog/feed/rss" = { title = "Scott Hanselman" }
+"https://ayende.com/blog/rss" = { title = "Oren Eini" }
+
+[systems]
+"https://ziglang.org/news/index.xml" = { title = "Zig", crawler = true }
+"https://www.gingerbill.org/article/index.xml" = { title = "Ginger Bill" }
+"https://brooker.co.za/blog/rss.xml" = { title = "Marc Brooker" }
+"https://lwn.net/headlines/rss" = { title = "LWN" }
+"https://www.brendangregg.com/blog/rss.xml" = { title = "Brendan Gregg" }
+"https://notes.eatonphil.com/rss.xml" = { title = "Phil Eaton" }
+"https://andrewkelley.me/rss.xml" = { title = "Andrew Kelley" }
+"https://lemire.me/blog/feed/" = { title = "Daniel Lemire" }
+"https://travisdowns.github.io/feed.xml" = { title = "Travis Downs" }
+"https://kristoff.it/index.xml" = { title = "Loris Cro" }
+"https://tigerbeetle.com/blog/atom.xml" = { title = "TigerBeetle" }
+"https://00f.net/rss.xml" = { title = "Frank Denis" }
+"https://www.lei.chat/posts/index.xml" = { title = "Lei Zhang" }
+"https://chipsandcheese.com/feed/" = { title = "Chips and Cheese" }
+"https://rachelbythebay.com/w/atom.xml" = { title = "Rachel Kroll" }
+"https://nullprogram.com/feed/" = { title = "Chris Wellons" }
+"https://xania.org/feed" = { title = "Matt Godbolt" }
+
+[ocaml]
+"https://tarides.com/feed.xml" = { title = "Tarides" }
+"https://blog.janestreet.com/feed.xml" = { title = "Jane Street" }
+"https://ocaml.org/feed.xml" = { title = "Planet OCaml" }
+"https://anil.recoil.org/news.xml" = { title = "Anil Madhavapeddy" }
+
+[perl]
+"https://perlweekly.com/perlweekly.rss" = { title = "Perl Weekly" }
+"https://www.perl.com/article/index.xml" = { title = "perl.com" }
+"https://blogs.perl.org/atom.xml" = { title = "blogs.perl.org" }
+"https://perlhacks.com/feed/" = { title = "Dave Cross" }
+
+[youtube]
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFrSIvbFncPSlK6AdwE2QboA" = { title = "linkarzu" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFB2ATFiszUNmw6z1x67GnYw" = { title = "zach (haxytron)" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFUyeluBRhGPCW4rPe_UvBZQ" = { title = "The PrimeTime" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFgUxdfi_5-m67UDbrgcAFBg" = { title = "Coding Jesus" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFfxdJHh-NkpXnp28QHK207A" = { title = "Neliger" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFyUBW72KU30dfAYWLVNZO8Q" = { title = "Stefan Mischook" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFd3dNckv1Za2coSaHGHl5aA" = { title = "TJ DeVries" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFIjIAXXsX4YMYeFj-LP42-Q" = { title = "Anthony GG" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFwQz-rOwFoPSWEDF2TffYgQ" = { title = "JirayaTV Replay" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFqj0nJDbz27eMHfhzUkwDbA" = { title = "Kyle Cook" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULF-yuWVUplUJZvieEligKBkA" = { title = "javidx9" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFGLngnnI7547OHDEiU8eQSw" = { title = "The Effortless Academic" }
+"https://www.youtube.com/feeds/videos.xml?playlist_id=UULFalOFVbIxEAWIV5LHGkKcnw" = { title = "tokyospliff" }
+"https://www.youtube.com/feeds/videos.xml?channel_id=UCrqM0Ym_NbK1fqeQG2VIohg" = { title = "Tsoding" }
+
+[news."https://hnrss.org/newest?points=300"]
+title = "Hacker News"
+crawler = true
+block_filter_entry_rules = '''
+EntryTitle=(?i)\b(hiring|webinar)\b
+'''
