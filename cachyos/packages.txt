@@ -40,7 +40,6 @@ lldb
 llvm
 make
 ninja
-ollama-cuda
 lua
 lua-language-server
 markdown-oxide
@@ -82,6 +81,7 @@ firefox
 ghostty
 ark
 kid3
+kwin-scripts-krohnkite
 mullvad-vpn-bin
 obsidian
 onlyoffice-bin
