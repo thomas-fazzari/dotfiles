@@ -14,6 +14,7 @@ dotnet = "10.0.400"
 "dotnet:fsautocomplete" = "latest"
 "dotnet:ilspycmd" = "latest"
 "dotnet:roslyn-language-server" = "latest"
+"dotnet:ThomasFazzari.RoslynBridge" = "latest"
 "dotnet:vpk" = "latest"
 cargo-deny = "latest"
 "aqua:taiki-e/cargo-llvm-cov" = "latest"
@@ -21,6 +22,7 @@ cargo-deny = "latest"
 "github:nextest-rs/nextest" = { version = "latest", version_prefix = "cargo-nextest-" }
 "github:Samsung/netcoredbg" = { version = "latest", asset_pattern = "netcoredbg-osx-arm64.zip" }
 pi = "latest"
+rtk = "latest"
 
 [task_config]
 dir = "~/Dev/dotfiles"
@@ -74,10 +76,11 @@ description = "Links the tracked config files into their expected locations"
 run = "macos/setup-symlinks.pl"
 
 [tasks.pi]
-description = "Links the Pi configuration from the agentic/pi-config submodule into ~/.pi/agent"
+description = "Links the Pi configuration from the agentic/pi-config submodule and installs its packages"
 run = [
   "test -e agentic/pi-config/setup.sh || git submodule update --init agentic/pi-config",
   "bash agentic/pi-config/setup.sh",
+  "mise -C agentic/pi-config run packages",
 ]
 
 [tasks.firefox]
@@ -89,5 +92,5 @@ description = "Sets macos/wallpaper.png as the desktop picture"
 run = "osascript -e 'tell application \"Finder\" to set desktop picture to (POSIX file \"'\"$PWD/macos/wallpaper.png\"'\" as alias)'"
 
 [tasks."hooks:test"]
-description = "Tests the Claude Code hooks"
-run = "prove agentic/claude/hooks/t"
+description = "Tests the agent hooks"
+run = "prove agentic/hooks/t"

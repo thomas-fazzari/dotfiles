@@ -1,12 +1,13 @@
 use strict;
 use warnings;
+use Cwd        qw(abs_path);
 use FindBin    qw($RealBin);
 use IPC::Open2 qw(open2);
 use JSON::PP;
 use Test::More;
 
 my $HOOK  = "$RealBin/../bash-guard.pl";
-my $TRASH = "$ENV{HOME}/.claude/hooks/trash-rm.pl";
+my $TRASH = abs_path("$RealBin/../trash-rm.pl");
 
 sub run_hook {
   my ($command) = @_;

@@ -2,11 +2,12 @@ package BashGuard::Trash;
 use strict;
 use warnings;
 use Exporter 'import';
+use FindBin          qw($RealBin);
 use BashGuard::Shell qw(has_arg shell_quote);
 
 our @EXPORT_OK = qw(is_rm trash_available rewrite_rm deletion_risk);
 
-my $TRASH_RM = "$ENV{HOME}/.claude/hooks/trash-rm.pl";
+my $TRASH_RM = "$RealBin/trash-rm.pl";
 my %RM_NAMES = map { $_ => 1 } qw(rm /bin/rm /usr/bin/rm);
 
 sub is_rm {

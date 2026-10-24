@@ -13,7 +13,7 @@ set -gx HOMEBREW_REPOSITORY /opt/homebrew
 fish_add_path -gP /opt/homebrew/opt/rustup/bin
 fish_add_path -gmP /opt/homebrew/bin /opt/homebrew/sbin
 fish_add_path -gP /opt/homebrew/opt/bun/bin $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin
-fish_add_path -gaP ~/.docker/bin
+fish_add_path -gaP ~/.docker/bin /opt/homebrew/opt/perl/bin
 
 status is-interactive; or return
 
