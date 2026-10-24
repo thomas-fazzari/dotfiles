@@ -3,6 +3,7 @@ set -q DOTFILES; or set -g DOTFILES (path resolve (status filename) | path dirna
 # Environment
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
 set -gx TERMINAL /Applications/Ghostty.app/Contents/MacOS/ghostty
+set -gx PI_CACHE_RETENTION long
 
 # Homebrew (static `brew shellenv`, avoids spawning brew on every start)
 set -gx HOMEBREW_PREFIX /opt/homebrew
