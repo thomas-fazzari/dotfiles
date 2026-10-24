@@ -3,6 +3,7 @@ set -q DOTFILES; or set -g DOTFILES (path resolve (status filename) | path dirna
 # Environment
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
 set -gx TERMINAL ghostty
+set -gx PI_CACHE_RETENTION long
 
 # PATH: later calls are prepended in front of earlier ones
 fish_add_path -gP $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin

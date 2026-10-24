@@ -37,7 +37,6 @@ window-padding-y = 12
 split-divider-color = #1E202E
 copy-on-select = true
 
-keybind = ctrl+v=paste_from_clipboard
 keybind = performable:ctrl+c=copy_to_clipboard:mixed
 keybind = ctrl+shift+enter=new_split:right
 keybind = ctrl+shift+backspace=close_surface

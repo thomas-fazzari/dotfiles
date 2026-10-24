@@ -6,6 +6,12 @@
     },
   },
   {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-alt-enter": "terminal_panel::Toggle",
+    },
+  },
+  {
     "context": "Terminal",
     "bindings": {
       "ctrl-alt-s": "pane::SplitRight",

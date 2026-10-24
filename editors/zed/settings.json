@@ -136,6 +136,7 @@
   // terminal
   "terminal": {
     "shell": { "program": "/usr/bin/fish" },
+    "dock": "right",
     "font_family": "Iosevka Nerd Font Mono",
     "font_size": 14,
     "blinking": "on",

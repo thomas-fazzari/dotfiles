@@ -29,6 +29,7 @@ my @links = (
   ['.bunfig.toml'                           => 'bunfig.toml'],
   ['.config/fish/config.fish'               => 'terminal/fish/config.fish'],
   ['.config/fish/functions'                 => 'terminal/fish/functions'],
+  ['.zshenv'                                => 'terminal/zsh/.zshenv'],
   ['.config/starship.toml'                  => 'terminal/starship/starship.toml'],
   ['.gitconfig'                             => 'git/.gitconfig'],
   ['.gitignore_global'                      => 'git/.gitignore_global'],
