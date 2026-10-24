@@ -2,7 +2,9 @@
 	path = agentic/pi-config
 	url = https://github.com/thomas-fazzari/pi-config
 	branch = master
+	ignore = dirty
 [submodule "rss/fil"]
 	path = rss/fil
 	url = https://github.com/thomas-fazzari/fil
 	branch = master
+	ignore = dirty
