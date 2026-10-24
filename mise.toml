@@ -20,44 +20,47 @@ cargo-deny = "latest"
 "aqua:taiki-e/cargo-llvm-cov" = "latest"
 "github:bnjbvr/cargo-machete" = "latest"
 "github:nextest-rs/nextest" = { version = "latest", version_prefix = "cargo-nextest-" }
-"github:Samsung/netcoredbg" = { version = "latest", asset_pattern = "netcoredbg-osx-arm64.zip" }
+"github:Samsung/netcoredbg" = { version = "latest", asset_pattern = "netcoredbg-linux-amd64.tar.gz" }
 pi = "latest"
 rtk = "latest"
+# The AUR only has source builds
+"npm:oxfmt" = "latest"
+"npm:oxlint" = "latest"
 
 [task_config]
-dir = "~/Dev/dotfiles"
+dir = "~/dev/dotfiles"
 
 [tasks.setup]
 description = "Full machine setup"
 run = [
   { task = "apps:install" },
+  { task = "pacman-hooks" },
   { task = "vscode" },
   { task = "tools" },
   { task = "rust" },
-  { task = "perl" },
   { task = "symlinks" },
   { task = "pi" },
   { task = "wallpaper" },
 ]
 
 [tasks.apps]
-description = "Reports missing or outdated Brewfile dependencies without installing anything"
-run = "brew bundle check --verbose --file macos/Brewfile"
+description = "Lists the cachyos/packages.txt packages that are not installed, without installing anything"
+run = "sed -e 's/#.*//' -e '/^[[:space:]]*$/d' cachyos/packages.txt | xargs pacman -T"
 
 [tasks."apps:install"]
-description = "Installs and upgrades Brewfile dependencies"
-run = "brew bundle install --file macos/Brewfile"
+description = "Upgrades the system and installs the cachyos/packages.txt packages (repos and AUR) through paru"
+run = "sed -e 's/#.*//' -e '/^[[:space:]]*$/d' cachyos/packages.txt | xargs -o paru -Syu --needed"
 
-[tasks."apps:prune"]
-description = "Lists Homebrew packages that are not in the Brewfile (pass --force to uninstall them)"
-run = "brew bundle cleanup --file macos/Brewfile"
+[tasks."pacman-hooks"]
+description = "Installs the cachyos/*.hook pacman hooks into /etc/pacman.d/hooks (needs sudo)"
+run = "sudo install -Dm644 -t /etc/pacman.d/hooks cachyos/*.hook"
 
 [tasks.tools]
 description = "Installs the mise-managed tools listed under [tools]"
 run = "mise install"
 
 [tasks.vscode]
-description = "Installs the VS Code Insiders extensions listed in editors/vscode/extensions.txt"
+description = "Installs the VS Code extensions listed in editors/vscode/extensions.txt"
 run = "editors/vscode/setup-extensions.pl"
 
 [tasks.rust]
@@ -67,13 +70,9 @@ run = [
   "rustup component add rust-analyzer rust-src rustfmt clippy llvm-tools-preview",
 ]
 
-[tasks.perl]
-description = "Installs Perl::Critic into the Homebrew perl for PerlNavigator (Perl::Tidy ships with it)"
-run = "cpanm --notest --quiet Perl::Critic"
-
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
-run = "macos/setup-symlinks.pl"
+run = "cachyos/setup-symlinks.pl"
 
 [tasks.pi]
 description = "Links the Pi configuration from the agentic/pi-config submodule and installs its packages"
@@ -88,8 +87,8 @@ description = "Rebuilds firefox/user.js from the latest Betterfox plus firefox/u
 run = "firefox/update-userjs.pl"
 
 [tasks.wallpaper]
-description = "Sets macos/wallpaper.png as the desktop picture"
-run = "osascript -e 'tell application \"Finder\" to set desktop picture to (POSIX file \"'\"$PWD/macos/wallpaper.png\"'\" as alias)'"
+description = "Sets cachyos/wallpaper.png as the Plasma desktop wallpaper"
+run = "plasma-apply-wallpaperimage \"$PWD/cachyos/wallpaper.png\""
 
 [tasks."hooks:test"]
 description = "Tests the agent hooks"

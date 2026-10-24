@@ -2,18 +2,10 @@ set -q DOTFILES; or set -g DOTFILES (path resolve (status filename) | path dirna
 
 # Environment
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
-set -gx TERMINAL /Applications/Ghostty.app/Contents/MacOS/ghostty
-
-# Homebrew (static `brew shellenv`, avoids spawning brew on every start)
-set -gx HOMEBREW_PREFIX /opt/homebrew
-set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
-set -gx HOMEBREW_REPOSITORY /opt/homebrew
+set -gx TERMINAL ghostty
 
 # PATH: later calls are prepended in front of earlier ones
-fish_add_path -gP /opt/homebrew/opt/rustup/bin
-fish_add_path -gmP /opt/homebrew/bin /opt/homebrew/sbin
-fish_add_path -gP /opt/homebrew/opt/bun/bin $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin
-fish_add_path -gaP ~/.docker/bin /opt/homebrew/opt/perl/bin
+fish_add_path -gP $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin
 
 status is-interactive; or return
 
@@ -25,13 +17,13 @@ abbr -a la 'ls -A'
 abbr -a c clear
 abbr -a reload 'exec fish'
 abbr -a home 'cd ~'
-abbr -a dev 'cd ~/Dev'
+abbr -a dev 'cd ~/dev'
 abbr -a dot 'cd $DOTFILES'
 abbr -a desk 'cd ~/Desktop'
 abbr -a docs 'cd ~/Documents'
 abbr -a dl 'cd ~/Downloads'
-abbr -a tmp 'cd $TMPDIR'
-abbr -a code code-insiders
+abbr -a tmp 'cd /tmp'
+abbr -a melonds 'prime-run melonDS'
 abbr -a dotdot --regex '^\.\.+$' --function multicd
 
 # Syntax highlighting
@@ -77,7 +69,7 @@ if command -q fzf
     fzf --fish | source
 end
 
-# mise activates itself through Homebrew's vendor_conf.d, no init needed here
+command -q mise; and mise activate fish | source
 
 # Prompt: past prompts collapse to the prompt char
 if command -q starship

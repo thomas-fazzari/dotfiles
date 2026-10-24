@@ -1,11 +1,10 @@
 [misc]
 pre_sudo = true
 disable = [
-  "system", # macOS updates go through System Settings
   "containers", # not always running
   "git_repos",
   "claude_code",
-  "uv", # Homebrew's uv cannot self-update
+  "uv", # Arch's uv cannot self-update
   "cargo", # from mise
   "pip3", # from mise
 ]
@@ -17,8 +16,8 @@ notify_end = "on_failure"
 [commands]
 "uv tools" = "uv tool upgrade --all"
 
-[brew]
-autoremove = true
+[linux]
+arch_package_manager = "paru"
 
 [vscode]
 cleanup_obsolete_extensions = true

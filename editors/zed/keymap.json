@@ -2,16 +2,16 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-cmd-enter": "terminal_panel::Toggle",
+      "ctrl-alt-enter": "terminal_panel::Toggle",
     },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-cmd-s": "pane::SplitRight",
-      "ctrl-cmd-k": "pane::CloseActiveItem",
-      "ctrl-cmd-h": "workspace::ActivatePaneLeft",
-      "ctrl-cmd-l": "workspace::ActivatePaneRight",
+      "ctrl-alt-s": "pane::SplitRight",
+      "ctrl-alt-k": "pane::CloseActiveItem",
+      "ctrl-alt-h": "workspace::ActivatePaneLeft",
+      "ctrl-alt-l": "workspace::ActivatePaneRight",
     },
   },
   {

@@ -6,7 +6,6 @@ charliermarsh.ruff
 codezombiech.gitignore
 csharpier.csharpier-vscode
 davidanson.vscode-markdownlint
-doublebuffer.metal-shader
 drewxs.tokyo-night-dark
 dustypomerleau.rust-syntax
 editorconfig.editorconfig

@@ -22,5 +22,5 @@ for my $path (@ARGV) {
   }
 }
 
-$status = 1 if @existing && system('/usr/bin/trash', @existing) != 0;
+$status = 1 if @existing && system('/usr/bin/trash', '--', @existing) != 0;
 exit $status;

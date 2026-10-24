@@ -13,6 +13,7 @@ sub install_risk {
   my $risk       = "$program $subcommand installs software globally";
 
   return $risk if $program eq 'brew'        && $subcommand eq 'install';
+  return $risk if $program =~ /^(pacman|paru|yay)$/ && $subcommand =~ /^-[SU](?!\w*[silgpc])/;
   return $risk if $program =~ /^(npm|bun)$/ && $subcommand =~ /^(i|install|add)$/ && $global;
   return $risk if $program eq 'cargo'       && $subcommand eq 'install';
   return $risk if $program =~ /^pip3?$/     && $subcommand eq 'install';

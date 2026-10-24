@@ -95,7 +95,7 @@
   // Background
   "background.enabled": true,
   "background.fullscreen": {
-    "images": ["/Users/thomas/Dev/dotfiles/macos/wallpaper.png"],
+    "images": ["/home/thomas/dev/dotfiles/cachyos/wallpaper.png"],
     "opacity": 0.12,
     "size": "cover",
     "position": "center",
@@ -132,10 +132,10 @@
     "*.s3db": "${capture}.${extname}-*",
   },
   // Terminal
-  "terminal.integrated.profiles.osx": {
-    "fish": { "path": "/opt/homebrew/bin/fish" },
+  "terminal.integrated.profiles.linux": {
+    "fish": { "path": "/usr/bin/fish" },
   },
-  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.defaultProfile.linux": "fish",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -160,10 +160,10 @@
     },
   },
   // Perl
-  "perlnavigator.perlPath": "/opt/homebrew/bin/perl",
+  "perlnavigator.perlPath": "/usr/bin/perl",
   // Formatters
   "csharpier.dev.disableCSharpierServer": true,
-  "oxc.path.oxfmt": "/opt/homebrew/bin/oxfmt",
+  "oxc.path.oxfmt": "/home/thomas/.local/share/mise/shims/oxfmt",
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode",
     "editor.inlayHints.enabled": "off",
@@ -379,7 +379,7 @@
   "extensions.autoUpdate": "on",
   "extensions.autoCheckUpdates": true,
   "extensions.ignoreRecommendations": true,
-  "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/Users/thomas/.dotnet/dotnet",
+  "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/home/thomas/.dotnet/dotnet",
   "json.schemaDownload.trustedDomains": {
     "https://developer.microsoft.com/json-schemas/": true,
     "https://inlang.com": true,
@@ -392,4 +392,5 @@
     "https://spec.openapis.org/": true,
     "https://www.schemastore.org/": true,
   },
+  "mise.binPath": "/home/thomas/.local/bin/mise",
 }

@@ -1,0 +1,96 @@
+# Repos and AUR packages, one per line
+# Restore with:
+#   mise run apps:install
+
+# Core CLI
+bat
+btop
+curl
+fd
+fish
+fzf
+zoxide
+github-cli
+git
+git-delta
+jq
+just
+ripgrep
+sd
+starship
+tokei
+topgrade-bin
+tree
+go-yq # mikefarah's yq, replaces Arch's jq-wrapper yq
+trash-cli # /usr/bin/trash for the agent hooks
+wl-clipboard
+
+# Dev tools
+# rustup lives in ~/.cargo (rustup-init), fff-mcp in ~/.local/bin
+# oxfmt and oxlint come from mise (npm:)
+ast-grep
+bun
+cmake
+difftastic
+golangci-lint
+gopls
+hyperfine
+clang
+lldb
+llvm
+make
+ninja
+ollama-cuda
+lua
+lua-language-server
+markdown-oxide
+neovim
+opam
+perl
+perl-perl-critic # PerlNavigator
+perl-tidy
+pkgconf
+stylua
+tinymist
+tree-sitter-cli
+typescript
+typescript-language-server
+typst
+typstyle
+uv
+vscode-langservers-extracted
+
+# Media and files
+gstreamer
+perl-image-exiftool
+ffmpeg
+imagemagick
+mpv
+poppler
+qpdf
+xdelta3
+
+# Databases
+dbeaver
+
+# Applications
+# alfred: KRunner, keka: Ark
+bitwarden
+docker
+docker-compose
+firefox
+ghostty
+ark
+kid3
+mullvad-vpn-bin
+obsidian
+onlyoffice-bin
+proton-mail-bin
+protonmail-bridge
+proton-vpn-gtk-app
+tailscale
+visual-studio-code-bin
+zed
+
+# Fonts
+ttf-iosevka-nerd

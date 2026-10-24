@@ -40,6 +40,10 @@ my @untouched = (
   'npm install',
   'bun add zod',
   'mise use node@26',
+  'pacman -Ss fish',
+  'paru -Si zed',
+  'pacman -Qi fish',
+  'sudo pacman -Sc',
   'find . -name "*.orig"',
 );
 is_deeply(run_hook($_), {}, "untouched: $_") for @untouched;
@@ -64,6 +68,10 @@ my @asks = (
   'echo "now: $(date)" && git reset --hard',
   'brew install jq',
   'sudo brew install jq',
+  'paru -S starship',
+  'sudo pacman -Syu',
+  'yay -S --needed zed',
+  'sudo pacman -U ./pkg.tar.zst',
   'npm install -g typescript',
   'bun add -g oxfmt',
   'cargo install ripgrep',

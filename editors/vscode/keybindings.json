@@ -1,43 +1,33 @@
 [
 	{
-		"key": "cmd+w",
-		"command": "-workbench.action.closeWindow",
-		"when": "isMac && !editorIsOpen && !multipleEditorGroups"
-	},
-	{
 		"key": "ctrl+l",
 		"command": "workbench.action.focusActiveEditorGroup",
-		"when": "isMac && sideBarFocus"
+		"when": "sideBarFocus"
 	},
 	{
-		"key": "ctrl+cmd+enter",
-		"command": "workbench.action.terminal.toggleTerminal",
-		"when": "isMac"
+		"key": "ctrl+alt+enter",
+		"command": "workbench.action.terminal.toggleTerminal"
 	},
 	{
-		"key": "ctrl+cmd+s",
-		"command": "workbench.action.terminal.split",
-		"when": "isMac"
+		"key": "ctrl+alt+s",
+		"command": "workbench.action.terminal.split"
 	},
 	{
-		"key": "ctrl+cmd+k",
-		"command": "workbench.action.terminal.kill",
-		"when": "isMac"
+		"key": "ctrl+alt+k",
+		"command": "workbench.action.terminal.kill"
 	},
 	{
-		"key": "ctrl+cmd+h",
-		"command": "workbench.action.terminal.focusPreviousPane",
-		"when": "isMac"
+		"key": "ctrl+alt+h",
+		"command": "workbench.action.terminal.focusPreviousPane"
 	},
 	{
-		"key": "ctrl+cmd+l",
-		"command": "workbench.action.terminal.focusNextPane",
-		"when": "isMac"
+		"key": "ctrl+alt+l",
+		"command": "workbench.action.terminal.focusNextPane"
 	},
 	{
 		"key": "enter",
 		"command": "list.select",
-		"when": "isMac && filesExplorerFocus && !inputFocus"
+		"when": "filesExplorerFocus && !inputFocus"
 	},
 	{
 		"key": "escape",

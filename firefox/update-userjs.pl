@@ -6,7 +6,9 @@ use POSIX   qw(strftime);
 
 my $source  = 'https://raw.githubusercontent.com/yokoffing/Betterfox/main/user.js';
 my $marker  = "// Enter your personal overrides below this line:\n";
-my $firefox = "$ENV{HOME}/Library/Application Support/Firefox";
+# Firefox moved new Linux profiles from ~/.mozilla to XDG_CONFIG_HOME
+my ($firefox) = grep {-d} map {"$ENV{HOME}/$_"} '.config/mozilla/firefox', '.mozilla/firefox';
+defined $firefox or die "No Firefox profile directory\n";
 
 my $userjs = `curl -fsSL $source`;
 $? == 0 or die "Failed to download $source\n";
@@ -46,4 +48,4 @@ else {
   print "link $link -> $target\n";
 }
 
-print "Firefox is running: quit it with Cmd+Q and relaunch to apply\n" if system('pgrep -xq firefox') == 0;
+print "Firefox is running: quit it with Ctrl+Q and relaunch to apply\n" if system('pgrep -x firefox >/dev/null') == 0;

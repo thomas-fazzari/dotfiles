@@ -135,7 +135,7 @@
 
   // terminal
   "terminal": {
-    "shell": { "program": "/opt/homebrew/bin/fish" },
+    "shell": { "program": "/usr/bin/fish" },
     "font_family": "Iosevka Nerd Font Mono",
     "font_size": 14,
     "blinking": "on",
@@ -208,7 +208,7 @@
     },
     "perlnavigator-server": {
       "settings": {
-        "perlnavigator": { "perlPath": "/opt/homebrew/bin/perl" },
+        "perlnavigator": { "perlPath": "/usr/bin/perl" },
       },
     },
   },

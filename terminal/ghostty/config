@@ -1,7 +1,7 @@
 font-family = Iosevka Nerd Font Mono
-font-size = 16
+font-size = 13
 
-command = /opt/homebrew/bin/fish
+command = /usr/bin/fish
 
 background = #08080B
 foreground = #A9B1D6
@@ -10,7 +10,7 @@ cursor-text = #08080B
 selection-background = #202330
 selection-foreground = cell-foreground
 
-background-image = /Users/thomas/Dev/dotfiles/macos/wallpaper.png
+background-image = /home/thomas/dev/dotfiles/cachyos/wallpaper.png
 background-image-opacity = 0.2
 background-image-position = center
 background-image-fit = cover
@@ -35,7 +35,6 @@ palette = 15=#ACB0D0
 window-padding-x = 12
 window-padding-y = 12
 split-divider-color = #1E202E
-macos-option-as-alt = true
 copy-on-select = true
 
 keybind = ctrl+v=paste_from_clipboard
