@@ -71,6 +71,10 @@ run = "cpanm --notest --quiet Perl::Critic"
 description = "Links the tracked config files into their expected locations"
 run = "macos/setup-symlinks.pl"
 
+[tasks.firefox]
+description = "Rebuilds firefox/user.js from the latest Betterfox plus firefox/user-overrides.js and links it into the default Firefox profile"
+run = "firefox/update-userjs.pl"
+
 [tasks.wallpaper]
 description = "Sets macos/wallpaper.png as the desktop picture"
 run = "osascript -e 'tell application \"Finder\" to set desktop picture to (POSIX file \"'\"$PWD/macos/wallpaper.png\"'\" as alias)'"
