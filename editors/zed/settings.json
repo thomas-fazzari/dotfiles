@@ -135,6 +135,7 @@
 
   // terminal
   "terminal": {
+    "shell": { "program": "/opt/homebrew/bin/fish" },
     "font_family": "Iosevka Nerd Font Mono",
     "font_size": 14,
     "blinking": "on",

@@ -20,6 +20,7 @@ cargo-deny = "latest"
 "github:bnjbvr/cargo-machete" = "latest"
 "github:nextest-rs/nextest" = { version = "latest", version_prefix = "cargo-nextest-" }
 "github:Samsung/netcoredbg" = { version = "latest", asset_pattern = "netcoredbg-osx-arm64.zip" }
+pi = "latest"
 
 [task_config]
 dir = "~/Dev/dotfiles"
@@ -33,6 +34,7 @@ run = [
   { task = "rust" },
   { task = "perl" },
   { task = "symlinks" },
+  { task = "pi" },
   { task = "wallpaper" },
 ]
 
@@ -70,6 +72,13 @@ run = "cpanm --notest --quiet Perl::Critic"
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
 run = "macos/setup-symlinks.pl"
+
+[tasks.pi]
+description = "Links the Pi configuration from the agentic/pi-config submodule into ~/.pi/agent"
+run = [
+  "test -e agentic/pi-config/setup.sh || git submodule update --init agentic/pi-config",
+  "bash agentic/pi-config/setup.sh",
+]
 
 [tasks.firefox]
 description = "Rebuilds firefox/user.js from the latest Betterfox plus firefox/user-overrides.js and links it into the default Firefox profile"

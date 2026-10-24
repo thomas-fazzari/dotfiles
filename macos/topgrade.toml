@@ -1,0 +1,27 @@
+[misc]
+pre_sudo = true
+disable = [
+  "system", # macOS updates go through System Settings
+  "containers", # not always running
+  "git_repos",
+  "claude_code",
+  "uv", # Homebrew's uv cannot self-update
+  "cargo", # from mise
+  "pip3", # from mise
+]
+cleanup = true
+assume_yes = true
+ask_retry = false
+notify_end = "on_failure"
+
+[commands]
+"uv tools" = "uv tool upgrade --all"
+
+[brew]
+autoremove = true
+
+[vscode]
+cleanup_obsolete_extensions = true
+
+[rustup]
+channels = ["stable"]

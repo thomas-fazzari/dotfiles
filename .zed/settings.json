@@ -1,9 +1,0 @@
-{
-  "lsp": {
-    "perlnavigator-server": {
-      "settings": {
-        "perlnavigator": { "includePaths": ["$workspaceFolder/agentic/claude/hooks/lib"] },
-      },
-    },
-  },
-}

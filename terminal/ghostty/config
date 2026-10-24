@@ -1,6 +1,8 @@
 font-family = Iosevka Nerd Font Mono
 font-size = 16
 
+command = /opt/homebrew/bin/fish
+
 background = #08080B
 foreground = #A9B1D6
 cursor-color = #C0CAF5

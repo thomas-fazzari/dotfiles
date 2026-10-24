@@ -58,13 +58,11 @@
     "*.xaml": "xml",
   },
   "files.exclude": {
-    "**/.idea": true,
     "**/.vs": true,
     "**/__pycache__": true,
     "**/node_modules": true,
     "**/dist": true,
     "**/build": true,
-    "**/bin": true,
     "**/.cache": true,
     "**/out": true,
     "**/obj": true,
@@ -134,6 +132,10 @@
     "*.s3db": "${capture}.${extname}-*",
   },
   // Terminal
+  "terminal.integrated.profiles.osx": {
+    "fish": { "path": "/opt/homebrew/bin/fish" },
+  },
+  "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.persistentSessionReviveProcess": "never",
