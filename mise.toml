@@ -81,6 +81,7 @@ run = [
   "test -e agentic/pi-config/setup.sh || git submodule update --init agentic/pi-config",
   "bash agentic/pi-config/setup.sh",
   "mise -C agentic/pi-config run packages",
+  "herdr integration install pi",
 ]
 
 [tasks.firefox]

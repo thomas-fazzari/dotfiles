@@ -2,12 +2,14 @@ package BashGuard::Shell;
 use strict;
 use warnings;
 use Exporter 'import';
-use List::Util qw(any);
 
-our @EXPORT_OK = qw(split_commands program_positions has_arg has_short_flag shell_quote);
+our @EXPORT_OK = qw(
+  split_commands program_positions program_name is_shell inline_script operands expand_home shell_quote
+);
 
 my %PREFIXES   = map { $_ => 1 } qw(sudo xargs env command nohup time ! { if then else elif do while until);
 my %EXEC_FLAGS = map { $_ => 1 } qw(-exec -execdir -ok -okdir);
+my %SHELLS     = map { $_ => 1 } qw(sh bash zsh dash ksh fish);
 
 sub unquote {
   my ($word) = @_;
@@ -84,15 +86,43 @@ sub program_positions {
   return @positions;
 }
 
-sub has_arg {
-  my ($args, @names) = @_;
-  my %wanted = map { $_ => 1 } @names;
-  return any { $wanted{$_} } @$args;
+sub program_name {
+  my ($program) = @_;
+  return $program =~ s{.*/}{}r;
 }
 
-sub has_short_flag {
-  my ($args, $letter) = @_;
-  return any {/^-[a-zA-Z]*$letter/} @$args;
+sub is_shell {
+  my ($program) = @_;
+  return $SHELLS{program_name($program)};
+}
+
+# Script text a shell gets through -c, or eval through its arguments
+sub inline_script {
+  my ($program, @args) = @_;
+  return join ' ', @args if program_name($program) eq 'eval';
+  return unless is_shell($program);
+  while (@args && $args[0] =~ /^[-+]/) {
+    my $flag = shift @args;
+    return shift @args if $flag =~ /^-[a-zA-Z]*c[a-zA-Z]*$/;
+    shift @args        if $flag =~ /^[-+][oO]$/;
+  }
+  return;
+}
+
+# Everything after -- counts, even words starting with a dash
+sub operands {
+  my @args = @_;
+  my @operands;
+  while (defined(my $arg = shift @args)) {
+    return @operands, @args if $arg eq '--';
+    push @operands, $arg unless $arg =~ /^-./;
+  }
+  return @operands;
+}
+
+sub expand_home {
+  my ($path) = @_;
+  return $path =~ s{^(?:~|\$HOME|\$\{HOME\})(?=/|$)}{$ENV{HOME} // ''}er;
 }
 
 sub shell_quote {

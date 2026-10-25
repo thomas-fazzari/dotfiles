@@ -24,6 +24,7 @@ my @links = (
   ['.claude/settings.json'                                             => 'agentic/claude/settings.json'],
   ['.claude/hooks'                                                     => 'agentic/hooks'],
   ['.local/share/agent-hooks'                                          => 'agentic/hooks'],
+  ['.config/herdr/config.toml'                                         => 'agentic/herdr/config.toml'],
   ['.config/mise/config.toml'                                          => 'mise.toml'],
   ['.config/topgrade.toml'                                             => 'macos/topgrade.toml'],
   ['.bunfig.toml'                                                      => 'bunfig.toml'],

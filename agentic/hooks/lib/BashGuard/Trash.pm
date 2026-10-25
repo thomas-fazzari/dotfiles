@@ -3,9 +3,9 @@ use strict;
 use warnings;
 use Exporter 'import';
 use FindBin          qw($RealBin);
-use BashGuard::Shell qw(has_arg shell_quote);
+use BashGuard::Shell qw(shell_quote);
 
-our @EXPORT_OK = qw(is_rm trash_available rewrite_rm deletion_risk);
+our @EXPORT_OK = qw(is_rm trash_available rewrite_rm);
 
 my $TRASH_RM = "$RealBin/trash-rm.pl";
 my %RM_NAMES = map { $_ => 1 } qw(rm /bin/rm /usr/bin/rm);
@@ -24,12 +24,6 @@ sub rewrite_rm {
     substr($command, $word->[0], $word->[1] - $word->[0]) = shell_quote($TRASH_RM);
   }
   return $command;
-}
-
-sub deletion_risk {
-  my ($program, @args) = @_;
-  return 'find -delete deletes files for good' if $program eq 'find' && has_arg(\@args, '-delete');
-  return;
 }
 
 1;
