@@ -17,6 +17,7 @@ dotnet = "10.0.400"
 "dotnet:ThomasFazzari.RoslynBridge" = "latest"
 "dotnet:vpk" = "latest"
 cargo-deny = "latest"
+"cargo:cargo-sweep" = "latest"
 "aqua:taiki-e/cargo-llvm-cov" = "latest"
 "github:bnjbvr/cargo-machete" = "latest"
 "github:nextest-rs/nextest" = { version = "latest", version_prefix = "cargo-nextest-" }
@@ -73,7 +74,7 @@ run = "cpanm --notest --quiet Perl::Critic"
 
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
-run = "macos/setup-symlinks.pl"
+run = "macos/scripts/setup-symlinks.pl"
 
 [tasks.pi]
 description = "Links the Pi configuration from the agentic/pi-config submodule and installs its packages"
@@ -83,6 +84,10 @@ run = [
   "mise -C agentic/pi-config run packages",
   "herdr integration install pi",
 ]
+
+[tasks.audit]
+description = "Reports reclaimable disk space, broken dotfile links and system health without changing anything"
+run = "agentic/skills/dd-audit/scripts/audit.pl"
 
 [tasks.firefox]
 description = "Rebuilds firefox/user.js from the latest Betterfox plus firefox/user-overrides.js and links it into the default Firefox profile"
