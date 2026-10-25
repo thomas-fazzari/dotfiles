@@ -163,7 +163,7 @@
   "perlnavigator.perlPath": "/opt/homebrew/bin/perl",
   // Formatters
   "csharpier.dev.disableCSharpierServer": true,
-  "oxc.path.oxfmt": "/opt/homebrew/bin/oxfmt",
+  "oxc.path.oxfmt": "/Users/thomas/.local/share/mise/shims/oxfmt",
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode",
     "editor.inlayHints.enabled": "off",

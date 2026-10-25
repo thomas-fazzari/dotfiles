@@ -5,9 +5,10 @@ disable = [
   "containers", # not always running
   "git_repos",
   "claude_code",
-  "uv", # Homebrew's uv cannot self-update
+  "uv", # from mise
   "cargo", # from mise
   "pip3", # from mise
+  "opam",
 ]
 cleanup = true
 assume_yes = true

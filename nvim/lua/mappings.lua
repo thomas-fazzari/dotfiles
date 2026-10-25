@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 
 vim.keymap.del("n", "<leader>h")
@@ -44,4 +42,3 @@ end, { desc = "FFF: find files" })
 map("n", "<leader>fw", function()
   require("fff").live_grep()
 end, { desc = "FFF: live grep" })
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

@@ -1,7 +1,7 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
--- bootstrap lazy and all plugins
+-- Clone lazy.nvim on first start
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = require "configs.lazy"
 
--- load plugins
 require("lazy").setup({
   {
     "NvChad/NvChad",
@@ -25,10 +24,10 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
--- load theme
+-- Load the compiled base46 theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
-vim.cmd.colorscheme("tokyonight")
+vim.cmd.colorscheme "tokyonight"
 
 require "options"
 require "autocmds"

@@ -13,7 +13,7 @@ set -gx HOMEBREW_REPOSITORY /opt/homebrew
 # PATH: later calls are prepended in front of earlier ones
 fish_add_path -gP /opt/homebrew/opt/rustup/bin
 fish_add_path -gmP /opt/homebrew/bin /opt/homebrew/sbin
-fish_add_path -gP /opt/homebrew/opt/bun/bin $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin
+fish_add_path -gP $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin
 fish_add_path -gaP ~/.docker/bin /opt/homebrew/opt/perl/bin
 
 status is-interactive; or return

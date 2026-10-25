@@ -32,4 +32,4 @@ vim.diagnostic.config {
   severity_sort = true,
 }
 
--- read :h vim.lsp.config for changing options of lsp servers
+-- Per-server options: :h vim.lsp.config

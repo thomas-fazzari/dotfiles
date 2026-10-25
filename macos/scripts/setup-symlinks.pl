@@ -33,6 +33,7 @@ my @links = (
   ['.config/starship.toml'                                             => 'terminal/starship/starship.toml'],
   ['.gitconfig'                                                        => 'git/.gitconfig'],
   ['.gitignore_global'                                                 => 'git/.gitignore_global'],
+  ['.perltidyrc'                                                       => '.perltidyrc'],
 );
 
 # Claude Code has no setting for extra skill directories

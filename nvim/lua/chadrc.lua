@@ -1,26 +1,13 @@
--- This file needs to have same structure as nvconfig.lua
+-- Same structure as nvconfig.lua, which lists every option:
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
--- Please read that file to know all available options :(
 
 ---@type ChadrcConfig
 local M = {}
 
 M.base46 = {
-	theme = "tokyonight",
-	transparency = true,
-	integrations = { "semantic_tokens" },
-
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+  theme = "tokyonight",
+  transparency = true,
+  integrations = { "semantic_tokens" },
 }
-
--- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
--- }
 
 return M
