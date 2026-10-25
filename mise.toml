@@ -40,6 +40,10 @@ typst = "latest"
 typstyle = "latest"
 uv = "latest"
 
+[env]
+# Perl::Critic and Perl::Tidy install their scripts into the keg-only Homebrew perl
+_.path = ["/opt/homebrew/opt/perl/bin"]
+
 [task_config]
 dir = "~/Dev/dotfiles"
 
