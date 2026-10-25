@@ -23,11 +23,23 @@
 	prune = true
 
 [pull]
-	rebase = false
+	ff = only
 
 [push]
 	default = simple
 	autoSetupRemote = true
+
+[rebase]
+	autoStash = true
+
+[merge]
+	conflictstyle = zdiff3
+
+[diff]
+	algorithm = histogram
+
+[rerere]
+	enabled = true
 
 [alias]
 	s = status
@@ -41,6 +53,9 @@
 	lg = log --graph --oneline --decorate --all
 	aliases = config --get-regexp ^alias\\.
 	undo = reset HEAD~1 --mixed
+	dft = -c diff.external=difft diff
+	dlog = -c diff.external=difft log -p --ext-diff
+	dshow = -c diff.external=difft show --ext-diff
 
 [credential "https://github.com"]
 	helper =
