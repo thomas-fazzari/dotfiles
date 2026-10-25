@@ -1,0 +1,12 @@
+[env]
+FIL_FEEDS = "{{config_root}}/feeds.toml"
+
+[tasks."feeds:plan"]
+description = "Shows the changes feeds:apply would make to Miniflux"
+dir = "{{config_root}}/fil"
+run = "mise run feeds:plan"
+
+[tasks."feeds:apply"]
+description = "Applies feeds.toml to Miniflux"
+dir = "{{config_root}}/fil"
+run = "mise run feeds:apply"

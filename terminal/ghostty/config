@@ -1,0 +1,57 @@
+font-family = Iosevka Nerd Font Mono
+font-size = 16
+
+command = /opt/homebrew/bin/fish
+
+background = #08080B
+foreground = #A9B1D6
+cursor-color = #C0CAF5
+cursor-text = #08080B
+selection-background = #202330
+selection-foreground = cell-foreground
+
+background-image = /Users/thomas/Dev/dotfiles/macos/wallpaper.png
+background-image-opacity = 0.2
+background-image-position = center
+background-image-fit = cover
+
+palette = 0=#363B54
+palette = 1=#F7768E
+palette = 2=#41A6B5
+palette = 3=#E0AF68
+palette = 4=#7AA2F7
+palette = 5=#BB9AF7
+palette = 6=#7DCFFF
+palette = 7=#787C99
+palette = 8=#444B6A
+palette = 9=#F7768E
+palette = 10=#41A6B5
+palette = 11=#E0AF68
+palette = 12=#7AA2F7
+palette = 13=#BB9AF7
+palette = 14=#7DCFFF
+palette = 15=#ACB0D0
+
+window-padding-x = 12
+window-padding-y = 12
+split-divider-color = #1E202E
+macos-option-as-alt = true
+copy-on-select = true
+
+keybind = ctrl+v=paste_from_clipboard
+keybind = performable:ctrl+c=copy_to_clipboard:mixed
+keybind = ctrl+shift+enter=new_split:right
+keybind = ctrl+shift+backspace=close_surface
+keybind = ctrl+shift+f=toggle_split_zoom
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+arrow_left=resize_split:left,10
+keybind = ctrl+shift+arrow_right=resize_split:right,10
+keybind = ctrl+shift+arrow_up=resize_split:up,10
+keybind = ctrl+shift+arrow_down=resize_split:down,10
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+n=next_tab
+keybind = ctrl+shift+p=previous_tab
+keybind = ctrl+shift+w=close_tab:this
