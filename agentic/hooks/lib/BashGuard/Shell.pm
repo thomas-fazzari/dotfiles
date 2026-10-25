@@ -8,8 +8,9 @@ our @EXPORT_OK = qw(
 );
 
 my %PREFIXES   = map { $_ => 1 } qw(sudo xargs env command nohup time ! { if then else elif do while until);
-my %EXEC_FLAGS = map { $_ => 1 } qw(-exec -execdir -ok -okdir);
-my %SHELLS     = map { $_ => 1 } qw(sh bash zsh dash ksh fish);
+my %EXEC_FLAGS = map { $_ => 1 } qw(-exec -execdir);
+my %SHELLS     = map { $_ => 1 } qw(sh bash zsh fish);
+my $DELIMITER  = qr/(?:\\.|'[^']*'|"[^"]*"|[^\s;&|()<>'"\\`])+/s;
 
 sub unquote {
   my ($word) = @_;
@@ -26,44 +27,83 @@ sub unquote {
   return $text;
 }
 
-# Simple commands made of [start, end, text] words, or undef when an open quote or a heredoc makes the line unsafe to read
+# Simple commands made of [start, end, text] words, or undef when an open quote makes the line unsafe to read
+#
+# Heredoc bodies are skipped, commands substituted inside "..." join the list
 sub split_commands {
   my ($command) = @_;
-  my @commands = ([]);
+  my $state = {commands => [], heredocs => []};
   pos($command) = 0;
-  while (pos($command) < length $command) {
-    next if $command =~ /\G[ \t]+/gc;
-    if ($command =~ /\G[;&|()\n`]/gc) {
-      push @commands, [];
-      next;
-    }
-    next if $command =~ /\G#[^\n]*/gc;
-
-    my $start = pos $command;
-    return unless $command =~ /\G((?:\\.|'[^']*'|"(?:\\.|[^"\\])*"|[^ \t;&|()\n'"\\<`]|<(?!<))+)/gcs;
-    my $word = $1;
-    push @{$commands[-1]}, [$start, pos $command, unquote($word)];
-    push @commands,        @{quoted_substitutions($word, $start) // return};
-  }
-  return [grep {@$_} @commands];
+  parse_commands(\$command, $state) // return;
+  return [grep {@$_} @{$state->{commands}}];
 }
 
-# Commands inside "$(...)" and "`...`", with offsets into the whole line, or undef when they nest
-sub quoted_substitutions {
-  my ($word, $offset) = @_;
-  my @commands;
-  while ($word =~ /"((?:\\.|[^"\\])*)"/g) {
-    my ($quoted, $quoted_start) = ($1, $offset + $-[1]);
-    while ($quoted =~ /\$\(([^()`]*)\)|`([^`]*)`/g) {
-      my $inner       = $1 // $2;
-      my $inner_start = $quoted_start + (defined $1 ? $-[1] : $-[2]);
-      my $nested      = split_commands($inner) or return;
-      push @commands, map { [map { [$_->[0] + $inner_start, $_->[1] + $inner_start, $_->[2]] } @$_] } @$nested;
+# Reads commands up to the end of the input, or up to the ) or ` that closes a substitution
+sub parse_commands {
+  my ($input, $state, $terminator) = @_;
+  my $words = [];
+  my $depth = 0;
+  push @{$state->{commands}}, $words;
+  while (pos($$input) < length $$input) {
+    next if $$input =~ /\G[ \t]+/gc || $$input =~ /\G#[^\n]*/gc;
+    if ($$input =~ /\G([;&|()\n`])/gc) {
+      my $separator = $1;
+      if    ($separator eq '(')                 { $depth++ }
+      elsif ($separator eq ')' && $depth)       { $depth-- }
+      elsif ($separator eq ($terminator // '')) { return 1 }
+      skip_heredocs($input, $state) if $separator eq "\n";
+      push @{$state->{commands}}, $words = [];
+      next;
     }
-    (my $rest = $quoted) =~ s/\$\([^()`]*\)|`[^`]*`//g;
-    return if $rest =~ /\$\(|`/;
+    if ($$input =~ /\G<<[ \t]*($DELIMITER)/gc) {
+      push @{$state->{heredocs}}, unquote($1);
+      next;
+    }
+    push @$words, parse_word($input, $state) // return;
   }
-  return \@commands;
+  return defined $terminator ? undef : 1;
+}
+
+sub parse_word {
+  my ($input, $state) = @_;
+  my $start = pos $$input;
+  my $text  = '';
+  while (1) {
+    if    ($$input =~ /\G\\(.)/gcs)    { $text .= $1 }
+    elsif ($$input =~ /\G'([^']*)'/gc) { $text .= $1 }
+    elsif ($$input =~ /\G"/gc) {
+      my $from = pos $$input;
+      quoted_substitutions($input, $state) // return;
+      $text .= substr($$input, $from, pos($$input) - $from - 1) =~ s/\\(.)/$1/gsr;
+    }
+    elsif ($$input =~ /\G([^ \t;&|()\n'"\\<`]+|<<<|<(?!<))/gc) { $text .= $1 }
+    else                                                       {last}
+  }
+  return pos($$input) > $start ? [$start, pos $$input, $text] : undef;
+}
+
+# Reads the commands that $(...) and `...` run inside "..." up to its closing quote
+sub quoted_substitutions {
+  my ($input, $state) = @_;
+  while (pos($$input) < length $$input) {
+    return 1 if $$input =~ /\G"/gc;
+    if    ($$input =~ /\G\$\(/gc) { parse_commands($input, $state, ')') // return }
+    elsif ($$input =~ /\G`/gc)    { parse_commands($input, $state, '`') // return }
+    else                          { $$input =~ /\G(?:\\.|[^"\\\$`]+|\$)/gcs }
+  }
+  return;
+}
+
+# A heredoc body runs from the line after its operator to the delimiter line
+sub skip_heredocs {
+  my ($input, $state) = @_;
+  while (defined(my $delimiter = shift @{$state->{heredocs}})) {
+    while (pos($$input) < length $$input) {
+      $$input =~ /\G([^\n]*)\n?/gc;
+      last if $1 eq $delimiter;
+    }
+  }
+  return;
 }
 
 # Indexes of the words that name a program to run

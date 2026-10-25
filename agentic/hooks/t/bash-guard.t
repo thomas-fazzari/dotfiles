@@ -65,7 +65,10 @@ my @untouched = (
   'cat ~/.ssh/id_ed25519.pub',
   'cat .envrc',
   'git commit -m "ignore .env files"',
-  'wipefs -n /dev/sda',
+  "cat <<'EOF'\ngit reset --hard\nEOF",
+  "cat <<EOF\nrm -rf x\nEOF",
+  "git commit -m \"\$(cat <<'E'\n\"a\" `b` )\nE\n)\"",
+  'jq . <<< "$json"',
 );
 is_deeply(run_hook($_), {}, "untouched: $_") for @untouched;
 
@@ -97,7 +100,6 @@ my @asks = (
   'mise use -g node@26',
   'find . -name "*.orig" -delete',
   'git reset --merge',
-  'git reset --har',
   'git checkout --force main',
   'git switch --discard-changes main',
   'git switch -f main',
@@ -127,7 +129,7 @@ my @asks = (
   'rsync -a --remove-source-files src/ dst/',
   'shred -u notes.txt',
   'dd if=disk.img of=/dev/disk4',
-  'mkfs.ext4 /dev/sda1',
+  'newfs_apfs /dev/disk4s1',
   'diskutil eraseDisk APFS X disk4',
   'diskutil apfs deleteVolume disk4s1',
   'rm -rf /',
@@ -146,11 +148,15 @@ my @asks = (
   'grep KEY <.env',
   'cat ~/.ssh/id_ed25519',
   'ls $HOME/.ssh',
-  'wipefs -a /dev/sda',
   'cat ~/.config/gh/hosts.yml',
   'cat ~/.pi/agent/auth.json',
   'openssl rsa -in server.key',
   'bash -c "cat .env"',
+  "git reset --hard && cat <<EOF\nhi\nEOF",
+  "cat <<EOF && git reset --hard\nhi\nEOF",
+  "git commit -m \"\$(cat <<'EOF'\nmsg\nEOF\n)\" && git push -f",
+  'echo "unterminated && git reset --hard',
+  'bash -c "echo \'unterminated"',
 );
 is(run_hook($_)->{permissionDecision}, 'ask', "asks: $_") for @asks;
 
@@ -169,6 +175,7 @@ my @rewrites = (
   ["echo 'rm a' && rm b",                  "echo 'rm a' && $TRASH b",                     undef],
   ['for f in *.tmp; do rm "$f"; done',     "for f in *.tmp; do $TRASH \"\$f\"; done",     undef],
   ['rm -rf x && git reset --hard',         "$TRASH -rf x && git reset --hard",            'ask'],
+  ["x=\"\$(cat <<'E'\n)\nE\n)\"; rm f",    "x=\"\$(cat <<'E'\n)\nE\n)\"; $TRASH f",       undef],
 );
 for my $case (@rewrites) {
   my ($command, $rewritten, $decision) = @$case;

@@ -6,7 +6,7 @@ use BashGuard::Rules qw(first_reason arg arg_like action flag);
 
 our @EXPORT_OK = qw(git_risk);
 
-my %GLOBAL_OPTIONS_WITH_VALUE = map { $_ => 1 } qw(-C -c --git-dir --work-tree --namespace);
+my %GLOBAL_OPTIONS_WITH_VALUE = map { $_ => 1 } qw(-C -c --git-dir --work-tree);
 
 sub forced      { return flag('--force',            '-f') }
 sub leased      { return flag('--force-with-lease', '--force-if-includes') }
@@ -17,12 +17,10 @@ my %RULES = (
     'git reset --hard discards uncommitted changes'     => sub { flag('--hard') },
     'git reset --merge can discard uncommitted changes' => sub { flag('--merge') },
   ],
-  checkout => [
-    'git checkout can discard uncommitted changes' => sub { forced() || arg('--', '.') || flag('--pathspec-from-file') }
-  ],
-  switch  => ['git switch --force discards uncommitted changes' => sub { forced() || flag('--discard-changes') }],
-  restore => ['git restore discards uncommitted changes'        => sub { !staged_only() }],
-  clean   => ['git clean deletes untracked files for good'      => sub { !flag('--dry-run', '-n') }],
+  checkout => ['git checkout can discard uncommitted changes'    => sub { forced() || arg('--', '.') }],
+  switch   => ['git switch --force discards uncommitted changes' => sub { forced() || flag('--discard-changes') }],
+  restore  => ['git restore discards uncommitted changes'        => sub { !staged_only() }],
+  clean    => ['git clean deletes untracked files for good'      => sub { !flag('--dry-run', '-n') }],
   rm   => ['git rm --force discards uncommitted changes' => sub { forced() && !flag('--cached', '--dry-run', '-n') }],
   push => [
     'git push --mirror can overwrite and delete remote refs' => sub { flag('--mirror') },

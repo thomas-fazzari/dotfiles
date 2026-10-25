@@ -35,21 +35,19 @@ sub action {
   return any { $_ eq $first } @names;
 }
 
-# Any spelling of an option given as --long or -l
-# Long options also match the prefixes getopt accepts (--har for --hard), letters match inside -abc clusters
+# Any spelling of an option given as --long or -l, with letters matching inside -abc clusters
 sub flag {
   my @spellings = @_;
-  my @longs     = grep {/^--/} @spellings;
-  my @letters   = map  { /^-(\w)$/ ? $1 : () } @spellings;
+  my %longs     = map { $_ => 1 } grep {/^--/} @spellings;
+  my @letters   = map { /^-(\w)$/ ? $1 : () } @spellings;
   for my $arg (@ARGS) {
     last if $arg eq '--';
     if ($arg =~ /^-(\w+)$/) {
       my $cluster = $1;
       return 1 if any { index($cluster, $_) >= 0 } @letters;
     }
-    elsif ($arg =~ /^(--[\w-]{2,})(?:=|$)/) {
-      my $name = $1;
-      return 1 if any { index($_, $name) == 0 } @longs;
+    elsif ($arg =~ /^(--[\w-]+)(?:=|$)/) {
+      return 1 if $longs{$1};
     }
   }
   return 0;

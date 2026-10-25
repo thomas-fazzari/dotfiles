@@ -18,9 +18,16 @@ my $MAX_NESTING = 3;
 
 my $tool_input = decode_json(do { local $/; <> })->{tool_input} // {};
 my $command    = $tool_input->{command}                         // '';
-my $commands   = split_commands($command) or exit 0;
 
 my (@risks, @rm_words, $fetches, $runs_unseen_code);
+
+sub inspect_script {
+  my ($script, $depth) = @_;
+  my $commands = split_commands($script);
+  if ($commands) { inspect($commands, $depth) }
+  else           { push @risks, 'the command could not be parsed, so bash-guard checked none of it' }
+  return $commands;
+}
 
 sub inspect {
   my ($commands, $depth) = @_;
@@ -38,13 +45,12 @@ sub inspect {
       push @rm_words, $words->[$position] if $depth == 0 && is_rm($program);
 
       my $script = inline_script($program, @args);
-      my $nested = defined $script && $depth < $MAX_NESTING && split_commands($script);
-      inspect($nested, $depth + 1) if $nested;
+      inspect_script($script, $depth + 1) if defined $script && $depth < $MAX_NESTING;
     }
   }
   return;
 }
-inspect($commands, 0);
+my $commands = inspect_script($command, 0) // [];
 push @risks, 'running code fetched from the network skips any review' if $fetches && $runs_unseen_code;
 @risks    = uniq @risks;
 @rm_words = () unless trash_available();
