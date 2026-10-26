@@ -31,6 +31,7 @@ node = "26"
 oxfmt = "latest"
 oxlint = "latest"
 pi = "latest"
+"pipx:termaid" = { version = "latest", extras = "rich" }
 python = "3.14"
 rtk = "latest"
 stylua = "latest"

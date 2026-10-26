@@ -50,6 +50,8 @@
 !/agentic/skills/prose-cleanup/**
 !/agentic/skills/dd-audit/
 !/agentic/skills/dd-audit/**
+!/agentic/skills/show-me/
+!/agentic/skills/show-me/**
 
 # Generated files and local settings stay ignored inside allowed dirs
 **/.DS_Store
