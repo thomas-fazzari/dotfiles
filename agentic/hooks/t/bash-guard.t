@@ -1,6 +1,7 @@
 use strict;
 use warnings;
-use Cwd        qw(abs_path);
+use Cwd        qw(abs_path getcwd);
+use File::Temp qw(tempdir);
 use FindBin    qw($RealBin);
 use IPC::Open2 qw(open2);
 use JSON::PP;
@@ -187,5 +188,107 @@ for my $case (@rewrites) {
 my $updated = run_hook('rm x')->{updatedInput};
 is($updated->{description}, 'kept', 'rewrite keeps the other tool input fields');
 ok($updated->{run_in_background}, 'rewrite keeps boolean fields');
+
+# File reads are denied only for agents that have tools for them
+sub run_read_tools_hook {
+  my ($command) = @_;
+  local $ENV{BASH_GUARD_READ_TOOLS} = 1;
+  return run_hook($command);
+}
+
+my @read_tools_untouched = (
+  'git log --oneline | head -20',
+  'cargo test 2>&1 | tail -50',
+  'cargo build |& tail -5',
+  'cargo tree | rg serde',
+  'git diff | grep -n TODO',
+  "git show HEAD:README.md | sed -n '1,20p'",
+  'git ls-files | xargs wc -l',
+  'git ls-files | xargs ls -l',
+  'echo hi | cat',
+  "cat <<EOF\nhi\nEOF",
+  'jq . <<< "$json"',
+  'wc -l src/main.rs',
+  'git grep foo',
+  'command -v rg',
+  'mise run check',
+  'ls -la ~/.claude',
+  'ls -l src',
+  'find . -mtime -1 -name "*.jsonl"',
+  'find ~/.pi -newermt 2026-10-25 -type f',
+  'find . -size +1M',
+  'find . -type l',
+  'find . -name "*.rs" -printf "%T@ %p\n"',
+);
+is_deeply(run_read_tools_hook($_), {}, "read tools, untouched: $_") for @read_tools_untouched;
+
+my @read_tools_denied = (
+  'cat src/main.rs',
+  'cd crates && cat -n lib.rs',
+  'sudo cat /etc/hosts',
+  'head -50 README.md',
+  'tail -n 20 log.txt',
+  "sed -n '1,40p' src/main.rs",
+  "sed -i 's/a/b/' src/main.rs",
+  "awk '{print \$1}' notes.txt",
+  'grep -rn TODO src',
+  'grep -n foo src/main.rs',
+  'rg foo',
+  'rg -n "fn main" crates',
+  'find . -name "*.rs"',
+  'find . -type f -name "*.rs"',
+  'ls',
+  'ls -a src',
+  'ls -lR',
+  'ls && git status',
+  'git ls-files | xargs cat',
+  'git ls-files | xargs grep -l TODO',
+  'git ls-files -z | xargs -0 sed -n 1p',
+  'git ls-files | xargs -I{} cat {}',
+  'git status || ls',
+  'cat mise.toml | head -80',
+  'for f in *.rs; do cat "$f"; done',
+  'x=$(cat VERSION)',
+  "cat > out.txt <<EOF\nhi\nEOF",
+  'bash -c "cat src/main.rs"',
+  'cat .env',
+  'rm x && cat y',
+);
+is(run_read_tools_hook($_)->{permissionDecision}, 'deny', "read tools, denied: $_") for @read_tools_denied;
+
+is_deeply(run_hook('cat src/main.rs'), {}, 'file reads pass without read tools');
+is(
+  run_read_tools_hook('cat src/main.rs')->{permissionDecisionReason},
+  'cat prints files: use your file read, search and listing tools instead.',
+  'denial names the tools to use',
+);
+ok(!run_read_tools_hook('rm x && cat y')->{updatedInput}, 'a denied command is not rewritten');
+
+# Searches stay open where the file tools cannot look: paths git ignores, and paths outside the project
+my $repo    = tempdir(CLEANUP => 1);
+my $outside = tempdir(CLEANUP => 1);
+system('git', '-C', $repo, 'init', '-q') == 0 or BAIL_OUT('git init failed');
+open my $gitignore, '>', "$repo/.gitignore" or BAIL_OUT("cannot write .gitignore: $!");
+print {$gitignore} "ignored/\n";
+close $gitignore or BAIL_OUT("cannot close .gitignore: $!");
+mkdir "$repo/$_" or BAIL_OUT("cannot create $_: $!") for qw(ignored tracked);
+my $test_dir = getcwd();
+chdir $repo or BAIL_OUT("cannot enter $repo: $!");
+
+my @beyond_file_tools = (
+  'rg foo ignored',
+  'grep -rn foo ignored/',
+  'find ignored -name "*.js"',
+  'fd x ignored',
+  "rg foo $outside",
+  "find $outside -name '*.jsonl'",
+);
+is_deeply(run_read_tools_hook($_), {}, "read tools, out of their reach: $_") for @beyond_file_tools;
+
+my @within_file_tools
+  = ('rg foo', 'rg foo tracked', 'find . -name x', 'find tracked -name x', 'rg foo ignored tracked', 'cat ignored/x',);
+is(run_read_tools_hook($_)->{permissionDecision}, 'deny', "read tools, within their reach: $_") for @within_file_tools;
+
+chdir $test_dir or BAIL_OUT("cannot return to $test_dir: $!");
 
 done_testing;

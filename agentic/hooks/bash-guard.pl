@@ -8,6 +8,7 @@ use lib "$RealBin/lib";
 use BashGuard::Delete  qw(deletion_risk);
 use BashGuard::Git     qw(git_risk);
 use BashGuard::Install qw(install_risk);
+use BashGuard::Read    qw(read_risk);
 use BashGuard::Remote  qw(is_fetcher runs_unseen_code);
 use BashGuard::Secret  qw(secret_risk);
 use BashGuard::Shell   qw(split_commands program_positions program_name inline_script);
@@ -16,10 +17,13 @@ use BashGuard::Trash   qw(is_rm trash_available rewrite_rm);
 # bash -c nested deeper than this goes unchecked
 my $MAX_NESTING = 3;
 
+# Agents with their own file read and search tools set this to have file reads in bash denied
+my $READ_TOOLS = $ENV{BASH_GUARD_READ_TOOLS};
+
 my $tool_input = decode_json(do { local $/; <> })->{tool_input} // {};
 my $command    = $tool_input->{command}                         // '';
 
-my (@risks, @rm_words, $fetches, $runs_unseen_code);
+my (@risks, @reads, @rm_words, $fetches, $runs_unseen_code);
 
 sub inspect_script {
   my ($script, $depth) = @_;
@@ -38,6 +42,7 @@ sub inspect {
       push @risks, install_risk($program, @args);
       push @risks, deletion_risk($program, @args);
       push @risks, secret_risk(@args);
+      push @reads, read_risk($words, $position) if $READ_TOOLS;
       $fetches          ||= is_fetcher($program);
       $runs_unseen_code ||= runs_unseen_code($program, @args);
 
@@ -53,12 +58,18 @@ sub inspect {
 my $commands = inspect_script($command, 0) // [];
 push @risks, 'running code fetched from the network skips any review' if $fetches && $runs_unseen_code;
 @risks    = uniq @risks;
-@rm_words = () unless trash_available();
+@reads    = uniq @reads;
+@rm_words = () unless trash_available() && !@reads;
 
 my %output;
 $output{updatedInput} = {%$tool_input, command => rewrite_rm($command, @rm_words)} if @rm_words;
 
-if (@risks) {
+# The agent retries with its own tools, so nobody has to answer
+if (@reads) {
+  $output{permissionDecision}       = 'deny';
+  $output{permissionDecisionReason} = join('. ', @reads) . '.';
+}
+elsif (@risks) {
   $output{permissionDecision}       = 'ask';
   $output{permissionDecisionReason} = join('. ', @risks) . '.';
 }

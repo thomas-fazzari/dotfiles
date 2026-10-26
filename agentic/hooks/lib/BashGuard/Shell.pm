@@ -2,10 +2,14 @@ package BashGuard::Shell;
 use strict;
 use warnings;
 use Exporter 'import';
+use Hash::Util::FieldHash qw(fieldhash);
 
 our @EXPORT_OK = qw(
-  split_commands program_positions program_name is_shell inline_script operands expand_home shell_quote
+  split_commands is_piped program_positions program_name is_shell inline_script operands expand_home shell_quote
 );
+
+# Commands that read the output of the command before them through a pipe
+fieldhash my %PIPED;
 
 my %PREFIXES   = map { $_ => 1 } qw(sudo xargs env command nohup time ! { if then else elif do while until);
 my %EXEC_FLAGS = map { $_ => 1 } qw(-exec -execdir);
@@ -38,6 +42,11 @@ sub split_commands {
   return [grep {@$_} @{$state->{commands}}];
 }
 
+sub is_piped {
+  my ($words) = @_;
+  return $PIPED{$words};
+}
+
 # Reads commands up to the end of the input, or up to the ) or ` that closes a substitution
 sub parse_commands {
   my ($input, $state, $terminator) = @_;
@@ -52,7 +61,12 @@ sub parse_commands {
       elsif ($separator eq ')' && $depth)       { $depth-- }
       elsif ($separator eq ($terminator // '')) { return 1 }
       skip_heredocs($input, $state) if $separator eq "\n";
+
+      # || is a condition, not a pipe, and |& pipes stderr as well
+      my $piped = $separator eq '|' && !($$input =~ /\G\|/gc);
+      $$input =~ /\G&/gc if $piped;
       push @{$state->{commands}}, $words = [];
+      $PIPED{$words} = 1 if $piped;
       next;
     }
     if ($$input =~ /\G<<[ \t]*($DELIMITER)/gc) {
