@@ -8,7 +8,7 @@ use lib "$RealBin/lib";
 use BashGuard::Delete  qw(deletion_risk);
 use BashGuard::Git     qw(git_risk);
 use BashGuard::Install qw(install_risk);
-use BashGuard::Read    qw(read_risk);
+use BashGuard::Read    qw(read_risk leading_cd);
 use BashGuard::Remote  qw(is_fetcher runs_unseen_code);
 use BashGuard::Secret  qw(secret_risk);
 use BashGuard::Shell   qw(split_commands program_positions program_name inline_script);
@@ -23,13 +23,16 @@ my $READ_TOOLS = $ENV{BASH_GUARD_READ_TOOLS};
 my $tool_input = decode_json(do { local $/; <> })->{tool_input} // {};
 my $command    = $tool_input->{command}                         // '';
 
-my (@risks, @reads, @rm_words, $fetches, $runs_unseen_code);
+my (@risks, @reads, @rm_words, $fetches, $runs_unseen_code, $workdir);
 
 sub inspect_script {
   my ($script, $depth) = @_;
   my $commands = split_commands($script);
-  if ($commands) { inspect($commands, $depth) }
-  else           { push @risks, 'the command could not be parsed, so bash-guard checked none of it' }
+  if ($commands) {
+    $workdir = leading_cd($commands) if $depth == 0 && $READ_TOOLS;
+    inspect($commands, $depth);
+  }
+  else { push @risks, 'the command could not be parsed, so bash-guard checked none of it' }
   return $commands;
 }
 
@@ -42,7 +45,7 @@ sub inspect {
       push @risks, install_risk($program, @args);
       push @risks, deletion_risk($program, @args);
       push @risks, secret_risk(@args);
-      push @reads, read_risk($words, $position) if $READ_TOOLS;
+      push @reads, read_risk($words, $position, $workdir) if $READ_TOOLS;
       $fetches          ||= is_fetcher($program);
       $runs_unseen_code ||= runs_unseen_code($program, @args);
 

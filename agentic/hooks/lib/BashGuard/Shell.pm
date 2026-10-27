@@ -62,7 +62,7 @@ sub parse_commands {
       elsif ($separator eq ($terminator // '')) { return 1 }
       skip_heredocs($input, $state) if $separator eq "\n";
 
-      # || is a condition, not a pipe, and |& pipes stderr as well
+      # || chains on failure and pipes nothing, |& pipes stderr too
       my $piped = $separator eq '|' && !($$input =~ /\G\|/gc);
       $$input =~ /\G&/gc if $piped;
       push @{$state->{commands}}, $words = [];

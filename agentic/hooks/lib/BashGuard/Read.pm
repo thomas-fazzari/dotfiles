@@ -7,20 +7,18 @@ use List::Util       qw(all any);
 use BashGuard::Rules qw(first_reason flag);
 use BashGuard::Shell qw(is_piped program_name operands expand_home);
 
-our @EXPORT_OK = qw(read_risk);
+our @EXPORT_OK = qw(read_risk leading_cd);
 
 # find tests the file tools cannot run: times, sizes, owners, permissions, links
 my $FIND_METADATA
   = qr/^-(?:[amc](?:min|time)|newer\w*|size|perm|empty|n?user|n?group|[ug]id|links|inum|samefile|ls|f?printf)$/;
 
 # sed, awk and grep take a script or pattern first, so a second operand is a file
-# ls -l and find on metadata show what the file tools cannot, unless ls also recurses
 my %RULES;
-$RULES{$_}   = ["$_ walks the file system"   => sub {1}] for qw(fd tree rg ag);
+$RULES{$_}   = ["$_ walks the file system" => sub {1}] for qw(fd tree rg ag);
 $RULES{find} = ['find walks the file system' => sub { !finds_metadata(@_) }];
-$RULES{ls}   = ['ls lists files'             => sub { !flag('-l') || flag(qw(-R --recursive)) }];
-$RULES{$_}   = ["$_ prints files"            => sub { operands(@_) > 0 }] for qw(cat head tail less more nl bat);
-$RULES{$_}   = ["$_ works on files"          => sub { operands(@_) > 1 }] for qw(sed awk gawk);
+$RULES{$_}   = ["$_ prints files"   => sub { operands(@_) > 0 }] for qw(cat head tail less more nl bat);
+$RULES{$_}   = ["$_ works on files" => sub { operands(@_) > 1 }] for qw(sed awk gawk);
 $RULES{$_}   = ["$_ searches files" => sub { operands(@_) > 1 || flag(qw(-r -R --recursive --dereference-recursive)) }]
   for qw(grep egrep fgrep);
 
@@ -38,20 +36,42 @@ sub finds_metadata {
   return 0;
 }
 
-# find walks its leading operands, the others the operands that exist, and all of them . by default
-sub search_paths {
+sub resolve {
+  my ($path, $dir) = @_;
+  $path = expand_home($path);
+  return $path =~ m{^/} ? $path : "$dir/$path";
+}
+
+# cd DIR at the start of a chain runs the rest of it from DIR
+sub leading_cd {
+  my ($commands) = @_;
+  my ($program, @args) = map { $_->[2] } @{$commands->[0] // []};
+  return if !defined $program || $program ne 'cd' || @args != 1 || $args[0] eq '-' || $args[0] =~ /[\$`*?]/;
+  my $dir = resolve($args[0], getcwd());
+  return unless -d $dir;
+  return $dir;
+}
+
+# find walks its leading operands, the others the operands after their pattern
+sub search_operands {
   my ($name, @args) = @_;
-  my @paths;
   if ($name eq 'find') {
+    my @paths;
     for my $arg (@args) {
       last if $arg =~ /^[-(!]/;
       push @paths, $arg;
     }
+    return @paths;
   }
-  else {
-    @paths = grep { -e expand_home($_) } operands(@args);
-  }
-  return @paths ? @paths : '.';
+  my (undef, @paths) = operands(@args);
+  return @paths;
+}
+
+# Operands that name nothing on disk are option values, such as rg -g globs
+sub search_paths {
+  my ($dir, $name, @args) = @_;
+  my @paths = grep {-e} map { resolve($_, $dir) } search_operands($name, @args);
+  return @paths ? @paths : $dir;
 }
 
 sub project_root {
@@ -64,7 +84,7 @@ sub project_root {
 
 sub out_of_file_tools_reach {
   my ($path) = @_;
-  my $real   = abs_path(expand_home($path)) // return 0;
+  my $real   = abs_path($path) // return 0;
   my $root   = project_root();
   return 1 if index("$real/", "$root/") != 0;
   return $IN_GIT && system('git', '-C', $root, 'check-ignore', '-q', '--', $real) == 0;
@@ -73,7 +93,7 @@ sub out_of_file_tools_reach {
 # Reading and searching files is the job of the agent's own file tools
 # A command fed by a pipe filters output instead, and command -v only looks a program up
 sub read_risk {
-  my ($words, $position) = @_;
+  my ($words, $position, $workdir) = @_;
   my @before = map { program_name($_->[2]) } @{$words}[0 .. $position - 1];
   return if $position >= 2 && $before[-2] eq 'command' && $before[-1] =~ /^-[vV]$/;
   my ($program, @args) = map { $_->[2] } @{$words}[$position .. $#$words];
@@ -86,8 +106,11 @@ sub read_risk {
   my $name   = program_name($program);
   my $reason = first_reason($RULES{$name}, @args) // return;
 
-  # Paths ignored by git or outside the project are out of the search tools' reach
-  return if $SEARCHES{$name} && all { out_of_file_tools_reach($_) } search_paths($name, @args);
+  # A path the shell has yet to expand could be anywhere
+  if ($SEARCHES{$name}) {
+    return if any { expand_home($_) =~ /\$/ } search_operands($name, @args);
+    return if all { out_of_file_tools_reach($_) } search_paths($workdir // getcwd(), $name, @args);
+  }
   return "$reason: use your file read, search and listing tools instead";
 }
 

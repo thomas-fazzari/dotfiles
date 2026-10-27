@@ -214,6 +214,14 @@ my @read_tools_untouched = (
   'mise run check',
   'ls -la ~/.claude',
   'ls -l src',
+  'ls',
+  'ls -a src',
+  'ls -lR',
+  'ls && git status',
+  'bun install; (cd docs && ls); mise run fmt',
+  'find "$ROOT/music" -type f | wc -l',
+  'rg foo "$DIR"',
+  'grep -rn foo ${SRC}/lib',
   'find . -mtime -1 -name "*.jsonl"',
   'find ~/.pi -newermt 2026-10-25 -type f',
   'find . -size +1M',
@@ -237,15 +245,13 @@ my @read_tools_denied = (
   'rg -n "fn main" crates',
   'find . -name "*.rs"',
   'find . -type f -name "*.rs"',
-  'ls',
-  'ls -a src',
-  'ls -lR',
-  'ls && git status',
+  "grep -rn 'foo\$' src",
+  'cat "$FILE"',
   'git ls-files | xargs cat',
   'git ls-files | xargs grep -l TODO',
   'git ls-files -z | xargs -0 sed -n 1p',
   'git ls-files | xargs -I{} cat {}',
-  'git status || ls',
+  'git status || cat x',
   'cat mise.toml | head -80',
   'for f in *.rs; do cat "$f"; done',
   'x=$(cat VERSION)',
@@ -282,11 +288,25 @@ my @beyond_file_tools = (
   'fd x ignored',
   "rg foo $outside",
   "find $outside -name '*.jsonl'",
+  'cd ignored && rg foo .',
+  'cd ignored; grep -rn foo .',
+  'cd ignored && rg foo',
+  "cd $outside && grep -rn foo .",
 );
 is_deeply(run_read_tools_hook($_), {}, "read tools, out of their reach: $_") for @beyond_file_tools;
 
-my @within_file_tools
-  = ('rg foo', 'rg foo tracked', 'find . -name x', 'find tracked -name x', 'rg foo ignored tracked', 'cat ignored/x',);
+# Only a cd that starts the chain moves it, and only to a directory that exists
+my @within_file_tools = (
+  'rg foo',
+  'rg foo tracked',
+  'find . -name x',
+  'find tracked -name x',
+  'rg foo ignored tracked',
+  'cat ignored/x',
+  'cd tracked && rg foo',
+  'cd /nonexistent && rg foo',
+  'git status && cd ignored && rg foo .',
+);
 is(run_read_tools_hook($_)->{permissionDecision}, 'deny', "read tools, within their reach: $_") for @within_file_tools;
 
 chdir $test_dir or BAIL_OUT("cannot return to $test_dir: $!");
