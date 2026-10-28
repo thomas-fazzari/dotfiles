@@ -27,8 +27,8 @@ sub secret_risk {
   my @args = @_;
   for my $arg (@args) {
 
-    # Paths also hide behind a redirection (<.env) or an option (--env-file=.env)
-    my $path = expand_home($arg =~ s/^\d*[<>&]+//r =~ s/^--?[\w-]+=//r);
+    # Paths also hide behind an option (--env-file=.env)
+    my $path = expand_home($arg =~ s/^--?[\w-]+=//r);
     return "$arg may hold secrets" if basename($path) =~ $SECRET_NAME || $path =~ $SECRET_HOME_PATH;
   }
   return;

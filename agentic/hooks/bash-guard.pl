@@ -11,7 +11,7 @@ use BashGuard::Install qw(install_risk);
 use BashGuard::Read    qw(read_risk leading_cd);
 use BashGuard::Remote  qw(is_fetcher runs_unseen_code);
 use BashGuard::Secret  qw(secret_risk);
-use BashGuard::Shell   qw(split_commands program_positions program_name inline_script);
+use BashGuard::Shell   qw(split_commands redirection_targets program_positions program_name inline_script);
 use BashGuard::Trash   qw(is_rm trash_available rewrite_rm);
 
 # bash -c nested deeper than this goes unchecked
@@ -39,6 +39,7 @@ sub inspect_script {
 sub inspect {
   my ($commands, $depth) = @_;
   for my $words (@$commands) {
+    push @risks, secret_risk(redirection_targets($words, qw(read write)));
     for my $position (program_positions(@$words)) {
       my ($program, @args) = map { $_->[2] } @{$words}[$position .. $#$words];
       push @risks, git_risk(@args) if program_name($program) eq 'git';

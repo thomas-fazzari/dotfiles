@@ -15,6 +15,7 @@ sub is_fetcher {
 }
 
 # Code that never shows up in the command, so approving the command does not review it
+# Redirections never reach the arguments, so a < argument opens a process substitution such as <(curl ...)
 sub runs_unseen_code {
   my ($program, @args) = @_;
   my $name   = program_name($program);

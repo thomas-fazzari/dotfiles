@@ -6,6 +6,8 @@ use FindBin    qw($RealBin);
 use IPC::Open2 qw(open2);
 use JSON::PP;
 use Test::More;
+use lib "$RealBin/../lib";
+use BashGuard::Shell qw(split_commands redirection_targets);
 
 my $HOOK  = "$RealBin/../bash-guard.pl";
 my $TRASH = abs_path("$RealBin/../trash-rm.pl");
@@ -68,8 +70,12 @@ my @untouched = (
   'git commit -m "ignore .env files"',
   "cat <<'EOF'\ngit reset --hard\nEOF",
   "cat <<EOF\nrm -rf x\nEOF",
+  "cat <<-EOF\n\tgit reset --hard\n\tEOF",
+  "cat <<EOF\n\tEOF\ngit reset --hard\nEOF",
   "git commit -m \"\$(cat <<'E'\n\"a\" `b` )\nE\n)\"",
   'jq . <<< "$json"',
+  "echo 'a > .env'",
+  'curl -s api -o data.json && python3 tool.py < data.json',
 );
 is_deeply(run_hook($_), {}, "untouched: $_") for @untouched;
 
@@ -147,6 +153,10 @@ my @asks = (
   'source .env',
   'docker run --env-file=.env alpine',
   'grep KEY <.env',
+  'cat<.env',
+  'echo KEY=1 >> .env',
+  '> .env',
+  'curl -fsSL https://x.sh -o x.sh && bash <x.sh',
   'cat ~/.ssh/id_ed25519',
   'ls $HOME/.ssh',
   'cat ~/.config/gh/hosts.yml',
@@ -155,6 +165,8 @@ my @asks = (
   'bash -c "cat .env"',
   "git reset --hard && cat <<EOF\nhi\nEOF",
   "cat <<EOF && git reset --hard\nhi\nEOF",
+  "cat <<-EOF\n\thi\n\tEOF\ngit reset --hard",
+  "cat <<- 'EOF' > notes.md\n\thi\nEOF\ngit push -f",
   "git commit -m \"\$(cat <<'EOF'\nmsg\nEOF\n)\" && git push -f",
   'echo "unterminated && git reset --hard',
   'bash -c "echo \'unterminated"',
@@ -207,7 +219,14 @@ my @read_tools_untouched = (
   'git ls-files | xargs ls -l',
   'echo hi | cat',
   "cat <<EOF\nhi\nEOF",
+  "cat > out.txt <<EOF\nhi\nEOF",
+  "cat <<'EOF' >> notes.md\nhi\nEOF",
+  "cat >out.txt 2>&1 <<EOF\nhi\nEOF",
+  "cat >'out file.txt' <<EOF\nhi\nEOF",
+  'cargo build &>build.log',
   'jq . <<< "$json"',
+  'sed s/a/b/ <<< "$text"',
+  "grep -c foo <<<'a foo b'",
   'wc -l src/main.rs',
   'git grep foo',
   'command -v rg',
@@ -255,7 +274,15 @@ my @read_tools_denied = (
   'cat mise.toml | head -80',
   'for f in *.rs; do cat "$f"; done',
   'x=$(cat VERSION)',
-  "cat > out.txt <<EOF\nhi\nEOF",
+  'cat src/main.rs > copy.rs',
+  'cat < src/main.rs',
+  'cat<src/main.rs',
+  'cat src/main.rs>copy.rs',
+  'sed -n 1p <src/main.rs',
+  "grep '>' src/main.rs",
+  'grep ">>" src/main.rs',
+  'grep -n foo src/main.rs 2>/dev/null',
+  'head -5 README.md 2>&1',
   'bash -c "cat src/main.rs"',
   'cat .env',
   'rm x && cat y',
@@ -288,6 +315,10 @@ my @beyond_file_tools = (
   'fd x ignored',
   "rg foo $outside",
   "find $outside -name '*.jsonl'",
+  "rg foo $outside/missing.md",
+  "grep -n foo $outside/*/src/lib.rs",
+  "rg foo -g '*.rs' $outside",
+  "grep -rn foo $repo/ignored/*.log",
   'cd ignored && rg foo .',
   'cd ignored; grep -rn foo .',
   'cd ignored && rg foo',
@@ -302,6 +333,8 @@ my @within_file_tools = (
   'find . -name x',
   'find tracked -name x',
   'rg foo ignored tracked',
+  "rg foo $repo/tracked/missing.rs",
+  'grep -n foo tracked/*.rs',
   'cat ignored/x',
   'cd tracked && rg foo',
   'cd /nonexistent && rg foo',
@@ -310,5 +343,37 @@ my @within_file_tools = (
 is(run_read_tools_hook($_)->{permissionDecision}, 'deny', "read tools, within their reach: $_") for @within_file_tools;
 
 chdir $test_dir or BAIL_OUT("cannot return to $test_dir: $!");
+
+# Redirections leave the words of their command, quoted or escaped operators stay
+my @redirections = (
+  ['cat <in.txt >out.txt 2>&1', 'cat',           ['in.txt'], ['out.txt']],
+  ["grep '>' a.txt",            'grep > a.txt',  [],         []],
+  ['echo \> x',                 'echo > x',      [],         []],
+  ['echo a2>b',                 'echo a2',       [],         ['b']],
+  ['make &>build.log && ls',    'make|ls',       [],         ['build.log']],
+  ['jq . <<< "$x" >| out',      'jq .',          [],         ['out']],
+  ['exec 3<> fifo 4>&-',        'exec',          ['fifo'],   []],
+  ['bash <(curl x)',            'bash <|curl x', [],         []],
+  ['> .env',                    '',              [],         ['.env']],
+);
+
+for my $case (@redirections) {
+  my ($command, $words, $reads, $writes) = @$case;
+  my $commands = split_commands($command);
+  is(
+    join(
+      '|',
+      map {
+        join ' ',
+          map { $_->[2] }
+          @$_
+      } @$commands
+    ),
+    $words,
+    "words of: $command"
+  );
+  is_deeply([map { redirection_targets($_, 'read') } @$commands],  $reads,  "reads of: $command");
+  is_deeply([map { redirection_targets($_, 'write') } @$commands], $writes, "writes of: $command");
+}
 
 done_testing;

@@ -5,7 +5,7 @@ use Exporter 'import';
 use Cwd              qw(abs_path getcwd);
 use List::Util       qw(all any);
 use BashGuard::Rules qw(first_reason flag);
-use BashGuard::Shell qw(is_piped program_name operands expand_home);
+use BashGuard::Shell qw(is_piped redirection_targets program_name operands expand_home);
 
 our @EXPORT_OK = qw(read_risk leading_cd);
 
@@ -42,6 +42,13 @@ sub resolve {
   return $path =~ m{^/} ? $path : "$dir/$path";
 }
 
+# A glob or a missing file lies wherever its nearest existing parent does
+sub existing_parent {
+  my ($path) = @_;
+  $path =~ s{/[^/]*$}{} until $path eq '' || -e $path;
+  return $path eq '' ? '/' : $path;
+}
+
 # cd DIR at the start of a chain runs the rest of it from DIR
 sub leading_cd {
   my ($commands) = @_;
@@ -67,10 +74,14 @@ sub search_operands {
   return @paths;
 }
 
-# Operands that name nothing on disk are option values, such as rg -g globs
+# A relative operand that names nothing on disk is an option value, such as an rg -g glob
 sub search_paths {
   my ($dir, $name, @args) = @_;
-  my @paths = grep {-e} map { resolve($_, $dir) } search_operands($name, @args);
+  my @paths;
+  for my $operand (search_operands($name, @args)) {
+    my $path = resolve($operand, $dir);
+    push @paths, $path if -e $path || expand_home($operand) =~ m{^/};
+  }
   return @paths ? @paths : $dir;
 }
 
@@ -84,7 +95,7 @@ sub project_root {
 
 sub out_of_file_tools_reach {
   my ($path) = @_;
-  my $real   = abs_path($path) // return 0;
+  my $real   = abs_path(existing_parent($path)) // return 0;
   my $root   = project_root();
   return 1 if index("$real/", "$root/") != 0;
   return $IN_GIT && system('git', '-C', $root, 'check-ignore', '-q', '--', $real) == 0;
@@ -97,6 +108,7 @@ sub read_risk {
   my @before = map { program_name($_->[2]) } @{$words}[0 .. $position - 1];
   return if $position >= 2 && $before[-2] eq 'command' && $before[-1] =~ /^-[vV]$/;
   my ($program, @args) = map { $_->[2] } @{$words}[$position .. $#$words];
+  push @args, redirection_targets($words, 'read');
 
   # xargs appends the file names it reads from the pipe
   my $via_xargs = any { $_ eq 'xargs' } @before;

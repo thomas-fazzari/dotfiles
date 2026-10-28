@@ -5,16 +5,24 @@ use Exporter 'import';
 use Hash::Util::FieldHash qw(fieldhash);
 
 our @EXPORT_OK = qw(
-  split_commands is_piped program_positions program_name is_shell inline_script operands expand_home shell_quote
+  split_commands is_piped redirection_targets program_positions program_name is_shell inline_script operands
+  expand_home shell_quote
 );
 
 # Commands that read the output of the command before them through a pipe
 fieldhash my %PIPED;
 
+# [kind, target] for each redirection of a command, kept out of its words
+fieldhash my %REDIRECTIONS;
+
 my %PREFIXES   = map { $_ => 1 } qw(sudo xargs env command nohup time ! { if then else elif do while until);
 my %EXEC_FLAGS = map { $_ => 1 } qw(-exec -execdir);
 my %SHELLS     = map { $_ => 1 } qw(sh bash zsh fish);
 my $DELIMITER  = qr/(?:\\.|'[^']*'|"[^"]*"|[^\s;&|()<>'"\\`])+/s;
+
+# An unquoted operator with its optional descriptor, as in 2>&1 or &>log
+# <( and >( start a process substitution, which is a word
+my $REDIRECTION = qr/(?:\d*|&)(<<<|<>|<&|>>|>\||>&|<(?!\()|>(?!\())/;
 
 sub unquote {
   my ($word) = @_;
@@ -34,17 +42,33 @@ sub unquote {
 # Simple commands made of [start, end, text] words, or undef when an open quote makes the line unsafe to read
 #
 # Heredoc bodies are skipped, commands substituted inside "..." join the list
+# Redirections leave the words, redirection_targets returns them
 sub split_commands {
   my ($command) = @_;
   my $state = {commands => [], heredocs => []};
   pos($command) = 0;
   parse_commands(\$command, $state) // return;
-  return [grep {@$_} @{$state->{commands}}];
+  return [grep { @$_ || $REDIRECTIONS{$_} } @{$state->{commands}}];
 }
 
 sub is_piped {
   my ($words) = @_;
   return $PIPED{$words};
+}
+
+# Targets of the command's redirections of the given kinds: read, write, text or descriptor
+sub redirection_targets {
+  my ($words, @kinds) = @_;
+  my %wanted = map { $_ => 1 } @kinds;
+  return map { $_->[1] } grep { $wanted{$_->[0]} } @{$REDIRECTIONS{$words} // []};
+}
+
+# Here-strings feed text and copies such as 2>&1 or >&- name a descriptor, the others a file
+sub redirection_kind {
+  my ($operator, $target) = @_;
+  return 'text' if $operator eq '<<<';
+  return 'descriptor' if $operator =~ /&$/ && $target =~ /^(?:\d+-?|-)$/;
+  return $operator =~ /^</ ? 'read' : 'write';
 }
 
 # Reads commands up to the end of the input, or up to the ) or ` that closes a substitution
@@ -55,6 +79,20 @@ sub parse_commands {
   push @{$state->{commands}}, $words;
   while (pos($$input) < length $$input) {
     next if $$input =~ /\G[ \t]+/gc || $$input =~ /\G#[^\n]*/gc;
+
+    if ($$input =~ /\G<<(-?)[ \t]*($DELIMITER)/gc) {
+      push @{$state->{heredocs}}, [unquote($2), $1 eq '-'];
+      next;
+    }
+
+    # Before the separators, so the & of &>log does not end the command
+    if ($$input =~ /\G$REDIRECTION[ \t]*/gc) {
+      my $operator = $1;
+      my $target   = parse_word($input, $state) // return;
+      push @{$REDIRECTIONS{$words}}, [redirection_kind($operator, $target->[2]), $target->[2]];
+      next;
+    }
+
     if ($$input =~ /\G([;&|()\n`])/gc) {
       my $separator = $1;
       if    ($separator eq '(')                 { $depth++ }
@@ -67,10 +105,6 @@ sub parse_commands {
       $$input =~ /\G&/gc if $piped;
       push @{$state->{commands}}, $words = [];
       $PIPED{$words} = 1 if $piped;
-      next;
-    }
-    if ($$input =~ /\G<<[ \t]*($DELIMITER)/gc) {
-      push @{$state->{heredocs}}, unquote($1);
       next;
     }
     push @$words, parse_word($input, $state) // return;
@@ -90,8 +124,8 @@ sub parse_word {
       quoted_substitutions($input, $state) // return;
       $text .= substr($$input, $from, pos($$input) - $from - 1) =~ s/\\(.)/$1/gsr;
     }
-    elsif ($$input =~ /\G([^ \t;&|()\n'"\\<`]+|<<<|<(?!<))/gc) { $text .= $1 }
-    else                                                       {last}
+    elsif ($$input =~ /\G([^ \t;&|()\n'"\\<>`]+|[<>](?=\())/gc) { $text .= $1 }
+    else                                                        {last}
   }
   return pos($$input) > $start ? [$start, pos $$input, $text] : undef;
 }
@@ -108,13 +142,14 @@ sub quoted_substitutions {
   return;
 }
 
-# A heredoc body runs from the line after its operator to the delimiter line
+# A heredoc body runs from the line after its operator to the delimiter line, which <<- lets tabs indent
 sub skip_heredocs {
   my ($input, $state) = @_;
-  while (defined(my $delimiter = shift @{$state->{heredocs}})) {
+  while (defined(my $heredoc = shift @{$state->{heredocs}})) {
+    my ($delimiter, $tabs) = @$heredoc;
     while (pos($$input) < length $$input) {
       $$input =~ /\G([^\n]*)\n?/gc;
-      last if $1 eq $delimiter;
+      last if $1 eq $delimiter || ($tabs && $1 =~ /^\t+\Q$delimiter\E$/);
     }
   }
   return;
