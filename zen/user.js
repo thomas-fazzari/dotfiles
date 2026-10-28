@@ -8,37 +8,11 @@
  */
 
 /****************************************************************************
- * Betterfox                                                                *
- * "Ad meliora"                                                             *
- * version: 154                                                             *
+ * BetterZen                                                                *
+ * "Ex nihilo nihil fit"                                                    *
+ * version: 148                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
  ****************************************************************************/
-
-/****************************************************************************
- * SECTION: FASTFOX                                                         *
- ****************************************************************************/
-/** GENERAL ***/
-user_pref("gfx.content.skia-font-cache-size", 20);
-user_pref("content.notify.interval", 100000);
-
-/** GFX ***/
-user_pref("gfx.canvas.accelerated.cache-size", 512);
-
-/** MEDIA CACHE ***/
-user_pref("media.cache_readahead_limit", 3600);
-user_pref("media.cache_resume_threshold", 1800);
-
-/** IMAGE CACHE ***/
-user_pref("image.mem.decode_bytes_at_a_time", 32768);
-
-/** NETWORKING ***/
-user_pref("network.buffer.cache.size", 65535);
-user_pref("network.buffer.cache.count", 48);
-user_pref("network.http.max-connections", 1800);
-user_pref("network.http.max-persistent-connections-per-server", 10);
-user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5);
-user_pref("network.http.request.max-start-delay", 5);
-user_pref("network.dnsCacheExpiration", 3600);
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
@@ -67,6 +41,7 @@ user_pref("browser.sessionstore.interval", 60000);
 
 /** SHUTDOWN & SANITIZING ***/
 user_pref("privacy.history.custom", true);
+user_pref("browser.privatebrowsing.resetPBM.enabled", true);
 
 /** SPECULATIVE LOADING ***/
 user_pref("network.http.speculative-parallel-limit", 0);
@@ -101,6 +76,9 @@ user_pref("extensions.enabledScopes", 5);
 
 /** HEADERS / REFERERS ***/
 user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
+
+/** CONTAINERS ***/
+user_pref("privacy.userContext.ui.enabled", true);
 
 /** VARIOUS ***/
 user_pref("pdfjs.enableScripting", false);
@@ -139,12 +117,10 @@ user_pref("datareporting.usage.uploadEnabled", false);
 user_pref("app.shield.optoutstudies.enabled", false);
 user_pref("app.normandy.enabled", false);
 user_pref("app.normandy.api_url", "");
-user_pref("nimbus.rollouts.enabled", false);
 
 /** CRASH REPORTS ***/
 user_pref("breakpad.reportURL", "");
 user_pref("browser.tabs.crashReporting.sendReport", false);
-user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
 
 /****************************************************************************
  * SECTION: PESKYFOX                                                        *
@@ -168,7 +144,6 @@ user_pref("browser.compactmode.show", true);
 user_pref("browser.privateWindowSeparation.enabled", false); // WINDOWS
 
 /** AI ***/
-user_pref("browser.ai.control.default", "blocked");
 user_pref("browser.ml.enable", false);
 user_pref("browser.ml.chat.enabled", false);
 user_pref("browser.ml.chat.menu", false);
@@ -198,13 +173,27 @@ user_pref("browser.download.open_pdf_attachments_inline", true);
 
 /** TAB BEHAVIOR ***/
 user_pref("browser.bookmarks.openInTabClosesMenu", false);
+user_pref("browser.menu.showViewImageInfo", true);
 user_pref("findbar.highlightAll", true);
+user_pref("layout.word_select.eat_space_to_next_word", false);
 
 /****************************************************************************
- * SECTION: SMOOTHFOX                                                       *
+ * START: ZEN-SPECIFIC OVERRIDES                                            *
  ****************************************************************************/
-// visit https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
-// Enter your scrolling overrides below this line:
+// Remove the slashes to enable the prefs
+
+// PREF: re-enable Windows efficiency mode
+//user_pref("dom.ipc.processPriorityManager.backgroundUsesEcoQoS", true);
+
+// PREF: disable new tab preload since they are off by default
+//user_pref("browser.newtab.preload", false);
+
+// PREF: show Enhance Tracking Protection shield in URL bar
+// Currently bugged if you click to view what's blocked
+//user_pref("zen.urlbar.show-protections-icon", true);
+
+// PREF: Disable the Picture in picture pop-out when changing tabs
+//user_pref("media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled", false);
 
 /****************************************************************************
  * START: MY OVERRIDES                                                      *
@@ -212,7 +201,7 @@ user_pref("findbar.highlightAll", true);
 // visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
 // visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 // Enter your personal overrides below this line:
-// Personal Betterfox overrides, inserted under "MY OVERRIDES" by update-userjs.pl
+// Personal BetterZen overrides, inserted under "MY OVERRIDES" by update-userjs.pl
 // https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
 // https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 
@@ -224,15 +213,9 @@ user_pref("extensions.formautofill.creditCards.enabled", false);
 // URL bar search suggestions
 user_pref("browser.search.suggest.enabled", true);
 
-// Firefox AI: chatbot, link previews, smart tab groups
-user_pref("browser.ai.control.default", "available");
-user_pref("browser.ml.enable", true);
-user_pref("browser.ml.chat.enabled", true);
-user_pref("browser.ml.chat.menu", true);
-user_pref("browser.tabs.groups.smart.enabled", true);
-user_pref("browser.ml.linkPreview.enabled", true);
+user_pref("browser.ai.control.default", "blocked");
 
-// No DoH in Firefox: Tailscale MagicDNS and ProtonVPN resolve names
+// No DoH: Tailscale MagicDNS and ProtonVPN resolve names
 user_pref("network.trr.mode", 5);
 
 // Smoothfox natural smooth scrolling v3, tuned for a mouse wheel
@@ -249,6 +232,16 @@ user_pref("general.smoothScroll.msdPhysics.slowdownSpringConstant", 250);
 user_pref("general.smoothScroll.currentVelocityWeighting", "1");
 user_pref("general.smoothScroll.stopDecelerationWeighting", "1");
 user_pref("mousewheel.default.delta_multiplier_y", 300); // 250-400
+
+/****************************************************************************
+ * SECTION: SMOOTHFOX                                                       *
+ ****************************************************************************/
+// Reset Zen's custom scrolling prefs to their Firefox defaults before making changes!
+// [1] Zen changes: https://github.com/zen-browser/desktop/blob/3932ec21f5661440c4b20796f90341a6ac725818/src/browser/app/profile/zen-browser.js#L297-L312
+// [2] Firefox defaults: https://searchfox.org/mozilla-release/source/modules/libpref/init/StaticPrefList.yaml
+// Then apply an example from Smoothfox
+// [3] https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
+// Enter your scrolling overrides below this line:
 
 /****************************************************************************
  * END: BETTERFOX                                                           *

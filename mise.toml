@@ -77,9 +77,9 @@ run = "brew bundle cleanup --file macos/Brewfile"
 description = "Reports reclaimable disk space, broken dotfile links and system health without changing anything"
 run = "agentic/skills/dd-audit/scripts/audit.pl"
 
-[tasks.firefox]
-description = "Rebuilds firefox/user.js from the latest Betterfox plus firefox/user-overrides.js and links it into the default Firefox profile"
-run = "firefox/update-userjs.pl"
+[tasks.zen]
+description = "Rebuilds zen/user.js from the latest BetterZen plus zen/user-overrides.js and links it into the default Zen profile"
+run = "zen/update-userjs.pl"
 
 [tasks."hooks:test"]
 description = "Tests the agent hooks"

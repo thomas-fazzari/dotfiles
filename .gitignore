@@ -17,8 +17,6 @@
 !/btop/**
 !/editors/
 !/editors/**
-!/firefox/
-!/firefox/**
 !/git/
 !/git/**
 !/macos/
@@ -27,6 +25,8 @@
 !/nvim/**
 !/terminal/
 !/terminal/**
+!/zen/
+!/zen/**
 
 !/rss/
 !/rss/feeds.toml
