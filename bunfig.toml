@@ -1,2 +1,4 @@
 [install]
 minimumReleaseAge = 259200 # 3 days
+# Published by my own CI
+minimumReleaseAgeExcludes = ["@thomas-fazzari/pi-otlp"]
