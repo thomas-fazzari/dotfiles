@@ -32,7 +32,8 @@ return {
 
   {
     "mfussenegger/nvim-dap",
-    lazy = false,
+    ft = { "cs", "fsharp" },
+    keys = { "<F5>", "<F9>" },
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
@@ -44,7 +45,7 @@ return {
 
   {
     "nvim-neotest/neotest",
-    lazy = false,
+    ft = { "cs", "fsharp" },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
@@ -127,9 +128,6 @@ return {
     },
     config = function()
       vim.treesitter.language.register("bash", "conf")
-      vim.treesitter.language.register("bash", "kitty")
-      vim.treesitter.language.register("bash", "tmux")
-      vim.treesitter.language.register("bash", "sh")
     end,
   },
   {

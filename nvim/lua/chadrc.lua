@@ -7,7 +7,6 @@ local M = {}
 M.base46 = {
   theme = "tokyonight",
   transparency = true,
-  integrations = { "semantic_tokens" },
 }
 
 return M
