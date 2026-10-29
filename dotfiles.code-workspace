@@ -1,0 +1,21 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    "Lua.diagnostics.disable": ["undefined-global", "undefined-doc-name", "different-requires"],
+    "json.schemas": [
+      { "fileMatch": ["**/editors/vscode/settings.json"], "url": "vscode://schemas/settings/user" },
+      {
+        "fileMatch": ["**/editors/vscode/keybindings.json"],
+        "url": "vscode://schemas/keybindings",
+      },
+      {
+        "fileMatch": ["**/editors/zed/settings.json", "**/editors/zed/keymap.json"],
+        "schema": { "allowComments": true, "allowTrailingCommas": true },
+      },
+    ],
+    "perlnavigator.includePaths": ["$workspaceFolder/agentic/hooks/lib"],
+    "files.associations": { "**/editors/zed/*.json": "jsonc" },
+    "[lua]": { "editor.defaultFormatter": "JohnnyMorganz.stylua" },
+    "stylua.styluaPath": "/Users/thomas/.local/share/mise/shims/stylua",
+  },
+}
