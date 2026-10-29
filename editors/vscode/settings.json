@@ -122,8 +122,6 @@
     "*.xaml": "${capture}.xaml.cs",
     "Cargo.toml": "Cargo.lock",
     "go.mod": "go.sum, go.work, go.work.sum",
-    "*.ml": "${capture}.mli",
-    "dune-project": "*.opam, dune.lock, .ocamlformat, .ocamlversion",
     "*.sqlite": "${capture}.${extname}-*",
     "*.db": "${capture}.${extname}-*",
     "*.sqlite3": "${capture}.${extname}-*",
@@ -209,9 +207,6 @@
   },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua",
-  },
-  "[ocaml]": {
-    "editor.defaultFormatter": "ocamllabs.ocaml-platform",
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode",

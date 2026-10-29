@@ -8,7 +8,6 @@ disable = [
   "uv", # from mise
   "cargo", # from mise
   "pip3", # from mise
-  "opam",
 ]
 cleanup = true
 assume_yes = true

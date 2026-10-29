@@ -32,7 +32,6 @@ ms-vscode-remote.remote-containers
 ms-vscode.test-adapter-converter
 myriad-dreamin.tinymist
 nabeelvalley.easyzoom
-ocamllabs.ocaml-platform
 oxc.oxc-vscode
 pkief.material-product-icons
 polymeilex.wgsl

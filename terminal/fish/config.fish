@@ -62,10 +62,6 @@ set -g fish_pager_color_selected_background --background=20222C
 # Tool init
 command -q zoxide; and zoxide init fish | source
 
-if command -q opam; and test -d ~/.opam
-    opam env --shell=fish 2>/dev/null | source
-end
-
 # fzf
 if command -q fzf
     set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
