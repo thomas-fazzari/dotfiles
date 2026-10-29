@@ -4,22 +4,9 @@ use strict;
 use warnings;
 use IPC::Open3 qw(open3);
 
-sub have {
-  my ($cmd) = @_;
-  return grep { -x "$_/$cmd" } split /:/, $ENV{PATH} // '';
-}
-
+# Checked here because the loop below only prints the summary, so ffmpeg's own error would not show
 my $file = shift // '';
-
-if (!have('ffmpeg')) {
-  print STDERR "ffmpeg not found in PATH\n";
-  exit 127;
-}
-
-if (!-f $file) {
-  print STDERR "Usage: loudness FILE\n";
-  exit 2;
-}
+-f $file or die "Usage: loudness FILE\n";
 
 # ffmpeg writes the report to stderr, merged here into $output.
 my $pid = open3('<&STDIN', my $output, undef, 'ffmpeg', qw(-hide_banner -nostats -i),

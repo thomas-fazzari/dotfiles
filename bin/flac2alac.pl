@@ -8,11 +8,6 @@ use File::Path qw(make_path);
 my $interrupted = 0;
 local $SIG{INT} = sub { $interrupted = 1 };
 
-sub have {
-  my ($cmd) = @_;
-  return grep { -x "$_/$cmd" } split /:/, $ENV{PATH} // '';
-}
-
 # Like system(), but Ctrl-C reaches our handler so the whole batch stops.
 sub run {
   my @cmd = @_;
@@ -23,11 +18,6 @@ sub run {
   }
   waitpid $pid, 0;
   return $? == 0;
-}
-
-if (!have('ffmpeg')) {
-  print STDERR "ffmpeg not found in PATH\n";
-  exit 127;
 }
 
 my @files = glob '*.flac';

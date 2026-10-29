@@ -13,7 +13,7 @@ Rewrite the target so it reads like a competent engineer wrote it for other engi
 - Keep the meaning, technical facts, code, identifiers, commands, links and the file's existing conventions (heading style, line wrapping, comment syntax).
 - Never add claims. When a statement looks wrong or unverified and you can check it against the code, check it. Otherwise flag it.
 - Cut before rewording. Most AI prose fails on content, not vocabulary: a sentence that says nothing should go, not get a better synonym. Replace a word only when the sentence carries information.
-- One occurrence of a pattern is rarely the problem. Repetition and clusters are. Exception: remove every em dash.
+- One occurrence of a pattern is rarely the problem. Repetition and clusters are. Exception: remove every em dash and every semicolon in prose.
 
 ## Two passes
 
@@ -42,7 +42,7 @@ Rewrite the target so it reads like a competent engineer wrote it for other engi
 
 **Rhythm**: sentences of uniform length, paragraphs that all end on a punchy one-liner, stacked short fragments for emphasis ("Fast. Simple. Reliable."). Vary length and use complete sentences.
 
-**Formatting tells**: bold lead-in on every bullet, emoji in headings, bullets, logs or commit text, decorative unicode (→, ✓, curly quotes) where ASCII is expected, any em dash (use a comma, colon, parentheses or a new sentence), headings over every short paragraph, nested bullets for flat content, bold for emphasis on every other phrase.
+**Formatting tells**: bold lead-in on every bullet, emoji in headings, bullets, logs or commit text, decorative unicode (→, ✓, curly quotes) where ASCII is expected, any em dash or semicolon in prose (use a comma, colon, parentheses or a new sentence), headings over every short paragraph, nested bullets for flat content, bold for emphasis on every other phrase.
 
 ## By target
 

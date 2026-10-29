@@ -59,29 +59,23 @@ set -g fish_pager_color_description 787C99
 set -g fish_pager_color_progress 787C99
 set -g fish_pager_color_selected_background --background=20222C
 
-# Tool init
-command -q zoxide; and zoxide init fish | source
+zoxide init fish | source
 
-# fzf
-if command -q fzf
-    set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
-    set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-    set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --follow --exclude .git'
-    set -gx FZF_DEFAULT_OPTS \
-        '--height 40% --layout=reverse --border' \
-        '--color=bg+:#202330,bg:#08080B,spinner:#7DCFFF,hl:#668AC4' \
-        '--color=fg:#A9B1D6,header:#C0CAF5,info:#787C99,pointer:#7AA2F7' \
-        '--color=marker:#E0AF68,fg+:#C0CAF5,prompt:#7DCFFF,hl+:#668AC4'
-    fzf --fish | source
-end
+set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
+set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --follow --exclude .git'
+set -gx FZF_DEFAULT_OPTS \
+    '--height 40% --layout=reverse --border' \
+    '--color=bg+:#202330,bg:#08080B,spinner:#7DCFFF,hl:#668AC4' \
+    '--color=fg:#A9B1D6,header:#C0CAF5,info:#787C99,pointer:#7AA2F7' \
+    '--color=marker:#E0AF68,fg+:#C0CAF5,prompt:#7DCFFF,hl+:#668AC4'
+fzf --fish | source
 
 # mise activates itself through Homebrew's vendor_conf.d, no init needed here
 
 # Prompt: past prompts collapse to the prompt char
-if command -q starship
-    function starship_transient_prompt_func
-        starship module character $argv
-    end
-    starship init fish | source
-    enable_transience
+function starship_transient_prompt_func
+    starship module character $argv
 end
+starship init fish | source
+enable_transience
