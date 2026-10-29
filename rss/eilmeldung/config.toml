@@ -1,0 +1,28 @@
+# symlinked to ~/.config/eilmeldung/config.toml
+# Only the settings that differ from the defaults, see
+# https://github.com/christo-auer/eilmeldung/blob/main/examples/default-config.toml
+
+startup_commands = ["sync"]
+sync_every_minutes = 60
+enclosure_command = "open {url}"
+
+# Local feeds, no account, so the first launch skips the interactive setup
+[login_setup]
+login_type = "no_login"
+provider = "local_rss"
+
+# Tokyo Night colors set directly, since a base16 theme would replace this palette
+# and paint an opaque background. "reset" keeps the terminal's transparent one
+[theme.color_palette]
+background = "reset"
+foreground = "#A9B1D6"
+muted = "#565F89"
+highlight = "#E0AF68"
+flagged = "#F7768E"
+accent_primary = "#7AA2F7"
+accent_secondary = "#BB9AF7"
+accent_tertiary = "#7DCFFF"
+accent_quaternary = "#9ECE6A"
+info = "#7AA2F7"
+warning = "#E0AF68"
+error = "#F7768E"

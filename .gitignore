@@ -30,9 +30,11 @@
 !/zen/**
 
 !/rss/
-!/rss/feeds.toml
-!/rss/mise.toml
-!/rss/fil
+!/rss/feeds.opml
+!/rss/TokyoNight.nnwtheme/
+!/rss/TokyoNight.nnwtheme/**
+!/rss/eilmeldung/
+!/rss/eilmeldung/**
 
 !/agentic/
 !/agentic/pi-config

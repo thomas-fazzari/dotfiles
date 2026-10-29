@@ -13,6 +13,9 @@ prompt_new_tab_name = false
 hide_tab_bar_when_single_tab = true
 status_indicators = "symbols"
 
+[experimental]
+kitty_graphics = true
+
 [ui.toast]
 # Ghostty delivers the notification (OSC 9)
 delivery = "terminal"

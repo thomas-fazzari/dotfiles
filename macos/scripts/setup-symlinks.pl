@@ -20,6 +20,7 @@ my @links = (
   ['.config/btop/btop.conf'                                            => 'btop/btop.conf'],
   ['.config/btop/themes/tokyonight.theme'                              => 'btop/tokyonight.theme'],
   ['.config/nvim'                                                      => 'nvim'],
+  ['.config/eilmeldung/config.toml'                                    => 'rss/eilmeldung/config.toml'],
   ['.claude/CLAUDE.md'                                                 => 'agentic/claude/CLAUDE.md'],
   ['.claude/settings.json'                                             => 'agentic/claude/settings.json'],
   ['.claude/hooks'                                                     => 'agentic/hooks'],

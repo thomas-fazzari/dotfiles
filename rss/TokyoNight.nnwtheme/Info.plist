@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Name</key>
+	<string>Tokyo Night</string>
+	<key>ThemeIdentifier</key>
+	<string>com.github.thomas-fazzari.nnwtheme.tokyonight</string>
+	<key>CreatorHomePage</key>
+	<string>https://github.com/thomas-fazzari</string>
+	<key>CreatorName</key>
+	<string>Thomas Fazzari</string>
+	<key>Version</key>
+	<integer>1</integer>
+</dict>
+</plist>

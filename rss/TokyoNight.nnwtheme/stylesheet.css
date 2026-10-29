@@ -1,0 +1,418 @@
+:root {
+  color-scheme: dark;
+
+  --bg: #08080b;
+  --bg-code: #16161e;
+  --bg-highlight: #292e42;
+  --selection: #283457;
+  --fg: #c0caf5;
+  --fg-body: #a9b1d6;
+  --fg-quote: #9aa5ce;
+  --comment: #565f89;
+  --border: #292e42;
+  --blue: #7aa2f7;
+  --cyan: #7dcfff;
+  --magenta: #bb9af7;
+  --quote-border: #3d59a1;
+
+  --font-body: "Inria Serif", Georgia, serif;
+  --font-meta: "Inria Sans", -apple-system, sans-serif;
+  --font-code: "Iosevka NF", "Iosevka Nerd Font", "SF Mono", Menlo, monospace;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+body {
+  margin: 20px auto 64px;
+  padding-left: 48px;
+  padding-right: 48px;
+  max-width: 44em;
+  word-wrap: break-word;
+  background: var(--bg);
+  color: var(--fg-body);
+  font-family: var(--font-body);
+}
+
+.smallText {
+  font-size: 15px;
+}
+
+.mediumText {
+  font-size: 17px;
+}
+
+.largeText {
+  font-size: 19px;
+}
+
+.xlargeText {
+  font-size: 21px;
+}
+
+.xxlargeText {
+  font-size: 23px;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a :is(i, em) {
+  color: inherit;
+}
+
+a u {
+  text-decoration: none;
+}
+
+/* Header */
+
+.headerTable {
+  width: 100%;
+  height: 68px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header,
+.header a:link,
+.header a:visited {
+  color: var(--comment);
+  font-family: var(--font-meta);
+}
+
+.feedlink {
+  font-weight: bold;
+}
+
+.feedlink a:link,
+.feedlink a:visited {
+  color: var(--cyan);
+}
+
+.avatar img,
+.feedIcon {
+  border-radius: 4px;
+}
+
+.rightAlign {
+  text-align: end;
+}
+
+.leftAlign {
+  text-align: start;
+}
+
+.systemMessage {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-55%) translateY(-50%);
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  color: var(--comment);
+  font-family: var(--font-meta);
+}
+
+/* Title and dateline */
+
+.articleTitle h1 {
+  font-size: 1.85rem;
+}
+
+.articleTitle a:link,
+.articleTitle a:visited {
+  color: var(--magenta);
+}
+
+.articleDateline,
+.articleDatelineTitle {
+  margin-bottom: 5px;
+  font-family: var(--font-meta);
+  font-weight: bold;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.025em;
+}
+
+.articleDateline a:link,
+.articleDateline a:visited {
+  color: var(--comment);
+}
+
+.articleDatelineTitle a:link,
+.articleDatelineTitle a:visited {
+  color: var(--magenta);
+}
+
+.externalLink {
+  margin: 15px 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--comment);
+  font-family: var(--font-meta);
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+.externalLink:has(a[href=""]) {
+  display: none;
+}
+
+.externalLink a {
+  font-family: var(--font-code);
+  font-size: 0.85em;
+  font-style: normal;
+}
+
+.articleTitle,
+.articleDateline,
+.articleDatelineTitle,
+.articleBody {
+  text-autospace: normal;
+}
+
+/* Body */
+
+.articleBody {
+  margin-top: 20px;
+  line-height: 1.65em;
+}
+
+.articleBody a {
+  padding: 0 1px;
+}
+
+.articleBody a:link,
+.articleBody a:visited {
+  border-bottom: 1px solid var(--quote-border);
+}
+
+.articleBody a:hover {
+  border-radius: 2px;
+  border-bottom-color: var(--blue);
+  background: var(--bg-highlight);
+}
+
+.articleBody a:has(img),
+.articleBody a:has(img):link,
+.articleBody a:has(img):visited,
+.articleBody a:has(img):hover {
+  border-bottom: none;
+  background: none;
+}
+
+h1 {
+  margin-bottom: 5px;
+  padding-bottom: 0;
+  line-height: 1.15em;
+  font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--fg);
+}
+
+strong,
+b {
+  color: var(--fg);
+}
+
+blockquote {
+  margin-inline: 0;
+  padding-inline-start: 15px;
+  border-inline-start: 3px solid var(--quote-border);
+  color: var(--fg-quote);
+}
+
+hr {
+  border: 1px solid var(--border);
+}
+
+/* Code */
+
+code,
+pre {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  -webkit-hyphens: none;
+  hyphens: none;
+  background: var(--bg-code);
+  color: var(--fg);
+}
+
+code {
+  padding: 1px 3px;
+  border-radius: 3px;
+  color: var(--cyan);
+}
+
+pre {
+  max-width: 100%;
+  margin: 0;
+  padding: 10px;
+  overflow: auto;
+  overflow-y: hidden;
+  word-wrap: normal;
+  word-break: normal;
+  border-radius: 4px;
+  line-height: 1.45em;
+}
+
+pre code {
+  padding: 0;
+  font-size: 1em;
+  color: var(--fg);
+}
+
+/* Tables */
+
+.nnw-overflow {
+  overflow-x: auto;
+}
+
+.nnw-overflow table {
+  margin-bottom: 1px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: inherit;
+}
+
+.nnw-overflow table table {
+  margin-bottom: 0;
+  border: none;
+}
+
+.nnw-overflow td,
+.nnw-overflow th {
+  padding: 8px 11px;
+  -webkit-hyphens: none;
+  hyphens: none;
+  word-break: normal;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.nnw-overflow :is(thead, tbody, tfoot):last-child > tr:last-child :is(td, th) {
+  border-bottom: none;
+}
+
+.nnw-overflow td pre {
+  border: none;
+  padding: 0;
+}
+
+.nnw-overflow table[border="0"] {
+  border-width: 0;
+}
+
+/* Media */
+
+img,
+figure,
+video,
+div,
+object {
+  max-width: 100%;
+  height: auto !important;
+  margin: 0 auto;
+}
+
+iframe {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+iframe.nnw-constrained {
+  max-height: 50vw;
+}
+
+figure {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+figcaption {
+  margin-top: 0.5em;
+  color: var(--comment);
+  font-family: var(--font-meta);
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+.iframeWrap {
+  position: relative;
+  display: block;
+  padding-top: 56.25%;
+}
+
+.iframeWrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+sup {
+  position: relative;
+  bottom: 0.2rem;
+  vertical-align: top;
+}
+
+sub {
+  position: relative;
+  top: 0.2rem;
+  vertical-align: bottom;
+}
+
+/* Feed specific */
+
+.feedbin--article-wrap {
+  border-top: 1px solid var(--border);
+}
+
+/* Footnote popovers (newsfoot.js) */
+
+.newsfoot-footnote-popover {
+  padding: 1px;
+  background: var(--border);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 3px 6px rgba(0, 0, 0, 0.25);
+  color: var(--fg-body);
+}
+
+.newsfoot-footnote-popover-arrow {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+}
+
+.newsfoot-footnote-popover-inner {
+  background: var(--bg-code);
+}
+
+body a.footnote,
+body a.footnote:visited,
+.newsfoot-footnote-popover + a.footnote:hover {
+  background: var(--quote-border);
+  color: var(--fg);
+  transition: background-color 200ms ease-out;
+}
+
+a.footnote:hover,
+.newsfoot-footnote-popover + a.footnote {
+  background: var(--blue);
+  color: var(--bg);
+  transition: background-color 200ms ease-out;
+}

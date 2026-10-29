@@ -19,6 +19,7 @@ dotnet = "10.0.400"
 "dotnet:ThomasFazzari.RoslynBridge" = "latest"
 "dotnet:vpk" = "latest"
 "github:bnjbvr/cargo-machete" = "latest"
+"github:christo-auer/eilmeldung" = "latest"
 "github:Feel-ix-343/markdown-oxide" = "latest"
 "github:nextest-rs/nextest" = { version = "latest", version_prefix = "cargo-nextest-" }
 "github:Samsung/netcoredbg" = { version = "latest", asset_pattern = "netcoredbg-osx-arm64.zip" }
@@ -98,13 +99,13 @@ run = "prove agentic/hooks/t"
 
 [tasks.fmt]
 description = "Formats the Lua and Perl files"
-run = ["stylua nvim", "fd -e pl -e pm -e t -E agentic/pi-config -E rss/fil -X perltidy -b -bext=/"]
+run = ["stylua nvim", "fd -e pl -e pm -e t -E agentic/pi-config -X perltidy -b -bext=/"]
 
 [tasks.lint]
 description = "Checks Lua and Perl formatting and runs Perl::Critic"
 run = '''
 stylua --check nvim
-files=$(fd -e pl -e pm -e t -E agentic/pi-config -E rss/fil)
+files=$(fd -e pl -e pm -e t -E agentic/pi-config)
 perlcritic --quiet --severity 4 --program-extensions .t $files
 status=0
 for f in $files; do
@@ -112,6 +113,10 @@ for f in $files; do
 done
 exit $status
 '''
+
+[tasks."nnw:theme"]
+description = "Copies rss/TokyoNight.nnwtheme into NetNewsWire, whose sandbox can't follow a symlink out of its container"
+run = 'rsync -a --delete rss/TokyoNight.nnwtheme/ "$HOME/Library/Containers/com.ranchero.NetNewsWire-Evergreen/Data/Library/Application Support/NetNewsWire/Themes/TokyoNight.nnwtheme/"'
 
 [tasks.perl]
 description = "Installs Perl::Critic into the Homebrew perl for PerlNavigator (Perl::Tidy ships with it)"
