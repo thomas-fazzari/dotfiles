@@ -15,6 +15,14 @@ return {
   },
 
   {
+    "mfussenegger/nvim-lint",
+    ft = { "markdown" },
+    config = function()
+      require "configs.lint"
+    end,
+  },
+
+  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
