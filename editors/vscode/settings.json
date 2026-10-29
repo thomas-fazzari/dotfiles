@@ -379,7 +379,7 @@
   "extensions.autoUpdate": "on",
   "extensions.autoCheckUpdates": true,
   "extensions.ignoreRecommendations": true,
-  "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/Users/thomas/.dotnet/dotnet",
+  "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/Users/thomas/.local/share/mise/dotnet-root/dotnet",
   "json.schemaDownload.trustedDomains": {
     "https://developer.microsoft.com/json-schemas/": true,
     "https://inlang.com": true,
