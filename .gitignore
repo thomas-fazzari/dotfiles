@@ -52,6 +52,8 @@
 !/agentic/skills/dd-audit/**
 !/agentic/skills/show-me/
 !/agentic/skills/show-me/**
+!/agentic/skills/pi-self-improve/
+!/agentic/skills/pi-self-improve/**
 
 # Generated files and local settings stay ignored inside allowed dirs
 **/.DS_Store
@@ -59,3 +61,4 @@
 **/.env
 **/.env.*
 /nvim/lazy-lock.json
+/agentic/skills/pi-self-improve/logbook.md
