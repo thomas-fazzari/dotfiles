@@ -3,18 +3,18 @@
 	email = 122701528+thomas-fazzari@users.noreply.github.com
 
 [core]
-  autocrlf = input
-  excludesfile = ~/.gitignore_global
-  fsmonitor = true
-  pager = delta
-  untrackedcache = true
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+	fsmonitor = true
+	pager = delta
+	untrackedcache = true
 
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 
 [delta]
-  navigate = true
-  line-numbers = true
+	navigate = true
+	line-numbers = true
 
 [init]
 	defaultBranch = master
