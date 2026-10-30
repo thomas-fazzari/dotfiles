@@ -44,8 +44,8 @@
   "files.insertFinalNewline": true,
   "files.eol": "\n",
   "files.associations": {
-    "**/editors/vscode/settings*.json": "jsonc",
-    "**/editors/vscode/keybindings.json": "jsonc",
+    "**/vscode/settings*.json": "jsonc",
+    "**/vscode/keybindings.json": "jsonc",
     "*.code-workspace": "jsonc",
     "**/SKILL.md": "markdown",
     "*.axaml": "xml",

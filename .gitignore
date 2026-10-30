@@ -16,8 +16,6 @@
 !/bin/**
 !/btop/
 !/btop/**
-!/editors/
-!/editors/**
 !/git/
 !/git/**
 !/macos/
@@ -26,6 +24,8 @@
 !/nvim/**
 !/terminal/
 !/terminal/**
+!/vscode/
+!/vscode/**
 !/zen/
 !/zen/**
 
@@ -38,8 +38,6 @@
 
 !/agentic/
 !/agentic/pi-config
-!/agentic/claude/
-!/agentic/claude/**
 !/agentic/herdr/
 !/agentic/herdr/**
 !/agentic/hooks/

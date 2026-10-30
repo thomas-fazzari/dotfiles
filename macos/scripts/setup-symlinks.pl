@@ -11,10 +11,8 @@ my $dotfiles  = abs_path("$RealBin/../..");
 my $timestamp = strftime('%Y%m%d-%H%M%S', localtime);
 
 my @links = (
-  ['Library/Application Support/Code - Insiders/User/settings.json'    => 'editors/vscode/settings.json'],
-  ['Library/Application Support/Code - Insiders/User/keybindings.json' => 'editors/vscode/keybindings.json'],
-  ['.config/zed/settings.json'                                         => 'editors/zed/settings.json'],
-  ['.config/zed/keymap.json'                                           => 'editors/zed/keymap.json'],
+  ['Library/Application Support/Code - Insiders/User/settings.json'    => 'vscode/settings.json'],
+  ['Library/Application Support/Code - Insiders/User/keybindings.json' => 'vscode/keybindings.json'],
   ['.config/aerospace/aerospace.toml'                                  => 'aerospace/aerospace.toml'],
   ['.config/ghostty/config.ghostty'                                    => 'terminal/ghostty/config'],
   ['.config/btop/btop.conf'                                            => 'btop/btop.conf'],
