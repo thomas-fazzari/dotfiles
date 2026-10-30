@@ -9,6 +9,7 @@
 !/bunfig.toml
 !/dotfiles.code-workspace
 !/mise.toml
+!/mise.lock
 
 !/aerospace/
 !/aerospace/**

@@ -26,6 +26,7 @@ my @links = (
   ['.local/share/agent-hooks'                                          => 'agentic/hooks'],
   ['.config/herdr/config.toml'                                         => 'agentic/herdr/config.toml'],
   ['.config/mise/config.toml'                                          => 'mise.toml'],
+  ['.config/mise/mise.lock'                                            => 'mise.lock'],
   ['.config/topgrade.toml'                                             => 'macos/topgrade.toml'],
   ['.bunfig.toml'                                                      => 'bunfig.toml'],
   ['.config/fish/config.fish'                                          => 'terminal/fish/config.fish'],

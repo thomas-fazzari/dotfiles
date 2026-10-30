@@ -1,12 +1,19 @@
 min_version = "2026.9.0"
 
-# Symlinked to ~/.config/mise/config.toml
-# Dev runtimes and language tooling only
+# Symlinked to ~/.config/mise/config.toml, mise.lock next to it
+#
+# All CLI tools, except bootstrap, fish startup, native libs and apps (Brewfile)
 [tools]
+"aqua:neovim/neovim" = "latest"
 "aqua:taiki-e/cargo-llvm-cov" = "latest"
+ast-grep = "latest"
+bat = "latest"
 bun = "latest"
 cargo-deny = "latest"
 "cargo:cargo-sweep" = "latest"
+cmake = "latest"
+delta = "latest"
+difftastic = "latest"
 dotnet = "10.0.400"
 "dotnet:csharpier" = "latest"
 "dotnet:dotnet-ef" = "latest"
@@ -18,6 +25,7 @@ dotnet = "10.0.400"
 "dotnet:roslyn-language-server" = "latest"
 "dotnet:ThomasFazzari.RoslynBridge" = "latest"
 "dotnet:vpk" = "latest"
+fd = "latest"
 "github:bnjbvr/cargo-machete" = "latest"
 "github:christo-auer/eilmeldung" = "latest"
 "github:Feel-ix-343/markdown-oxide" = "latest"
@@ -28,8 +36,11 @@ go = "1.27"
 "go:golang.org/x/tools/gopls" = "latest"
 gofumpt = "latest"
 golangci-lint = "latest"
+hyperfine = "latest"
+jq = "latest"
 lua-language-server = "latest"
 mr-boxington = "latest"
+ninja = "latest"
 node = "26"
 "npm:basedpyright" = "latest"
 "npm:bash-language-server" = "latest"
@@ -42,7 +53,9 @@ oxlint = "latest"
 pi = "latest"
 "pipx:termaid" = { version = "latest", extras = "rich" }
 python = "3.14"
-
+ripgrep = "latest"
+rtk = "latest"
+ruff = "latest"
 rust = { version = "stable", profile = "minimal", components = [
   "rust-analyzer",
   "rust-src",
@@ -50,9 +63,7 @@ rust = { version = "stable", profile = "minimal", components = [
   "clippy",
   "llvm-tools-preview",
 ] }
-
-rtk = "latest"
-ruff = "latest"
+sd = "latest"
 shellcheck = "latest"
 shfmt = "latest"
 stylua = "latest"
@@ -62,8 +73,10 @@ tree-sitter = "latest"
 typst = "latest"
 typstyle = "latest"
 uv = "latest"
+yq = "latest"
 
 [settings]
+lockfile = true
 # Otherwise the global rust entry sets RUSTUP_TOOLCHAIN, which overrides each project's rust-toolchain.toml
 idiomatic_version_file_enable_tools = ["rust"]
 
