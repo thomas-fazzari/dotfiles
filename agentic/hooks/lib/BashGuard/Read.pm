@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use Exporter 'import';
 use Cwd              qw(abs_path getcwd);
+use File::Glob       qw(bsd_glob);
 use List::Util       qw(all any);
 use BashGuard::Rules qw(first_reason flag);
 use BashGuard::Shell qw(is_piped redirection_targets program_name operands expand_home);
@@ -53,10 +54,12 @@ sub existing_parent {
 sub leading_cd {
   my ($commands) = @_;
   my ($program, @args) = map { $_->[2] } @{$commands->[0] // []};
-  return if !defined $program || $program ne 'cd' || @args != 1 || $args[0] eq '-' || $args[0] =~ /[\$`*?]/;
+  return if !defined $program || $program ne 'cd' || @args != 1 || $args[0] eq '-' || $args[0] =~ /[\$`]/;
   my $dir = resolve($args[0], getcwd());
-  return unless -d $dir;
-  return $dir;
+  return $dir if -d $dir;
+  my @dirs = grep {-d} bsd_glob($dir);
+  return unless @dirs == 1;
+  return $dirs[0];
 }
 
 # find walks its leading operands, the others the operands after their pattern

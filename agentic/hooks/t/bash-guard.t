@@ -305,6 +305,7 @@ open my $gitignore, '>', "$repo/.gitignore" or BAIL_OUT("cannot write .gitignore
 print {$gitignore} "ignored/\n";
 close $gitignore or BAIL_OUT("cannot close .gitignore: $!");
 mkdir "$repo/$_" or BAIL_OUT("cannot create $_: $!") for qw(ignored tracked);
+mkdir $_         or BAIL_OUT("cannot create $_: $!") for "$outside/crate", "$outside/crate/src";
 my $test_dir = getcwd();
 chdir $repo or BAIL_OUT("cannot enter $repo: $!");
 
@@ -323,6 +324,8 @@ my @beyond_file_tools = (
   'cd ignored; grep -rn foo .',
   'cd ignored && rg foo',
   "cd $outside && grep -rn foo .",
+  "cd $outside/*/src && rg foo .",
+  'cd ign* && rg foo',
 );
 is_deeply(run_read_tools_hook($_), {}, "read tools, out of their reach: $_") for @beyond_file_tools;
 
@@ -338,6 +341,8 @@ my @within_file_tools = (
   'cat ignored/x',
   'cd tracked && rg foo',
   'cd /nonexistent && rg foo',
+  'cd /nonexistent* && rg foo',
+  'cd * && rg foo',
   'git status && cd ignored && rg foo .',
 );
 is(run_read_tools_hook($_)->{permissionDecision}, 'deny', "read tools, within their reach: $_") for @within_file_tools;
