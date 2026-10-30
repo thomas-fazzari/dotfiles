@@ -61,7 +61,7 @@ rust = { version = "stable", profile = "minimal", components = [
   "rust-src",
   "rustfmt",
   "clippy",
-  "llvm-tools-preview",
+  "llvm-tools",
 ] }
 sd = "latest"
 shellcheck = "latest"
