@@ -1,0 +1,13 @@
+# Editor checks run clippy through mbx's Cargo shim. The absolute path also works in editors launched
+# outside a mise shell. target/rust-analyzer keeps them off the target directory lock of terminal builds.
+# rust-analyzer reports `check/overrideCommand: unexpected field` for this file but applies the override.
+[check]
+overrideCommand = [
+  "/Users/thomas/Library/Application Support/mbx/bin/cargo",
+  "clippy",
+  "--workspace",
+  "--all-targets",
+  "--target-dir",
+  "target/rust-analyzer",
+  "--message-format=json",
+]

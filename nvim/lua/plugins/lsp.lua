@@ -74,7 +74,6 @@ return {
         server = {
           default_settings = {
             ["rust-analyzer"] = {
-              check = { command = "clippy" },
               cargo = { buildScripts = { enable = true } },
               procMacro = { enable = true },
               imports = { granularity = { group = "module" } },

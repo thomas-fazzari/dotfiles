@@ -29,6 +29,7 @@ go = "1.27"
 gofumpt = "latest"
 golangci-lint = "latest"
 lua-language-server = "latest"
+mr-boxington = "latest"
 node = "26"
 "npm:basedpyright" = "latest"
 "npm:bash-language-server" = "latest"
@@ -41,6 +42,15 @@ oxlint = "latest"
 pi = "latest"
 "pipx:termaid" = { version = "latest", extras = "rich" }
 python = "3.14"
+
+rust = { version = "stable", profile = "minimal", components = [
+  "rust-analyzer",
+  "rust-src",
+  "rustfmt",
+  "clippy",
+  "llvm-tools-preview",
+] }
+
 rtk = "latest"
 ruff = "latest"
 shellcheck = "latest"
@@ -52,6 +62,17 @@ tree-sitter = "latest"
 typst = "latest"
 typstyle = "latest"
 uv = "latest"
+
+[settings]
+# Otherwise the global rust entry sets RUSTUP_TOOLCHAIN, which overrides each project's rust-toolchain.toml
+idiomatic_version_file_enable_tools = ["rust"]
+
+# Routes cargo through mbx's build cache. The rust tool's mr_boxington option would skip projects
+# whose toolchain comes from rust-toolchain.toml.
+# `mbx setup --global` writes this entry but replaces the config symlink with a copy: re-link after running it.
+[wrappers.cargo]
+command = "mbx"
+env = { MBX_CARGO_SHIM_MODE = "1" }
 
 [env]
 # Perl::Critic and Perl::Tidy install their scripts into the keg-only Homebrew perl
@@ -66,7 +87,6 @@ run = [
   { task = "apps:install" },
   { task = "vscode" },
   { task = "tools" },
-  { task = "rust" },
   { task = "perl" },
   { task = "symlinks" },
   { task = "pi" },
@@ -129,13 +149,6 @@ run = [
   "bash agentic/pi-config/setup.sh",
   "mise -C agentic/pi-config run packages",
   "herdr integration install pi",
-]
-
-[tasks.rust]
-description = "Installs the stable toolchain and its components through rustup"
-run = [
-  "rustup show active-toolchain >/dev/null 2>&1 || rustup toolchain install stable --profile minimal",
-  "rustup component add rust-analyzer rust-src rustfmt clippy llvm-tools-preview",
 ]
 
 [tasks.symlinks]
