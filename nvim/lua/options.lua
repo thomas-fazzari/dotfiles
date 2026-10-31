@@ -7,6 +7,7 @@ o.updatetime = 250
 o.timeoutlen = 400
 
 o.number = true
+o.relativenumber = true
 o.numberwidth = 2
 o.ruler = false
 o.signcolumn = "yes"

@@ -16,6 +16,7 @@
   "editor.letterSpacing": 0.3,
   "editor.lineHeight": 22,
   "editor.renderLineHighlight": "gutter",
+  "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.stickyScroll.enabled": false,
   // Editor Behavior
