@@ -576,7 +576,7 @@ url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978
 version = "0.10.0"
 backend = "pipx:termaid"
 specifiers = ["latest"]
-uv = { path = ".mise/locks/pipx-termaid/0.10.0~632f5bf8", digest = "sha256:5faafac9d70aae2c3abc02e74a08d965879256cf1ea46cde4b53c83e3f497d0c" }
+uv = { path = ".mise/locks/pipx-termaid/0.10.0~632f5bf8", digest = "sha256:3e0bdc8b2ec32f26598ca351297ac75834c53ce28cacd00caf4b7ce5a54169e2" }
 
 [tools."pipx:termaid".options]
 extras = "rich"

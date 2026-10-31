@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use Cwd            qw(abs_path);
-use File::Basename qw(basename dirname);
+use File::Basename qw(dirname);
 use File::Path     qw(make_path);
 use FindBin        qw($RealBin);
 use POSIX          qw(strftime);
@@ -19,9 +19,6 @@ my @links = (
   ['.config/btop/themes/tokyonight.theme'                   => 'btop/tokyonight.theme'],
   ['.config/nvim'                                           => 'nvim'],
   ['.config/eilmeldung/config.toml'                         => 'rss/eilmeldung/config.toml'],
-  ['.claude/CLAUDE.md'                                      => 'agentic/claude/CLAUDE.md'],
-  ['.claude/settings.json'                                  => 'agentic/claude/settings.json'],
-  ['.claude/hooks'                                          => 'agentic/hooks'],
   ['.local/share/agent-hooks'                               => 'agentic/hooks'],
   ['.config/herdr-app/settings.json'                        => 'agentic/herdr/app/settings.json'],
   ['.config/herdr-app/keys.json'                            => 'agentic/herdr/app/keys.json'],
@@ -38,23 +35,8 @@ my @links = (
   ['.perltidyrc'                                            => '.perltidyrc'],
 );
 
-# Claude Code has no setting for extra skill directories
-for my $skill (glob "$dotfiles/agentic/skills/*/SKILL.md") {
-  my $name = basename(dirname($skill));
-  push @links, [".claude/skills/$name" => "agentic/skills/$name"];
-}
-
 my $check = @ARGV && $ARGV[0] eq '--check';
 my $drift = 0;
-
-# Links left behind by renamed or deleted skills
-for my $link (glob "$ENV{HOME}/.claude/skills/*") {
-  next unless -l $link && !-e $link && index(readlink($link), "$dotfiles/") == 0;
-  $drift = 1;
-  if ($check) { print "stale $link\n"; next }
-  unlink $link or die "$link: $!\n";
-  print "unlink $link\n";
-}
 
 for my $pair (@links) {
   my ($link, $target) = ("$ENV{HOME}/$pair->[0]", "$dotfiles/$pair->[1]");

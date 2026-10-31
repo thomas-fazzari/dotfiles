@@ -73,7 +73,7 @@ xwayland-satellite # X11 apps, spawned by niri
 xdg-desktop-portal-gnome # screencast and screenshots under niri
 greetd
 dux-greeter-bin
-dms-shell
+dux-shell
 matugen # wallpaper-based colors
 wtype # paste from the DMS clipboard history
 qt6-imageformats # DMS image formats
