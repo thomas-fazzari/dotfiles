@@ -104,6 +104,7 @@ run = [
   { task = "tools" },
   { task = "perl" },
   { task = "symlinks" },
+  { task = "hooks:deps" },
   { task = "pi" },
   { task = "wallpaper" },
 ]
@@ -145,9 +146,24 @@ run = "docker start lgtm"
 description = "Rebuilds zen/user.js from the latest BetterZen plus zen/user-overrides.js and links it into the default Zen profile"
 run = "zen/update-userjs.pl"
 
+[tasks."hooks:deps"]
+description = "Installs the agent hooks' dependencies, including the shell parser bash-guard needs to run"
+dir = "~/Dev/dotfiles/agentic/hooks"
+run = "bun install"
+
 [tasks."hooks:test"]
 description = "Tests the agent hooks"
-run = "prove agentic/hooks/t"
+dir = "~/Dev/dotfiles/agentic/hooks"
+run = "bun test"
+
+[tasks."hooks:lint"]
+description = "Checks the formatting of the agent hooks, lints and typechecks them"
+dir = "~/Dev/dotfiles/agentic/hooks"
+run = [
+  "bun run oxfmt --check",
+  "bun run oxlint --config oxlint.json --deny-warnings --report-unused-disable-directives",
+  "tsc -p .",
+]
 
 [tasks.fmt]
 description = "Formats the Lua and Perl files"

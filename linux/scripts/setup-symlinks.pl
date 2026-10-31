@@ -47,10 +47,7 @@ my @rendered = (
       s{wallpapers/creation-ascii\.png}{wallpapers/bridge-over-water.jpg}g;
     }
   ],
-  [
-    '.config/herdr-app/keys.json' => 'agentic/herdr/app/keys.json',
-    sub { s{"cmd-}{"super-}g }
-  ],
+  ['.config/herdr-app/keys.json' => 'agentic/herdr/app/keys.json', sub {s{"cmd-}{"super-}g}],
 );
 
 my $check = @ARGV && $ARGV[0] eq '--check';

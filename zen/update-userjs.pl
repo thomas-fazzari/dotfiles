@@ -6,7 +6,7 @@ use POSIX   qw(strftime);
 
 my $source = 'https://raw.githubusercontent.com/yokoffing/Betterfox/main/zen/user.js';
 my $marker = "// Enter your personal overrides below this line:\n";
-my ($zen) = grep {-d} "$ENV{HOME}/Library/Application Support/zen",
+my ($zen)  = grep {-d} "$ENV{HOME}/Library/Application Support/zen",
   ($ENV{XDG_CONFIG_HOME} // "$ENV{HOME}/.config") . '/zen', "$ENV{HOME}/.zen";
 defined $zen or die "No Zen profile directory (launch Zen once to create it)\n";
 

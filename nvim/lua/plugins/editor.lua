@@ -1,9 +1,9 @@
 local noise_patterns = {
   "^%.git$",
   "^%.DS_Store$",
-  "%.lockb?$", 
-  "%-lock%.json$", 
-  "%-lock%.ya?ml$", 
+  "%.lockb?$",
+  "%-lock%.json$",
+  "%-lock%.ya?ml$",
   "^packages%.lock%.json$",
   "^go%.sum$",
 }
