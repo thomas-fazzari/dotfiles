@@ -94,15 +94,14 @@ url = "https://github.com/dandavison/delta/releases/download/0.20.1/delta-0.20.1
 url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/610498923"
 
 [[tools.difftastic]]
-version = "0.71.0"
+version = "0.72.0"
 backend = "aqua:Wilfred/difftastic"
 specifiers = ["latest"]
 
 [tools.difftastic."platforms.macos-arm64"]
-checksum = "sha256:92acf8890543b6d6f436a87a7a5ec64f82a4b8dbe3a7e564c1e5cbfe60823bc7"
-checksum_source = "mise-versions"
-url = "https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/573540714"
+checksum = "sha256:959ce3e4b661663a6bb0b79de5e03051897e521e99c1b85f3c810b54f025ec93"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.72.0/difft-0.72.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/689921777"
 
 [[tools.dotnet]]
 version = "10.0.400"
@@ -115,7 +114,7 @@ backend = "dotnet:ElectronNET.CLI"
 specifiers = ["latest"]
 
 [[tools."dotnet:ThomasFazzari.RoslynBridge"]]
-version = "1.4.0"
+version = "2.0.0"
 backend = "dotnet:ThomasFazzari.RoslynBridge"
 specifiers = ["latest"]
 
@@ -461,7 +460,7 @@ backend = "core:rust"
 specifiers = ["stable"]
 
 [tools.rust.options]
-components = "clippy,llvm-tools-preview,rust-analyzer,rust-src,rustfmt"
+components = "clippy,llvm-tools,rust-analyzer,rust-src,rustfmt"
 profile = "minimal"
 
 [[tools.sd]]
@@ -520,14 +519,14 @@ url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.10/tin
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/647243040"
 
 [[tools.tombi]]
-version = "1.9.7"
+version = "1.9.8"
 backend = "aqua:tombi-toml/tombi"
 specifiers = ["latest"]
 
 [tools.tombi."platforms.macos-arm64"]
-checksum = "sha256:bfda372442e224febf416a18cdc8099b1188cc1bc70260d1daa4d7ddafc45fa1"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.7/tombi-cli-1.9.7-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/683771517"
+checksum = "sha256:7d07cad962ad3de96113b92f40fbb59617a9214f263027c14a66fd08b61289ec"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.8/tombi-cli-1.9.8-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/688947506"
 provenance = "github-attestations"
 
 [[tools.tree-sitter]]
