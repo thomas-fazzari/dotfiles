@@ -1,0 +1,26 @@
+[misc]
+pre_sudo = true
+disable = [
+  "containers", # not always running
+  "git_repos",
+  "claude_code",
+  "uv", # from mise
+  "cargo", # from mise
+  "pip3", # from mise
+]
+cleanup = true
+assume_yes = true
+ask_retry = false
+notify_end = "on_failure"
+
+[commands]
+"uv tools" = "uv tool upgrade --all"
+
+[linux]
+arch_package_manager = "paru"
+
+[vscode]
+cleanup_obsolete_extensions = true
+
+[rustup]
+channels = ["stable"]

@@ -6,7 +6,9 @@ use POSIX   qw(strftime);
 
 my $source = 'https://raw.githubusercontent.com/yokoffing/Betterfox/main/zen/user.js';
 my $marker = "// Enter your personal overrides below this line:\n";
-my $zen    = "$ENV{HOME}/Library/Application Support/zen";
+my ($zen) = grep {-d} "$ENV{HOME}/Library/Application Support/zen",
+  ($ENV{XDG_CONFIG_HOME} // "$ENV{HOME}/.config") . '/zen', "$ENV{HOME}/.zen";
+defined $zen or die "No Zen profile directory (launch Zen once to create it)\n";
 
 my $userjs = `curl -fsSL $source`;
 $? == 0 or die "Failed to download $source\n";
@@ -46,4 +48,5 @@ else {
   print "link $link -> $target\n";
 }
 
-print "Zen is running: quit it with Cmd+Q and relaunch to apply\n" if system('pgrep -xq zen') == 0;
+my $quit = $^O eq 'darwin' ? 'Cmd+Q' : 'Ctrl+Q';
+print "Zen is running: quit it with $quit and relaunch to apply\n" if system("pgrep -x 'zen|zen-bin' >/dev/null") == 0;

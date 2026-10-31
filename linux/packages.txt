@@ -1,0 +1,109 @@
+# Repos and AUR packages, one per line
+# Restore with:
+#   mise run apps:install
+
+# Core CLI (rest is in mise.toml)
+# mise comes from its installer (~/.local/bin) and self-updates
+paru
+btop
+curl
+fish
+fzf
+zoxide
+github-cli
+git
+starship
+tokei
+tree
+topgrade-bin
+trash-cli # /usr/bin/trash for the agent hooks
+wl-clipboard
+
+# Dev tools
+# rustup lives in ~/.cargo (rustup-init), fff-mcp in ~/.local/bin
+actionlint
+clang
+just
+lldb
+llvm
+make
+perl
+perl-perl-critic # PerlNavigator
+perl-tidy
+nvme-cli
+pkgconf
+vscode-langservers-extracted
+
+# Media and files
+gstreamer
+gst-plugins-good
+perl-image-exiftool
+ffmpeg
+imagemagick
+mpv
+poppler
+qpdf
+xdelta3
+
+# Databases
+dbeaver
+
+# Applications
+bitwarden
+docker
+docker-buildx
+docker-compose
+flatpak
+fuse2 # AppImages
+ghostty
+herdr-app-bin
+kid3-qt
+obsidian
+onlyoffice-bin
+proton-mail-bin
+protonmail-bridge
+tailscale
+visual-studio-code-bin
+zen-browser-bin
+
+# Desktop: niri + DankMaterialShell
+# alfred: the DMS launcher, keka: File Roller
+niri
+xwayland-satellite # X11 apps, spawned by niri
+xdg-desktop-portal-gnome # screencast and screenshots under niri
+greetd
+dux-greeter-bin
+dms-shell
+matugen # wallpaper-based colors
+wtype # paste from the DMS clipboard history
+qt6-imageformats # DMS image formats
+i2c-tools # DMS external monitor brightness
+adw-gtk-theme # DMS colors in GTK3 apps
+nautilus
+file-roller
+loupe
+gnome-calculator
+
+# Games
+steam
+lutris
+heroic-games-launcher
+umu-launcher
+proton-cachyos-slr
+protonup-qt
+gamescope
+mangohud
+lib32-mangohud
+goverlay
+melonds-git
+
+# ASUS ROG laptop
+asusctl
+rog-control-center
+
+# Performance
+scx-scheds # scx_lavd
+scx-tools # scx_loader, configured by linux/scx_loader.toml
+
+# Fonts
+ttf-iosevka-nerd

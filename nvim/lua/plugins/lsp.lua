@@ -78,7 +78,11 @@ return {
               -- Clippy through mbx's Cargo shim
               check = {
                 overrideCommand = {
-                  vim.fs.joinpath(vim.env.HOME, "Library/Application Support/mbx/bin/cargo"),
+                  vim.fs.joinpath(
+                    vim.env.HOME,
+                    vim.fn.has "mac" == 1 and "Library/Application Support" or ".local/share",
+                    "mbx/bin/cargo"
+                  ),
                   "clippy",
                   "--workspace",
                   "--all-targets",

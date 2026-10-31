@@ -2,17 +2,22 @@ set -q DOTFILES; or set -g DOTFILES (path resolve (status filename) | path dirna
 
 # Environment
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
-set -gx TERMINAL /Applications/Ghostty.app/Contents/MacOS/ghostty
 set -gx PI_CACHE_RETENTION long
 
-# Homebrew (static `brew shellenv`, avoids spawning brew on every start)
-set -gx HOMEBREW_PREFIX /opt/homebrew
-set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
-set -gx HOMEBREW_REPOSITORY /opt/homebrew
-
 # PATH: later calls are prepended in front of earlier ones
-fish_add_path -gP /opt/homebrew/opt/rustup/bin
-fish_add_path -gmP /opt/homebrew/bin /opt/homebrew/sbin
+if test -d /opt/homebrew
+    set -gx TERMINAL /Applications/Ghostty.app/Contents/MacOS/ghostty
+
+    # Homebrew (static `brew shellenv`, avoids spawning brew on every start)
+    set -gx HOMEBREW_PREFIX /opt/homebrew
+    set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
+    set -gx HOMEBREW_REPOSITORY /opt/homebrew
+
+    fish_add_path -gP /opt/homebrew/opt/rustup/bin
+    fish_add_path -gmP /opt/homebrew/bin /opt/homebrew/sbin
+else
+    set -gx TERMINAL ghostty
+end
 fish_add_path -gP $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin
 fish_add_path -gaP ~/.docker/bin
 
@@ -35,6 +40,10 @@ abbr -a tmp 'cd $TMPDIR'
 abbr -a news eilmeldung
 abbr -a lgtm 'mise -C ~/Dev/pi-otlp run lgtm'
 abbr -a dotdot --regex '^\.\.+$' --function multicd
+if not test -d /opt/homebrew
+    abbr -a tmp 'cd /tmp'
+    abbr -a melonds 'prime-run melonDS'
+end
 
 # Syntax highlighting
 set -g fish_color_normal A9B1D6
@@ -71,7 +80,8 @@ set -gx FZF_DEFAULT_OPTS \
     '--color=marker:#E0AF68,fg+:#C0CAF5,prompt:#7DCFFF,hl+:#668AC4'
 fzf --fish | source
 
-# mise activates itself through Homebrew's vendor_conf.d, no init needed here
+# mise activates itself through Homebrew's vendor_conf.d on macOS
+test -d /opt/homebrew; or mise activate fish | source
 
 # Prompt: past prompts collapse to the prompt char
 function starship_transient_prompt_func

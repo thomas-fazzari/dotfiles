@@ -10,7 +10,7 @@ cursor-text = #08080B
 selection-background = #202330
 selection-foreground = cell-foreground
 
-background-image = /Users/thomas/Dev/dotfiles/macos/wallpaper.png
+background-image = ~/Dev/dotfiles/wallpapers/creation-ascii.png
 background-image-opacity = 0.2
 background-image-position = center
 background-image-fit = cover
@@ -55,3 +55,6 @@ keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+n=next_tab
 keybind = ctrl+shift+p=previous_tab
 keybind = ctrl+shift+w=close_tab:this
+
+# Per-OS overrides, linked next to this file by linux/scripts/setup-symlinks.pl
+config-file = ?os.ghostty

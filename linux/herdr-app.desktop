@@ -1,0 +1,10 @@
+# Symlinked to ~/.local/share/applications/herdr-app.desktop, overrides the AUR package's entry
+[Desktop Entry]
+Type=Application
+Name=Herdr
+Comment=Terminals and coding agents that keep running
+Exec=env SHELL=/usr/bin/fish herdr-app
+Icon=herdr-app
+Terminal=false
+Categories=Development;
+StartupWMClass=herdr-app

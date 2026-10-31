@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = visual-studio-code-bin
+
+[Action]
+Description = Giving VS Code workbench.html back to thomas...
+When = PostTransaction
+Exec = /usr/bin/find /usr/share/code/resources/app/out/vs/code -name workbench.html -exec chown thomas: {} +

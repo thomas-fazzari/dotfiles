@@ -7,6 +7,12 @@ version = "0.12.6"
 backend = "aqua:neovim/neovim"
 specifiers = ["latest"]
 
+[tools."aqua:neovim/neovim"."platforms.linux-x64"]
+checksum = "sha256:474430d53e6264f6d6dd18db42d6dc9df3a1b56ca9e88a325bbf860e1a811d87"
+checksum_source = "mise-versions"
+url = "https://github.com/neovim/neovim/releases/download/v0.12.6/nvim-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/neovim/neovim/releases/assets/625399155"
+
 [tools."aqua:neovim/neovim"."platforms.macos-arm64"]
 checksum = "sha256:1dbd148222b051ba6c307c4d17a318ed083df018a4f6a5a0ce46955ffc9ab87b"
 checksum_source = "mise-versions"
@@ -17,6 +23,12 @@ url_api = "https://api.github.com/repos/neovim/neovim/releases/assets/625399162"
 version = "0.9.1"
 backend = "aqua:taiki-e/cargo-llvm-cov"
 specifiers = ["latest"]
+
+[tools."aqua:taiki-e/cargo-llvm-cov"."platforms.linux-x64"]
+checksum = "sha256:b3f68e625481fed9b16444174f3fa5ebcdbde4a1878803a35eabe2dcefcdc41a"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547403171"
+provenance = "github-attestations"
 
 [tools."aqua:taiki-e/cargo-llvm-cov"."platforms.macos-arm64"]
 checksum = "sha256:7e821a6c90c0884f79f759f5d9be50799ade67bb82515186d922f26032ef43b8"
@@ -29,6 +41,12 @@ version = "0.51.0"
 backend = "aqua:ast-grep/ast-grep"
 specifiers = ["latest"]
 
+[tools.ast-grep."platforms.linux-x64"]
+checksum = "sha256:a7eead5552d3a8daad70f5d50d935da44bd0c138e946b5b0a96b1d38169fa639"
+checksum_source = "mise-versions"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/644248664"
+
 [tools.ast-grep."platforms.macos-arm64"]
 checksum = "sha256:e18e13c27ed6c4b3ec4de00745b0755dee9dc26c035e226f4dd5d147dca99cc8"
 checksum_source = "mise-versions"
@@ -39,6 +57,12 @@ url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/644256
 version = "0.26.1"
 backend = "aqua:sharkdp/bat"
 specifiers = ["latest"]
+
+[tools.bat."platforms.linux-x64"]
+checksum = "sha256:726f04c8f576a7fd18b7634f1bbf2f915c43494c1c0f013baa3287edb0d5a2a3"
+checksum_source = "mise-versions"
+url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/bat/releases/assets/323549181"
 
 [tools.bat."platforms.macos-arm64"]
 checksum = "sha256:e30beff26779c9bf60bb541e1d79046250cb74378f2757f8eb250afddb19e114"
@@ -51,6 +75,22 @@ version = "1.4.4"
 backend = "core:bun"
 specifiers = ["latest"]
 
+[tools.bun."platforms.linux-x64"]
+checksum = "sha256:bf8ccbfb2b0b80159e0f9a6d15c55317add8077534dbc6130a3edb52fccb395c"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64.zip"
+
+[tools.bun."platforms.linux-x64-baseline"]
+checksum = "sha256:e0446eb55995772eb9894bebae9a6be368d985a8b9271ee124486f9946eedd76"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64-baseline.zip"
+
+[tools.bun."platforms.linux-x64-musl"]
+checksum = "sha256:a5a8ccc5e74dcb883fe974f125a7bdb3b41e5195ed1b870e73f17effd3eb2b2d"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64-musl.zip"
+
+[tools.bun."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:6e9c37098b293920aed28bfb51ab240e26d23bfdd9bbfecb3ad428ac166549bc"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64-musl-baseline.zip"
+
 [tools.bun."platforms.macos-arm64"]
 checksum = "sha256:c240d7f0ccb90c263a849fcdb09b7ee62630d921348ed6aafda86b9d577bc510"
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-darwin-aarch64.zip"
@@ -59,6 +99,12 @@ url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-darwin-aa
 version = "0.20.2"
 backend = "aqua:EmbarkStudios/cargo-deny"
 specifiers = ["latest"]
+
+[tools.cargo-deny."platforms.linux-x64"]
+checksum = "sha256:9f12ed4c49936e09b48bf862b595cde2fe64fcbd9d74dfacac6131ca824c8d5f"
+checksum_source = "mise-versions"
+url = "https://github.com/EmbarkStudios/cargo-deny/releases/download/0.20.2/cargo-deny-0.20.2-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/EmbarkStudios/cargo-deny/releases/assets/471598214"
 
 [tools.cargo-deny."platforms.macos-arm64"]
 checksum = "sha256:fe67d82a10d8597a3549364cb733a3f9cc1bfff9031b7ae46384a9f2a72090c3"
@@ -76,6 +122,12 @@ version = "4.4.5"
 backend = "aqua:Kitware/CMake"
 specifiers = ["latest"]
 
+[tools.cmake."platforms.linux-x64"]
+checksum = "sha256:ed85135c5a5135b45e50423cb406dea04ca3338da0b8ef3c9ede963559680be0"
+checksum_source = "mise-versions"
+url = "https://github.com/Kitware/CMake/releases/download/v4.4.5/cmake-4.4.5-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/Kitware/CMake/releases/assets/682699189"
+
 [tools.cmake."platforms.macos-arm64"]
 checksum = "sha256:679e77a96b9ef9484cc6c1445255fc4f84206b48a65420efbedf16bdab55fbff"
 checksum_source = "mise-versions"
@@ -87,6 +139,12 @@ version = "0.20.1"
 backend = "aqua:dandavison/delta"
 specifiers = ["latest"]
 
+[tools.delta."platforms.linux-x64"]
+checksum = "sha256:50f08c879f84c81ceb220e476491a7f492d2c9c671e79918cc44badf961a6240"
+checksum_source = "mise-versions"
+url = "https://github.com/dandavison/delta/releases/download/0.20.1/delta-0.20.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/610498121"
+
 [tools.delta."platforms.macos-arm64"]
 checksum = "sha256:bc1839cea69288d4673a24faffbb825d408ca907e0f7d33b1678c9e6cdd5e58e"
 checksum_source = "mise-versions"
@@ -97,6 +155,12 @@ url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/6104989
 version = "0.72.0"
 backend = "aqua:Wilfred/difftastic"
 specifiers = ["latest"]
+
+[tools.difftastic."platforms.linux-x64"]
+checksum = "sha256:33ea1f003081e9f2422299a434e6040c89085bd9f102b08f3fe30393720d5d4a"
+checksum_source = "mise-versions"
+url = "https://github.com/Wilfred/difftastic/releases/download/0.72.0/difft-0.72.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/689921979"
 
 [tools.difftastic."platforms.macos-arm64"]
 checksum = "sha256:959ce3e4b661663a6bb0b79de5e03051897e521e99c1b85f3c810b54f025ec93"
@@ -163,6 +227,12 @@ version = "10.5.0"
 backend = "aqua:sharkdp/fd"
 specifiers = ["latest"]
 
+[tools.fd."platforms.linux-x64"]
+checksum = "sha256:a1259cd129636efbc3fef123525c1b49e88fe5088c012630983c310e52fdfa95"
+checksum_source = "mise-versions"
+url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481615"
+
 [tools.fd."platforms.macos-arm64"]
 checksum = "sha256:b67e1836c468e42e411984b56e52fa7abec08c2bd22c867398e7cc134aac5e12"
 checksum_source = "mise-versions"
@@ -174,11 +244,31 @@ version = "0.25.12"
 backend = "github:Feel-ix-343/markdown-oxide"
 specifiers = ["latest"]
 
+[tools."github:Feel-ix-343/markdown-oxide"."platforms.linux-x64"]
+checksum = "sha256:ad4248cf5d3f0e9d9f120b579501c45dad9c46bfcb4ddec36d2cb85d68a58828"
+checksum_source = "mise-versions"
+url = "https://github.com/Feel-ix-343/markdown-oxide/releases/download/v0.25.12/markdown-oxide-v0.25.12-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/Feel-ix-343/markdown-oxide/releases/assets/460775096"
+
 [tools."github:Feel-ix-343/markdown-oxide"."platforms.macos-arm64"]
 checksum = "sha256:fd851fbec60dc7cda5b21c682232e5c6ae6671c726e64bce3fe20013223c5774"
 checksum_source = "mise-versions"
 url = "https://github.com/Feel-ix-343/markdown-oxide/releases/download/v0.25.12/markdown-oxide-v0.25.12-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/Feel-ix-343/markdown-oxide/releases/assets/460775745"
+
+[[tools."github:Samsung/netcoredbg"]]
+version = "3.2.0-1092"
+backend = "github:Samsung/netcoredbg"
+specifiers = ["latest"]
+
+[tools."github:Samsung/netcoredbg".options]
+asset_pattern = "netcoredbg-linux-amd64.tar.gz"
+
+[tools."github:Samsung/netcoredbg"."platforms.linux-x64"]
+checksum = "sha256:080eb3b2d2152465f599d3b33d1ee6e747794e11cc0a3773ec689f5e5f2c5afa"
+checksum_source = "mise-versions"
+url = "https://github.com/Samsung/netcoredbg/releases/download/3.2.0-1092/netcoredbg-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/Samsung/netcoredbg/releases/assets/457716187"
 
 [[tools."github:Samsung/netcoredbg"]]
 version = "3.2.0-1092"
@@ -199,6 +289,12 @@ version = "0.9.2"
 backend = "github:bnjbvr/cargo-machete"
 specifiers = ["latest"]
 
+[tools."github:bnjbvr/cargo-machete"."platforms.linux-x64"]
+checksum = "sha256:48200087f54c55aabcd4db4af1e25742b49846c02a1b1bfa134711945b35b2e9"
+checksum_source = "mise-versions"
+url = "https://github.com/bnjbvr/cargo-machete/releases/download/v0.9.2/cargo-machete-v0.9.2-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/bnjbvr/cargo-machete/releases/assets/397131172"
+
 [tools."github:bnjbvr/cargo-machete"."platforms.macos-arm64"]
 checksum = "sha256:63e28fee386d82d33f2d12406c857f98e2d4697f3f7df7f71f34dff07fca0fde"
 checksum_source = "mise-versions"
@@ -209,6 +305,12 @@ url_api = "https://api.github.com/repos/bnjbvr/cargo-machete/releases/assets/397
 version = "1.10.0"
 backend = "github:christo-auer/eilmeldung"
 specifiers = ["latest"]
+
+[tools."github:christo-auer/eilmeldung"."platforms.linux-x64"]
+checksum = "sha256:80b8cba4a05244bf7086e57f87c27d21057e09f1cad849b0ddd4f990ca0732f9"
+checksum_source = "mise-versions"
+url = "https://github.com/christo-auer/eilmeldung/releases/download/1.10.0/eilmeldung-x86_64-unknown-linux-musl-1.10.0.tar.gz"
+url_api = "https://api.github.com/repos/christo-auer/eilmeldung/releases/assets/685343387"
 
 [tools."github:christo-auer/eilmeldung"."platforms.macos-arm64"]
 checksum = "sha256:beab89c653d0b327b51b6d50d2361a4b7fda4593156c95c0b1d7c4e2524c974c"
@@ -224,6 +326,12 @@ specifiers = ["latest"]
 [tools."github:nextest-rs/nextest".options]
 version_prefix = "cargo-nextest-"
 
+[tools."github:nextest-rs/nextest"."platforms.linux-x64"]
+checksum = "sha256:b0959bc64232974224cf9fb22c915845398c0e8668fa7831eb5b43fb1eef781f"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.150/cargo-nextest-0.9.150-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/679066447"
+provenance = "github-attestations"
+
 [tools."github:nextest-rs/nextest"."platforms.macos-arm64"]
 checksum = "sha256:82a759b4d218d38359424196ab244c470e8f7c7d149c814fbbeef4d67c3c301a"
 url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.150/cargo-nextest-0.9.150-universal-apple-darwin.tar.gz"
@@ -234,6 +342,10 @@ provenance = "github-attestations"
 version = "1.27.3"
 backend = "core:go"
 specifiers = ["1.27"]
+
+[tools.go."platforms.linux-x64"]
+checksum = "sha256:65efbc80fdc1fa2cd2631cad5b481777a68e8725f34e89f50fc6ac714e379b40"
+url = "https://dl.google.com/go/go1.27.3.linux-amd64.tar.gz"
 
 [tools.go."platforms.macos-arm64"]
 checksum = "sha256:dd3908cf20959d798c1e06ebe5b72213f0505ce01373b40ce3110975a6cd99c2"
@@ -254,6 +366,12 @@ version = "0.12.0"
 backend = "aqua:mvdan/gofumpt"
 specifiers = ["latest"]
 
+[tools.gofumpt."platforms.linux-x64"]
+checksum = "sha256:3bc4fcad497439918f5f56d4987de4709a99da0a355e6bec13a7278532b01d38"
+checksum_source = "mise-versions"
+url = "https://github.com/mvdan/gofumpt/releases/download/v0.12.0/gofumpt_v0.12.0_linux_amd64"
+url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473521"
+
 [tools.gofumpt."platforms.macos-arm64"]
 checksum = "sha256:1a3e325b956ed12c21031d9e13382bd51a4fabb57de8d40428819b9583c3cfb9"
 checksum_source = "mise-versions"
@@ -264,6 +382,12 @@ url_api = "https://api.github.com/repos/mvdan/gofumpt/releases/assets/549473536"
 version = "2.15.0"
 backend = "aqua:golangci/golangci-lint"
 specifiers = ["latest"]
+
+[tools.golangci-lint."platforms.linux-x64"]
+checksum = "sha256:9b7fe6a6bf6334b98decf8d86b11415ea7889afdabdd1959fdce23af2a9ebcea"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/golangci/golangci-lint/releases/assets/647132535"
+provenance = "github-attestations"
 
 [tools.golangci-lint."platforms.macos-arm64"]
 checksum = "sha256:d1e409481a8ca846c4bc97e781eb5cb1bd5c23353a0b3977a1cbda1b1b6447d5"
@@ -276,6 +400,12 @@ version = "2.0.0"
 backend = "aqua:sharkdp/hyperfine"
 specifiers = ["latest"]
 
+[tools.hyperfine."platforms.linux-x64"]
+checksum = "sha256:ae2beda2ac99c098427e4f755244552daf20e514422889cca6d44421e2d93c87"
+checksum_source = "mise-versions"
+url = "https://github.com/sharkdp/hyperfine/releases/download/v2.0.0/hyperfine-v2.0.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/hyperfine/releases/assets/619831673"
+
 [tools.hyperfine."platforms.macos-arm64"]
 checksum = "sha256:590b839cfea386b384ce0b42d16daf2910277cf30950656194bb3a5f20dea81e"
 checksum_source = "mise-versions"
@@ -286,6 +416,12 @@ url_api = "https://api.github.com/repos/sharkdp/hyperfine/releases/assets/619831
 version = "1.8.2"
 backend = "aqua:jqlang/jq"
 specifiers = ["latest"]
+
+[tools.jq."platforms.linux-x64"]
+checksum = "sha256:b1c22172dd303f3be49e935aa56aa48a8b7a46e0bc838b4997d3bb451495870f"
+url = "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-linux-amd64"
+url_api = "https://api.github.com/repos/jqlang/jq/releases/assets/453012752"
+provenance = "github-attestations"
 
 [tools.jq."platforms.macos-arm64"]
 checksum = "sha256:2d75340ba57a4b4b4c8708a21c2dc8e958a48aaa8bba13b27f77f6e4c0eca07e"
@@ -298,6 +434,12 @@ version = "3.19.2"
 backend = "aqua:LuaLS/lua-language-server"
 specifiers = ["latest"]
 
+[tools.lua-language-server."platforms.linux-x64"]
+checksum = "sha256:93ad326b10f6c00911dd8c450fa098332dbd8f9f45d1052f5636a2d54479b947"
+checksum_source = "mise-versions"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.2/lua-language-server-3.19.2-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/635856120"
+
 [tools.lua-language-server."platforms.macos-arm64"]
 checksum = "sha256:79149584320a23bd5fcd5bc31f47a1975acd8a4560a0e89036bb1016fa61687f"
 checksum_source = "mise-versions"
@@ -308,6 +450,12 @@ url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/asset
 version = "1.29.0"
 backend = "packslip:github.com/jdx/mr-boxington"
 specifiers = ["latest"]
+
+[tools.mr-boxington."platforms.linux-x64"]
+checksum = "sha256:b713e1a3b8e7a8696b7e365ef222a5b4bb45b18ad6c30b6f86972194294c31ae"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
+repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.macos-arm64"]
 checksum = "sha256:5675b2a3b16059757933448b8fd70579716f356cae311766becd9da38c983ab5"
@@ -320,6 +468,12 @@ version = "1.13.2"
 backend = "aqua:ninja-build/ninja"
 specifiers = ["latest"]
 
+[tools.ninja."platforms.linux-x64"]
+checksum = "sha256:5749cbc4e668273514150a80e387a957f933c6ed3f5f11e03fb30955e2bbead6"
+checksum_source = "mise-versions"
+url = "https://github.com/ninja-build/ninja/releases/download/v1.13.2/ninja-linux.zip"
+url_api = "https://api.github.com/repos/ninja-build/ninja/releases/assets/318865358"
+
 [tools.ninja."platforms.macos-arm64"]
 checksum = "sha256:c99048673aa765960a99cf10c6ddb9f1fad506099ff0a0e137ad8960a88f321b"
 checksum_source = "mise-versions"
@@ -330,6 +484,10 @@ url_api = "https://api.github.com/repos/ninja-build/ninja/releases/assets/318863
 version = "26.13.0"
 backend = "core:node"
 specifiers = ["26"]
+
+[tools.node."platforms.linux-x64"]
+checksum = "sha256:5848553868b402d3fabb5b09270649977780a390f832155721025a08b5104455"
+url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-linux-x64.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
 checksum = "sha256:d38bd5e5a2ddce6bbb5ce45e46e208337da4d51fffe611e567fd32073d6439f6"
@@ -385,6 +543,12 @@ version = "1.90.0"
 backend = "aqua:oxc-project/oxc/oxlint"
 specifiers = ["latest"]
 
+[tools.oxlint."platforms.linux-x64"]
+checksum = "sha256:dd5b0c99ca7917fd6d3caabae260acc5bf7d65ae094541971862602fe288dca4"
+checksum_source = "mise-versions"
+url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.90.0/oxlint-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/680611055"
+
 [tools.oxlint."platforms.macos-arm64"]
 checksum = "sha256:4654e2b8b450f25d3b3186b8e88ffbaf5c20b991a61243758a0944bc46726791"
 checksum_source = "mise-versions"
@@ -396,6 +560,12 @@ version = "1.4.0"
 backend = "aqua:earendil-works/pi"
 specifiers = ["latest"]
 
+[tools.pi."platforms.linux-x64"]
+checksum = "sha256:f2e4e4329603223d03260cdb8bd5033dbdc1f73ba58ab8939db2e56546e115d2"
+checksum_source = "mise-versions"
+url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978808"
+
 [tools.pi."platforms.macos-arm64"]
 checksum = "sha256:79d9979d76a2a5adb7c28e27e9b44629928ccd0dc9fbb6ae7217860bd5e8be5d"
 checksum_source = "mise-versions"
@@ -406,7 +576,7 @@ url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978
 version = "0.10.0"
 backend = "pipx:termaid"
 specifiers = ["latest"]
-uv = { path = ".mise/locks/pipx-termaid/0.10.0~632f5bf8", digest = "sha256:5faafac9d70aae2c3abc02e74a08d965879256cf1ea46cde4b53c83e3f497d0c" }
+uv = { path = ".mise/locks/pipx-termaid/0.10.0~632f5bf8", digest = "sha256:3e0bdc8b2ec32f26598ca351297ac75834c53ce28cacd00caf4b7ce5a54169e2" }
 
 [tools."pipx:termaid".options]
 extras = "rich"
@@ -426,6 +596,12 @@ version = "15.2.0"
 backend = "aqua:BurntSushi/ripgrep"
 specifiers = ["latest"]
 
+[tools.ripgrep."platforms.linux-x64"]
+checksum = "sha256:33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478120097"
+
 [tools.ripgrep."platforms.macos-arm64"]
 checksum = "sha256:3750b2e93f37e0c692657da574d7019a101c0084da05a790c83fd335bad973e4"
 checksum_source = "mise-versions"
@@ -437,6 +613,12 @@ version = "1.1.0"
 backend = "aqua:rtk-ai/rtk"
 specifiers = ["latest"]
 
+[tools.rtk."platforms.linux-x64"]
+checksum = "sha256:9454ad1b9489daa57ab0a9f4ebe2faaf4dc82b8a0f26c9e5135151abd7c9378d"
+checksum_source = "mise-versions"
+url = "https://github.com/rtk-ai/rtk/releases/download/v1.1.0/rtk-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/675762778"
+
 [tools.rtk."platforms.macos-arm64"]
 checksum = "sha256:8da773b0954cf90b115ec95c4e4eb420f04c39de233c5db102246a6caf073ba7"
 checksum_source = "mise-versions"
@@ -447,6 +629,12 @@ url_api = "https://api.github.com/repos/rtk-ai/rtk/releases/assets/675762802"
 version = "0.17.3"
 backend = "aqua:astral-sh/ruff"
 specifiers = ["latest"]
+
+[tools.ruff."platforms.linux-x64"]
+checksum = "sha256:2b0890f5a55900af741f133918c2656919bbf18c2ab7741b4ca8403a90e647a9"
+url = "https://github.com/astral-sh/ruff/releases/download/0.17.3/ruff-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/ruff/releases/assets/679956535"
+provenance = "github-attestations"
 
 [tools.ruff."platforms.macos-arm64"]
 checksum = "sha256:118f7121aa838785672bf612487f755a89108bb5f44e0f3df96c5967a72614f9"
@@ -468,6 +656,12 @@ version = "1.1.0"
 backend = "aqua:chmln/sd"
 specifiers = ["latest"]
 
+[tools.sd."platforms.linux-x64"]
+checksum = "sha256:3613eca74cd686739bb5a6d68319aa56c747e7315274d02323a2ca2b1c5d82d2"
+checksum_source = "mise-versions"
+url = "https://github.com/chmln/sd/releases/download/v1.1.0/sd-v1.1.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/chmln/sd/releases/assets/362325296"
+
 [tools.sd."platforms.macos-arm64"]
 checksum = "sha256:4bd3c09226376ca0a1d69589c91e86276fae36c5fbaaee669afce583f6682030"
 checksum_source = "mise-versions"
@@ -478,6 +672,12 @@ url_api = "https://api.github.com/repos/chmln/sd/releases/assets/362325451"
 version = "0.11.0"
 backend = "aqua:koalaman/shellcheck"
 specifiers = ["latest"]
+
+[tools.shellcheck."platforms.linux-x64"]
+checksum = "sha256:8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198"
+checksum_source = "mise-versions"
+url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056942"
 
 [tools.shellcheck."platforms.macos-arm64"]
 checksum = "sha256:56affdd8de5527894dca6dc3d7e0a99a873b0f004d7aabc30ae407d3f48b0a79"
@@ -490,6 +690,12 @@ version = "3.14.1"
 backend = "aqua:mvdan/sh"
 specifiers = ["latest"]
 
+[tools.shfmt."platforms.linux-x64"]
+checksum = "sha256:76e77641faa025814b77f153b29796b8e6fa2fca03e0c76a691608b86c7ea7bf"
+checksum_source = "mise-versions"
+url = "https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_linux_amd64"
+url_api = "https://api.github.com/repos/mvdan/sh/releases/assets/547320883"
+
 [tools.shfmt."platforms.macos-arm64"]
 checksum = "sha256:b7c872db63553ccffc7253aba3ed7d4885a27d83f1ba567b1138c6315a5847e5"
 checksum_source = "mise-versions"
@@ -500,6 +706,12 @@ url_api = "https://api.github.com/repos/mvdan/sh/releases/assets/547320930"
 version = "2.6.0"
 backend = "aqua:JohnnyMorganz/StyLua"
 specifiers = ["latest"]
+
+[tools.stylua."platforms.linux-x64"]
+checksum = "sha256:48ee7db28346f96f4bd545e190ab080a88a7b5a664e97649cf5d5c60426f402d"
+checksum_source = "mise-versions"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.6.0/stylua-linux-x86_64-musl.zip"
+url_api = "https://api.github.com/repos/JohnnyMorganz/StyLua/releases/assets/628184959"
 
 [tools.stylua."platforms.macos-arm64"]
 checksum = "sha256:dab9b66d340ca5ffc8225211f1dcf89b84783e09b8cbec8c518497eba81f3c42"
@@ -512,6 +724,12 @@ version = "0.15.10"
 backend = "aqua:Myriad-Dreamin/tinymist"
 specifiers = ["latest"]
 
+[tools.tinymist."platforms.linux-x64"]
+checksum = "sha256:b030af8966d2759949e33aa0fed518c1667431e1d551014034ccf3f94eac9746"
+checksum_source = "mise-versions"
+url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.10/tinymist-linux-x64"
+url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/647241625"
+
 [tools.tinymist."platforms.macos-arm64"]
 checksum = "sha256:bb5bb435f83648f88f638c4050cd44f7222bd1be510c945df7d3ba9f75289225"
 checksum_source = "mise-versions"
@@ -522,6 +740,12 @@ url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/
 version = "1.9.8"
 backend = "aqua:tombi-toml/tombi"
 specifiers = ["latest"]
+
+[tools.tombi."platforms.linux-x64"]
+checksum = "sha256:cf51b0f134e5b488212bb062538e0381a163a4f7db2330c58e3cf613637b3118"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.8/tombi-cli-1.9.8-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/688947565"
+provenance = "github-attestations"
 
 [tools.tombi."platforms.macos-arm64"]
 checksum = "sha256:7d07cad962ad3de96113b92f40fbb59617a9214f263027c14a66fd08b61289ec"
@@ -534,6 +758,12 @@ version = "0.27.1"
 backend = "aqua:tree-sitter/tree-sitter"
 specifiers = ["latest"]
 
+[tools.tree-sitter."platforms.linux-x64"]
+checksum = "sha256:d01042f94ba3d6827ddc9788e235f75d8366431be42bdf90ade534d960c98b7d"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.27.1/tree-sitter-linux-x64.gz"
+url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/622546800"
+provenance = "github-attestations"
+
 [tools.tree-sitter."platforms.macos-arm64"]
 checksum = "sha256:46cb97d9a2c52c94e22d9a76c2f1116156b8b61f98360e2a9cce05fcb197cd4d"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.27.1/tree-sitter-macos-arm64.gz"
@@ -544,6 +774,12 @@ provenance = "github-attestations"
 version = "0.15.1"
 backend = "aqua:typst/typst"
 specifiers = ["latest"]
+
+[tools.typst."platforms.linux-x64"]
+checksum = "sha256:a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c"
+checksum_source = "mise-versions"
+url = "https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-unknown-linux-musl.tar.xz"
+url_api = "https://api.github.com/repos/typst/typst/releases/assets/480300761"
 
 [tools.typst."platforms.macos-arm64"]
 checksum = "sha256:48f62ed034aa3a7978309579ac6ca00045e2ef0da73114e8af27cfd8e74dc05a"
@@ -556,6 +792,12 @@ version = "0.15.2"
 backend = "aqua:typstyle-rs/typstyle"
 specifiers = ["latest"]
 
+[tools.typstyle."platforms.linux-x64"]
+checksum = "sha256:ea790059cd05016a6f4282386ab7b4fc92f83faa0f5126d8216df2562d7596fd"
+checksum_source = "mise-versions"
+url = "https://github.com/typstyle-rs/typstyle/releases/download/v0.15.2/typstyle-x86_64-unknown-linux-gnu"
+url_api = "https://api.github.com/repos/typstyle-rs/typstyle/releases/assets/632370088"
+
 [tools.typstyle."platforms.macos-arm64"]
 checksum = "sha256:b3f7d55bf06f2b190a05ade3357ed62206aef5dabf12d205d158bc2bb203c975"
 checksum_source = "mise-versions"
@@ -567,6 +809,12 @@ version = "0.13.6"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
+[tools.uv."platforms.linux-x64"]
+checksum = "sha256:f29c3e94ffabd7e6f3ba521dba169a9b7ec12100bf3257087f0f24f6123f3645"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980644"
+provenance = "github-attestations"
+
 [tools.uv."platforms.macos-arm64"]
 checksum = "sha256:60fbd5c8a1ed681845eea28d9d622fcde03c51e91a43465b64a1e17db1ed3472"
 url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-aarch64-apple-darwin.tar.gz"
@@ -577,6 +825,12 @@ provenance = "github-attestations"
 version = "4.54.1"
 backend = "aqua:mikefarah/yq"
 specifiers = ["latest"]
+
+[tools.yq."platforms.linux-x64"]
+checksum = "sha256:8e34fc298390875de416e6a4afcb8cabeceb25d9aa8506c1a2f9353cf702ea5f"
+url = "https://github.com/mikefarah/yq/releases/download/v4.54.1/yq_linux_amd64"
+url_api = "https://api.github.com/repos/mikefarah/yq/releases/assets/597222595"
+provenance = "cosign"
 
 [tools.yq."platforms.macos-arm64"]
 checksum = "sha256:fee511a181bd8b3e6b7da98842b41973bfac8cd3bcd341ed29a584620b5b2844"

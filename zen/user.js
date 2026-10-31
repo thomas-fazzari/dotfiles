@@ -12,11 +12,11 @@
  * "Ex nihilo nihil fit"                                                    *
  * version: 148                                                             *
  * url: https://github.com/yokoffing/Betterfox                              *
- ****************************************************************************/
+****************************************************************************/
 
 /****************************************************************************
  * SECTION: SECUREFOX                                                       *
- ****************************************************************************/
+****************************************************************************/
 /** TRACKING PROTECTION ***/
 user_pref("browser.contentblocking.category", "strict");
 user_pref("browser.download.start_downloads_in_tmp_dir", true);
@@ -124,7 +124,7 @@ user_pref("browser.tabs.crashReporting.sendReport", false);
 
 /****************************************************************************
  * SECTION: PESKYFOX                                                        *
- ****************************************************************************/
+****************************************************************************/
 /** MOZILLA UI ***/
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
@@ -179,7 +179,7 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 
 /****************************************************************************
  * START: ZEN-SPECIFIC OVERRIDES                                            *
- ****************************************************************************/
+****************************************************************************/
 // Remove the slashes to enable the prefs
 
 // PREF: re-enable Windows efficiency mode
@@ -197,7 +197,7 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 
 /****************************************************************************
  * START: MY OVERRIDES                                                      *
- ****************************************************************************/
+****************************************************************************/
 // visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
 // visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 // Enter your personal overrides below this line:
@@ -218,9 +218,10 @@ user_pref("browser.ai.control.default", "blocked");
 // No DoH: Tailscale MagicDNS and ProtonVPN resolve names
 user_pref("network.trr.mode", 5);
 
+
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *
- ****************************************************************************/
+****************************************************************************/
 // Reset Zen's custom scrolling prefs to their Firefox defaults before making changes!
 // [1] Zen changes: https://github.com/zen-browser/desktop/blob/3932ec21f5661440c4b20796f90341a6ac725818/src/browser/app/profile/zen-browser.js#L297-L312
 // [2] Firefox defaults: https://searchfox.org/mozilla-release/source/modules/libpref/init/StaticPrefList.yaml
@@ -228,6 +229,7 @@ user_pref("network.trr.mode", 5);
 // [3] https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
 // Enter your scrolling overrides below this line:
 
+
 /****************************************************************************
  * END: BETTERFOX                                                           *
- ****************************************************************************/
+****************************************************************************/

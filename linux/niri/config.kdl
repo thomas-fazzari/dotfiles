@@ -1,0 +1,118 @@
+// niri + DankMaterialShell, symlinked to ~/.config/niri/config.kdl
+// Window bindings mirror aerospace/aerospace.toml. Number row binds use AZERTY keysyms.
+
+// The HDMI output is wired to the NVIDIA GPU: rendering there avoids copying every frame from the iGPU
+debug {
+    render-drm-device "/dev/dri/by-path/pci-0000:01:00.0-render"
+}
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+}
+
+prefer-no-csd
+
+animations {
+    off
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+layout {
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width { proportion 0.5; }
+    background-color "transparent"
+}
+
+// DMS wallpaper behind the overview
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+// herdr has no background transparency setting
+window-rule {
+    match app-id="^herdr-app$"
+    opacity 0.85
+    background-effect {
+        blur true
+    }
+}
+
+binds {
+    Alt+H { focus-column-left; }
+    Alt+J { focus-window-down; }
+    Alt+K { focus-window-up; }
+    Alt+L { focus-column-right; }
+
+    Alt+Shift+H { move-column-left; }
+    Alt+Shift+J { move-window-down; }
+    Alt+Shift+K { move-window-up; }
+    Alt+Shift+L { move-column-right; }
+
+    Alt+ampersand { focus-workspace 1; }
+    Alt+eacute { focus-workspace 2; }
+    Alt+quotedbl { focus-workspace 3; }
+    Alt+apostrophe { focus-workspace 4; }
+
+    Alt+Shift+ampersand { move-window-to-workspace 1; }
+    Alt+Shift+eacute { move-window-to-workspace 2; }
+    Alt+Shift+quotedbl { move-window-to-workspace 3; }
+    Alt+Shift+apostrophe { move-window-to-workspace 4; }
+
+    Alt+Tab { focus-workspace-previous; }
+
+    Alt+parenright { set-column-width "-10%"; }
+    Alt+equal { set-column-width "+10%"; }
+
+    Alt+G { consume-or-expel-window-left; }
+    Alt+Shift+G { consume-or-expel-window-right; }
+    Alt+R { switch-preset-column-width; }
+    Alt+B { reset-window-height; }
+
+    Alt+Space { toggle-window-floating; }
+    Super+Space hotkey-overlay-title="Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+
+    Ctrl+Up repeat=false { toggle-overview; }
+    Ctrl+Alt+Up { maximize-column; }
+    Ctrl+Alt+Down { reset-window-height; }
+    Super+Ctrl+Q allow-inhibiting=false { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Super+Q repeat=false { close-window; }
+    Super+Alt+Escape { close-window; }
+    Super+Alt+C { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Super+Shift+quotedbl { screenshot-screen; }
+    Super+Shift+apostrophe { screenshot; }
+    Super+Shift+parenleft { screenshot-window; }
+
+    Super+Alt+N { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Super+Alt+Comma { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
+    Super+Shift+Slash { show-hotkey-overlay; }
+    Super+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Ctrl+Alt+Delete { quit; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
+    XF86AudioMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
+    XF86AudioPlay allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioNext allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
+    XF86AudioPrev allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
+}
+
+// Written by DMS settings, not versioned. Its binds.kdl and alttab.kdl are left out: they bind Super, which the apps use.
+include optional=true "dms/colors.kdl"
+include optional=true "dms/layout.kdl"
+include optional=true "dms/outputs.kdl"
+include optional=true "dms/input.kdl"
+include optional=true "dms/cursor.kdl"
+include optional=true "dms/windowrules.kdl"

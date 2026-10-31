@@ -1,0 +1,3 @@
+# Installed to /etc/scx_loader.toml
+default_sched = "scx_lavd"
+default_mode = "Auto"

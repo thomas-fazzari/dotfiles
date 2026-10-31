@@ -1,0 +1,5 @@
+# Symlinked to ~/.zshenv: agent shells get the session environment outside a graphical login too
+set -a
+source "${${(%):-%x}:A:h}/environment.conf"
+set +a
+typeset -U path

@@ -30,7 +30,7 @@ fd = "latest"
 "github:christo-auer/eilmeldung" = "latest"
 "github:Feel-ix-343/markdown-oxide" = "latest"
 "github:nextest-rs/nextest" = { version = "latest", version_prefix = "cargo-nextest-" }
-"github:Samsung/netcoredbg" = { version = "latest", asset_pattern = "netcoredbg-osx-arm64.zip" }
+"github:Samsung/netcoredbg" = { version = "latest", platforms = { macos-arm64 = { asset_pattern = "netcoredbg-osx-arm64.zip" }, linux-x64 = { asset_pattern = "netcoredbg-linux-amd64.tar.gz" } } }
 go = "1.27"
 "go:golang.org/x/tools/cmd/goimports" = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
@@ -52,7 +52,8 @@ oxfmt = "latest"
 oxlint = "latest"
 pi = "latest"
 "pipx:termaid" = { version = "latest", extras = "rich" }
-python = "3.14"
+# macOS only: on Linux it would shadow /usr/bin/python3 and break system scripts needing distro modules (gi)
+python = { version = "3.14", os = ["macos"] }
 ripgrep = "latest"
 rtk = "latest"
 ruff = "latest"
@@ -77,11 +78,12 @@ yq = "latest"
 
 [settings]
 lockfile = true
+lockfile_platforms = ["macos-arm64", "linux-x64"]
 # Otherwise the global rust entry sets RUSTUP_TOOLCHAIN, which overrides each project's rust-toolchain.toml
 idiomatic_version_file_enable_tools = ["rust"]
 
-# Routes cargo through mbx's build cache. The rust tool's mr_boxington option would skip projects
-# whose toolchain comes from rust-toolchain.toml.
+# Routes cargo through mbx's build cache.
+# The rust tool's mr_boxington option would skip projects whose toolchain comes from rust-toolchain.toml.
 # `mbx setup --global` writes this entry but replaces the config symlink with a copy: re-link after running it.
 [wrappers.cargo]
 command = "mbx"
@@ -106,21 +108,38 @@ run = [
   { task = "wallpaper" },
 ]
 
+# macos/Brewfile on macOS
+# linux/packages.txt (repos and AUR, through paru) on Linux
 [tasks.apps]
-description = "Reports missing or outdated Brewfile dependencies without installing anything"
-run = "brew bundle check --verbose --file macos/Brewfile"
+description = "Reports missing or outdated app dependencies without installing anything"
+run = """
+{% if os() == "macos" %}brew bundle check --verbose --file macos/Brewfile
+{% else %}sed -e 's/#.*//' -e '/^[[:space:]]*$/d' linux/packages.txt | xargs pacman -T
+{% endif %}"""
 
 [tasks."apps:install"]
-description = "Installs and upgrades Brewfile dependencies"
-run = "brew bundle install --file macos/Brewfile"
+description = "Installs and upgrades app dependencies, plus the linux/hooks pacman hooks on Linux"
+run = """
+{% if os() == "macos" %}brew bundle install --file macos/Brewfile
+{% else %}sed -e 's/#.*//' -e '/^[[:space:]]*$/d' linux/packages.txt | xargs -o paru -Syu --needed
+sudo install -Dm644 -t /etc/pacman.d/hooks linux/hooks/*.hook
+{% endif %}"""
 
 [tasks."apps:prune"]
-description = "Lists Homebrew packages that are not in the Brewfile (pass --force to uninstall them)"
-run = "brew bundle cleanup --file macos/Brewfile"
+description = "Lists installed apps that are not in the app list, minus the CachyOS installer's packages on Linux (pass --force on macOS to uninstall them)"
+run = """
+{% if os() == "macos" %}brew bundle cleanup --file macos/Brewfile
+{% else %}installer=$(awk '{ gsub(/[-T:]/, " ", $1); t = mktime(substr($1, 2, 19)); start = start ? start : t } t > start + 600 {exit} /\\[ALPM\\] installed/ {print $4}' /var/log/pacman.log)
+pacman -Qqe | grep -vxF -e "$(sed -e 's/#.*//' -e 's/[[:space:]]*$//' -e '/^$/d' linux/packages.txt)" -e "$installer"
+{% endif %}"""
 
 [tasks.audit]
 description = "Reports reclaimable disk space, broken dotfile links and system health without changing anything"
 run = "agentic/skills/dd-audit/scripts/audit.pl"
+
+[tasks.lgtm]
+description = "Starts the local Grafana LGTM container for Pi telemetry (Grafana on :3000, OTLP on :4318)"
+run = "docker start lgtm"
 
 [tasks.zen]
 description = "Rebuilds zen/user.js from the latest BetterZen plus zen/user-overrides.js and links it into the default Zen profile"
@@ -152,8 +171,8 @@ description = "Copies rss/TokyoNight.nnwtheme into NetNewsWire, whose sandbox ca
 run = 'rsync -a --delete rss/TokyoNight.nnwtheme/ "$HOME/Library/Containers/com.ranchero.NetNewsWire-Evergreen/Data/Library/Application Support/NetNewsWire/Themes/TokyoNight.nnwtheme/"'
 
 [tasks.perl]
-description = "Installs Perl::Critic into the Homebrew perl for PerlNavigator (Perl::Tidy ships with it)"
-run = "cpanm --notest --quiet Perl::Critic"
+description = "Installs Perl::Critic into the Homebrew perl for PerlNavigator (Perl::Tidy ships with it, Linux gets both from pacman)"
+run = "{% if os() == 'macos' %}cpanm --notest --quiet Perl::Critic{% endif %}"
 
 [tasks.pi]
 description = "Links the Pi configuration from the agentic/pi-config submodule and installs its packages"
@@ -165,7 +184,7 @@ run = [
 
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
-run = "macos/scripts/setup-symlinks.pl"
+run = "{{ os() }}/scripts/setup-symlinks.pl"
 
 [tasks.tools]
 description = "Installs the mise-managed tools listed under [tools]"
@@ -176,5 +195,8 @@ description = "Installs the VS Code extensions listed in vscode/extensions.txt"
 run = "vscode/setup-extensions.pl"
 
 [tasks.wallpaper]
-description = "Sets macos/wallpaper.png as the desktop picture"
-run = "osascript -e 'tell application \"Finder\" to set desktop picture to (POSIX file \"'\"$PWD/macos/wallpaper.png\"'\" as alias)'"
+description = "Sets the desktop picture from wallpapers/ (DMS on Linux)"
+run = """
+{% if os() == "macos" %}osascript -e 'tell application "Finder" to set desktop picture to (POSIX file "'"$PWD/wallpapers/creation-ascii.png"'" as alias)'
+{% else %}dms ipc call wallpaper set "$PWD/wallpapers/bridge-over-water.jpg"
+{% endif %}"""

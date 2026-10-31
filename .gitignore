@@ -19,6 +19,8 @@
 !/btop/**
 !/git/
 !/git/**
+!/linux/
+!/linux/**
 !/macos/
 !/macos/**
 !/nvim/
@@ -29,6 +31,8 @@
 !/terminal/**
 !/vscode/
 !/vscode/**
+!/wallpapers/
+!/wallpapers/**
 !/zen/
 !/zen/**
 

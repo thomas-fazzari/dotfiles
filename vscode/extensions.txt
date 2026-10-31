@@ -17,6 +17,7 @@ ibm.output-colorizer
 ionide.ionide-fsharp
 jeff-hykin.better-dockerfile-syntax
 johnnymorganz.stylua
+kdl-org.kdl
 mechatroner.rainbow-csv
 ms-azuretools.vscode-containers
 ms-dotnettools.csdevkit

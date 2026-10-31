@@ -95,7 +95,7 @@
   // Background
   "background.enabled": true,
   "background.fullscreen": {
-    "images": ["/Users/thomas/Dev/dotfiles/macos/wallpaper.png"],
+    "images": ["/Users/thomas/Dev/dotfiles/wallpapers/creation-ascii.png"],
     "opacity": 0.12,
     "size": "cover",
     "position": "center",
@@ -134,6 +134,10 @@
     "fish": { "path": "/opt/homebrew/bin/fish" },
   },
   "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.profiles.linux": {
+    "fish": { "path": "/usr/bin/fish" },
+  },
+  "terminal.integrated.defaultProfile.linux": "fish",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -172,6 +176,7 @@
   // Formatters
   "csharpier.dev.disableCSharpierServer": true,
   "oxc.path.oxfmt": "/Users/thomas/.local/share/mise/shims/oxfmt",
+  "stylua.styluaPath": "/Users/thomas/.local/share/mise/shims/stylua",
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode",
     "editor.inlayHints.enabled": "off",
@@ -378,9 +383,8 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1,
   },
-  // Misc
-  "chat.disableAIFeatures": true,
   "telemetry.telemetryLevel": "off",
+  "chat.disableAIFeatures": true,
   "extensions.autoUpdate": "on",
   "extensions.autoCheckUpdates": true,
   "extensions.ignoreRecommendations": true,
