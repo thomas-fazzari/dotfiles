@@ -11,10 +11,6 @@
 !/mise.toml
 !/mise.lock
 
-!/aerospace/
-!/aerospace/**
-!/bin/
-!/bin/**
 !/btop/
 !/btop/**
 !/git/

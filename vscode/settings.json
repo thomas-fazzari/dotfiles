@@ -95,7 +95,7 @@
   // Background
   "background.enabled": true,
   "background.fullscreen": {
-    "images": ["/Users/thomas/Dev/dotfiles/wallpapers/creation-ascii.png"],
+    "images": ["/Users/thomas/Dev/dotfiles/wallpapers/bridge-over-water.jpg"],
     "opacity": 0.12,
     "size": "cover",
     "position": "center",

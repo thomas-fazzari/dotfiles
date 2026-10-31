@@ -1,5 +1,4 @@
 // niri + DankMaterialShell, symlinked to ~/.config/niri/config.kdl
-// Window bindings mirror aerospace/aerospace.toml. Number row binds use AZERTY keysyms.
 
 // The HDMI output is wired to the NVIDIA GPU: rendering there avoids copying every frame from the iGPU
 debug {
@@ -78,6 +77,7 @@ binds {
     Alt+Shift+G { consume-or-expel-window-right; }
     Alt+R { switch-preset-column-width; }
     Alt+B { reset-window-height; }
+    Alt+T { toggle-column-tabbed-display; }
 
     Alt+Space { toggle-window-floating; }
     Super+Space hotkey-overlay-title="Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }

@@ -15,10 +15,11 @@ if test -d /opt/homebrew
 
     fish_add_path -gP /opt/homebrew/opt/rustup/bin
     fish_add_path -gmP /opt/homebrew/bin /opt/homebrew/sbin
+    fish_add_path -gP $DOTFILES/macos/bin
 else
     set -gx TERMINAL ghostty
 end
-fish_add_path -gP $DOTFILES/bin ~/go/bin ~/.local/bin ~/.cargo/bin
+fish_add_path -gP ~/go/bin ~/.local/bin ~/.cargo/bin
 fish_add_path -gaP ~/.docker/bin
 
 status is-interactive; or return

@@ -10,10 +10,8 @@ cursor-text = #08080B
 selection-background = #202330
 selection-foreground = cell-foreground
 
-background-image = ~/Dev/dotfiles/wallpapers/creation-ascii.png
-background-image-opacity = 0.2
-background-image-position = center
-background-image-fit = cover
+background-opacity = 0.85
+background-blur = true
 
 palette = 0=#363B54
 palette = 1=#F7768E
