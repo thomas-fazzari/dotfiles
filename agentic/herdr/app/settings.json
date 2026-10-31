@@ -1,0 +1,12 @@
+{
+  "zoom": 1.0,
+  "sounds": {
+    "enabled": true
+  },
+  "font": "Iosevka Nerd Font Mono",
+  "font_size": 16.0,
+  "telemetry": false,
+  "minimum_contrast": 1.0,
+  "option_as_alt": "on",
+  "theme": "tokyonight"
+}

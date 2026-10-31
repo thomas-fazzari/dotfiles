@@ -52,12 +52,4 @@ return {
       },
     },
   },
-
-  -- Line references and review comments sent to the agent in this herdr workspace (<leader>a prefix)
-  {
-    "ChmaraX/herdr-nvim",
-    event = "VeryLazy",
-    cond = vim.env.HERDR_ENV == "1",
-    opts = {},
-  },
 }
