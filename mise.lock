@@ -114,7 +114,7 @@ backend = "dotnet:ElectronNET.CLI"
 specifiers = ["latest"]
 
 [[tools."dotnet:ThomasFazzari.RoslynBridge"]]
-version = "2.0.0"
+version = "2.1.0"
 backend = "dotnet:ThomasFazzari.RoslynBridge"
 specifiers = ["latest"]
 
