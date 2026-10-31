@@ -12,5 +12,23 @@
     "perlnavigator.includePaths": ["$workspaceFolder/agentic/hooks/lib"],
     "kdl.enable": false,
     "[lua]": { "editor.defaultFormatter": "JohnnyMorganz.stylua" },
+    "files.associations": {
+      "**/git/.gitignore_global": "ignore",
+      ".perltidyrc": "properties",
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      ".mise": true,
+      "**/*.lock": true,
+      "**/*-lock.json": true,
+    },
+    "files.watcherExclude": {
+      ".mise/**": true,
+      "wallpapers/**": true,
+    },
+    "search.exclude": {
+      "wallpapers": true,
+    },
   },
 }

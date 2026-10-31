@@ -1,3 +1,22 @@
+local noise_patterns = {
+  "^%.git$",
+  "^%.DS_Store$",
+  "%.lockb?$", 
+  "%-lock%.json$", 
+  "%-lock%.ya?ml$", 
+  "^packages%.lock%.json$",
+  "^go%.sum$",
+}
+
+local function is_noise(name)
+  for _, pattern in ipairs(noise_patterns) do
+    if name:find(pattern) then
+      return true
+    end
+  end
+  return false
+end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -73,7 +92,10 @@ return {
     opts = {
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
-      view_options = { show_hidden = true },
+      -- Picks up files that agents and other processes create or delete
+      watch_for_changes = true,
+      -- Dotfiles stay visible; only the noise is hidden
+      view_options = { is_hidden_file = is_noise },
     },
   },
   {
@@ -85,6 +107,11 @@ return {
       hijack_cursor = true,
       sync_root_with_cwd = true,
       update_focused_file = { enable = true },
+      filters = {
+        custom = function(path)
+          return is_noise(vim.fs.basename(path))
+        end,
+      },
       view = { width = 30, preserve_window_proportions = true },
       -- Git status as colored names and a letter on the right
       renderer = {
