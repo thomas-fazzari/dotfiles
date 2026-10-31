@@ -32,7 +32,6 @@ abbr -a desk 'cd ~/Desktop'
 abbr -a docs 'cd ~/Documents'
 abbr -a dl 'cd ~/Downloads'
 abbr -a tmp 'cd $TMPDIR'
-abbr -a code code-insiders
 abbr -a news eilmeldung
 abbr -a lgtm 'mise -C ~/Dev/pi-otlp run lgtm'
 abbr -a dotdot --regex '^\.\.+$' --function multicd

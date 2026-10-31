@@ -173,7 +173,7 @@ description = "Installs the mise-managed tools listed under [tools]"
 run = "mise install"
 
 [tasks.vscode]
-description = "Installs the VS Code Insiders extensions listed in vscode/extensions.txt"
+description = "Installs the VS Code extensions listed in vscode/extensions.txt"
 run = "vscode/setup-extensions.pl"
 
 [tasks.wallpaper]

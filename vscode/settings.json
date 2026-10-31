@@ -10,7 +10,7 @@
   "workbench.colorTheme": "Tokyo Night Dark",
   "workbench.iconTheme": "flow-deep",
   "workbench.productIconTheme": "material-product-icons",
-  "workbench.activityBar.location": "bottom",
+  "workbench.experimental.modernUI": false,
   "editor.cursorSurroundingLines": 6,
   "editor.cursorWidth": 2,
   "editor.letterSpacing": 0.3,
@@ -157,6 +157,16 @@
       "namespace": false,
     },
   },
+  // Clippy through mbx's Cargo shim
+  "rust-analyzer.check.overrideCommand": [
+    "/Users/thomas/Library/Application Support/mbx/bin/cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--target-dir",
+    "target/rust-analyzer",
+    "--message-format=json",
+  ],
   // Perl
   "perlnavigator.perlPath": "/opt/homebrew/bin/perl",
   // Formatters
@@ -377,6 +387,7 @@
   "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/Users/thomas/.local/share/mise/dotnet-root/dotnet",
   "json.schemaDownload.trustedDomains": {
     "https://developer.microsoft.com/json-schemas/": true,
+    "https://docs.renovatebot.com": true,
     "https://inlang.com": true,
     "https://json-schema.org/": true,
     "https://json.schemastore.org/": true,

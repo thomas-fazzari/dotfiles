@@ -75,6 +75,18 @@ return {
           default_settings = {
             ["rust-analyzer"] = {
               cargo = { buildScripts = { enable = true } },
+              -- Clippy through mbx's Cargo shim
+              check = {
+                overrideCommand = {
+                  vim.fs.joinpath(vim.env.HOME, "Library/Application Support/mbx/bin/cargo"),
+                  "clippy",
+                  "--workspace",
+                  "--all-targets",
+                  "--target-dir",
+                  "target/rust-analyzer",
+                  "--message-format=json",
+                },
+              },
               procMacro = { enable = true },
               imports = { granularity = { group = "module" } },
               inlayHints = {

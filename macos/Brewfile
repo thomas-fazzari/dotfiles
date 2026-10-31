@@ -65,7 +65,7 @@ cask "proton-mail"
 cask "proton-mail-bridge"
 cask "protonvpn"
 cask "tailscale-app"
-cask "visual-studio-code@insiders"
+cask "visual-studio-code"
 cask "zed"
 cask "zen"
 
