@@ -49,10 +49,7 @@ my @rendered = (
   ],
   [
     '.config/herdr-app/keys.json' => 'agentic/herdr/app/keys.json',
-    sub {
-      s{"cmd-}{"super-}g;
-      s{"ctrl-v": "terminal.paste_image"}{"ctrl-v": "terminal.paste"};
-    }
+    sub { s{"cmd-}{"super-}g }
   ],
 );
 
