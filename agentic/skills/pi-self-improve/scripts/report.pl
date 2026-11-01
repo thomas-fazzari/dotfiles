@@ -220,6 +220,7 @@ sub report_tools {
 
   printf "  %-24s %7s %10s %8s %10s %8s\n", qw(tool calls tool_error not_run error_rate p90);
   for my $tool (sort { ($failed{$b} // 0) <=> ($failed{$a} // 0) || $calls{$b} <=> $calls{$a} } keys %calls) {
+    next unless $calls{$tool};
     my %row = (
       calls      => $calls{$tool},
       tool_error => $errors{$tool}{tool_error} // 0,
