@@ -81,7 +81,6 @@ yq = "latest"
 
 [settings]
 lockfile = true
-lockfile_platforms = ["macos-arm64", "linux-x64"]
 # Otherwise the global rust entry sets RUSTUP_TOOLCHAIN, which overrides each project's rust-toolchain.toml
 idiomatic_version_file_enable_tools = ["rust"]
 
