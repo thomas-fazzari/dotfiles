@@ -8,6 +8,7 @@ const EXEC_FLAGS = new Set(["-exec", "-execdir"]);
 
 const COMMAND_NODE = "command";
 const REDIRECTED_STATEMENT = "redirected_statement";
+const CHAINS = new Set(["list", "pipeline"]);
 const FILE_REDIRECT = "file_redirect";
 // The redirections inside them belong to the commands they hold
 const REDIRECTION_OWNERS = new Set([
@@ -105,23 +106,42 @@ async function createBashParser(): Promise<Parser> {
   return parser;
 }
 
-function collectCommands(node: Node, commands: SimpleCommand[] = []): SimpleCommand[] {
+function collectCommands(
+  node: Node,
+  commands: SimpleCommand[] = [],
+  adopted = new Map<number, Redirection[]>(),
+): SimpleCommand[] {
   if (node.type === COMMAND_NODE) {
-    commands.push(simpleCommand(node));
-  } else if (
-    node.type === REDIRECTED_STATEMENT &&
-    node.childForFieldName("body")?.type !== COMMAND_NODE
-  ) {
-    // The redirections of a group such as { ...; } > file
-    commands.push({ words: [], redirections: statementRedirections(node), piped: false });
+    commands.push(simpleCommand(node, adopted.get(node.id) ?? []));
+  } else if (node.type === REDIRECTED_STATEMENT) {
+    collectStatementRedirections(node, commands, adopted);
   }
   for (const child of node.namedChildren) {
-    collectCommands(child, commands);
+    collectCommands(child, commands, adopted);
   }
   return commands;
 }
 
-function simpleCommand(node: Node): SimpleCommand {
+// tree-sitter-bash gives a redirection after `a && b` to the whole chain, bash gives it to b only
+function collectStatementRedirections(
+  statement: Node,
+  commands: SimpleCommand[],
+  adopted: Map<number, Redirection[]>,
+): void {
+  const body = statement.childForFieldName("body");
+  if (body?.type === COMMAND_NODE) {
+    return;
+  }
+  const last = chainEnd(body);
+  if (last !== undefined) {
+    adopted.set(last.id, statementRedirections(statement));
+    return;
+  }
+  // The redirections of a group such as { ...; } > file
+  commands.push({ words: [], redirections: statementRedirections(statement), piped: false });
+}
+
+function simpleCommand(node: Node, adopted: readonly Redirection[]): SimpleCommand {
   const name = node.childForFieldName("name");
   const parts = [
     ...node.namedChildren.filter(({ type }) => type === "variable_assignment"),
@@ -139,6 +159,7 @@ function simpleCommand(node: Node): SimpleCommand {
     redirections: [
       ...fileRedirections(node),
       ...(statement === node ? [] : statementRedirections(statement)),
+      ...adopted,
     ],
     piped: pipeline !== undefined && !pipeline.firstNamedChild?.equals(statement),
   };
@@ -191,4 +212,16 @@ function wordText(node: Node): string {
     default:
       return node.text;
   }
+}
+
+function chainEnd(node: Node | null): Node | undefined {
+  if (!isChain(node)) {
+    return undefined;
+  }
+  const last = node.lastNamedChild;
+  return last?.type === COMMAND_NODE ? last : chainEnd(last);
+}
+
+function isChain(node: Node | null): node is Node {
+  return node !== null && CHAINS.has(node.type);
 }

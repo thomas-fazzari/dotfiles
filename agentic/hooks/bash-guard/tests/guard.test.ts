@@ -319,6 +319,9 @@ describe("with file tools, denies file reads", () => {
       "sed -n 1p <src/main.rs",
       "grep '>' src/main.rs",
       'grep ">>" src/main.rs',
+      // tree-sitter-bash gives a redirection after a chain to the whole chain
+      "ls && sed -n 1p < src/main.rs",
+      "git status || cat < src/main.rs 2>/dev/null",
       "grep -n foo src/main.rs 2>/dev/null",
       "head -5 README.md 2>&1",
       'bash -c "cat src/main.rs"',
@@ -357,6 +360,8 @@ describe("with file tools, runs searches beyond their reach", () => {
       "cd ignored && rg foo",
       `cd ${outside} && grep -rn foo .`,
       `cd ${outside}/*/src && rg foo .`,
+      `cd ${outside} && rg foo . 2>/dev/null`,
+      `cd ${outside} && fd -e rs . > /tmp/files.txt`,
       "cd ign* && rg foo",
     ],
     true,
