@@ -31,6 +31,8 @@ const PREVIOUS_DIRECTORY = "-";
 const XARGS_FILES = "{}";
 
 const WALKS = "walks the file system";
+const INSTEAD =
+  "use your file read, search and listing tools instead. Count lines with tokei <dir> --files, matches with git grep -c";
 
 // sed, awk and grep take a script or pattern first, so a second operand is a file
 const RULES = new Map<string, readonly Rule[]>([
@@ -129,7 +131,7 @@ export function readRisk(
   if (SEARCHES.has(name) && searchesBeyondFileTools(name, args, project, workdir)) {
     return undefined;
   }
-  return `${reason}: use your file read, search and listing tools instead`;
+  return `${reason}: ${INSTEAD}`;
 }
 
 // A path the shell has yet to expand could be anywhere

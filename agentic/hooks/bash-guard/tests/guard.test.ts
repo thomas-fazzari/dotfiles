@@ -262,6 +262,8 @@ describe("with file tools, runs filters, writes and commands they do not replace
       "grep -c foo <<<'a foo b'",
       "wc -l src/main.rs",
       "git grep foo",
+      "git grep -c foo",
+      "tokei src --files",
       "command -v rg",
       "mise run check",
       "ls -la ~/.claude",
@@ -335,7 +337,8 @@ describe("with file tools, denies file reads", () => {
   test("the denial names the tools to use", async () => {
     assert.deepEqual(await check("cat src/main.rs", true), {
       action: "deny",
-      reason: "cat prints files: use your file read, search and listing tools instead.",
+      reason:
+        "cat prints files: use your file read, search and listing tools instead. Count lines with tokei <dir> --files, matches with git grep -c.",
     });
   });
 });
