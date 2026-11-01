@@ -1,0 +1,9 @@
+.zen-browser-generic-background::before,
+.zen-browser-generic-background::after {
+  background: #16161e !important;
+  opacity: 1 !important;
+}
+
+.zen-browser-grain {
+  display: none !important;
+}

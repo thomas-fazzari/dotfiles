@@ -31,11 +31,14 @@ close $installs;
 defined $profile or die "No default profile in installs.ini\n";
 $profile = "$zen/$profile" unless $profile =~ m{^/};
 
-my ($link, $target) = ("$profile/user.js", "$RealBin/user.js");
-if (-l $link && readlink($link) eq $target) {
-  print "ok $link\n";
-}
-else {
+-d "$profile/chrome" or mkdir "$profile/chrome" or die "$profile/chrome: $!\n";
+for my $file ('user.js', 'chrome/userChrome.css') {
+  my ($name) = $file =~ m{([^/]+)$};
+  my ($link, $target) = ("$profile/$file", "$RealBin/$name");
+  if (-l $link && readlink($link) eq $target) {
+    print "ok $link\n";
+    next;
+  }
   if (-l $link) {
     unlink $link or die "$link: $!\n";
   }
