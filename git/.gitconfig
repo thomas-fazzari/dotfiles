@@ -28,15 +28,31 @@
 [push]
 	default = simple
 	autoSetupRemote = true
+	followTags = true
 
 [rebase]
 	autoStash = true
+	autoSquash = true
+	updateRefs = true
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+
+[commit]
+	verbose = true
+
+[help]
+	autocorrect = prompt
 
 [merge]
 	conflictstyle = zdiff3
 
 [diff]
 	algorithm = histogram
+	colorMoved = plain
 
 [rerere]
 	enabled = true

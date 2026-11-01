@@ -13,7 +13,6 @@ if test -d /opt/homebrew
     set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
     set -gx HOMEBREW_REPOSITORY /opt/homebrew
 
-    fish_add_path -gP /opt/homebrew/opt/rustup/bin
     fish_add_path -gmP /opt/homebrew/bin /opt/homebrew/sbin
     fish_add_path -gP $DOTFILES/macos/bin
 else
@@ -37,11 +36,12 @@ abbr -a dot 'cd $DOTFILES'
 abbr -a desk 'cd ~/Desktop'
 abbr -a docs 'cd ~/Documents'
 abbr -a dl 'cd ~/Downloads'
-abbr -a tmp 'cd $TMPDIR'
 abbr -a news eilmeldung
 abbr -a lgtm 'mise -C ~/Dev/pi-otlp run lgtm'
 abbr -a dotdot --regex '^\.\.+$' --function multicd
-if not test -d /opt/homebrew
+if test -d /opt/homebrew
+    abbr -a tmp 'cd $TMPDIR'
+else
     abbr -a tmp 'cd /tmp'
     abbr -a melonds 'prime-run melonDS'
 end

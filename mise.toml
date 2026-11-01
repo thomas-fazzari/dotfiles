@@ -6,6 +6,7 @@ min_version = "2026.9.0"
 [tools]
 "aqua:neovim/neovim" = "latest"
 "aqua:taiki-e/cargo-llvm-cov" = "latest"
+actionlint = "latest"
 ast-grep = "latest"
 bat = "latest"
 bun = "latest"
@@ -18,7 +19,6 @@ dotnet = "10.0.400"
 "dotnet:csharpier" = "latest"
 "dotnet:dotnet-ef" = "latest"
 "dotnet:dotnet-outdated-tool" = "latest"
-"dotnet:ElectronNET.CLI" = "latest"
 "dotnet:fantomas" = "latest"
 "dotnet:fsautocomplete" = "latest"
 "dotnet:ilspycmd" = "latest"
@@ -38,6 +38,7 @@ gofumpt = "latest"
 golangci-lint = "latest"
 hyperfine = "latest"
 jq = "latest"
+just = "latest"
 lua-language-server = "latest"
 mr-boxington = "latest"
 ninja = "latest"
@@ -67,9 +68,11 @@ rust = { version = "stable", profile = "minimal", components = [
 sd = "latest"
 shellcheck = "latest"
 shfmt = "latest"
+sqlc = "latest"
 stylua = "latest"
 tinymist = "latest"
 tombi = "latest"
+topgrade = "latest"
 tree-sitter = "latest"
 typst = "latest"
 typstyle = "latest"
@@ -200,7 +203,11 @@ run = [
 
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
-run = "{{ os() }}/scripts/setup-symlinks.pl"
+run = "scripts/setup-symlinks.pl"
+
+[tasks."symlinks:check"]
+description = "Reports missing, wrong or stale links without changing anything"
+run = "scripts/setup-symlinks.pl --check"
 
 [tasks.tools]
 description = "Installs the mise-managed tools listed under [tools]"

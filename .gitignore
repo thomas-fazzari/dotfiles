@@ -21,8 +21,8 @@
 !/macos/**
 !/nvim/
 !/nvim/**
-!/rust/
-!/rust/**
+!/scripts/
+!/scripts/**
 !/terminal/
 !/terminal/**
 !/vscode/

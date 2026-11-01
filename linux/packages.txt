@@ -15,15 +15,12 @@ git
 starship
 tokei
 tree
-topgrade-bin
 trash-cli # /usr/bin/trash for the agent hooks
 wl-clipboard
 
 # Dev tools
 # rustup lives in ~/.cargo (rustup-init), fff-mcp in ~/.local/bin
-actionlint
 clang
-just
 lldb
 llvm
 make

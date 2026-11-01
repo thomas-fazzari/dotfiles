@@ -182,7 +182,7 @@ sub pi_sessions {
 
 sub dotfile_links {
   section('Dotfile links');
-  my @broken = run("$dotfiles/macos/scripts/setup-symlinks.pl", '--check');
+  my @broken = run("$dotfiles/scripts/setup-symlinks.pl", '--check');
   item(undef, $_, 'mise -C ~/Dev/dotfiles run symlinks') for @broken;
   item(undef, 'All linked') unless @broken;
   return;

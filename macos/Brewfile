@@ -17,7 +17,7 @@ brew "mas"
 brew "mise"
 brew "starship"
 brew "tokei"
-brew "topgrade"
+brew "tree"
 
 # Dev tools
 brew "dmtrKovalenko/fff/fff-mcp"
@@ -26,7 +26,6 @@ brew "make"
 brew "perl"
 brew "cpanminus"
 brew "pkgconf"
-brew "rustup"
 brew "mole"
 brew "vscode-langservers-extracted"
 
