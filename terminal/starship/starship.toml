@@ -5,29 +5,29 @@ command_timeout = 2000
 format = "$directory$git_branch$git_status$character"
 
 [directory]
-style = "#7AA2F7"
+style = "#82AAFF"
 before_repo_root_style = "#515670"
-repo_root_style = "bold #7AA2F7"
+repo_root_style = "bold #82AAFF"
 truncation_length = 4
 truncate_to_repo = false
 truncation_symbol = ""
 fish_style_pwd_dir_length = 1
 read_only = " 󰌾"
-read_only_style = "#DB4B4B"
+read_only_style = "#C53B53"
 
 [git_branch]
-style = "#73DACA"
+style = "#4FD6BE"
 format = "[$symbol$branch(:$remote_branch)]($style) "
 
 # File states use VS Code's git decoration colors.
 [git_status]
-style = "#787C99"
+style = "#737AA2"
 format = "([$ahead_behind$stashed$conflicted$staged$renamed$modified$deleted$untracked]($style))"
 ahead = "⇡$count "
 behind = "⇣$count "
 diverged = "⇣$behind_count⇡$ahead_count "
 stashed = "*$count "
-conflicted = "[~$count ](#BB7A61)"
+conflicted = "[~$count ](#FFC777)"
 staged = "[+$count ](#449DAB)"
 renamed = "[»$count ](#449DAB)"
 modified = "[!$count ](#6183BB)"
@@ -35,6 +35,6 @@ deleted = "[✘$count ](#914C54)"
 untracked = "[?$count ](#449DAB)"
 
 [character]
-success_symbol = "[❯](#73DACA)"
-error_symbol = "[❯](#DB4B4B)"
-vimcmd_symbol = "[❮](#73DACA)"
+success_symbol = "[❯](#4FD6BE)"
+error_symbol = "[❯](#C53B53)"
+vimcmd_symbol = "[❮](#4FD6BE)"

@@ -121,11 +121,10 @@ run = """
 {% endif %}"""
 
 [tasks."apps:install"]
-description = "Installs and upgrades app dependencies, plus the linux/hooks pacman hooks on Linux"
+description = "Installs and upgrades app dependencies"
 run = """
 {% if os() == "macos" %}brew bundle install --file macos/Brewfile
 {% else %}sed -e 's/#.*//' -e '/^[[:space:]]*$/d' linux/packages.txt | xargs -o paru -Syu --needed
-sudo install -Dm644 -t /etc/pacman.d/hooks linux/hooks/*.hook
 {% endif %}"""
 
 [tasks."apps:prune"]
@@ -219,6 +218,6 @@ run = "vscode/setup-extensions.pl"
 [tasks.wallpaper]
 description = "Sets the desktop picture from wallpapers/ (DMS on Linux)"
 run = """
-{% if os() == "macos" %}osascript -e 'tell application "Finder" to set desktop picture to (POSIX file "'"$PWD/wallpapers/creation-ascii.png"'" as alias)'
-{% else %}dms ipc call wallpaper set "$PWD/wallpapers/bridge-over-water.jpg"
+{% if os() == "macos" %}osascript -e 'tell application "Finder" to set desktop picture to (POSIX file "'"$PWD/wallpapers/lavender-moon.jpg"'" as alias)'
+{% else %}dms ipc call wallpaper set "$PWD/wallpapers/lavender-moon.jpg"
 {% endif %}"""

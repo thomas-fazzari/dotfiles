@@ -60,7 +60,6 @@ my %rendered = (
         s{/Users/thomas/Library/Application Support/mbx}{$ENV{HOME}/.local/share/mbx}g;
         s{/Users/thomas}{$ENV{HOME}}g;
         s{/opt/homebrew/bin/perl}{/usr/bin/perl}g;
-        s{wallpapers/creation-ascii\.png}{wallpapers/bridge-over-water.jpg}g;
       }
     ],
     ['.config/herdr-app/keys.json' => 'agentic/herdr/app/keys.json', sub {s{"cmd-}{"super-}g}],

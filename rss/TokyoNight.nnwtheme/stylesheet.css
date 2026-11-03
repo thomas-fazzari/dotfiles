@@ -2,18 +2,18 @@
   color-scheme: dark;
 
   --bg: #08080b;
-  --bg-code: #16161e;
-  --bg-highlight: #292e42;
-  --selection: #283457;
-  --fg: #c0caf5;
-  --fg-body: #a9b1d6;
-  --fg-quote: #9aa5ce;
-  --comment: #565f89;
-  --border: #292e42;
-  --blue: #7aa2f7;
-  --cyan: #7dcfff;
-  --magenta: #bb9af7;
-  --quote-border: #3d59a1;
+  --bg-code: #1e2030;
+  --bg-highlight: #2f334d;
+  --selection: #2d3f76;
+  --fg: #c8d3f5;
+  --fg-body: #c8d3f5;
+  --fg-quote: #828bb8;
+  --comment: #636da6;
+  --border: #2f334d;
+  --blue: #82aaff;
+  --cyan: #86e1fc;
+  --magenta: #c099ff;
+  --quote-border: #3e68d7;
 
   --font-body: "Inria Serif", Georgia, serif;
   --font-meta: "Inria Sans", -apple-system, sans-serif;

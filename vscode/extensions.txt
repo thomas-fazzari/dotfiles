@@ -7,7 +7,6 @@ codezombiech.gitignore
 csharpier.csharpier-vscode
 davidanson.vscode-markdownlint
 doublebuffer.metal-shader
-drewxs.tokyo-night-dark
 dustypomerleau.rust-syntax
 editorconfig.editorconfig
 fill-labs.dependi
@@ -33,11 +32,11 @@ myriad-dreamin.tinymist
 nabeelvalley.easyzoom
 oven.bun-vscode
 oxc.oxc-vscode
+patricknasralla.tokyo-night-moon
 pkief.material-product-icons
 polymeilex.wgsl
 redhat.vscode-yaml
 rust-lang.rust-analyzer
-shalldie.background
 sleistner.vscode-fileutils
 sporiley.css-auto-prefix
 stylelint.vscode-stylelint
