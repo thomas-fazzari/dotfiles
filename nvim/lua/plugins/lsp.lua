@@ -8,23 +8,13 @@ return {
     "saghen/blink.cmp",
     version = "1.*",
     lazy = false,
-    dependencies = {
-      {
-        "L3MON4D3/LuaSnip",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-          require "configs.luasnip"
-        end,
-      },
-    },
+    dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
       keymap = {
         preset = "enter",
         ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
       },
-      snippets = { preset = "luasnip" },
       sources = { default = { "lsp", "path", "snippets", "buffer" } },
       completion = { documentation = { auto_show = true } },
       signature = { enabled = true },

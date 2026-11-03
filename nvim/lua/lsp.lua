@@ -45,11 +45,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gd", vim.lsp.buf.definition, "definition")
     map("n", "<F12>", vim.lsp.buf.definition, "definition")
     map("n", "gD", vim.lsp.buf.declaration, "declaration")
-    -- Some servers have no references
-    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-    if client:supports_method "textDocument/references" then
-      map("n", "gr", "<cmd>FzfLua lsp_references<cr>", "references")
-    end
+    map("n", "gr", "<cmd>FzfLua lsp_references<cr>", "references")
     map("n", "gi", vim.lsp.buf.implementation, "implementation")
     map("n", "gt", vim.lsp.buf.type_definition, "type definition")
     map("n", "gpd", function()
@@ -61,8 +57,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gpt", function()
       require("goto-preview").goto_preview_type_definition()
     end, "peek type definition")
-    map("n", "K", vim.lsp.buf.hover, "hover")
-    map("n", "<C-k>", vim.lsp.buf.signature_help, "signature help")
     map("n", "<F2>", vim.lsp.buf.rename, "rename")
     map("n", "<leader>lr", vim.lsp.buf.rename, "rename")
     map({ "n", "x" }, "<leader>q", vim.lsp.buf.code_action, "code action")
@@ -72,6 +66,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<leader>ls", "<cmd>FzfLua lsp_document_symbols<cr>", "file symbols")
     map("n", "<leader>lS", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", "workspace symbols")
 
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     if client:supports_method "textDocument/inlayHint" then
       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
       map("n", "<leader>lh", function()

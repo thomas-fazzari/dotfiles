@@ -8,15 +8,6 @@ local noise_patterns = {
   "^go%.sum$",
 }
 
-local function is_noise(name)
-  for _, pattern in ipairs(noise_patterns) do
-    if name:find(pattern) then
-      return true
-    end
-  end
-  return false
-end
-
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -30,6 +21,7 @@ return {
         "c_sharp",
         "css",
         "diff",
+        "dockerfile",
         "fish",
         "fsharp",
         "git_config",
@@ -41,16 +33,20 @@ return {
         "gosum",
         "html",
         "javascript",
+        "jsdoc",
         "json",
+        "kdl",
         "lua",
         "luadoc",
         "markdown",
         "markdown_inline",
         "perl",
         "python",
+        "query",
         "razor",
         "regex",
         "rust",
+        "scss",
         "sql",
         "svelte",
         "toml",
@@ -59,6 +55,7 @@ return {
         "typst",
         "vim",
         "vimdoc",
+        "xml",
         "yaml",
       }
       vim.treesitter.language.register("bash", "conf")
@@ -78,6 +75,13 @@ return {
     "ibhagwan/fzf-lua",
     cmd = "FzfLua",
     opts = { fzf_colors = true },
+    -- Loads fzf-lua on the first vim.ui.select
+    init = function()
+      vim.ui.select = function(...)
+        require("fzf-lua").register_ui_select()
+        return vim.ui.select(...)
+      end
+    end,
   },
   {
     "MagicDuck/grug-far.nvim",
@@ -92,48 +96,28 @@ return {
     opts = {
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
+      keymaps = { q = { "actions.close", mode = "n" } },
       -- Picks up files that agents and other processes create or delete
       watch_for_changes = true,
       -- Dotfiles stay visible; only the noise is hidden
-      view_options = { is_hidden_file = is_noise },
+      view_options = {
+        is_hidden_file = function(name)
+          for _, pattern in ipairs(noise_patterns) do
+            if name:find(pattern) then
+              return true
+            end
+          end
+          return false
+        end,
+      },
+      win_options = { signcolumn = "yes:2" },
     },
   },
   {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeClose" },
-    opts = {
-      hijack_netrw = false,
-      hijack_directories = { enable = false },
-      hijack_cursor = true,
-      sync_root_with_cwd = true,
-      update_focused_file = { enable = true },
-      filters = {
-        custom = function(path)
-          return is_noise(vim.fs.basename(path))
-        end,
-      },
-      view = { width = 30, preserve_window_proportions = true },
-      -- Git status as colored names and a letter on the right
-      renderer = {
-        root_folder_label = false,
-        highlight_git = "name",
-        indent_markers = { enable = true },
-        icons = {
-          git_placement = "right_align",
-          glyphs = {
-            git = {
-              unstaged = "M",
-              staged = "M",
-              unmerged = "!",
-              renamed = "R",
-              untracked = "U",
-              deleted = "D",
-              ignored = "",
-            },
-          },
-        },
-      },
-    },
+    "refractalize/oil-git-status.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+    lazy = false,
+    opts = { show_ignored = false },
   },
 
   {
@@ -160,8 +144,6 @@ return {
           desc = "Harpoon add file",
         },
         { "<leader>hh", menu, desc = "Harpoon menu" },
-        -- Same menu as <leader>hh, which is editable
-        { "<leader>he", menu, desc = "Harpoon edit files" },
         {
           "<leader>hp",
           function()

@@ -1,0 +1,6 @@
+{
+  "XML doc summary": {
+    "prefix": "summary",
+    "body": ["///<summary>", "/// $1", "///</summary>"]
+  }
+}

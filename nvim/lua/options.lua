@@ -1,6 +1,9 @@
 local o = vim.o
 
-o.clipboard = "unnamedplus"
+-- Deferred: setting it loads the clipboard provider, which slows startup
+vim.schedule(function()
+  o.clipboard = "unnamedplus"
+end)
 o.mouse = "a"
 o.undofile = true
 o.updatetime = 250
@@ -23,6 +26,13 @@ o.wrap = true
 o.linebreak = true
 o.breakindent = true
 o.winborder = "rounded"
+o.smoothscroll = true
+o.inccommand = "split"
+o.virtualedit = "block"
+o.foldmethod = "expr"
+o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+o.foldtext = ""
+o.foldlevel = 99
 vim.opt.fillchars = { eob = " " }
 vim.opt.shortmess:append "sI"
 

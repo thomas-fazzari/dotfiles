@@ -17,8 +17,8 @@ map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 map("n", "<C-s>", "<cmd>write<cr>", { desc = "Save and format" })
 map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
 map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
--- <C-k> stays signature help (lua/lsp.lua), as in the previous config. <C-w>k moves up
 map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 map("n", "<leader>x", function()
@@ -26,8 +26,6 @@ map("n", "<leader>x", function()
 end, { desc = "Close buffer" })
 map("n", "<leader>c", "gcc", { remap = true, desc = "Toggle comment" })
 map("x", "<leader>c", "gc", { remap = true, desc = "Toggle comment" })
-map("n", "<leader>/", "gcc", { remap = true, desc = "Toggle comment" })
-map("x", "<leader>/", "gc", { remap = true, desc = "Toggle comment" })
 map({ "n", "x" }, "<leader>fm", function()
   require("conform").format { lsp_format = "never" }
 end, { desc = "Format" })
@@ -37,10 +35,6 @@ map("n", "<leader>ff", function()
   require("fff").find_files()
 end, { desc = "Find files" })
 map("n", "<leader>fg", function()
-  require("fff").live_grep()
-end, { desc = "Grep" })
--- Same as <leader>fg, the grep key of the previous NvChad config
-map("n", "<leader>fw", function()
   require("fff").live_grep()
 end, { desc = "Grep" })
 map("n", "<leader>fc", function()
@@ -55,22 +49,12 @@ map("n", "<leader>fp", "<cmd>FzfLua commands<cr>", { desc = "Commands" })
 map("n", "<leader>fh", "<cmd>FzfLua helptags<cr>", { desc = "Help" })
 map("n", "<leader>fk", "<cmd>FzfLua keymaps<cr>", { desc = "Keymaps" })
 
-map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle file tree" })
-map("n", "<leader>fe", function()
-  if vim.bo.filetype ~= "NvimTree" then
-    vim.cmd "NvimTreeFocus"
-    return
-  end
-
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    if vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "NvimTree" then
-      vim.api.nvim_set_current_win(win)
-      return
-    end
-  end
-  vim.cmd "NvimTreeClose"
-end, { desc = "Toggle file tree focus" })
 map("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+local function file_explorer()
+  require("oil").toggle_float()
+end
+map("n", "<leader>e", file_explorer, { desc = "File explorer" })
+map("n", "<leader>fe", file_explorer, { desc = "File explorer" })
 map("n", "<leader>fn", function()
   local dir = vim.fn.expand "%:.:h"
   vim.ui.input({

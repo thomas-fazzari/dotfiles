@@ -8,10 +8,6 @@ neotest.setup {
 
 local map = vim.keymap.set
 
-map("n", "<F6>", function()
-  neotest.run.run { strategy = "dap" }
-end, { desc = "Neotest: debug nearest test" })
-
 map("n", "<leader>dt", function()
   neotest.run.run { strategy = "dap" }
 end, { desc = "Neotest: debug nearest test" })

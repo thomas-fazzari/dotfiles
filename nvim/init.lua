@@ -4,7 +4,6 @@ vim.g.maplocalleader = " "
 require "options"
 require "autocmds"
 
--- Clone lazy.nvim on first start
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"
@@ -16,6 +15,7 @@ require("lazy").setup("plugins", {
   defaults = { lazy = true },
   install = { colorscheme = { "tokyonight" } },
   change_detection = { notify = false },
+  rocks = { enabled = false },
   performance = {
     rtp = {
       disabled_plugins = {

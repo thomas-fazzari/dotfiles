@@ -11,32 +11,14 @@ dap.adapters.coreclr = adapter
 dap.adapters.netcoredbg = adapter
 
 local function pick_dll()
-  local dlls = vim.fs.find(function(name)
-    return name:match "%.dll$" ~= nil
-  end, { path = vim.fn.getcwd(), type = "file", limit = math.huge })
-
-  dlls = vim.tbl_filter(function(path)
-    return path:match "/bin/[Dd]ebug/" ~= nil or path:match "/bin/[Rr]elease/" ~= nil
-  end, dlls)
-  table.sort(dlls)
-
-  if #dlls == 0 then
-    return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/", "file")
-  end
-
-  if #dlls == 1 then
-    return dlls[1]
-  end
-
-  local choices = {}
-  for i, path in ipairs(dlls) do
-    choices[i] = i .. ". " .. path
-  end
-
-  local choice = vim.fn.inputlist(choices)
-  if choice >= 1 and choice <= #dlls then
-    return dlls[choice]
-  end
+  return require("dap.utils").pick_file {
+    filter = function(path)
+      local lower = path:lower()
+      return vim.endswith(lower, ".dll")
+        and (lower:find("/bin/debug/", 1, true) or lower:find("/bin/release/", 1, true)) ~= nil
+    end,
+    executables = false,
+  }
 end
 
 dap.configurations.cs = {
@@ -122,6 +104,6 @@ map({ "n", "v" }, "<leader>dw", function()
   dapui.eval(nil, { enter = true })
 end, { desc = "DAP: add to watches" })
 
-map({ "n", "v" }, "Q", function()
+map({ "n", "v" }, "<leader>dk", function()
   dapui.eval()
 end, { desc = "DAP: peek value" })

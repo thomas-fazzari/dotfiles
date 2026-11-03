@@ -4,30 +4,27 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      local git = { modified = "#6183BB", added = "#449DAB", deleted = "#914C54", conflict = "#BB7A61" }
-      local tree_git = {
-        Dirty = git.modified,
-        Staged = git.added,
-        New = git.added,
+      local git = { modified = "#6183BB", added = "#449DAB", deleted = "#914C54", conflict = "#FFC777" }
+      local oil_git = {
+        Modified = git.modified,
+        TypeChanged = git.modified,
+        Added = git.added,
+        Copied = git.added,
         Renamed = git.added,
+        Untracked = git.added,
         Deleted = git.deleted,
-        Merge = git.conflict,
+        Unmerged = git.conflict,
       }
 
       require("tokyonight").setup {
-        style = "night",
+        style = "moon",
         transparent = true,
         styles = { sidebars = "transparent", floats = "transparent" },
         on_highlights = function(hl, c)
           hl.CursorLineNr = { fg = c.fg, bold = true }
-          hl.NvimTreeFolderIcon = { fg = c.dark5 }
-          hl.NvimTreeFolderName = { fg = c.fg_sidebar }
-          hl.NvimTreeOpenedFolderName = { fg = c.fg_sidebar }
-          hl.NvimTreeEmptyFolderName = { fg = c.fg_sidebar }
-          for status, color in pairs(tree_git) do
-            hl["NvimTreeGit" .. status .. "Icon"] = { fg = color }
-            hl["NvimTreeGitFile" .. status .. "HL"] = { fg = color }
-            hl["NvimTreeGitFolder" .. status .. "HL"] = { fg = color }
+          for status, color in pairs(oil_git) do
+            hl["OilGitStatusIndex" .. status] = { fg = color }
+            hl["OilGitStatusWorkingTree" .. status] = { fg = color }
           end
 
           hl.LspInlayHint = { fg = c.dark3, italic = true }
@@ -35,14 +32,14 @@ return {
           -- Transparent statusline in the colors of the starship prompt
           hl.StatusLine = { fg = c.fg_dark }
           hl.StatusLineNC = { fg = c.dark3 }
-          hl.MiniStatuslineModeNormal = { fg = "#7AA2F7", bold = true }
-          hl.MiniStatuslineModeInsert = { fg = "#73DACA", bold = true }
-          hl.MiniStatuslineModeVisual = { fg = "#BB9AF7", bold = true }
-          hl.MiniStatuslineModeReplace = { fg = "#DB4B4B", bold = true }
-          hl.MiniStatuslineModeCommand = { fg = "#7DCFFF", bold = true }
+          hl.MiniStatuslineModeNormal = { fg = c.blue, bold = true }
+          hl.MiniStatuslineModeInsert = { fg = c.green1, bold = true }
+          hl.MiniStatuslineModeVisual = { fg = c.magenta, bold = true }
+          hl.MiniStatuslineModeReplace = { fg = c.red1, bold = true }
+          hl.MiniStatuslineModeCommand = { fg = c.cyan, bold = true }
           hl.MiniStatuslineModeOther = { fg = c.fg_dark, bold = true }
-          hl.MiniStatuslineDevinfo = { fg = "#73DACA" }
-          hl.MiniStatuslineFilename = { fg = "#7AA2F7" }
+          hl.MiniStatuslineDevinfo = { fg = c.green1 }
+          hl.MiniStatuslineFilename = { fg = c.blue }
           hl.MiniStatuslineFileinfo = { fg = c.dark5 }
           hl.MiniStatuslineInactive = { fg = c.dark3 }
         end,
@@ -57,7 +54,7 @@ return {
     config = function()
       local icons = require "mini.icons"
       icons.setup()
-      -- nvim-tree and others ask for nvim-web-devicons
+      -- fzf-lua and others ask for nvim-web-devicons
       icons.mock_nvim_web_devicons()
 
       local statusline = require "mini.statusline"
@@ -86,7 +83,6 @@ return {
       -- Replaces vim.notify and shows LSP progress, such as Roslyn loading a solution
       require("mini.notify").setup()
 
-      -- <leader>j, then the label of the target word
       local jump2d = require "mini.jump2d"
       jump2d.setup { mappings = { start_jumping = "" } }
       vim.keymap.set({ "n", "x", "o" }, "<leader>j", function()
