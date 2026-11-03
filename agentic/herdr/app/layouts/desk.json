@@ -1,0 +1,148 @@
+{
+  "id": "root",
+  "type": "row",
+  "theme": { "light": "tokyonight", "dark": "ink" },
+  "colors": {
+    "canvas": "#111720",
+    "chrome": "#111720",
+    "surface": "#1E2030",
+    "popover": "#1E2030",
+    "raised": "#2F334D",
+    "hover": "#1E2030",
+    "selected": "#2F334D",
+    "border": "#2F334D",
+    "input": "#3B4261",
+    "foreground": "#C8D3F5",
+    "muted": "#828BB8",
+    "dim": "#636DA6",
+    "accent": "#82AAFF",
+    "accent_foreground": "#1B1D2B",
+    "working": "#82AAFF",
+    "blocked": "#FFC777",
+    "done": "#C3E88D",
+    "idle": "#545C7E",
+    "unknown": "#545C7E"
+  },
+  "titlebar": "none",
+  "traffic_lights": [16, 13],
+  "background": "canvas",
+  "terminal_padding": [14, 12],
+  "divider": { "width": 1, "color": "border" },
+  "children": [
+    {
+      "id": "sidebar",
+      "type": "column",
+      "size": { "px": 256 },
+      "min": 208,
+      "max": 480,
+      "background": "chrome",
+      "resizable": false,
+      "children": [
+        {
+          "id": "brand",
+          "type": "block",
+          "size": { "px": 40 },
+          "window_drag": true,
+          "content": { "mod": "desk-chrome" }
+        },
+        {
+          "id": "sidebar-lists",
+          "type": "stack",
+          "active": "lists",
+          "children": [
+            {
+              "id": "lists",
+              "type": "column",
+              "children": [
+                {
+                  "id": "spaces",
+                  "type": "block",
+                  "size": { "weight": 1 },
+                  "min": 90,
+                  "content": { "mod": "desk-spaces" }
+                },
+                {
+                  "id": "agents",
+                  "type": "block",
+                  "size": { "weight": 1 },
+                  "min": 90,
+                  "content": { "mod": "desk-agents" }
+                }
+              ]
+            },
+            {
+              "id": "inbox",
+              "type": "block",
+              "content": { "mod": "desk-inbox", "props": { "newMenu": "desk-new" } }
+            }
+          ]
+        },
+        {
+          "id": "sidebar-footer",
+          "type": "block",
+          "size": { "px": 69 },
+          "content": { "mod": "desk-chrome", "props": { "footer": true } }
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "type": "column",
+      "resizable": false,
+      "children": [
+        {
+          "id": "tabs",
+          "type": "block",
+          "size": { "px": 40 },
+          "window_drag": true,
+          "content": { "mod": "desk-tabs" }
+        },
+        {
+          "id": "work-body",
+          "type": "row",
+          "children": [
+            {
+              "id": "view",
+              "type": "stack",
+              "active": "main",
+              "children": [
+                {
+                  "id": "main",
+                  "type": "block",
+                  "background": "border",
+                  "content": {
+                    "tab": "active",
+                    "pane": {
+                      "gap": 1,
+                      "radius": 0,
+                      "background": "background",
+                      "lone": false,
+                      "header": {
+                        "content": { "mod": "desk-pane" },
+                        "height": 28,
+                        "position": "top",
+                        "reveal": "always"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "agent",
+                  "type": "block",
+                  "content": { "agent": "focused" },
+                  "background": "background"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "status",
+          "type": "block",
+          "size": { "px": 24 },
+          "content": { "mod": "desk-status" }
+        }
+      ]
+    }
+  ]
+}

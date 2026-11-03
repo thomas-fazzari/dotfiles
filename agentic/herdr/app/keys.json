@@ -55,6 +55,11 @@
     "ctrl-8": "space.select:8",
     "ctrl-9": "space.select:9"
   },
+  "layout:desk": {
+    "cmd-shift-b": "desk-chrome.sidebar",
+    "cmd-shift-a": "desk-tabs.view",
+    "cmd-shift-s": "desk-inbox.settle"
+  },
   "terminal": {
     "cmd-c": "terminal.copy",
     "cmd-v": "terminal.paste",

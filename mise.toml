@@ -183,10 +183,6 @@ done
 exit $status
 '''
 
-[tasks."nnw:theme"]
-description = "Copies rss/TokyoNight.nnwtheme into NetNewsWire, whose sandbox can't follow a symlink out of its container"
-run = 'rsync -a --delete rss/TokyoNight.nnwtheme/ "$HOME/Library/Containers/com.ranchero.NetNewsWire-Evergreen/Data/Library/Application Support/NetNewsWire/Themes/TokyoNight.nnwtheme/"'
-
 [tasks.perl]
 description = "Installs Perl::Critic into the Homebrew perl for PerlNavigator (Perl::Tidy ships with it, Linux gets both from pacman)"
 run = "{% if os() == 'macos' %}cpanm --notest --quiet Perl::Critic{% endif %}"

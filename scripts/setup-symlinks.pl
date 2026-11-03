@@ -13,24 +13,29 @@ my $os        = $^O eq 'darwin' ? 'macos' : 'linux';
 
 # [link under $HOME => target in the repo]
 my @common = (
-  ['.config/ghostty/config.ghostty'           => 'terminal/ghostty/config'],
-  ['.config/btop/btop.conf'                   => 'btop/btop.conf'],
-  ['.config/btop/themes/tokyonight.theme'     => 'btop/tokyonight.theme'],
-  ['.config/nvim'                             => 'nvim'],
-  ['.config/eilmeldung/config.toml'           => 'rss/eilmeldung/config.toml'],
-  ['.local/share/agent-hooks'                 => 'agentic/hooks'],
-  ['.config/herdr-app/settings.json'          => 'agentic/herdr/app/settings.json'],
-  ['.config/herdr-app/themes/tokyonight.json' => 'agentic/herdr/app/themes/tokyonight.json'],
-  ['.config/mise/config.toml'                 => 'mise.toml'],
-  ['.config/mise/mise.lock'                   => 'mise.lock'],
-  ['.config/topgrade.toml'                    => "$os/topgrade.toml"],
-  ['.bunfig.toml'                             => 'bunfig.toml'],
-  ['.config/fish/config.fish'                 => 'terminal/fish/config.fish'],
-  ['.config/fish/functions'                   => 'terminal/fish/functions'],
-  ['.config/starship.toml'                    => 'terminal/starship/starship.toml'],
-  ['.gitconfig'                               => 'git/.gitconfig'],
-  ['.gitignore_global'                        => 'git/.gitignore_global'],
-  ['.perltidyrc'                              => '.perltidyrc'],
+  ['.config/ghostty/config.ghostty'       => 'terminal/ghostty/config'],
+  ['.config/btop/btop.conf'               => 'btop/btop.conf'],
+  ['.config/btop/themes/tokyonight.theme' => 'btop/tokyonight.theme'],
+  ['.config/nvim'                         => 'nvim'],
+  ['.config/eilmeldung/config.toml'       => 'rss/eilmeldung/config.toml'],
+  ['.local/share/agent-hooks'             => 'agentic/hooks'],
+  (
+    map { [".config/herdr-app/$_" => "agentic/herdr/app/$_"] }
+      qw(
+      settings.json themes/tokyonight.json layouts/desk.json
+      mods/desk-agents mods/desk-chrome mods/desk-inbox mods/desk-new mods/desk-pane mods/desk-spaces mods/desk-status mods/desk-tabs
+      )
+  ),
+  ['.config/mise/config.toml' => 'mise.toml'],
+  ['.config/mise/mise.lock'   => 'mise.lock'],
+  ['.config/topgrade.toml'    => "$os/topgrade.toml"],
+  ['.bunfig.toml'             => 'bunfig.toml'],
+  ['.config/fish/config.fish' => 'terminal/fish/config.fish'],
+  ['.config/fish/functions'   => 'terminal/fish/functions'],
+  ['.config/starship.toml'    => 'terminal/starship/starship.toml'],
+  ['.gitconfig'               => 'git/.gitconfig'],
+  ['.gitignore_global'        => 'git/.gitignore_global'],
+  ['.perltidyrc'              => '.perltidyrc'],
 );
 
 my %links = (
@@ -66,6 +71,9 @@ my %rendered = (
   ],
 );
 
+my @copied = map { [".config/herdr-app/icons/desk-$_.svg" => "agentic/herdr/app/mods/desk-inbox/$_.svg", sub { }] }
+  qw(undo list-filter);
+
 my $check = @ARGV && $ARGV[0] eq '--check';
 my $drift = 0;
 
@@ -93,7 +101,7 @@ for my $pair (@common, @{$links{$os}}) {
   print "link $link -> $target\n";
 }
 
-for my $entry (@{$rendered{$os}}) {
+for my $entry (@copied, @{$rendered{$os}}) {
   my ($file, $source, $swap) = ("$ENV{HOME}/$entry->[0]", "$dotfiles/$entry->[1]", $entry->[2]);
   local $_ = slurp($source);
   $swap->();

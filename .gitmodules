@@ -3,3 +3,8 @@
 	url = https://github.com/thomas-fazzari/pi-config
 	branch = master
 	ignore = dirty
+[submodule "agentic/herdr/app/mods"]
+	path = agentic/herdr/app/mods
+	url = https://github.com/thomas-fazzari/herdr-mods
+	branch = master
+	ignore = dirty
