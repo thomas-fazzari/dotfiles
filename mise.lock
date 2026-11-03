@@ -352,7 +352,7 @@ backend = "core:dotnet"
 specifiers = ["10.0.400"]
 
 [[tools."dotnet:ThomasFazzari.RoslynBridge"]]
-version = "2.1.0"
+version = "2.1.2"
 backend = "dotnet:ThomasFazzari.RoslynBridge"
 specifiers = ["latest"]
 
@@ -866,37 +866,37 @@ url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.2/lua
 url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/635852571"
 
 [[tools.mr-boxington]]
-version = "1.29.0"
+version = "1.29.1"
 backend = "packslip:github.com/jdx/mr-boxington"
 specifiers = ["latest"]
 
 [tools.mr-boxington."platforms.linux-x64"]
-checksum = "sha256:b713e1a3b8e7a8696b7e365ef222a5b4bb45b18ad6c30b6f86972194294c31ae"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:ca95f28c77711845c0455839792ca3f3070bdf007979ab75bf7e10c03b07fe3f"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.linux-x64-baseline"]
-checksum = "sha256:b713e1a3b8e7a8696b7e365ef222a5b4bb45b18ad6c30b6f86972194294c31ae"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.0/mbx-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:ca95f28c77711845c0455839792ca3f3070bdf007979ab75bf7e10c03b07fe3f"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.linux-x64-musl"]
-checksum = "sha256:8e4e6fcdf9aa12db83ce3dae12fcb45dd2ae9f4e5183cc5bddd51aaff010e3c0"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.0/mbx-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:3d2a6c9c01c182d135290d7cef261990c5ab1650bdd69a8da9643ef651283af2"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:8e4e6fcdf9aa12db83ce3dae12fcb45dd2ae9f4e5183cc5bddd51aaff010e3c0"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.0/mbx-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:3d2a6c9c01c182d135290d7cef261990c5ab1650bdd69a8da9643ef651283af2"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.macos-arm64"]
-checksum = "sha256:5675b2a3b16059757933448b8fd70579716f356cae311766becd9da38c983ab5"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.0/mbx-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:2c19baafcda87ad948f071c571f57b2cf9eaeee2c971c5536b93ae3a036d5e75"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
