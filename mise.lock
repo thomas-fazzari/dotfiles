@@ -351,7 +351,7 @@ backend = "core:dotnet"
 specifiers = ["10.0.400"]
 
 [[tools."dotnet:ThomasFazzari.RoslynBridge"]]
-version = "2.1.2"
+version = "2.2.0"
 backend = "dotnet:ThomasFazzari.RoslynBridge"
 specifiers = ["latest"]
 
@@ -396,39 +396,38 @@ backend = "dotnet:vpk"
 specifiers = ["latest"]
 
 [[tools.fd]]
-version = "10.5.0"
+version = "10.5.1"
 backend = "aqua:sharkdp/fd"
 specifiers = ["latest"]
 
 [tools.fd."platforms.linux-x64"]
-checksum = "sha256:a1259cd129636efbc3fef123525c1b49e88fe5088c012630983c310e52fdfa95"
+checksum = "sha256:d0e2b438c8c4946955f05e4cf51452deada8f7ed509e1ccd60235a468622716f"
 checksum_source = "mise-versions"
-url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481615"
+url = "https://github.com/sharkdp/fd/releases/download/v10.5.1/fd-v10.5.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/708933694"
 
 [tools.fd."platforms.linux-x64-baseline"]
-checksum = "sha256:a1259cd129636efbc3fef123525c1b49e88fe5088c012630983c310e52fdfa95"
+checksum = "sha256:d0e2b438c8c4946955f05e4cf51452deada8f7ed509e1ccd60235a468622716f"
 checksum_source = "mise-versions"
-url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481615"
+url = "https://github.com/sharkdp/fd/releases/download/v10.5.1/fd-v10.5.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/708933694"
 
 [tools.fd."platforms.linux-x64-musl"]
-checksum = "sha256:761c72dc8e120d85b22292063be8a796e2eeb20eb3e4f38b8fa2343ccf3514a7"
+checksum = "sha256:f6c95edb190c241df6fddc815a5bab4051444993ac5d92ddc6eec0e0dc2342c7"
 checksum_source = "mise-versions"
-url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481315"
+url = "https://github.com/sharkdp/fd/releases/download/v10.5.1/fd-v10.5.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/708934996"
 
 [tools.fd."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:761c72dc8e120d85b22292063be8a796e2eeb20eb3e4f38b8fa2343ccf3514a7"
+checksum = "sha256:f6c95edb190c241df6fddc815a5bab4051444993ac5d92ddc6eec0e0dc2342c7"
 checksum_source = "mise-versions"
-url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481315"
+url = "https://github.com/sharkdp/fd/releases/download/v10.5.1/fd-v10.5.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/708934996"
 
 [tools.fd."platforms.macos-arm64"]
-checksum = "sha256:b67e1836c468e42e411984b56e52fa7abec08c2bd22c867398e7cc134aac5e12"
-checksum_source = "mise-versions"
-url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481346"
+checksum = "sha256:2d336895ed27b14c5cc9fc5eb22df03b3ee842b5dce80060e99d9cdc1b1b9fc7"
+url = "https://github.com/sharkdp/fd/releases/download/v10.5.1/fd-v10.5.1-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/708928450"
 
 [[tools."github:Feel-ix-343/markdown-oxide"]]
 version = "0.25.12"
@@ -865,37 +864,37 @@ url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.2/lua
 url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/635852571"
 
 [[tools.mr-boxington]]
-version = "1.29.1"
+version = "1.29.2"
 backend = "packslip:github.com/jdx/mr-boxington"
 specifiers = ["latest"]
 
 [tools.mr-boxington."platforms.linux-x64"]
-checksum = "sha256:ca95f28c77711845c0455839792ca3f3070bdf007979ab75bf7e10c03b07fe3f"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:73e135d3e9e8b8ddc938b42407179a239917b7f02d3fa5f601f6783e5c0d36d6"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.2/mbx-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.linux-x64-baseline"]
-checksum = "sha256:ca95f28c77711845c0455839792ca3f3070bdf007979ab75bf7e10c03b07fe3f"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:73e135d3e9e8b8ddc938b42407179a239917b7f02d3fa5f601f6783e5c0d36d6"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.2/mbx-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.linux-x64-musl"]
-checksum = "sha256:3d2a6c9c01c182d135290d7cef261990c5ab1650bdd69a8da9643ef651283af2"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:60be3ffbb4d71418827ed28686c776b86bdbb804edd43739b1dbfcdf162fbcb5"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.2/mbx-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:3d2a6c9c01c182d135290d7cef261990c5ab1650bdd69a8da9643ef651283af2"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:60be3ffbb4d71418827ed28686c776b86bdbb804edd43739b1dbfcdf162fbcb5"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.2/mbx-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
 [tools.mr-boxington."platforms.macos-arm64"]
-checksum = "sha256:2c19baafcda87ad948f071c571f57b2cf9eaeee2c971c5536b93ae3a036d5e75"
-url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.1/mbx-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:621ce235d8f241c5a3728ca03d34b9864f466f4e8b3307d8a6d7101a24a71a60"
+url = "https://github.com/jdx/mr-boxington/releases/download/v1.29.2/mbx-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/mr-boxington/.github/workflows/release.yml"
 repository_ids = { repository = "1340721957" }
 
@@ -999,45 +998,44 @@ backend = "npm:yaml-language-server"
 specifiers = ["latest"]
 
 [[tools.oxfmt]]
-version = "0.75.0"
-aube = { path = ".mise/locks/oxfmt/0.75.0", digest = "sha256:1d4f470a5dbba272218132db6ff9ba1911075d29dcd3253a0e02b4a5037a8a23" }
+version = "0.76.0"
+aube = { path = ".mise/locks/oxfmt/0.76.0", digest = "sha256:313fdba84da0438bbd7e107264cd28a393498936d62648223b078a3fdb990dac" }
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
 [[tools.oxlint]]
-version = "1.90.0"
+version = "1.91.0"
 backend = "aqua:oxc-project/oxc/oxlint"
 specifiers = ["latest"]
 
 [tools.oxlint."platforms.linux-x64"]
-checksum = "sha256:dd5b0c99ca7917fd6d3caabae260acc5bf7d65ae094541971862602fe288dca4"
+checksum = "sha256:de059941526abeaab3c5aafa78caef80e5b4e7197274391d80cde38a1960a916"
 checksum_source = "mise-versions"
-url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.90.0/oxlint-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/680611055"
+url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.91.0/oxlint-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/705815105"
 
 [tools.oxlint."platforms.linux-x64-baseline"]
-checksum = "sha256:dd5b0c99ca7917fd6d3caabae260acc5bf7d65ae094541971862602fe288dca4"
+checksum = "sha256:de059941526abeaab3c5aafa78caef80e5b4e7197274391d80cde38a1960a916"
 checksum_source = "mise-versions"
-url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.90.0/oxlint-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/680611055"
+url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.91.0/oxlint-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/705815105"
 
 [tools.oxlint."platforms.linux-x64-musl"]
-checksum = "sha256:70c5c44f0738b5d6a8716058e82aceff40524b476a6f533f9a94887352cb8f30"
+checksum = "sha256:2b817b73957bd94d2a0d59cf719233b54d9847e90caf380bb89a5ba1ede88c6c"
 checksum_source = "mise-versions"
-url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.90.0/oxlint-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/680611085"
+url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.91.0/oxlint-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/705815138"
 
 [tools.oxlint."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:70c5c44f0738b5d6a8716058e82aceff40524b476a6f533f9a94887352cb8f30"
+checksum = "sha256:2b817b73957bd94d2a0d59cf719233b54d9847e90caf380bb89a5ba1ede88c6c"
 checksum_source = "mise-versions"
-url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.90.0/oxlint-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/680611085"
+url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.91.0/oxlint-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/705815138"
 
 [tools.oxlint."platforms.macos-arm64"]
-checksum = "sha256:4654e2b8b450f25d3b3186b8e88ffbaf5c20b991a61243758a0944bc46726791"
-checksum_source = "mise-versions"
-url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.90.0/oxlint-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/680610990"
+checksum = "sha256:d1f6037780a4d5e14a32d810083859ae691a5032f789381a5ff9b75f901f90e9"
+url = "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.91.0/oxlint-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/oxc-project/oxc/releases/assets/705815013"
 
 [[tools.pi]]
 version = "1.5.0"
@@ -1406,73 +1404,73 @@ url = "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.12/tin
 url_api = "https://api.github.com/repos/Myriad-Dreamin/tinymist/releases/assets/704698491"
 
 [[tools.tombi]]
-version = "1.9.9"
+version = "1.10.0"
 backend = "aqua:tombi-toml/tombi"
 specifiers = ["latest"]
 
 [tools.tombi."platforms.linux-x64"]
-checksum = "sha256:f6094fb14fd962c9611ccd7bc73dc7e8b03fe8859fd662e022b8d0a25649b5fc"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748434"
+checksum = "sha256:47c80f210c2abc54f9a4c433b768378a321a0c53fcb907cb2563fe16f277f402"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.10.0/tombi-cli-1.10.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/709140355"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.linux-x64-baseline"]
-checksum = "sha256:f6094fb14fd962c9611ccd7bc73dc7e8b03fe8859fd662e022b8d0a25649b5fc"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748434"
+checksum = "sha256:47c80f210c2abc54f9a4c433b768378a321a0c53fcb907cb2563fe16f277f402"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.10.0/tombi-cli-1.10.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/709140355"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.linux-x64-musl"]
-checksum = "sha256:f6094fb14fd962c9611ccd7bc73dc7e8b03fe8859fd662e022b8d0a25649b5fc"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748434"
+checksum = "sha256:47c80f210c2abc54f9a4c433b768378a321a0c53fcb907cb2563fe16f277f402"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.10.0/tombi-cli-1.10.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/709140355"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:f6094fb14fd962c9611ccd7bc73dc7e8b03fe8859fd662e022b8d0a25649b5fc"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748434"
+checksum = "sha256:47c80f210c2abc54f9a4c433b768378a321a0c53fcb907cb2563fe16f277f402"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.10.0/tombi-cli-1.10.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/709140355"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.macos-arm64"]
-checksum = "sha256:3e156ba88ae4228b93071d9a4548e6dd64ae0e71d476ae09ee106a0d9a6ca070"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748394"
+checksum = "sha256:b00ca00f24125c1fbb61c8a7940ebd56f78e390878f11cd43235e38d07426832"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.10.0/tombi-cli-1.10.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/709140254"
 provenance = "github-attestations"
 
 [[tools.topgrade]]
-version = "17.14.1"
+version = "17.15.0"
 backend = "aqua:topgrade-rs/topgrade"
 specifiers = ["latest"]
 
 [tools.topgrade."platforms.linux-x64"]
-checksum = "sha256:24a502f8414aa1223ad28670a746126c896f75a402428d664b51ec94055d4822"
-url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.14.1/topgrade-v17.14.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/660310674"
+checksum = "sha256:d360a75625e94c2d7288f86a7fbe21622bd73498b40168e7385edd71a8e1133d"
+url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.15.0/topgrade-v17.15.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/706103668"
 provenance = "github-attestations"
 
 [tools.topgrade."platforms.linux-x64-baseline"]
-checksum = "sha256:24a502f8414aa1223ad28670a746126c896f75a402428d664b51ec94055d4822"
-url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.14.1/topgrade-v17.14.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/660310674"
+checksum = "sha256:d360a75625e94c2d7288f86a7fbe21622bd73498b40168e7385edd71a8e1133d"
+url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.15.0/topgrade-v17.15.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/706103668"
 provenance = "github-attestations"
 
 [tools.topgrade."platforms.linux-x64-musl"]
-checksum = "sha256:04e9896bb55a36b9232532c7f7f701392fc2169ddf91155a353440198c07e278"
-url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.14.1/topgrade-v17.14.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/660311257"
+checksum = "sha256:8f0f2ae561e96ad3d4d8775d19fdfbfe4f1dc5e4ad678ab3bfb24a1ce5c8b696"
+url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.15.0/topgrade-v17.15.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/706112148"
 provenance = "github-attestations"
 
 [tools.topgrade."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:04e9896bb55a36b9232532c7f7f701392fc2169ddf91155a353440198c07e278"
-url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.14.1/topgrade-v17.14.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/660311257"
+checksum = "sha256:8f0f2ae561e96ad3d4d8775d19fdfbfe4f1dc5e4ad678ab3bfb24a1ce5c8b696"
+url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.15.0/topgrade-v17.15.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/706112148"
 provenance = "github-attestations"
 
 [tools.topgrade."platforms.macos-arm64"]
-checksum = "sha256:c9552341e53a9e6a2ec1f2c270d8a14d8154f352ee384ba68e065550da08ca72"
-url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.14.1/topgrade-v17.14.1-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/660332275"
+checksum = "sha256:33f47f55f1834576f105847aefc3c29b8c5f283d0f7fcf83bff3aef700fe1881"
+url = "https://github.com/topgrade-rs/topgrade/releases/download/v17.15.0/topgrade-v17.15.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/topgrade-rs/topgrade/releases/assets/706118189"
 provenance = "github-attestations"
 
 [[tools.tree-sitter]]

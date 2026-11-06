@@ -22,7 +22,7 @@ autocmd("FileType", {
   end,
 })
 
--- Pick up edits the agent makes from another herdr tab. FocusGained alone is not enough:
+-- Pick up edits the agent makes from another Rex tab. FocusGained alone is not enough:
 -- the multiplexer may not forward focus events
 autocmd({ "FocusGained", "BufEnter", "CursorHold", "TermLeave" }, {
   callback = function()

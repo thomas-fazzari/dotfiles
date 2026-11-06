@@ -19,13 +19,6 @@ my @common = (
   ['.config/nvim'                         => 'nvim'],
   ['.config/eilmeldung/config.toml'       => 'rss/eilmeldung/config.toml'],
   ['.local/share/agent-hooks'             => 'agentic/hooks'],
-  (
-    map { [".config/herdr-app/$_" => "agentic/herdr/app/$_"] }
-      qw(
-      settings.json themes/tokyonight.json layouts/desk.json
-      mods/desk-agents mods/desk-chrome mods/desk-inbox mods/desk-new mods/desk-pane mods/desk-spaces mods/desk-status mods/desk-tabs
-      )
-  ),
   ['.config/mise/config.toml' => 'mise.toml'],
   ['.config/mise/mise.lock'   => 'mise.lock'],
   ['.config/topgrade.toml'    => "$os/topgrade.toml"],
@@ -43,12 +36,11 @@ my %links = (
     ['Library/Application Support/Code/User/settings.json'    => 'vscode/settings.json'],
     ['Library/Application Support/Code/User/keybindings.json' => 'vscode/keybindings.json'],
     ['.config/aerospace/aerospace.toml'                       => 'macos/aerospace/aerospace.toml'],
-    ['.config/herdr-app/keys.json'                            => 'agentic/herdr/app/keys.json'],
+    ['.config/rex/init.lua'                                   => 'terminal/rex/init.lua'],
   ],
   linux => [
     ['.config/Code/User/keybindings.json'          => 'vscode/keybindings.json'],
     ['.config/ghostty/os.ghostty'                  => 'linux/ghostty.conf'],
-    ['.local/share/applications/herdr-app.desktop' => 'linux/herdr-app.desktop'],
     ['.config/environment.d/10-dotfiles.conf'      => 'linux/environment.conf'],
     ['.config/niri/config.kdl'                     => 'linux/niri/config.kdl'],
     ['.zshenv'                                     => 'linux/zshenv'],
@@ -67,12 +59,8 @@ my %rendered = (
         s{/opt/homebrew/bin/perl}{/usr/bin/perl}g;
       }
     ],
-    ['.config/herdr-app/keys.json' => 'agentic/herdr/app/keys.json', sub {s{"cmd-}{"super-}g}],
   ],
 );
-
-my @copied = map { [".config/herdr-app/icons/desk-$_.svg" => "agentic/herdr/app/mods/desk-inbox/$_.svg", sub { }] }
-  qw(undo list-filter);
 
 my $check = @ARGV && $ARGV[0] eq '--check';
 my $drift = 0;
@@ -101,7 +89,7 @@ for my $pair (@common, @{$links{$os}}) {
   print "link $link -> $target\n";
 }
 
-for my $entry (@copied, @{$rendered{$os}}) {
+for my $entry (@{$rendered{$os}}) {
   my ($file, $source, $swap) = ("$ENV{HOME}/$entry->[0]", "$dotfiles/$entry->[1]", $entry->[2]);
   local $_ = slurp($source);
   $swap->();

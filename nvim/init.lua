@@ -35,6 +35,6 @@ require("lazy").setup("plugins", {
 require "mappings"
 require "lsp"
 
-if vim.env.HC_TERMINAL_ID then
+if vim.env.REX_SESSION then
   require "agent"
 end

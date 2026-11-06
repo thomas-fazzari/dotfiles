@@ -1,15 +1,6 @@
-function ws --description 'Set up my default Herdr space in the current one'
-    set -q HC_TERMINAL_ID; or begin
-        echo "ws: not in a Herdr app terminal" >&2
-        return 1
-    end
-
-    # The space names itself after the repo, so only tabs are named
-    set -l labels (hc get $HC_TERMINAL_ID --json | jq -r '.labels["herdr.space"], .labels["herdr.tab"]')
-    set -l space $labels[1]
-    set -l tab $labels[2]
-    test -n "$space" -a "$space" != null; or begin
-        echo "ws: this terminal is not in a Herdr space" >&2
+function ws --description 'Set up my default Rex session in the current one'
+    set -q REX_SESSION REX_BLOCK; or begin
+        echo "ws: not in a Rex terminal" >&2
         return 1
     end
 
@@ -19,11 +10,15 @@ function ws --description 'Set up my default Herdr space in the current one'
         set nvim_cmd nvim +CodeDiff
     end
 
-    herdr-app do tab.rename --id $tab --name pi >/dev/null
-    herdr-app do tab.new --space $space --folder $PWD --name nvim --argv (jq -cn '$ARGS.positional' --args $nvim_cmd) >/dev/null
+    set -l repo (git rev-parse --show-toplevel 2>/dev/null; or echo $PWD)
+    rex session rename $REX_SESSION (path basename $repo) >/dev/null
+
+    set -l tab (rex block inspect $REX_BLOCK --json | jq -r .block.window_id)
     or return 1
-    herdr-app do tab.new --space $space --folder $PWD --name btop --argv '["btop","--preset","1"]' >/dev/null
-    herdr-app do tab.select --id $tab >/dev/null
+    rex window rename -s $REX_SESSION $tab pi >/dev/null
+    rex window new -s $REX_SESSION nvim -c $PWD --focus=false -- $nvim_cmd >/dev/null
+    or return 1
+    rex window new -s $REX_SESSION btop -c $PWD --focus=false -- btop --preset 1 >/dev/null
 
     pi
 end

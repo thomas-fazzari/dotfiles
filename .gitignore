@@ -39,8 +39,6 @@
 
 !/agentic/
 !/agentic/pi-config
-!/agentic/herdr/
-!/agentic/herdr/**
 !/agentic/hooks/
 !/agentic/hooks/**
 

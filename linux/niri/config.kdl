@@ -38,15 +38,6 @@ layer-rule {
     place-within-backdrop true
 }
 
-// herdr has no background transparency setting
-window-rule {
-    match app-id="^herdr-app$"
-    opacity 0.85
-    background-effect {
-        blur true
-    }
-}
-
 binds {
     Alt+H { focus-column-left; }
     Alt+J { focus-window-down; }

@@ -1,64 +1,77 @@
--- Line references and review comments sent to the agent of this Herdr space through hc.
+-- Line references and review comments sent to the agent of this Rex session.
 local ns = vim.api.nvim_create_namespace "agent_comments"
 local pending = {}
 
-local function hc(args, on_done)
-  vim.system(vim.list_extend({ "hc" }, args), { text = true }, function(r)
+-- Run by `rex do` against this session: the other terminals whose foreground program is an agent.
+local list_agents = [[
+local agents = { pi = true, claude = true, codex = true, opencode = true }
+local view = assert(rex.session.view {})
+local found = {}
+for _, window in ipairs(view.windows) do
+  for _, layer in ipairs(window.layers) do
+    for _, block in ipairs(layer.blocks) do
+      if block.block_id ~= rex.block_id then
+        local process = rex.block.call("com.superlogical.terminal", "process", { block_id = block.block_id })
+        local name = process and process.foreground and process.foreground.name
+        if agents[name] then
+          table.insert(found, { block = block.block_id, agent = name, tab = window.label })
+        end
+      end
+    end
+  end
+end
+return found
+]]
+
+-- Pasted rather than typed, so a multiline message is not submitted line by line.
+local paste_and_submit = [[
+assert(rex.call("block.event", {
+  session_id = rex.session_id,
+  block_id = rex.args.block,
+  event = { type = "paste", payload = { text = rex.args.text } },
+}))
+assert(rex.block.call("com.superlogical.terminal", "write", { block_id = rex.args.block, data = "\r" }))
+]]
+
+local function rex_do(code, args, on_done)
+  local cmd = { "rex", "do", "-s", vim.env.REX_SESSION, "-b", vim.env.REX_BLOCK, "-e", code, "--json" }
+  if args then
+    vim.list_extend(cmd, { "--args", vim.json.encode(args) })
+  end
+  vim.system(cmd, { text = true }, function(r)
     vim.schedule(function()
-      on_done(r)
+      if r.code ~= 0 then
+        return vim.notify("agent: " .. vim.trim(r.stderr), vim.log.levels.ERROR)
+      end
+      on_done(r.stdout)
     end)
   end)
 end
 
--- hc reports failures as JSON on stderr when piped.
-local function error_of(r)
-  local ok, decoded = pcall(vim.json.decode, r.stderr)
-  local message = ok and type(decoded) == "table" and decoded.error and decoded.error.message or vim.trim(r.stderr)
-  vim.notify("agent: " .. message, vim.log.levels.ERROR)
-end
-
--- Agents are the terminals of this space that report a status.
 local function pick_agent(use)
-  hc({ "get", vim.env.HC_TERMINAL_ID, "--json" }, function(me)
-    if me.code ~= 0 then
-      return error_of(me)
+  rex_do(list_agents, nil, function(stdout)
+    local ok, agents = pcall(vim.json.decode, stdout)
+    if not ok or type(agents) ~= "table" or #agents == 0 then
+      return vim.notify("agent: no agent in this session", vim.log.levels.WARN)
+    elseif #agents == 1 then
+      return use(agents[1])
     end
-    local space = (vim.json.decode(me.stdout).labels or {})["herdr.space"]
-    if not space then
-      return vim.notify("agent: this terminal is not in a Herdr space", vim.log.levels.WARN)
-    end
-    hc({ "ls", "--json", "--label", "herdr.space=" .. space }, function(ls)
-      if ls.code ~= 0 then
-        return error_of(ls)
+    vim.ui.select(agents, {
+      prompt = "Agent",
+      format_item = function(a)
+        return string.format("%s · %s", a.agent, a.tab)
+      end,
+    }, function(a)
+      if a then
+        use(a)
       end
-      local agents = vim.tbl_filter(function(t)
-        return t.address ~= vim.env.HC_TERMINAL_ID and type(t.status) == "string"
-      end, vim.json.decode(ls.stdout).terminals)
-      if #agents == 0 then
-        return vim.notify("agent: no agent in this space", vim.log.levels.WARN)
-      elseif #agents == 1 then
-        return use(agents[1])
-      end
-      vim.ui.select(agents, {
-        prompt = "Agent",
-        format_item = function(t)
-          return string.format("%s · %s · %s", t.agent, t.status, t.where)
-        end,
-      }, function(t)
-        if t then
-          use(t)
-        end
-      end)
     end)
   end)
 end
 
 local function send(text, on_sent)
   pick_agent(function(agent)
-    hc({ "send", agent.address, text }, function(r)
-      if r.code ~= 0 then
-        return error_of(r)
-      end
+    rex_do(paste_and_submit, { block = agent.block, text = text }, function()
       on_sent(agent)
     end)
   end)
@@ -82,7 +95,7 @@ local function reference()
   local first, last = lines()
   local ref = location(0, first, last)
   send(ref, function(agent)
-    vim.notify("agent: sent " .. ref .. " to " .. agent.where)
+    vim.notify("agent: sent " .. ref .. " to " .. agent.agent .. " in " .. agent.tab)
   end)
 end
 
@@ -122,7 +135,7 @@ local function send_comments()
   local count = #pending
   send(table.concat(message, "\n"), function(agent)
     discard()
-    vim.notify(string.format("agent: sent %d comment(s) to %s", count, agent.where))
+    vim.notify(string.format("agent: sent %d comment(s) to %s in %s", count, agent.agent, agent.tab))
   end)
 end
 

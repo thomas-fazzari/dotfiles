@@ -53,7 +53,6 @@ docker-compose
 flatpak
 fuse2 # AppImages
 ghostty
-herdr-app-bin
 kid3-qt
 obsidian
 onlyoffice-bin
