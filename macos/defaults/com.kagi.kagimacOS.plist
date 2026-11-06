@@ -63,7 +63,7 @@
 	<key>ShowRecommendationsOnStartPage</key>
 	<false/>
 	<key>ShowTabPreviewOnHover</key>
-	<true/>
+	<false/>
 	<key>ShowTitlesInTabs</key>
 	<true/>
 	<key>ShowTopSitesOnStartPage</key>
