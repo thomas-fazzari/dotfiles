@@ -46,6 +46,8 @@
 	<string>deny</string>
 	<key>NetworkPredictionEnabled</key>
 	<false/>
+	<key>OpenLinkPreview</key>
+	<false/>
 	<key>PasswordProvider</key>
 	<string>thirdParty</string>
 	<key>QuitWithConfirmation</key>
@@ -63,7 +65,7 @@
 	<key>ShowRecommendationsOnStartPage</key>
 	<false/>
 	<key>ShowTabPreviewOnHover</key>
-	<false/>
+	<true/>
 	<key>ShowTitlesInTabs</key>
 	<true/>
 	<key>ShowTopSitesOnStartPage</key>
