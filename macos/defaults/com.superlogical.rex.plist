@@ -38,6 +38,8 @@
 	<real>16</real>
 	<key>Workspace.terminalFontSmoothing</key>
 	<true/>
+	<key>Workspace.terminalSelectionBackground</key>
+	<string>theme</string>
 	<key>Workspace.terminalSmoothScrolling</key>
 	<true/>
 	<key>Workspace.usesPaneGlass</key>

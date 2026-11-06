@@ -29,8 +29,6 @@
 !/vscode/**
 !/wallpapers/
 !/wallpapers/**
-!/zen/
-!/zen/**
 
 !/rss/
 !/rss/feeds.opml
