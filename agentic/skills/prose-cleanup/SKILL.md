@@ -28,7 +28,7 @@ Rewrite the target so it reads like a competent engineer wrote it for other engi
 
 **Empty adverbs**: simply, just, easily, really, truly, actually, fundamentally, seamlessly, quietly, effortlessly. Keep adverbs with technical meaning (atomically, lazily, recursively, asynchronously).
 
-**Hedges and inflation**: "may potentially", "can help to", "aims to"; claims of significance without evidence ("significantly improves", "greatly simplifies"); vague attributions ("best practice says", "it is widely recommended"); sweeping "always", "never", "every", "all" unless literally true.
+**Hedges and inflation**: stacked or empty hedges ("may potentially", "can help to", "aims to"). Keep a hedge that states real uncertainty: "may have failed" is a different claim from "failed". Also claims of significance without evidence ("significantly improves", "greatly simplifies"); vague attributions ("best practice says", "it is widely recommended"); sweeping "always", "never", "every", "all" unless literally true.
 
 **Rhetorical structures**:
 
@@ -49,6 +49,8 @@ Rewrite the target so it reads like a competent engineer wrote it for other engi
 **Code comments**: explain why, invariants, constraints and non-obvious behavior. Delete comments that restate the code, narrate history ("now uses", "previously", "refactored to", "added"), refer to the task or conversation ("as requested", "fix for the bug"), or act as section banners. Doc comments describe the contract; drop `@param name The name` lines that repeat the signature. Start with the content, not "This function".
 
 **Docs**: second person, present tense ("returns", not "will return"), imperative steps. One term per concept. A concrete example beats an abstract description. Prerequisites only when non-obvious.
+
+**Agent-facing text** (prompts, skill and tool descriptions, error and denial messages): one instruction per sentence, about 20 words at most. Single verbs instead of phrasal verbs ("start", not "spin up"). One name per thing, reused every time.
 
 **README**: open with what it is in one or two sentences and the shortest path to using it. Copy-pasteable commands in code blocks. No adjective feature lists, badge walls, "Why X?" pitches, table of contents for short files, or "Contributing" and "License" sections without real content.
 
