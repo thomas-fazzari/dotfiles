@@ -19,16 +19,16 @@ my @common = (
   ['.config/nvim'                         => 'nvim'],
   ['.config/eilmeldung/config.toml'       => 'rss/eilmeldung/config.toml'],
   ['.local/share/agent-hooks'             => 'agentic/hooks'],
-  ['.config/mise/config.toml' => 'mise.toml'],
-  ['.config/mise/mise.lock'   => 'mise.lock'],
-  ['.config/topgrade.toml'    => "$os/topgrade.toml"],
-  ['.bunfig.toml'             => 'bunfig.toml'],
-  ['.config/fish/config.fish' => 'terminal/fish/config.fish'],
-  ['.config/fish/functions'   => 'terminal/fish/functions'],
-  ['.config/starship.toml'    => 'terminal/starship/starship.toml'],
-  ['.gitconfig'               => 'git/.gitconfig'],
-  ['.gitignore_global'        => 'git/.gitignore_global'],
-  ['.perltidyrc'              => '.perltidyrc'],
+  ['.config/mise/config.toml'             => 'mise.toml'],
+  ['.config/mise/mise.lock'               => 'mise.lock'],
+  ['.config/topgrade.toml'                => "$os/topgrade.toml"],
+  ['.bunfig.toml'                         => 'bunfig.toml'],
+  ['.config/fish/config.fish'             => 'terminal/fish/config.fish'],
+  ['.config/fish/functions'               => 'terminal/fish/functions'],
+  ['.config/starship.toml'                => 'terminal/starship/starship.toml'],
+  ['.gitconfig'                           => 'git/.gitconfig'],
+  ['.gitignore_global'                    => 'git/.gitignore_global'],
+  ['.perltidyrc'                          => '.perltidyrc'],
 );
 
 my %links = (
@@ -39,11 +39,11 @@ my %links = (
     ['.config/rex/init.lua'                                   => 'terminal/rex/init.lua'],
   ],
   linux => [
-    ['.config/Code/User/keybindings.json'          => 'vscode/keybindings.json'],
-    ['.config/ghostty/os.ghostty'                  => 'linux/ghostty.conf'],
-    ['.config/environment.d/10-dotfiles.conf'      => 'linux/environment.conf'],
-    ['.config/niri/config.kdl'                     => 'linux/niri/config.kdl'],
-    ['.zshenv'                                     => 'linux/zshenv'],
+    ['.config/Code/User/keybindings.json'     => 'vscode/keybindings.json'],
+    ['.config/ghostty/os.ghostty'             => 'linux/ghostty.conf'],
+    ['.config/environment.d/10-dotfiles.conf' => 'linux/environment.conf'],
+    ['.config/niri/config.kdl'                => 'linux/niri/config.kdl'],
+    ['.zshenv'                                => 'linux/zshenv'],
   ],
 );
 
