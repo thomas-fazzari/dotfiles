@@ -69,7 +69,7 @@ cask "zed"
 
 # Fonts
 cask "font-inria"
-cask "font-iosevka-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 
 # App Store
 mas "Amphetamine", id: 937984704

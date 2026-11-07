@@ -102,4 +102,4 @@ scx-scheds # scx_lavd
 scx-tools # scx_loader, configured by linux/scx_loader.toml
 
 # Fonts
-ttf-iosevka-nerd
+ttf-jetbrains-mono-nerd

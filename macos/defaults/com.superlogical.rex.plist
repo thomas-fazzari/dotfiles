@@ -33,7 +33,7 @@
 	<key>Workspace.terminalAllowsLigatures</key>
 	<true/>
 	<key>Workspace.terminalFontName</key>
-	<string>Iosevka Nerd Font Mono</string>
+	<string>JetBrainsMono Nerd Font Mono</string>
 	<key>Workspace.terminalFontPointSize</key>
 	<real>16</real>
 	<key>Workspace.terminalFontSmoothing</key>

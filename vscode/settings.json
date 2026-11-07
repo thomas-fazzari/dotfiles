@@ -1,7 +1,7 @@
 {
   // Fonts
-  "editor.fontFamily": "'Iosevka Nerd Font Mono', monospace",
-  "terminal.integrated.fontFamily": "'Iosevka Nerd Font Mono'",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', monospace",
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
   "terminal.integrated.fontSize": 14,
   "editor.fontSize": 16,
   "editor.fontWeight": "500",
