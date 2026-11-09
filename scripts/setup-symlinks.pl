@@ -36,6 +36,7 @@ my %links = (
     ['Library/Application Support/Code/User/settings.json'    => 'vscode/settings.json'],
     ['Library/Application Support/Code/User/keybindings.json' => 'vscode/keybindings.json'],
     ['.config/aerospace/aerospace.toml'                       => 'macos/aerospace/aerospace.toml'],
+    ['.config/sketchybar'                                     => 'macos/sketchybar'],
     ['.config/rex/init.lua'                                   => 'terminal/rex/init.lua'],
   ],
   linux => [

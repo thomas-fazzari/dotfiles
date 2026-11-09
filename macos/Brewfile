@@ -2,6 +2,7 @@
 #   brew bundle --file ~/Dev/dotfiles/macos/Brewfile
 
 tap "dmtrKovalenko/fff"
+tap "FelixKratz/formulae"
 tap "nikitabobko/tap"
 
 # Core CLI (rest is in mise.toml)
@@ -15,9 +16,14 @@ brew "gh"
 brew "git"
 brew "mas"
 brew "mise"
+brew "media-control"
 brew "starship"
 brew "tokei"
 brew "tree"
+
+# Menu bar
+brew "FelixKratz/formulae/sketchybar", start_service: true
+brew "lua"
 
 # Dev tools
 brew "dmtrKovalenko/fff/fff-mcp"

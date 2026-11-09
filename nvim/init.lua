@@ -4,6 +4,22 @@ vim.g.maplocalleader = " "
 require "options"
 require "autocmds"
 
+local trusted_root = vim.uv.fs_realpath(vim.fs.joinpath(vim.env.HOME, "Dev"))
+local secure_read = vim.secure.read
+vim.secure.read = function(path)
+  local fullpath = vim.uv.fs_realpath(vim.fs.normalize(path))
+  if not (trusted_root and fullpath and vim.fs.relpath(trusted_root, fullpath)) then
+    return secure_read(path)
+  end
+  if vim.fn.isdirectory(fullpath) == 1 then
+    return true
+  end
+  local file = assert(io.open(fullpath, "r"))
+  local contents = file:read "*a"
+  file:close()
+  return contents
+end
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"

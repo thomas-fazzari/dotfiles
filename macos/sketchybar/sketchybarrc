@@ -1,0 +1,50 @@
+#!/usr/bin/env lua
+local config_dir = os.getenv("CONFIG_DIR")
+local module_dir = os.getenv("HOME") .. "/.local/share/sketchybar_lua"
+package.path = config_dir .. "/?.lua;" .. package.path
+package.cpath = module_dir .. "/?.so;" .. package.cpath
+
+if not io.open(module_dir .. "/sketchybar.so") then
+  os.execute("git clone --depth 1 https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && make -C /tmp/SbarLua install; rm -rf /tmp/SbarLua")
+end
+
+local sbar = require("sketchybar")
+local theme = require("theme")
+
+sbar.begin_config()
+
+sbar.bar({
+  height = 32,
+  color = theme.colors.bar,
+  topmost = "on",
+  padding_left = 8,
+  padding_right = 8,
+})
+
+sbar.default({
+  updates = "when_shown",
+  padding_left = 7,
+  padding_right = 7,
+  icon = {
+    font = theme.font.icon,
+    color = theme.colors.fg,
+    padding_left = 0,
+    padding_right = 0,
+  },
+  label = {
+    font = theme.font.text,
+    color = theme.colors.fg,
+    padding_left = 5,
+    padding_right = 0,
+  },
+})
+
+require("items.spaces")
+require("items.front_app")
+require("items.clock")
+require("items.status")
+require("items.media")
+
+sbar.hotload(true)
+sbar.end_config()
+sbar.event_loop()
