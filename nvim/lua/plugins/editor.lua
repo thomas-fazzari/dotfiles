@@ -183,10 +183,21 @@ return {
     },
   },
   {
-    "brianhuster/live-preview.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     ft = "markdown",
-    config = function()
-      require("livepreview.config").set {}
-    end,
+    opts = {
+      enabled = false,
+      latex = { enabled = false },
+    },
+    keys = {
+      {
+        "<D-V>",
+        function()
+          require("render-markdown").buf_toggle()
+        end,
+        ft = "markdown",
+        desc = "Toggle Markdown preview",
+      },
+    },
   },
 }

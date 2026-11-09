@@ -55,6 +55,7 @@ keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+n=next_tab
 keybind = ctrl+shift+p=previous_tab
 keybind = ctrl+shift+w=close_tab:this
+keybind = super+shift+v=csi:118;10u
 
 # Per-OS overrides, linked next to this file by scripts/setup-symlinks.pl
 config-file = ?os.ghostty
