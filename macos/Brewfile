@@ -51,13 +51,13 @@ cask "claude-code"
 cask "docker-desktop"
 cask "nikitabobko/tap/aerospace"
 cask "ghostty"
-cask "herdr-app"
 cask "keka"
 cask "kid3"
 cask "mullvad-vpn"
 cask "netnewswire"
 cask "obsidian"
 cask "onlyoffice"
+cask "orion"
 cask "pearcleaner"
 cask "proton-drive"
 cask "proton-mail"
@@ -66,11 +66,10 @@ cask "protonvpn"
 cask "tailscale-app"
 cask "visual-studio-code"
 cask "zed"
-cask "zen"
 
 # Fonts
 cask "font-inria"
-cask "font-iosevka-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 
 # App Store
 mas "Amphetamine", id: 937984704

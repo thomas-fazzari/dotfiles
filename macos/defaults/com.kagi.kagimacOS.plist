@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowCustomChromeColor</key>
+	<true/>
+	<key>AllowWebsiteThemeColor</key>
+	<false/>
+	<key>AppearanceStyle</key>
+	<string>system</string>
+	<key>AppleLanguages</key>
+	<array>
+		<string>en</string>
+	</array>
+	<key>AskKagiEnabled</key>
+	<false/>
+	<key>AutomaticPictureInPicture</key>
+	<string>auto</string>
+	<key>CameraAccess</key>
+	<string>deny</string>
+	<key>ChromeThemeColor</key>
+	<string>#010408</string>
+	<key>CloseWindowWithLastTab</key>
+	<false/>
+	<key>ContentBlockerAutoUpdate</key>
+	<true/>
+	<key>CookiesEnabled</key>
+	<true/>
+	<key>CurrentOpenSidebar</key>
+	<string>verticalTabs</string>
+	<key>CurrentToolbarSize</key>
+	<string>large</string>
+	<key>CustomAccentColor</key>
+	<string>#946FFF</string>
+	<key>DefaultSearchEngine</key>
+	<string>DuckDuckGo</string>
+	<key>HomePageURL</key>
+	<string>https://duckduckgo.com/</string>
+	<key>HyperlinkAuditingEnabled</key>
+	<false/>
+	<key>KagiOpensWith</key>
+	<string>newWindow</string>
+	<key>LocationAccess</key>
+	<string>deny</string>
+	<key>MicrophoneAccess</key>
+	<string>deny</string>
+	<key>NetworkPredictionEnabled</key>
+	<false/>
+	<key>OpenLinkPreview</key>
+	<false/>
+	<key>PasswordProvider</key>
+	<string>thirdParty</string>
+	<key>QuitWithConfirmation</key>
+	<false/>
+	<key>SUAutomaticallyUpdate</key>
+	<false/>
+	<key>SUEnableAutomaticChecks</key>
+	<false/>
+	<key>ScreenSharingAccess</key>
+	<string>deny</string>
+	<key>ShowFavoritesOnStartPage</key>
+	<true/>
+	<key>ShowReadingListOnStartPage</key>
+	<false/>
+	<key>ShowRecommendationsOnStartPage</key>
+	<false/>
+	<key>ShowTabPreviewOnHover</key>
+	<true/>
+	<key>ShowTitlesInTabs</key>
+	<true/>
+	<key>ShowTopSitesOnStartPage</key>
+	<false/>
+	<key>TabStyle</key>
+	<string>compact</string>
+	<key>ToolbarConfigurationForCompactTabs</key>
+	<dict>
+		<key>TB Default Item Identifiers</key>
+		<array>
+			<string>toggleSidebar</string>
+			<string>windowSwitcher</string>
+			<string>navigationGroup</string>
+			<string>NSToolbarFlexibleSpaceItem</string>
+			<string>locationBar</string>
+			<string>NSToolbarFlexibleSpaceItem</string>
+			<string>overflow</string>
+		</array>
+		<key>TB Display Mode</key>
+		<integer>2</integer>
+		<key>TB Icon Size Mode</key>
+		<integer>1</integer>
+		<key>TB Is Shown</key>
+		<true/>
+		<key>TB Item Identifiers</key>
+		<array>
+			<string>navigationGroup</string>
+			<string>homeButton</string>
+			<string>bookmarkButton</string>
+			<string>focusMode</string>
+			<string>NSToolbarFlexibleSpaceItem</string>
+			<string>locationBar</string>
+			<string>NSToolbarFlexibleSpaceItem</string>
+			<string>webExtButton-446900e4-71c2-419f-a6a7-df9c091e268b</string>
+			<string>overflow</string>
+		</array>
+		<key>TB Size Mode</key>
+		<integer>1</integer>
+	</dict>
+	<key>UseDefaultSearchEngineInPrivateMode</key>
+	<true/>
+	<key>WebAutomaticDashSubstitutionEnabled</key>
+	<false/>
+	<key>WebAutomaticQuoteSubstitutionEnabled</key>
+	<false/>
+	<key>WebAutomaticSpellingCorrectionEnabled</key>
+	<false/>
+	<key>WebContinuousSpellCheckingEnabled</key>
+	<true/>
+	<key>WebExtInstallPermission</key>
+	<string>allowAll</string>
+	<key>backgroundImageOnStartPage</key>
+	<string>file:///System/Library/Desktop%20Pictures/Big%20Sur%20Night%20Grasses.madesktop</string>
+	<key>isBackgroundImageDarkOnStartPage</key>
+	<true/>
+</dict>
+</plist>

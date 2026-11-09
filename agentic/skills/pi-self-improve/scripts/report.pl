@@ -311,7 +311,11 @@ sub report_failures {
         next;
       }
       next unless $message->{role} eq 'toolResult' && $message->{isError} && parse_time($entry->{timestamp}) >= $start;
-      my $text      = join ' ', map { $_->{text} } grep { $_->{type} eq 'text' } @{$message->{content}};
+      my $text = join ' ', map { $_->{text} } grep { $_->{type} eq 'text' } @{$message->{content}};
+
+      # Exit 1 with no output is a search with no match, such as git grep, not a failure
+      next if $message->{toolName} eq 'bash' && $text =~ /\A\s*\(no output\)\s*Command exited with code 1\s*\z/;
+
       my $signature = signature($text);
       my $group     = $groups{"$message->{toolName}\t$signature"}
         //= {tool => $message->{toolName}, signature => $signature, count => 0, files => {}};

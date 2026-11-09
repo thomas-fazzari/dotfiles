@@ -29,8 +29,6 @@
 !/vscode/**
 !/wallpapers/
 !/wallpapers/**
-!/zen/
-!/zen/**
 
 !/rss/
 !/rss/feeds.opml
@@ -39,8 +37,6 @@
 
 !/agentic/
 !/agentic/pi-config
-!/agentic/herdr/
-!/agentic/herdr/**
 !/agentic/hooks/
 !/agentic/hooks/**
 

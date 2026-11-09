@@ -1,9 +1,11 @@
 import { type Args, firstReason } from "./rules.ts";
 import type { Rule } from "./types.ts";
-import { END_OF_OPTIONS, isOption, programName } from "./utils.ts";
+import { isOption, programName } from "./utils.ts";
 
 const GLOBAL_OPTIONS_WITH_VALUE = new Set(["-C", "-c", "--git-dir", "--work-tree"]);
+const WHOLE_TREE = new Set([".", "./", ":/", ":(top)", "*"]);
 
+// Reverting named paths, deleting local branches and git rm -f run unasked: only whole-tree discards ask
 const RULES = new Map<string, readonly Rule[]>([
   [
     "reset",
@@ -22,8 +24,8 @@ const RULES = new Map<string, readonly Rule[]>([
     "checkout",
     [
       {
-        reason: "git checkout can discard uncommitted changes",
-        applies: (args) => forced(args) || args.has(END_OF_OPTIONS, "."),
+        reason: "git checkout discards all uncommitted changes",
+        applies: (args) => forced(args) || wholeTree(args),
       },
     ],
   ],
@@ -40,8 +42,9 @@ const RULES = new Map<string, readonly Rule[]>([
     "restore",
     [
       {
-        reason: "git restore discards uncommitted changes",
-        applies: (args) => !args.flag("--staged", "-S") || args.flag("--worktree", "-W"),
+        reason: "git restore discards all uncommitted changes",
+        applies: (args) =>
+          (!args.flag("--staged", "-S") || args.flag("--worktree", "-W")) && wholeTree(args),
       },
     ],
   ],
@@ -53,8 +56,9 @@ const RULES = new Map<string, readonly Rule[]>([
     "rm",
     [
       {
-        reason: "git rm --force discards uncommitted changes",
-        applies: (args) => forced(args) && !args.flag("--cached") && !dryRun(args),
+        reason: "git rm --force discards all uncommitted changes",
+        applies: (args) =>
+          forced(args) && !args.flag("--cached") && !dryRun(args) && wholeTree(args),
       },
     ],
   ],
@@ -74,15 +78,6 @@ const RULES = new Map<string, readonly Rule[]>([
       {
         reason: "git push --delete deletes remote refs",
         applies: (args) => deleting(args) || args.matches(/^:./u),
-      },
-    ],
-  ],
-  [
-    "branch",
-    [
-      {
-        reason: "git branch -D deletes unmerged commits",
-        applies: (args) => args.flag("-D") || (forced(args) && deleting(args)),
       },
     ],
   ],
@@ -129,6 +124,10 @@ export function gitRisk(program: string, args: readonly string[]): string | unde
 
 function forced(args: Args): boolean {
   return args.flag("--force", "-f");
+}
+
+function wholeTree(args: Args): boolean {
+  return args.operands.some((operand) => WHOLE_TREE.has(operand));
 }
 
 function deleting(args: Args): boolean {

@@ -1,6 +1,6 @@
 ---
 name: show-me
-description: Explain the current topic visually with diagrams and code-shape sketches, opening a Herdr tab for views too wide for the pane.
+description: Explain the current topic visually with diagrams and code-shape sketches, opening a Rex tab for views too wide for the pane.
 disable-model-invocation: true
 ---
 
@@ -12,9 +12,9 @@ Keep only the calls, files, props, states and boundaries needed to answer the cu
 
 ## Rendering context
 
-Replies render in the Pi TUI, usually inside a Herdr pane that may be split.
+Replies render in the Pi TUI, usually inside a Rex pane that may be split.
 
-- Every inline block must fit the pane. Aim for 80 columns or less. For a view that may be wider, get the pane width and keep a margin of 4 columns for the code-block indent: `hc get "$HC_TERMINAL_ID" --json | jq .cols`.
+- Every inline block must fit the pane. Aim for 80 columns or less. For a view that may be wider, get the pane width and keep a margin of 4 columns for the code-block indent: `rex block call -b "$REX_BLOCK" size | jq .columns`.
 - Pi draws ` ```mermaid ` blocks as Unicode diagrams for `flowchart`/`graph`, `sequenceDiagram`, `stateDiagram-v2`, `classDiagram` and `erDiagram` only. It ignores `style`, `classDef` and `linkStyle`. A diagram wider than the pane shows as raw source.
 - Keep Mermaid narrow: `flowchart TD` over `LR`, labels of one to three words, at most five sequence participants, few crossing edges. Run the Mermaid checks below before replying. If it does not fit, or needs another diagram type (`gantt`, `pie`, `mindmap`, `timeline`...), use a wide view.
 - ` ```diff ` blocks are colored. Use them for before/after.
@@ -100,18 +100,16 @@ Write the source to `/tmp/show-me/<slug>.mmd`, outside the repo, using the subse
    ```
    Do not use `--width ... --strict-width` for this: termaid tightens gaps to pass, Pi does not.
 
-## Wide view in a Herdr tab
+## Wide view in a Rex tab
 
-When a view cannot fit the pane without losing the point, show it in a dedicated Herdr tab: full workspace width, horizontal scrolling, closed with `q`.
+When a view cannot fit the pane without losing the point, show it in a dedicated Rex tab: full workspace width, horizontal scrolling, closed with `q`.
 
 1. Write the source under `/tmp/show-me/`: `<slug>.mmd` for Mermaid, after the checks above, otherwise `<slug>.<ext>` with an extension that `bat` highlights (`.diff`, `.tsx`, `.txt`).
-2. Open the tab in this agent's space and start the viewer in its shell. The trailing `exit` closes the tab when the user quits the viewer.
+2. Open the tab in this agent's session with the viewer as its command. The tab closes when the user quits the viewer.
    ```bash
-   space=$(hc get "$HC_TERMINAL_ID" --json | jq -r '.labels["herdr.space"]')
-   tab=$(herdr-app do tab.new --space "$space" --folder /tmp/show-me --name show-me | jq -r .terminal)
-   hc send "$tab" "FORCE_COLOR=1 termaid <slug>.mmd --theme nord --padding-y 0 --gap 2 | less -RS; exit"
-   # text view: "bat --color=always --style=plain <slug>.<ext> | less -RS; exit"
+   rex window new -s "$REX_SESSION" show-me -c /tmp/show-me -- sh -c 'FORCE_COLOR=1 termaid <slug>.mmd --theme nord --padding-y 0 --gap 2 | less -RS'
+   # text view: sh -c 'bat --color=always --style=plain <slug>.<ext> | less -RS'
    ```
 3. Reply with one line on what the tab shows and how to close it (`q`). Keep any inline visual in the reply small.
 
-Open one tab per view and never close tabs you did not create. Outside the Herdr app (`HC_TERMINAL_ID` unset), skip the tab and give the file path with the viewer command.
+Open one tab per view and never close tabs you did not create. Outside Rex (`REX_SESSION` unset), skip the tab and give the file path with the viewer command.

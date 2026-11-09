@@ -53,7 +53,6 @@ docker-compose
 flatpak
 fuse2 # AppImages
 ghostty
-herdr-app-bin
 kid3-qt
 obsidian
 onlyoffice-bin
@@ -103,4 +102,4 @@ scx-scheds # scx_lavd
 scx-tools # scx_loader, configured by linux/scx_loader.toml
 
 # Fonts
-ttf-iosevka-nerd
+ttf-jetbrains-mono-nerd
