@@ -62,7 +62,6 @@
     "cornerRadius": 24
   },
   "widgets": [
-    { "id": "apple", "type": "appleMenu", "position": "left", "display": ["monitor", "vertical"] },
     {
       "id": "spaces",
       "type": "script",
@@ -310,20 +309,115 @@
       "type": "battery",
       "position": "right",
       "group": "right",
-      "details": true,
+      "popup": {
+        "style": {
+          "width": 340,
+          "paddingHorizontal": 18,
+          "paddingVertical": 16,
+          "spacing": 14,
+          "foreground": "@token.text"
+        },
+        "layout": {
+          "type": "column",
+          "children": [
+            {
+              "type": "row",
+              "style": { "spacing": 12 },
+              "children": [
+                { "type": "battery", "style": { "width": 46, "iconSize": 28 } },
+                {
+                  "type": "row",
+                  "style": { "spacing": 0, "fontSize": 26, "fontWeight": "semibold" },
+                  "children": [
+                    { "type": "field", "field": "percent", "alignment": "trailing" },
+                    { "type": "text", "text": "%", "style": { "width": 24 } }
+                  ]
+                }
+              ]
+            },
+            { "type": "progress", "source": "percent", "height": 6, "style": { "background": "@token.surfaceRaised" } },
+            { "type": "divider" },
+            {
+              "type": "row",
+              "style": { "spacing": 8 },
+              "children": [
+                {
+                  "type": "column",
+                  "style": { "spacing": 5 },
+                  "children": [
+                    {
+                      "type": "symbol",
+                      "name": "moon.zzz",
+                      "alignment": "center",
+                      "onClick": "pmset sleepnow",
+                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.accent", "foreground": "@token.onAccent" } } }
+                    },
+                    { "type": "text", "text": "Veille", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                  ]
+                },
+                {
+                  "type": "column",
+                  "style": { "spacing": 5 },
+                  "children": [
+                    {
+                      "type": "symbol",
+                      "name": "lock",
+                      "alignment": "center",
+                      "onClick": "osascript -e 'tell application \"System Events\" to keystroke \"q\" using {control down, command down}'",
+                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.accent", "foreground": "@token.onAccent" } } }
+                    },
+                    { "type": "text", "text": "Verrouiller", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                  ]
+                },
+                {
+                  "type": "column",
+                  "style": { "spacing": 5 },
+                  "children": [
+                    {
+                      "type": "symbol",
+                      "name": "arrow.clockwise",
+                      "alignment": "center",
+                      "onClick": "osascript -e 'tell application \"loginwindow\" to «event aevtrrst»'",
+                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.accent", "foreground": "@token.onAccent" } } }
+                    },
+                    { "type": "text", "text": "Redémarrer", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                  ]
+                },
+                {
+                  "type": "column",
+                  "style": { "spacing": 5 },
+                  "children": [
+                    {
+                      "type": "symbol",
+                      "name": "power",
+                      "alignment": "center",
+                      "onClick": "osascript -e 'tell application \"loginwindow\" to «event aevtrsdn»'",
+                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.critical", "foreground": "@token.onAccent" } } }
+                    },
+                    { "type": "text", "text": "Éteindre", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                  ]
+                }
+              ]
+            },
+            { "type": "divider" },
+            {
+              "type": "row",
+              "open": "x-apple.systempreferences:com.apple.preference.battery",
+              "style": { "spacing": 8, "foreground": "@token.accent" },
+              "children": [
+                { "type": "symbol", "name": "gearshape", "style": { "width": 20 } },
+                { "type": "text", "text": "Réglages Batterie", "alignment": "leading" }
+              ]
+            }
+          ]
+        }
+      },
       "layout": {
         "type": "row",
         "style": { "spacing": 5 },
         "children": [
           { "type": "battery" },
-          {
-            "type": "row",
-            "style": { "spacing": 0 },
-            "children": [
-              { "type": "field", "field": "percent", "transition": "numeric" },
-              { "type": "text", "text": "%" }
-            ]
-          }
+          { "type": "field", "field": "text", "style": { "width": 38 } }
         ]
       },
       "style": { "foreground": "@token.textMuted" },
@@ -387,7 +481,6 @@
     }
   ],
   "widgetOrder": [
-    "apple",
     "spaces",
     "app",
     "now-playing",
