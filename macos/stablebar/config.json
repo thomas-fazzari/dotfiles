@@ -1,0 +1,399 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Seb-GRAF/StableBar/v0.14.0/stablebar.schema.json",
+  "workspaceSource": "aerospace",
+  "tokens": {
+    "surface": { "light": "#e1e2e7b8", "dark": "#171f29e0" },
+    "popup": { "light": "#e1e2e7f5", "dark": "#171f29f5" },
+    "surfaceRaised": { "light": "#c4c8da", "dark": "#2f334d" },
+    "text": { "light": "#3760bf", "dark": "#c8d3f5" },
+    "textMuted": { "light": "#6172b0", "dark": "#828bb8" },
+    "accent": { "light": "#2e7de9", "dark": "#82aaff" },
+    "onAccent": { "light": "#e1e2e7", "dark": "#1e2030" },
+    "hairline": { "light": "#3760bf1f", "dark": "#c8d3f51a" },
+    "warning": { "light": "#8c6c3e", "dark": "#ffc777" },
+    "critical": { "light": "#f52a65", "dark": "#ff757f" },
+    "island": {
+      "background": "@token.surface",
+      "borderColor": "@token.hairline",
+      "borderWidth": 1,
+      "cornerRadius": 16,
+      "paddingHorizontal": 6,
+      "paddingVertical": 5,
+      "spacing": 4
+    }
+  },
+  "bar": {
+    "height": 46,
+    "margin": 6,
+    "inset": 10,
+    "spacing": 6,
+    "glass": { "enabled": true, "transparency": 0.35, "widgets": false },
+    "hideMenuBar": true,
+    "keepWindowsClear": false,
+    "motion": "snappy",
+    "popupTransition": "unfold"
+  },
+  "groups": {
+    "left": { "style": "@token.island" },
+    "right": { "style": "@token.island" }
+  },
+  "defaults": {
+    "fontName": "Google Sans Flex",
+    "fontWeight": "medium",
+    "fontSize": 13,
+    "foreground": "@token.text",
+    "background": null,
+    "hoverBackground": "@token.surfaceRaised",
+    "borderColor": null,
+    "shadowColor": null,
+    "accent": "@token.accent",
+    "accentText": "@token.onAccent",
+    "cornerRadius": 12,
+    "paddingVertical": 3,
+    "iconSize": 13,
+    "states": {
+      "warning": { "foreground": "@token.warning", "accent": "@token.warning" },
+      "critical": { "foreground": "@token.critical", "accent": "@token.critical" }
+    }
+  },
+  "popupDefaults": {
+    "background": "@token.popup",
+    "borderColor": "@token.hairline",
+    "cornerRadius": 24
+  },
+  "widgets": [
+    { "id": "apple", "type": "appleMenu", "position": "left", "display": ["monitor", "vertical"] },
+    {
+      "id": "spaces",
+      "type": "script",
+      "position": "left",
+      "group": "left",
+      "command": "\"$CONFIG_DIR/widgets/workspaces.sh\"",
+      "interval": 5,
+      "events": ["workspace", "frontApp", "spaces"],
+      "style": { "paddingHorizontal": 8 },
+      "layout": {
+        "type": "list",
+        "source": "spaces",
+        "orientation": "horizontal",
+        "style": { "spacing": 7 },
+        "row": {
+          "type": "field",
+          "field": "dot",
+          "onClickField": "command",
+          "styleField": "style",
+          "animation": { "curve": "snappy", "duration": 0.3 },
+          "style": {
+            "width": 10,
+            "height": 10,
+            "cornerRadius": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "app",
+      "type": "activeApp",
+      "position": "left",
+      "group": "left",
+      "style": { "fontWeight": "semibold", "maxWidth": 240 }
+    },
+    {
+      "id": "now-playing",
+      "type": "script",
+      "position": "right",
+      "group": "right",
+      "command": "\"$CONFIG_DIR/widgets/now-playing.sh\"",
+      "interval": 1,
+      "layout": {
+        "type": "row",
+        "style": { "spacing": 6 },
+        "children": [
+          {
+            "type": "image",
+            "source": "artwork",
+            "fit": "fill",
+            "style": { "width": 16, "height": 16, "cornerRadius": 4 }
+          },
+          {
+            "type": "field",
+            "field": "title",
+            "style": { "maxWidth": 180, "foreground": "@token.textMuted" }
+          },
+          {
+            "type": "equalizer",
+            "height": 10,
+            "hideWhenEmpty": "playing",
+            "style": { "foreground": "@token.accent" }
+          },
+          {
+            "type": "symbol",
+            "name": "pause.fill",
+            "hideWhenEmpty": "paused",
+            "style": { "iconSize": 9, "foreground": "@token.textMuted" }
+          }
+        ]
+      },
+      "popup": {
+        "dismissOnAction": false,
+        "style": { "width": 330, "paddingHorizontal": 18, "paddingVertical": 16, "spacing": 14 },
+        "layout": {
+          "type": "column",
+          "children": [
+            {
+              "type": "row",
+              "openField": "app",
+              "style": { "spacing": 6, "foreground": "@token.textMuted" },
+              "children": [
+                {
+                  "type": "image",
+                  "source": "appIcon",
+                  "style": { "width": 16, "height": 16, "cornerRadius": 0 }
+                },
+                { "type": "field", "field": "source", "style": { "fontSize": 11 } },
+                {
+                  "type": "symbol",
+                  "name": "arrow.up.forward",
+                  "alignment": "trailing",
+                  "style": { "width": 16, "iconSize": 10 }
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "style": { "spacing": 14 },
+              "children": [
+                {
+                  "type": "image",
+                  "source": "artwork",
+                  "fit": "fill",
+                  "openField": "app",
+                  "style": {
+                    "width": 72,
+                    "height": 72,
+                    "cornerRadius": 12,
+                    "background": "@token.surfaceRaised"
+                  }
+                },
+                {
+                  "type": "column",
+                  "style": { "spacing": 3 },
+                  "children": [
+                    {
+                      "type": "field",
+                      "field": "title",
+                      "scrollSpeed": 24,
+                      "transition": "fade",
+                      "style": { "width": 208, "fontSize": 14, "fontWeight": "semibold" }
+                    },
+                    {
+                      "type": "field",
+                      "field": "artist",
+                      "hideWhenEmpty": "artist",
+                      "transition": "fade",
+                      "style": { "fontSize": 12 }
+                    },
+                    {
+                      "type": "field",
+                      "field": "album",
+                      "hideWhenEmpty": "album",
+                      "transition": "fade",
+                      "style": { "fontSize": 12, "foreground": "@token.textMuted" }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "column",
+              "hideWhenEmpty": "duration",
+              "style": { "spacing": 2 },
+              "children": [
+                {
+                  "type": "slider",
+                  "title": "",
+                  "source": "progress",
+                  "onChange": "\"$CONFIG_DIR/widgets/now-playing.sh\" seek \"$VALUE\""
+                },
+                {
+                  "type": "row",
+                  "style": { "fontSize": 10, "foreground": "@token.textMuted" },
+                  "children": [
+                    { "type": "field", "field": "elapsed" },
+                    { "type": "field", "field": "duration", "alignment": "trailing" }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "alignment": "center",
+              "style": { "spacing": 8 },
+              "children": [
+                {
+                  "type": "symbol",
+                  "name": "gobackward.15",
+                  "hideWhenEmpty": "duration",
+                  "alignment": "center",
+                  "onClick": "\"$CONFIG_DIR/widgets/now-playing.sh\" skip -15",
+                  "style": {
+                    "width": 32,
+                    "height": 32,
+                    "iconSize": 13,
+                    "cornerRadius": 16,
+                    "hoverBackground": "@token.surfaceRaised"
+                  }
+                },
+                {
+                  "type": "symbol",
+                  "name": "backward.fill",
+                  "alignment": "center",
+                  "onClick": "media-control previous-track",
+                  "style": {
+                    "width": 36,
+                    "height": 36,
+                    "iconSize": 15,
+                    "cornerRadius": 18,
+                    "hoverBackground": "@token.surfaceRaised"
+                  }
+                },
+                {
+                  "type": "symbol",
+                  "source": "control",
+                  "alignment": "center",
+                  "onClick": "media-control toggle-play-pause",
+                  "style": {
+                    "width": 44,
+                    "height": 44,
+                    "iconSize": 17,
+                    "cornerRadius": 22,
+                    "foreground": "@token.onAccent",
+                    "background": "@token.accent",
+                    "states": { "hover": { "opacity": 0.85 } }
+                  }
+                },
+                {
+                  "type": "symbol",
+                  "name": "forward.fill",
+                  "alignment": "center",
+                  "onClick": "media-control next-track",
+                  "style": {
+                    "width": 36,
+                    "height": 36,
+                    "iconSize": 15,
+                    "cornerRadius": 18,
+                    "hoverBackground": "@token.surfaceRaised"
+                  }
+                },
+                {
+                  "type": "symbol",
+                  "name": "goforward.15",
+                  "hideWhenEmpty": "duration",
+                  "alignment": "center",
+                  "onClick": "\"$CONFIG_DIR/widgets/now-playing.sh\" skip 15",
+                  "style": {
+                    "width": 32,
+                    "height": 32,
+                    "iconSize": 13,
+                    "cornerRadius": 16,
+                    "hoverBackground": "@token.surfaceRaised"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "battery",
+      "type": "battery",
+      "position": "right",
+      "group": "right",
+      "details": true,
+      "layout": {
+        "type": "row",
+        "style": { "spacing": 5 },
+        "children": [
+          { "type": "battery" },
+          {
+            "type": "row",
+            "style": { "spacing": 0 },
+            "children": [
+              { "type": "field", "field": "percent", "transition": "numeric" },
+              { "type": "text", "text": "%" }
+            ]
+          }
+        ]
+      },
+      "style": { "foreground": "@token.textMuted" },
+      "rules": [
+        { "when": { "field": "state", "equals": "charging" }, "state": "active" },
+        { "when": { "value": "percent", "below": 0.1 }, "state": "critical" },
+        { "when": { "value": "percent", "below": 0.2 }, "state": "warning" }
+      ]
+    },
+    {
+      "id": "clock",
+      "type": "clock",
+      "position": "right",
+      "group": "right",
+      "format": "HH:mm",
+      "details": true,
+      "style": { "fontWeight": "semibold" }
+    },
+    {
+      "id": "system",
+      "type": "system",
+      "position": "right",
+      "group": "right",
+      "details": true,
+      "layout": {
+        "type": "column",
+        "style": { "spacing": 3 },
+        "children": [
+          {
+            "type": "progress",
+            "source": "cpu",
+            "height": 4,
+            "style": { "width": 32, "background": "@token.surfaceRaised" }
+          },
+          {
+            "type": "progress",
+            "source": "memory",
+            "height": 4,
+            "style": { "width": 32, "background": "@token.surfaceRaised" }
+          }
+        ]
+      },
+      "style": { "accent": "@token.textMuted" },
+      "rules": [
+        { "when": { "field": "pressure", "equals": "critical" }, "state": "critical" },
+        { "when": { "field": "thermal", "equals": "critical" }, "state": "critical" },
+        { "when": { "value": "cpu", "above": 0.9 }, "state": "critical" },
+        { "when": { "value": "memory", "above": 0.9 }, "state": "critical" },
+        { "when": { "field": "pressure", "equals": "warning" }, "state": "warning" },
+        { "when": { "field": "thermal", "equals": "serious" }, "state": "warning" },
+        { "when": { "value": "cpu", "above": 0.7 }, "state": "warning" },
+        { "when": { "value": "memory", "above": 0.8 }, "state": "warning" }
+      ]
+    },
+    {
+      "id": "control-center",
+      "position": "right",
+      "group": "right",
+      "type": "controlCenter",
+      "style": { "foreground": "@token.textMuted" }
+    }
+  ],
+  "widgetOrder": [
+    "apple",
+    "spaces",
+    "app",
+    "now-playing",
+    "system",
+    "clock",
+    "battery",
+    "control-center"
+  ]
+}

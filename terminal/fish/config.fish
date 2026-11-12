@@ -90,3 +90,7 @@ function starship_transient_prompt_func
 end
 starship init fish | source
 enable_transience
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :

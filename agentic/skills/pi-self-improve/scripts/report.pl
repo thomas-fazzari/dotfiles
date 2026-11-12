@@ -207,7 +207,10 @@ sub report_tools {
   print "  Keys: tools.<tool>.<column>. error_rate counts both tool_error and not_run.\n";
   my %calls = by_label(increase('pi_tool_calls_total{service_name="pi"}', 'gen_ai_tool_name'), 'gen_ai_tool_name');
   my (%errors, %failed);
-  for (prom(increase('pi_tool_calls_total{service_name="pi", error_type!=""}', 'gen_ai_tool_name, error_type'))) {
+  for (prom(increase(
+    'pi_tool_calls_total{service_name="pi", error_type!=""}', 'gen_ai_tool_name, error_type'
+  )))
+  {
     my ($labels, $value) = @$_;
     $errors{$labels->{gen_ai_tool_name}}{$labels->{error_type}} = $value;
     $failed{$labels->{gen_ai_tool_name}} += $value;
@@ -313,7 +316,7 @@ sub report_failures {
       next unless $message->{role} eq 'toolResult' && $message->{isError} && parse_time($entry->{timestamp}) >= $start;
       my $text = join ' ', map { $_->{text} } grep { $_->{type} eq 'text' } @{$message->{content}};
 
-      # Exit 1 with no output is a search with no match, such as git grep, not a failure
+# Exit 1 with no output is a search with no match, such as git grep, not a failure
       next if $message->{toolName} eq 'bash' && $text =~ /\A\s*\(no output\)\s*Command exited with code 1\s*\z/;
 
       my $signature = signature($text);
@@ -328,7 +331,7 @@ sub report_failures {
   printf "  %d failed tool calls in %d groups, from %d session files.\n", sum0(map { $_->{count} } @groups),
     scalar @groups, scalar @files;
 
-  # Calls to a tool that does not exist, such as powershell, reach the sessions but not the metrics
+# Calls to a tool that does not exist, such as powershell, reach the sessions but not the metrics
   my %by_tool;
   $by_tool{$_->{tool}} += $_->{count} for @groups;
   put("failures.$_", $by_tool{$_}) for sorted_desc(%by_tool);

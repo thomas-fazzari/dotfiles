@@ -121,11 +121,15 @@ sub rust_toolchains {
     push @{$pinned{$channel}}, tilde($file =~ s{/[^/]+$}{}r) if $channel;
   }
   for (run('rustup', 'toolchain', 'list')) {
-    my ($name)  = /^(\S+)/ or next;
+    my ($name) = /^(\S+)/ or next;
     my $channel = $name =~ s/-\w+-apple-darwin\z//r;
     if    (/\(.*default.*\)/) { item(undef, "$name (default)") }
-    elsif ($pinned{$channel}) { item(undef, "$name (pinned by " . join(', ', @{$pinned{$channel}}) . ')') }
-    else                      { item(undef, "$name (unused)", "rustup toolchain uninstall $name") }
+    elsif ($pinned{$channel}) {
+      item(undef, "$name (pinned by " . join(', ', @{$pinned{$channel}}) . ')');
+    }
+    else {
+      item(undef, "$name (unused)", "rustup toolchain uninstall $name");
+    }
   }
   return;
 }
@@ -153,8 +157,10 @@ sub package_caches {
 sub mise_versions {
   section('mise');
   my @prunable = map { /^mise (\S+) is prunable/ ? $1 : () } run('mise', 'prune', '--dry-run');
-  if (@prunable) { item(undef, "Unused tool versions: @prunable", 'mise prune') }
-  else           { item(undef, 'No unused tool versions') }
+  if (@prunable) {
+    item(undef, "Unused tool versions: @prunable", 'mise prune');
+  }
+  else { item(undef, 'No unused tool versions') }
   return;
 }
 
@@ -192,7 +198,7 @@ sub launch_jobs {
   section('Launch agents and daemons');
   for my $dir ("$home/Library/LaunchAgents", '/Library/LaunchAgents', '/Library/LaunchDaemons') {
     for my $plist (glob "$dir/*.plist") {
-      my $job     = eval { decode_json(join "\n", run('plutil', '-convert', 'json', '-o', '-', $plist)) } or next;
+      my $job     = eval { decode_json(join "\n", run('plutil', '-convert', 'json', '-o', '-', $plist)); } or next;
       my $program = $job->{Program} // ($job->{ProgramArguments} // [])->[0] // '?';
       my $status  = -e $program ? '' : ' (program missing)';
       item(undef, tilde($plist) . ' -> ' . tilde($program) . $status);

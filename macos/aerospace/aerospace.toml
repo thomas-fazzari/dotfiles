@@ -11,22 +11,12 @@ default-root-container-orientation = 'auto'
 
 persistent-workspaces = ['1', '2', '3', '4']
 
-exec-on-workspace-change = [
-  '/bin/sh',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-]
-on-focus-changed = ['exec-and-forget sketchybar --trigger aerospace_windows_change']
-
-[exec.env-vars]
-PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
-
 [gaps]
 inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
 outer.bottom = 8
-outer.top = 8
+outer.top = 15
 outer.right = 8
 
 [mode.main.binding]
@@ -46,10 +36,22 @@ alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 
-alt-shift-1 = ['move-node-to-workspace 1', 'exec-and-forget sketchybar --trigger aerospace_windows_change']
-alt-shift-2 = ['move-node-to-workspace 2', 'exec-and-forget sketchybar --trigger aerospace_windows_change']
-alt-shift-3 = ['move-node-to-workspace 3', 'exec-and-forget sketchybar --trigger aerospace_windows_change']
-alt-shift-4 = ['move-node-to-workspace 4', 'exec-and-forget sketchybar --trigger aerospace_windows_change']
+alt-shift-1 = [
+  'move-node-to-workspace 1',
+  'exec-and-forget /Applications/StableBar.app/Contents/MacOS/StableBar --trigger spaces',
+]
+alt-shift-2 = [
+  'move-node-to-workspace 2',
+  'exec-and-forget /Applications/StableBar.app/Contents/MacOS/StableBar --trigger spaces',
+]
+alt-shift-3 = [
+  'move-node-to-workspace 3',
+  'exec-and-forget /Applications/StableBar.app/Contents/MacOS/StableBar --trigger spaces',
+]
+alt-shift-4 = [
+  'move-node-to-workspace 4',
+  'exec-and-forget /Applications/StableBar.app/Contents/MacOS/StableBar --trigger spaces',
+]
 
 alt-tab = 'workspace-back-and-forth'
 

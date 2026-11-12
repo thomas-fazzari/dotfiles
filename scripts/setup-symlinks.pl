@@ -36,8 +36,8 @@ my %links = (
     ['Library/Application Support/Code/User/settings.json'    => 'vscode/settings.json'],
     ['Library/Application Support/Code/User/keybindings.json' => 'vscode/keybindings.json'],
     ['.config/aerospace/aerospace.toml'                       => 'macos/aerospace/aerospace.toml'],
-    ['.config/sketchybar'                                     => 'macos/sketchybar'],
     ['.config/rex/init.lua'                                   => 'terminal/rex/init.lua'],
+    ['.config/stablebar'                                      => 'macos/stablebar'],
   ],
   linux => [
     ['.config/Code/User/keybindings.json'     => 'vscode/keybindings.json'],
@@ -97,7 +97,10 @@ for my $entry (@{$rendered{$os}}) {
   next if !-l $file && -f $file && slurp($file) eq $_;
 
   $drift = 1;
-  if ($check) { print -l $file ? "link instead of copy $file\n" : -e $file ? "stale $file\n" : "missing $file\n"; next }
+  if ($check) {
+    print -l $file ? "link instead of copy $file\n" : -e $file ? "stale $file\n" : "missing $file\n";
+    next;
+  }
 
   if    (-l $file) { unlink $file or die "$file: $!\n" }
   elsif (-e $file) { backup($file) }
