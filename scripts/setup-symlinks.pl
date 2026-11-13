@@ -22,7 +22,6 @@ my @common = (
   ['.config/mise/config.toml'             => 'mise.toml'],
   ['.config/mise/mise.lock'               => 'mise.lock'],
   ['.config/topgrade.toml'                => "$os/topgrade.toml"],
-  ['.bunfig.toml'                         => 'bunfig.toml'],
   ['.config/fish/config.fish'             => 'terminal/fish/config.fish'],
   ['.config/fish/functions'               => 'terminal/fish/functions'],
   ['.config/starship.toml'                => 'terminal/starship/starship.toml'],
@@ -38,6 +37,10 @@ my %links = (
     ['.config/aerospace/aerospace.toml'                       => 'macos/aerospace/aerospace.toml'],
     ['.config/rex/init.lua'                                   => 'terminal/rex/init.lua'],
     ['.config/stablebar'                                      => 'macos/stablebar'],
+    [
+      'Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/features/websearch/prefs.plist' =>
+        'macos/torrenting/alfred/websearch.plist'
+    ],
   ],
   linux => [
     ['.config/Code/User/keybindings.json'     => 'vscode/keybindings.json'],
@@ -50,7 +53,14 @@ my %links = (
 
 # [file under $HOME => source in the repo, rewrite of $_]: copies adapted from the macOS originals
 my %rendered = (
-  macos => [],
+  macos => [
+
+    [
+      'Library/LaunchAgents/local.proton-qbittorrent.plist' =>
+        'macos/torrenting/launchd/local.proton-qbittorrent.plist',
+      sub { }
+    ],
+  ],
   linux => [
     [
       '.config/Code/User/settings.json' => 'vscode/settings.json',

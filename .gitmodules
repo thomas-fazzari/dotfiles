@@ -3,3 +3,8 @@
 	url = https://github.com/thomas-fazzari/pi-config
 	branch = master
 	ignore = dirty
+[submodule "macos/torrenting"]
+	path = macos/torrenting
+	url = https://github.com/thomas-fazzari/torrenting
+	branch = main
+	ignore = dirty

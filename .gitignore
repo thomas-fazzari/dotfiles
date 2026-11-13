@@ -2,6 +2,7 @@
 *
 
 # Except this
+!/.editorconfig
 !/.gitignore
 !/.gitmodules
 !/.oxfmtrc.json
