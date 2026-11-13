@@ -16,14 +16,14 @@ aerospace list-workspaces --all --json --format '%{workspace} %{workspace-is-foc
           })
         },
         styles: {
-          focused: { width: 26, background: { light: "#2e7de9", dark: "#82aaff" } },
+          focused: { width: 26, background: { light: "#3a3a38", dark: "#d6d6d4" } },
           occupied: {
-            background: { light: "#6172b0", dark: "#828bb8" },
-            states: { hover: { background: { light: "#3760bf", dark: "#c8d3f5" } } }
+            background: { light: "#6b6b69", dark: "#8e8e8c" },
+            states: { hover: { background: { light: "#1f1f1f", dark: "#e4e4e2" } } }
           },
           empty: {
-            background: { light: "#a8aecb", dark: "#444a73" },
-            states: { hover: { background: { light: "#6172b0", dark: "#828bb8" } } }
+            background: { light: "#b5b5b3", dark: "#454543" },
+            states: { hover: { background: { light: "#6b6b69", dark: "#8e8e8c" } } }
           }
         }
       }'
