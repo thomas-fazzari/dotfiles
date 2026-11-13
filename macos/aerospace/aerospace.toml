@@ -3,6 +3,9 @@ config-version = 2
 start-at-login = true
 auto-reload-config = true
 
+# StableBar reads workspaces from AeroSpace, so start it alongside.
+after-startup-command = ['exec-and-forget open -a StableBar']
+
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
