@@ -1,19 +1,20 @@
 ---
 name: prose-cleanup
-description: Rewrite technical prose (docs, code comments, READMEs) to remove clanker writing patterns.
+description: Rewrite technical prose (docs, code comments, READMEs, commit messages, agent prompts) to remove AI writing patterns.
 disable-model-invocation: true
 ---
 
 # Prose cleanup
 
-Rewrite the target so it reads like a competent engineer wrote it for other engineers. The target is whatever the command names (files, a diff, pasted text); without one, use the prose you most recently wrote in this session. Edit files in place. If the user asks for a review only, list findings with locations instead of editing.
+Rewrite the target so it reads like a competent engineer wrote it for other engineers. The target is whatever the command names (files, a diff, pasted text). Without one, use the prose you most recently wrote in this session. For a diff, edit only the added or changed lines. Edit files in place. If the user asks for a review only, list findings with locations instead of editing. If the text is already clean, say so and leave it unchanged.
 
 ## Ground rules
 
 - Keep the meaning, technical facts, code, identifiers, commands, links and the file's existing conventions (heading style, line wrapping, comment syntax).
 - Never add claims. When a statement looks wrong or unverified and you can check it against the code, check it. Otherwise flag it.
 - Cut before rewording. Most AI prose fails on content, not vocabulary: a sentence that says nothing should go, not get a better synonym. Replace a word only when the sentence carries information.
-- One occurrence of a pattern is rarely the problem. Repetition and clusters are. Exception: remove every em dash and every semicolon in prose.
+- Do not swap a flagged word for a synonym of the same register ("crucial" to "key", "robust" to "solid"). Rewrite the sentence with the specific fact, or cut it.
+- One occurrence of a pattern is rarely the problem. Repetition and clusters are. Exception: remove every em dash, en dash and semicolon in prose.
 
 ## Two passes
 
@@ -28,7 +29,7 @@ Rewrite the target so it reads like a competent engineer wrote it for other engi
 
 **Empty adverbs**: simply, just, easily, really, truly, actually, fundamentally, seamlessly, quietly, effortlessly. Keep adverbs with technical meaning (atomically, lazily, recursively, asynchronously).
 
-**Hedges and inflation**: stacked or empty hedges ("may potentially", "can help to", "aims to"). Keep a hedge that states real uncertainty: "may have failed" is a different claim from "failed". Also claims of significance without evidence ("significantly improves", "greatly simplifies"); vague attributions ("best practice says", "it is widely recommended"); sweeping "always", "never", "every", "all" unless literally true.
+**Hedges and inflation**: stacked or empty hedges ("may potentially", "can help to", "aims to"). Keep a hedge that states real uncertainty: "may have failed" is a different claim from "failed". Also flag claims of significance without evidence ("significantly improves", "greatly simplifies"), vague attributions ("best practice says", "it is widely recommended") and sweeping "always", "never", "every", "all" unless literally true.
 
 **Rhetorical structures**:
 
@@ -42,15 +43,15 @@ Rewrite the target so it reads like a competent engineer wrote it for other engi
 
 **Rhythm**: sentences of uniform length, paragraphs that all end on a punchy one-liner, stacked short fragments for emphasis ("Fast. Simple. Reliable."). Vary length and use complete sentences.
 
-**Formatting tells**: bold lead-in on every bullet, emoji in headings, bullets, logs or commit text, decorative unicode (→, ✓, curly quotes) where ASCII is expected, any em dash or semicolon in prose (use a comma, colon, parentheses or a new sentence), headings over every short paragraph, nested bullets for flat content, bold for emphasis on every other phrase.
+**Formatting tells**: bold lead-in on every bullet, emoji in headings, bullets, logs or commit text, decorative unicode (→, ✓, curly quotes) where ASCII is expected, any em dash, en dash or semicolon in prose (use a comma, colon, parentheses or a new sentence, and a hyphen or "to" in ranges), headings over every short paragraph, nested bullets for flat content, bold for emphasis on every other phrase.
 
 ## By target
 
-**Code comments**: explain why, invariants, constraints and non-obvious behavior. Delete comments that restate the code, narrate history ("now uses", "previously", "refactored to", "added"), refer to the task or conversation ("as requested", "fix for the bug"), or act as section banners. Doc comments describe the contract; drop `@param name The name` lines that repeat the signature. Start with the content, not "This function".
+**Code comments**: explain why, invariants, constraints and non-obvious behavior. Delete comments that restate the code, narrate history ("now uses", "previously", "refactored to", "added"), refer to the task or conversation ("as requested", "fix for the bug"), or act as section banners. Doc comments describe the contract. Drop `@param name The name` lines that repeat the signature. Start with the content, not "This function".
 
 **Docs**: second person, present tense ("returns", not "will return"), imperative steps. One term per concept. A concrete example beats an abstract description. Prerequisites only when non-obvious.
 
-**Agent-facing text** (prompts, skill and tool descriptions, error and denial messages): one instruction per sentence, about 20 words at most. Single verbs instead of phrasal verbs ("start", not "spin up"). One name per thing, reused every time.
+**Agent-facing text** (prompts, skill and tool descriptions, error and denial messages): one instruction per sentence, about 20 words at most. Single verbs instead of phrasal verbs ("start", not "spin up"). One name per thing, reused every time. In the content pass, delete instructions the model follows by default and rules already stated in always-loaded files (AGENTS.md, CLAUDE.md, system prompt).
 
 **README**: open with what it is in one or two sentences and the shortest path to using it. Copy-pasteable commands in code blocks. No adjective feature lists, badge walls, "Why X?" pitches, table of contents for short files, or "Contributing" and "License" sections without real content.
 
