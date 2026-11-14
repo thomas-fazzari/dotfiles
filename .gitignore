@@ -55,6 +55,8 @@
 !/agentic/skills/show-me/**
 !/agentic/skills/pi-self-improve/
 !/agentic/skills/pi-self-improve/**
+!/agentic/skills/wallpaper-recolor/
+!/agentic/skills/wallpaper-recolor/**
 
 # Generated files and local settings stay ignored inside allowed dirs
 **/.DS_Store

@@ -7,7 +7,7 @@
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   // Editor Appearance
-  "workbench.colorTheme": "Alpine",
+  "workbench.colorTheme": "Tokyo Night Moon",
   "workbench.colorCustomizations": {
     "[Tokyo Night Moon]": {
       "editor.background": "#111720",
