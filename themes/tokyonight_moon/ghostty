@@ -1,7 +1,7 @@
-background = #08080B
+background = #101119
 foreground = #C8D3F5
 cursor-color = #C8D3F5
-cursor-text = #08080B
+cursor-text = #101119
 selection-background = #2F334D
 selection-foreground = cell-foreground
 split-divider-color = #1E2030
