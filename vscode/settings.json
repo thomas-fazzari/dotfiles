@@ -7,7 +7,7 @@
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   // Editor Appearance
-  "workbench.colorTheme": "Tokyo Night Moon",
+  "workbench.colorTheme": "Bloodmoon",
   "workbench.colorCustomizations": {
     "[Tokyo Night Moon]": {
       "editor.background": "#111720",
@@ -58,7 +58,7 @@
   "editor.linkedEditing": true,
   "editor.snippetSuggestions": "top",
   "editor.accessibilitySupport": "off",
-  "workbench.editor.showTabs": "none",
+  "workbench.editor.showTabs": "multiple",
   "workbench.tree.renderIndentGuides": "always",
   "workbench.tree.indent": 22,
   "workbench.browser.showInTitleBar": false,
