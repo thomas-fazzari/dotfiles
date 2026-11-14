@@ -1,0 +1,14 @@
+
+[theme.color_palette]
+background = "reset"
+foreground = "#CDE1F2"
+muted = "#6A8AA7"
+highlight = "#FED58E"
+flagged = "#FE8A82"
+accent_primary = "#67BFF8"
+accent_secondary = "#B5AEFE"
+accent_tertiary = "#96EDF5"
+accent_quaternary = "#89EFA0"
+info = "#67BFF8"
+warning = "#FED58E"
+error = "#FE8A82"

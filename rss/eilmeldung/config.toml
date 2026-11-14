@@ -1,4 +1,4 @@
-# symlinked to ~/.config/eilmeldung/config.toml
+# Rendered to ~/.config/eilmeldung/config.toml with themes/current/eilmeldung.toml appended
 # Only the settings that differ from the defaults, see
 # https://github.com/christo-auer/eilmeldung/blob/main/examples/default-config.toml
 
@@ -10,19 +10,3 @@ enclosure_command = "open {url}"
 [login_setup]
 login_type = "no_login"
 provider = "local_rss"
-
-# Tokyo Night colors set directly, since a base16 theme would replace this palette
-# and paint an opaque background. "reset" keeps the terminal's transparent one
-[theme.color_palette]
-background = "reset"
-foreground = "#C8D3F5"
-muted = "#636DA6"
-highlight = "#FFC777"
-flagged = "#FF757F"
-accent_primary = "#82AAFF"
-accent_secondary = "#C099FF"
-accent_tertiary = "#86E1FC"
-accent_quaternary = "#C3E88D"
-info = "#82AAFF"
-warning = "#FFC777"
-error = "#FF757F"

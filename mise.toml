@@ -245,7 +245,7 @@ run = "vscode/setup-extensions.ts"
 [tasks.wallpaper]
 description = "Sets the desktop picture to the current theme's wallpaper (DMS on Linux)"
 run = """
-wallpaper=$(realpath themes/current/wallpaper.png)
+wallpaper=$(realpath themes/current/wallpaper.*)
 {% if os() == "macos" %}osascript -e 'tell application "Finder" to set desktop picture to (POSIX file "'"$wallpaper"'" as alias)'
 {% else %}dms ipc call wallpaper set "$wallpaper"
 {% endif %}"""

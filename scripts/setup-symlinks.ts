@@ -19,7 +19,6 @@ const common: Link[] = [
   [".config/ghostty/config.ghostty", "terminal/ghostty/config"],
   [".config/btop/btop.conf", "btop/btop.conf"],
   [".config/nvim", "nvim"],
-  [".config/eilmeldung/config.toml", "rss/eilmeldung/config.toml"],
   [".local/share/agent-hooks", "agentic/hooks"],
   [".config/mise/config.toml", "mise.toml"],
   [".config/mise/mise.lock", "mise.lock"],
@@ -65,6 +64,11 @@ const generated: Copy[] = [
     ".config/starship.toml",
     "terminal/starship/starship.toml",
     (source) => source + fs.readFileSync(`${theme}/starship.toml`, "utf8"),
+  ],
+  [
+    ".config/eilmeldung/config.toml",
+    "rss/eilmeldung/config.toml",
+    (source) => source + fs.readFileSync(`${theme}/eilmeldung.toml`, "utf8"),
   ],
 ];
 

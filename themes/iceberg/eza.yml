@@ -68,6 +68,13 @@ git_repo:
   git_clean: { foreground: "#272A32" }
   git_dirty: { foreground: "#84A0C6" }
 
+security_context:
+  colon: { foreground: "#444B71" }
+  user: { foreground: "#6B7089" }
+  role: { foreground: "#89B8C2" }
+  typ: { foreground: "#84A0C6" }
+  range: { foreground: "#A093C7" }
+
 file_type:
   image: { foreground: "#89B8C2" }
   video: { foreground: "#89B8C2" }
