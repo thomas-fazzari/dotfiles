@@ -108,7 +108,7 @@ run = [
   { task = "tools" },
   { task = "perl" },
   { task = "theme" },
-  { task = "hooks:deps" },
+  { task = "deps" },
   { task = "pi" },
 ]
 
@@ -158,24 +158,9 @@ run = "docker start lgtm"
 description = "Rebuilds linux/zen/user.js from the latest BetterZen plus linux/zen/user-overrides.js and links it with linux/zen/userChrome.css into the default Zen profile"
 run = "linux/zen/update-userjs.ts"
 
-[tasks."hooks:deps"]
-description = "Installs the agent hooks' dependencies, including the shell parser bash-guard needs to run"
-dir = "~/Dev/dotfiles/agentic/hooks"
+[tasks.deps]
+description = "Installs the type definitions and the type-aware linter of the TypeScript scripts"
 run = "bun install"
-
-[tasks."hooks:test"]
-description = "Tests the agent hooks"
-dir = "~/Dev/dotfiles/agentic/hooks"
-run = "bun test"
-
-[tasks."hooks:lint"]
-description = "Checks the formatting of the agent hooks, lints and typechecks them"
-dir = "~/Dev/dotfiles/agentic/hooks"
-run = [
-  "bun run oxfmt --check",
-  "bun run oxlint --config oxlint.json --deny-warnings --report-unused-disable-directives",
-  "tsc -p .",
-]
 
 [tasks.fmt]
 description = "Formats the Lua, shell and TypeScript files"
@@ -185,7 +170,6 @@ run = [
   "oxfmt scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/skills/*/scripts/*.ts",
 ]
 
-# The scripts follow the agent hooks' oxlint rules, oxlint runs from there to find its type-aware backend
 [tasks.lint]
 description = "Checks Lua, shell and TypeScript formatting, runs shellcheck, then lints and typechecks the TypeScript scripts"
 run = '''
@@ -196,9 +180,7 @@ shfmt -d $sh
 ts="scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/skills/*/scripts/*.ts"
 oxfmt --check $ts
 tsc -p tsconfig.json
-root=$PWD
-cd agentic/hooks
-bun run oxlint --config oxlint.json --deny-warnings --report-unused-disable-directives $(printf "$root/%s " $ts)
+bun run oxlint --config oxlint.json --deny-warnings --report-unused-disable-directives $ts
 '''
 
 [tasks.perl]

@@ -6,10 +6,13 @@
 !/.gitignore
 !/.gitmodules
 !/.oxfmtrc.json
+!/bun.lock
 !/bunfig.toml
 !/dotfiles.code-workspace
 !/mise.toml
 !/mise.lock
+!/oxlint.json
+!/package.json
 !/tsconfig.json
 
 !/btop/
@@ -40,8 +43,6 @@
 
 !/agentic/
 !/agentic/pi-config
-!/agentic/hooks/
-!/agentic/hooks/**
 
 # Private unless listed here
 !/agentic/skills/

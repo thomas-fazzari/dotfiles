@@ -17,6 +17,6 @@ You may change:
 
 - Pi's instructions, agents and settings: `APPEND_SYSTEM.md`, `agents/*.md` and `settings.json` in `~/.pi/agent`.
 - Other skills.
-- Hooks (e.g. my bash guards) in `~/.local/share/agent-hooks`, with a test for each change when applicable.
+- Pi extensions in `~/.pi/agent/extensions`, with a test for each change when applicable.
 
 For a gap in the telemetry itself, propose a change to pi-otlp without making it. For a bug in a third-party extension, work around it in my configuration and do not propose reporting it upstream.

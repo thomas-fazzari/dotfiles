@@ -19,7 +19,6 @@ const common: Link[] = [
   [".config/ghostty/config.ghostty", "terminal/ghostty/config"],
   [".config/btop/btop.conf", "btop/btop.conf"],
   [".config/nvim", "nvim"],
-  [".local/share/agent-hooks", "agentic/hooks"],
   [".config/mise/config.toml", "mise.toml"],
   [".config/mise/mise.lock", "mise.lock"],
   [".config/topgrade.toml", `${os}/topgrade.toml`],

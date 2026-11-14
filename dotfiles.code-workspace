@@ -9,7 +9,6 @@
         "url": "vscode://schemas/keybindings",
       },
     ],
-    "perlnavigator.includePaths": ["$workspaceFolder/agentic/hooks/lib"],
     "kdl.enable": false,
     "[lua]": { "editor.defaultFormatter": "JohnnyMorganz.stylua" },
     "files.associations": {

@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxlint": "latest",
+    "oxlint-tsgolint": "latest"
+  }
+}
