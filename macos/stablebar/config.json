@@ -1,17 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/Seb-GRAF/StableBar/v0.14.0/stablebar.schema.json",
   "workspaceSource": "aerospace",
+  "includes": ["theme.json"],
   "tokens": {
-    "surface": { "light": "#ececebb8", "dark": "#161616e0" },
-    "popup": { "light": "#ececebf5", "dark": "#161616f5" },
-    "surfaceRaised": { "light": "#d4d4d2", "dark": "#2e2e2e" },
-    "text": { "light": "#1f1f1f", "dark": "#e4e4e2" },
-    "textMuted": { "light": "#6b6b69", "dark": "#8e8e8c" },
-    "accent": { "light": "#3a3a38", "dark": "#d6d6d4" },
-    "onAccent": { "light": "#f2f2f0", "dark": "#161616" },
-    "hairline": { "light": "#0000001a", "dark": "#ffffff14" },
-    "warning": { "light": "#8c6c3e", "dark": "#ffc777" },
-    "critical": { "light": "#f52a65", "dark": "#ff757f" },
     "island": {
       "background": "@token.surface",
       "borderColor": "@token.hairline",
@@ -335,7 +326,12 @@
                 }
               ]
             },
-            { "type": "progress", "source": "percent", "height": 6, "style": { "background": "@token.surfaceRaised" } },
+            {
+              "type": "progress",
+              "source": "percent",
+              "height": 6,
+              "style": { "background": "@token.surfaceRaised" }
+            },
             { "type": "divider" },
             {
               "type": "row",
@@ -350,9 +346,26 @@
                       "name": "moon.zzz",
                       "alignment": "center",
                       "onClick": "pmset sleepnow",
-                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.accent", "foreground": "@token.onAccent" } } }
+                      "style": {
+                        "width": 70,
+                        "height": 40,
+                        "iconSize": 16,
+                        "cornerRadius": 12,
+                        "background": "@token.surfaceRaised",
+                        "states": {
+                          "hover": {
+                            "background": "@token.accent",
+                            "foreground": "@token.onAccent"
+                          }
+                        }
+                      }
                     },
-                    { "type": "text", "text": "Veille", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                    {
+                      "type": "text",
+                      "text": "Veille",
+                      "alignment": "center",
+                      "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" }
+                    }
                   ]
                 },
                 {
@@ -364,9 +377,26 @@
                       "name": "lock",
                       "alignment": "center",
                       "onClick": "osascript -e 'tell application \"System Events\" to keystroke \"q\" using {control down, command down}'",
-                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.accent", "foreground": "@token.onAccent" } } }
+                      "style": {
+                        "width": 70,
+                        "height": 40,
+                        "iconSize": 16,
+                        "cornerRadius": 12,
+                        "background": "@token.surfaceRaised",
+                        "states": {
+                          "hover": {
+                            "background": "@token.accent",
+                            "foreground": "@token.onAccent"
+                          }
+                        }
+                      }
                     },
-                    { "type": "text", "text": "Verrouiller", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                    {
+                      "type": "text",
+                      "text": "Verrouiller",
+                      "alignment": "center",
+                      "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" }
+                    }
                   ]
                 },
                 {
@@ -378,9 +408,26 @@
                       "name": "arrow.clockwise",
                       "alignment": "center",
                       "onClick": "osascript -e 'tell application \"loginwindow\" to «event aevtrrst»'",
-                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.accent", "foreground": "@token.onAccent" } } }
+                      "style": {
+                        "width": 70,
+                        "height": 40,
+                        "iconSize": 16,
+                        "cornerRadius": 12,
+                        "background": "@token.surfaceRaised",
+                        "states": {
+                          "hover": {
+                            "background": "@token.accent",
+                            "foreground": "@token.onAccent"
+                          }
+                        }
+                      }
                     },
-                    { "type": "text", "text": "Redémarrer", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                    {
+                      "type": "text",
+                      "text": "Redémarrer",
+                      "alignment": "center",
+                      "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" }
+                    }
                   ]
                 },
                 {
@@ -392,9 +439,26 @@
                       "name": "power",
                       "alignment": "center",
                       "onClick": "osascript -e 'tell application \"loginwindow\" to «event aevtrsdn»'",
-                      "style": { "width": 70, "height": 40, "iconSize": 16, "cornerRadius": 12, "background": "@token.surfaceRaised", "states": { "hover": { "background": "@token.critical", "foreground": "@token.onAccent" } } }
+                      "style": {
+                        "width": 70,
+                        "height": 40,
+                        "iconSize": 16,
+                        "cornerRadius": 12,
+                        "background": "@token.surfaceRaised",
+                        "states": {
+                          "hover": {
+                            "background": "@token.critical",
+                            "foreground": "@token.onAccent"
+                          }
+                        }
+                      }
                     },
-                    { "type": "text", "text": "Éteindre", "alignment": "center", "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" } }
+                    {
+                      "type": "text",
+                      "text": "Éteindre",
+                      "alignment": "center",
+                      "style": { "width": 70, "fontSize": 11, "foreground": "@token.textMuted" }
+                    }
                   ]
                 }
               ]
@@ -480,13 +544,5 @@
       "style": { "foreground": "@token.textMuted" }
     }
   ],
-  "widgetOrder": [
-    "spaces",
-    "app",
-    "now-playing",
-    "system",
-    "clock",
-    "battery",
-    "control-center"
-  ]
+  "widgetOrder": ["spaces", "app", "now-playing", "system", "clock", "battery", "control-center"]
 }

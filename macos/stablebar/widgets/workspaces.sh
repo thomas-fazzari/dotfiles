@@ -1,4 +1,5 @@
 #!/bin/sh
+# Script colors cannot use tokens, so the theme's stablebar.json passes them as WS_* variables
 occupied=$(aerospace list-windows --all --format '%{workspace}' | sort -u)
 
 aerospace list-workspaces --all --json --format '%{workspace} %{workspace-is-focused}' |
@@ -16,14 +17,14 @@ aerospace list-workspaces --all --json --format '%{workspace} %{workspace-is-foc
           })
         },
         styles: {
-          focused: { width: 26, background: { light: "#3a3a38", dark: "#d6d6d4" } },
+          focused: { width: 26, background: $ENV.WS_FOCUSED },
           occupied: {
-            background: { light: "#6b6b69", dark: "#8e8e8c" },
-            states: { hover: { background: { light: "#1f1f1f", dark: "#e4e4e2" } } }
+            background: $ENV.WS_OCCUPIED,
+            states: { hover: { background: $ENV.WS_HOVER } }
           },
           empty: {
-            background: { light: "#b5b5b3", dark: "#454543" },
-            states: { hover: { background: { light: "#6b6b69", dark: "#8e8e8c" } } }
+            background: $ENV.WS_EMPTY,
+            states: { hover: { background: $ENV.WS_OCCUPIED } }
           }
         }
       }'

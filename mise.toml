@@ -213,6 +213,9 @@ ln -sfn "$name" themes/current
 scripts/setup-symlinks.ts
 bat cache --build >/dev/null
 mise run wallpaper
+# StableBar watches theme.json but may miss themes/current switching targets
+stablebar=/Applications/StableBar.app/Contents/MacOS/StableBar
+if [ -x "$stablebar" ]; then "$stablebar" --reload; fi
 echo "theme: $name (new shells, btop and nvim pick it up, reload Ghostty's config)"
 '''
 
