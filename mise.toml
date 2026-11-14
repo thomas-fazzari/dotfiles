@@ -207,7 +207,7 @@ run = "scripts/setup-symlinks.ts --check"
 description = "Switches the color theme to a directory of themes/ (keeps the current one when omitted), then relinks the configs, rebuilds bat's theme cache and sets the theme's wallpaper"
 usage = 'arg "[name]"'
 run = '''
-name=${usage_name:-$(readlink themes/current || echo tokyonight_moon)}
+name=${usage_name:-$(readlink themes/current || echo tokyonight_night)}
 test -d "themes/$name" && test "$name" != current || { echo "unknown theme: $name" >&2; exit 1; }
 ln -sfn "$name" themes/current
 scripts/setup-symlinks.ts

@@ -1,0 +1,24 @@
+background = #121113
+foreground = #C0CAF5
+cursor-color = #C0CAF5
+cursor-text = #121113
+selection-background = #292E42
+selection-foreground = cell-foreground
+split-divider-color = #16161E
+
+palette = 0=#3B4261
+palette = 1=#F7768E
+palette = 2=#9ECE6A
+palette = 3=#E0AF68
+palette = 4=#7AA2F7
+palette = 5=#BB9AF7
+palette = 6=#7DCFFF
+palette = 7=#A9B1D6
+palette = 8=#414868
+palette = 9=#FF899D
+palette = 10=#9FE044
+palette = 11=#FABA4A
+palette = 12=#8DB0FF
+palette = 13=#C7A9FF
+palette = 14=#A4DAFF
+palette = 15=#C0CAF5

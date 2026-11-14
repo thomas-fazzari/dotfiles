@@ -3,7 +3,7 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    local git = { modified = "#6183BB", added = "#449DAB", deleted = "#914C54", conflict = "#FFC777" }
+    local git = { modified = "#6183BB", added = "#449DAB", deleted = "#914C54", conflict = "#E0AF68" }
     local oil_git = {
       Modified = git.modified,
       TypeChanged = git.modified,
@@ -16,7 +16,7 @@ return {
     }
 
     require("tokyonight").setup {
-      style = "moon",
+      style = "night",
       transparent = true,
       styles = { sidebars = "transparent", floats = "transparent" },
       on_highlights = function(hl, c)

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Seb-GRAF/StableBar/v0.14.0/stablebar.schema.json",
+  "tokens": {
+    "surface": "#16161ee0",
+    "popup": "#16161ef5",
+    "surfaceRaised": "#292e42",
+    "text": "#c0caf5",
+    "textMuted": "#737aa2",
+    "accent": "#bb9af7",
+    "onAccent": "#16161e",
+    "hairline": "#ffffff14",
+    "warning": "#e0af68",
+    "critical": "#f7768e"
+  },
+  "environment": {
+    "WS_FOCUSED": "#bb9af7",
+    "WS_OCCUPIED": "#737aa2",
+    "WS_EMPTY": "#3b4261",
+    "WS_HOVER": "#c0caf5"
+  }
+}

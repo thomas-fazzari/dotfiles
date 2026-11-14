@@ -158,8 +158,8 @@ function syncCopy([name, from, render]: Copy, keepBackup: boolean): boolean {
 }
 
 if (!check && readLink(theme) === undefined) {
-  fs.symlinkSync("tokyonight_moon", theme);
-  console.log(`link ${theme} -> tokyonight_moon`);
+  fs.symlinkSync("tokyonight_night", theme);
+  console.log(`link ${theme} -> tokyonight_night`);
 }
 
 const drift = [

@@ -23,4 +23,4 @@ A large gradient (sky, water) that snaps between two palette hues gets a hard ed
 
 To make it a theme's wallpaper: `ln -sfn ../../wallpapers/<file> themes/<name>/wallpaper.<ext>` after removing any other `wallpaper.*` there, then `mise run wallpaper` if `themes/current` points to that theme.
 
-Example, `wallpapers/wallhaven-vq72xm-tokyonight-moon.png`: the Tokyo Night Moon palette with `--gamma 1.2 --tint c099ff`.
+Example, `wallpapers/wallhaven-vq72xm-tokyonight-night.png`: the Tokyo Night Night palette without its orange and reds, plus two darker purples (`7a5fb8`, `523f86`), so the red sun and leaves fall on the purples, with `--gamma 1.25 --sigma 0.06 --tint 7aa2f7 --tint-amount 0.03`.

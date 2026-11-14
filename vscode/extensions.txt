@@ -9,6 +9,7 @@ davidanson.vscode-markdownlint
 doublebuffer.metal-shader
 dustypomerleau.rust-syntax
 editorconfig.editorconfig
+enkia.tokyo-night
 fill-labs.dependi
 golang.go
 hverlin.mise-vscode
@@ -32,7 +33,6 @@ myriad-dreamin.tinymist
 nabeelvalley.easyzoom
 oven.bun-vscode
 oxc.oxc-vscode
-patricknasralla.tokyo-night-moon
 pkief.material-product-icons
 polymeilex.wgsl
 redhat.vscode-yaml
