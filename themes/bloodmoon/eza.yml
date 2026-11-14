@@ -85,11 +85,11 @@ file_type:
   compressed: { foreground: "#ffb98a" }
   temp: { foreground: "#6b70a8" }
   compiled: { foreground: "#6b70a8" }
-  build: { foreground: "#f2d4aa" }
+  build: { foreground: "#e0c9a6" }
   source: { foreground: "#82aaf5" }
 
 punctuation: { foreground: "#3a3766" }
-date: { foreground: "#f2d4aa" }
+date: { foreground: "#e0c9a6" }
 inode: { foreground: "#9095bd" }
 blocks: { foreground: "#9095bd" }
 header: { foreground: "#9095bd" }

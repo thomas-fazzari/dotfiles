@@ -84,7 +84,7 @@
     "editor.rangeHighlightBackground": "#c0a2ff1a",
     "editor.foldBackground": "#2526484d",
     "editorBracketMatch.background": "#00000000",
-    "editorBracketMatch.border": "#9095bd",
+    "editorBracketMatch.border": "#5d6290",
     "editorBracketHighlight.foreground1": "#a6b4dc",
     "editorBracketHighlight.foreground2": "#9a96c8",
     "editorBracketHighlight.foreground3": "#8fb0c9",
@@ -229,7 +229,7 @@
       "foreground": "#c0a2ff",
       "fontStyle": "italic"
     },
-    "parameter": "#f2d4aa",
+    "parameter": "#e0c9a6",
     "property": "#7fd6e6",
     "enumMember": "#ffb98a",
     "function": "#b4c2ff",
@@ -334,7 +334,7 @@
     },
     {
       "scope": ["variable.parameter"],
-      "settings": { "foreground": "#f2d4aa" }
+      "settings": { "foreground": "#e0c9a6" }
     },
     {
       "scope": ["variable.language", "variable.language.this", "variable.language.self"],

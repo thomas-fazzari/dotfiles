@@ -2,7 +2,7 @@ set -g fish_color_normal E2E4F6
 set -g fish_color_command B4C2FF
 set -g fish_color_keyword 82AAF5
 set -g fish_color_param E2E4F6
-set -g fish_color_option F2D4AA
+set -g fish_color_option E0C9A6
 set -g fish_color_valid_path --underline
 set -g fish_color_quote C2D68A
 set -g fish_color_escape C0A2FF
