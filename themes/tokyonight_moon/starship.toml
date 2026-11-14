@@ -1,0 +1,13 @@
+
+# Appended to terminal/starship/starship.toml
+[palettes.current]
+directory = "#82AAFF"
+directory_dim = "#515670"
+branch = "#4FD6BE"
+muted = "#737AA2"
+success = "#4FD6BE"
+error = "#C53B53"
+git_conflicted = "#FFC777"
+git_added = "#449DAB"
+git_modified = "#6183BB"
+git_deleted = "#914C54"

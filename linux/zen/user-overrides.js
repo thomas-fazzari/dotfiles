@@ -1,4 +1,4 @@
-// Personal BetterZen overrides, inserted under "MY OVERRIDES" by update-userjs.pl
+// Personal BetterZen overrides, inserted under "MY OVERRIDES" by update-userjs.ts
 // https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
 // https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 

@@ -1,40 +1,49 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
+# Rendered to ~/.config/starship.toml with the [palettes.current] of themes/current appended
+palette = "current"
+
 add_newline = false
 command_timeout = 2000
-format = "$directory$git_branch$git_status$character"
+format = "$directory$git_branch$git_status$cmd_duration$jobs$character"
 
 [directory]
-style = "#82AAFF"
-before_repo_root_style = "#515670"
-repo_root_style = "bold #82AAFF"
+style = "directory"
+before_repo_root_style = "directory_dim"
+repo_root_style = "bold directory"
 truncation_length = 4
 truncate_to_repo = false
 truncation_symbol = ""
 fish_style_pwd_dir_length = 1
 read_only = " 󰌾"
-read_only_style = "#C53B53"
+read_only_style = "error"
 
 [git_branch]
-style = "#4FD6BE"
+style = "branch"
 format = "[$symbol$branch(:$remote_branch)]($style) "
 
-# File states use VS Code's git decoration colors.
 [git_status]
-style = "#737AA2"
+style = "muted"
 format = "([$ahead_behind$stashed$conflicted$staged$renamed$modified$deleted$untracked]($style))"
 ahead = "⇡$count "
 behind = "⇣$count "
 diverged = "⇣$behind_count⇡$ahead_count "
 stashed = "*$count "
-conflicted = "[~$count ](#FFC777)"
-staged = "[+$count ](#449DAB)"
-renamed = "[»$count ](#449DAB)"
-modified = "[!$count ](#6183BB)"
-deleted = "[✘$count ](#914C54)"
-untracked = "[?$count ](#449DAB)"
+conflicted = "[~$count ](git_conflicted)"
+staged = "[+$count ](git_added)"
+renamed = "[»$count ](git_added)"
+modified = "[!$count ](git_modified)"
+deleted = "[✘$count ](git_deleted)"
+untracked = "[?$count ](git_added)"
+
+[cmd_duration]
+style = "muted"
+format = "[$duration]($style) "
+
+[jobs]
+style = "muted"
+format = "[$symbol$number]($style) "
 
 [character]
-success_symbol = "[❯](#4FD6BE)"
-error_symbol = "[❯](#C53B53)"
-vimcmd_symbol = "[❮](#4FD6BE)"
+success_symbol = "[❯](success)"
+error_symbol = "[❯](error)"

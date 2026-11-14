@@ -12,7 +12,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 default-root-container-layout = 'accordion'
 default-root-container-orientation = 'auto'
 
-persistent-workspaces = ['1', '2', '3', '4']
+persistent-workspaces = ['1', '2', '3', '4', '5']
 
 [gaps]
 inner.horizontal = 8
@@ -38,6 +38,7 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
 
 alt-shift-1 = [
   'move-node-to-workspace 1',
@@ -53,6 +54,10 @@ alt-shift-3 = [
 ]
 alt-shift-4 = [
   'move-node-to-workspace 4',
+  'exec-and-forget /Applications/StableBar.app/Contents/MacOS/StableBar --trigger spaces',
+]
+alt-shift-5 = [
+  'move-node-to-workspace 5',
   'exec-and-forget /Applications/StableBar.app/Contents/MacOS/StableBar --trigger spaces',
 ]
 

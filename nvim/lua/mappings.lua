@@ -12,6 +12,7 @@ local function notify_result(result, success)
 end
 
 map("n", ";", ":", { desc = "Command mode" })
+map("n", ":", ";", { desc = "Repeat last f/t/F/T" })
 map("i", "jk", "<Esc>")
 map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 map("n", "<C-s>", "<cmd>write<cr>", { desc = "Save and format" })

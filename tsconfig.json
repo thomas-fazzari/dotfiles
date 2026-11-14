@@ -1,0 +1,16 @@
+{
+  "extends": "./agentic/hooks/tsconfig.json",
+  "compilerOptions": {
+    "typeRoots": ["./agentic/hooks/node_modules/@types"],
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "scripts/*.ts",
+    "vscode/*.ts",
+    "linux/zen/*.ts",
+    "agentic/skills/*/scripts/*.ts"
+  ]
+}

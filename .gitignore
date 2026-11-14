@@ -6,11 +6,11 @@
 !/.gitignore
 !/.gitmodules
 !/.oxfmtrc.json
-!/.perltidyrc
 !/bunfig.toml
 !/dotfiles.code-workspace
 !/mise.toml
 !/mise.lock
+!/tsconfig.json
 
 !/btop/
 !/btop/**
@@ -26,6 +26,8 @@
 !/scripts/**
 !/terminal/
 !/terminal/**
+!/themes/
+!/themes/**
 !/vscode/
 !/vscode/**
 !/wallpapers/
@@ -60,4 +62,5 @@
 **/.env
 **/.env.*
 /nvim/lazy-lock.json
+/themes/current
 /agentic/skills/pi-self-improve/logbook.md

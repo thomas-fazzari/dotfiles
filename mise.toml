@@ -101,14 +101,15 @@ dir = "~/Dev/dotfiles"
 [tasks.setup]
 description = "Full machine setup"
 run = [
+  # Private submodules need `gh auth login` first, symlinks skips their links until they exist
+  "git submodule update --init || echo 'warning: some submodules could not be initialized' >&2",
   { task = "apps:install" },
   { task = "vscode" },
   { task = "tools" },
   { task = "perl" },
-  { task = "symlinks" },
+  { task = "theme" },
   { task = "hooks:deps" },
   { task = "pi" },
-  { task = "wallpaper" },
 ]
 
 # macos/Brewfile on macOS
@@ -137,7 +138,17 @@ pacman -Qqe | grep -vxF -e "$(sed -e 's/#.*//' -e 's/[[:space:]]*$//' -e '/^$/d'
 
 [tasks.audit]
 description = "Reports reclaimable disk space, broken dotfile links and system health without changing anything"
-run = "agentic/skills/dd-audit/scripts/audit.pl"
+run = "agentic/skills/dd-audit/scripts/audit.ts"
+
+[tasks.doctor]
+description = "Runs every read-only check (links, app dependencies, system health) and fails if any of them does"
+run = '''
+status=0
+mise run symlinks:check || status=1
+mise run apps || status=1
+mise run audit || status=1
+exit $status
+'''
 
 [tasks.lgtm]
 description = "Starts the local Grafana LGTM container for Pi telemetry (Grafana on :3000, OTLP on :4318)"
@@ -145,7 +156,7 @@ run = "docker start lgtm"
 
 [tasks.zen]
 description = "Rebuilds linux/zen/user.js from the latest BetterZen plus linux/zen/user-overrides.js and links it with linux/zen/userChrome.css into the default Zen profile"
-run = "linux/zen/update-userjs.pl"
+run = "linux/zen/update-userjs.ts"
 
 [tasks."hooks:deps"]
 description = "Installs the agent hooks' dependencies, including the shell parser bash-guard needs to run"
@@ -167,20 +178,27 @@ run = [
 ]
 
 [tasks.fmt]
-description = "Formats the Lua and Perl files"
-run = ["stylua nvim", "fd -e pl -e pm -e t -E agentic/pi-config -X perltidy -b -bext=/"]
+description = "Formats the Lua, shell and TypeScript files"
+run = [
+  "stylua nvim themes",
+  "shfmt -w $(git ls-files '*.sh')",
+  "oxfmt scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/skills/*/scripts/*.ts",
+]
 
+# The scripts follow the agent hooks' oxlint rules, oxlint runs from there to find its type-aware backend
 [tasks.lint]
-description = "Checks Lua and Perl formatting and runs Perl::Critic"
+description = "Checks Lua, shell and TypeScript formatting, runs shellcheck, then lints and typechecks the TypeScript scripts"
 run = '''
-stylua --check nvim
-files=$(fd -e pl -e pm -e t -E agentic/pi-config)
-perlcritic --quiet --severity 4 --program-extensions .t $files
-status=0
-for f in $files; do
-  perltidy -st "$f" | cmp -s "$f" - || { echo "untidy: $f"; status=1; }
-done
-exit $status
+stylua --check nvim themes
+sh=$(git ls-files '*.sh')
+shellcheck $sh
+shfmt -d $sh
+ts="scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/skills/*/scripts/*.ts"
+oxfmt --check $ts
+tsc -p tsconfig.json
+root=$PWD
+cd agentic/hooks
+bun run oxlint --config oxlint.json --deny-warnings --report-unused-disable-directives $(printf "$root/%s " $ts)
 '''
 
 [tasks.perl]
@@ -197,11 +215,24 @@ run = [
 
 [tasks.symlinks]
 description = "Links the tracked config files into their expected locations"
-run = "scripts/setup-symlinks.pl"
+run = "scripts/setup-symlinks.ts"
 
 [tasks."symlinks:check"]
 description = "Reports missing, wrong or stale links without changing anything"
-run = "scripts/setup-symlinks.pl --check"
+run = "scripts/setup-symlinks.ts --check"
+
+[tasks.theme]
+description = "Switches the color theme to a directory of themes/ (keeps the current one when omitted), then relinks the configs, rebuilds bat's theme cache and sets the theme's wallpaper"
+usage = 'arg "[name]"'
+run = '''
+name=${usage_name:-$(readlink themes/current || echo tokyonight_moon)}
+test -d "themes/$name" && test "$name" != current || { echo "unknown theme: $name" >&2; exit 1; }
+ln -sfn "$name" themes/current
+scripts/setup-symlinks.ts
+bat cache --build >/dev/null
+mise run wallpaper
+echo "theme: $name (new shells, btop and nvim pick it up, reload Ghostty's config)"
+'''
 
 [tasks.tools]
 description = "Installs the mise-managed tools listed under [tools]"
@@ -209,11 +240,12 @@ run = "mise install"
 
 [tasks.vscode]
 description = "Installs the VS Code extensions listed in vscode/extensions.txt"
-run = "vscode/setup-extensions.pl"
+run = "vscode/setup-extensions.ts"
 
 [tasks.wallpaper]
-description = "Sets the desktop picture from wallpapers/ (DMS on Linux)"
+description = "Sets the desktop picture to the current theme's wallpaper (DMS on Linux)"
 run = """
-{% if os() == "macos" %}osascript -e 'tell application "Finder" to set desktop picture to (POSIX file "'"$PWD/wallpapers/wallhaven-p8k1we.png"'" as alias)'
-{% else %}dms ipc call wallpaper set "$PWD/wallpapers/wallhaven-p8k1we.png"
+wallpaper=$(realpath themes/current/wallpaper.png)
+{% if os() == "macos" %}osascript -e 'tell application "Finder" to set desktop picture to (POSIX file "'"$wallpaper"'" as alias)'
+{% else %}dms ipc call wallpaper set "$wallpaper"
 {% endif %}"""

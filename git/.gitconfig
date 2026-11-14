@@ -15,12 +15,19 @@
 [delta]
 	navigate = true
 	line-numbers = true
+	hyperlinks = true
+
+# Links to themes/current/delta.gitconfig
+[include]
+	path = ~/.config/delta/theme.gitconfig
 
 [init]
 	defaultBranch = master
 
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
 
 [pull]
 	ff = only
@@ -29,6 +36,7 @@
 	default = simple
 	autoSetupRemote = true
 	followTags = true
+	useForceIfIncludes = true
 
 [rebase]
 	autoStash = true
@@ -52,10 +60,16 @@
 
 [diff]
 	algorithm = histogram
-	colorMoved = plain
+	colorMoved = zebra
+	colorMovedWS = allow-indentation-change
+	mnemonicPrefix = true
+
+[column]
+	ui = auto
 
 [rerere]
 	enabled = true
+	autoUpdate = true
 
 [alias]
 	s = status
@@ -64,6 +78,7 @@
 	c = commit
 	cm = commit -m
 	ca = commit --amend
+	pf = push --force-with-lease
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	lg = log --graph --oneline --decorate --all

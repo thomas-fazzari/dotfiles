@@ -201,7 +201,7 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 // visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
 // visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 // Enter your personal overrides below this line:
-// Personal BetterZen overrides, inserted under "MY OVERRIDES" by update-userjs.pl
+// Personal BetterZen overrides, inserted under "MY OVERRIDES" by update-userjs.ts
 // https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
 // https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 
