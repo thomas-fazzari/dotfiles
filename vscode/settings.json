@@ -1,13 +1,13 @@
 {
   // Fonts
-  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', monospace",
-  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
+  "editor.fontFamily": "'BlexMono Nerd Font Mono', monospace",
+  "terminal.integrated.fontFamily": "'BlexMono Nerd Font Mono'",
   "terminal.integrated.fontSize": 14,
   "editor.fontSize": 16,
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   // Editor Appearance
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "Dark+ Black",
   "workbench.colorCustomizations": {
     "[Tokyo Night]": {
       "editor.background": "#161722",
@@ -44,7 +44,17 @@
       "widget.border": "#292e42",
     },
   },
-  "workbench.iconTheme": "flow-deep",
+  "editor.tokenColorCustomizations": {
+    "[Dark+ Black]": {
+      "textMateRules": [
+        {
+          "scope": ["entity.name.type", "entity.other.inherited-class"],
+          "settings": { "fontStyle": "" },
+        },
+      ],
+    },
+  },
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "material-product-icons",
   "workbench.experimental.modernUI": false,
   "editor.cursorSurroundingLines": 6,
@@ -431,4 +441,5 @@
     "https://spec.openapis.org/": true,
     "https://www.schemastore.org/": true,
   },
+  "update.showReleaseNotes": false,
 }

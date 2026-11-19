@@ -50,6 +50,7 @@ twxs.cmake
 unifiedjs.vscode-mdx
 usernamehw.errorlens
 vadimcn.vscode-lldb
+vincesalvino.dark-plus-black
 vitest.explorer
 vscodevim.vim
 yoavbls.pretty-ts-errors
