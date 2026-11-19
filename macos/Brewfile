@@ -71,6 +71,7 @@ cask "visual-studio-code"
 cask "zed"
 
 # Fonts
+cask "font-blex-mono-nerd-font"
 cask "font-google-sans-flex"
 cask "font-inria"
 cask "font-jetbrains-mono-nerd-font"
