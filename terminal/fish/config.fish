@@ -3,6 +3,7 @@ set -q DOTFILES; or set -g DOTFILES (path resolve (status filename) | path dirna
 # Environment
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
 set -gx PI_CACHE_RETENTION long
+set -gx PI_FFF_MULTIGREP 1
 # delta reads BAT_THEME too
 set -gx BAT_THEME current
 set -gx EZA_CONFIG_DIR ~/.config/eza

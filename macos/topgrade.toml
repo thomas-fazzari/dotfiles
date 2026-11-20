@@ -5,6 +5,8 @@ disable = [
   "containers", # not always running
   "git_repos",
   "claude_code",
+  "codex", # no longer used
+  "github_cli_skills", # managed in pi-config, not via gh
   "uv", # from mise
   "cargo", # from mise
   "pip3", # from mise

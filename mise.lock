@@ -1066,15 +1066,6 @@ checksum = "sha256:56b5e194d485ced555667b8ba3276157a8272e9ecde9e001e428af80985bd
 url = "https://github.com/earendil-works/pi/releases/download/v1.5.2/pi-darwin-arm64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/731292526"
 
-[[tools."pipx:termaid"]]
-version = "0.13.0"
-backend = "pipx:termaid"
-specifiers = ["latest"]
-uv = { path = ".mise/locks/pipx-termaid/0.13.0~632f5bf8", digest = "sha256:d55a57e8983dc5fdff14c90af1cdc873ff9ae3ed83855da3d6307e3ab9f7b454" }
-
-[tools."pipx:termaid".options]
-extras = "rich"
-
 [[tools.python]]
 version = "3.14.10"
 backend = "core:python"

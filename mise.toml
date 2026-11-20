@@ -52,12 +52,12 @@ node = "26"
 oxfmt = "latest"
 oxlint = "latest"
 pi = "latest"
-"pipx:termaid" = { version = "latest", extras = "rich" }
 # macOS only: on Linux it would shadow /usr/bin/python3 and break system scripts needing distro modules (gi)
 python = { version = "3.14", os = ["macos"] }
 ripgrep = "latest"
 rtk = "latest"
 ruff = "latest"
+rumdl = "latest"
 rust = { version = "stable", profile = "minimal", components = [
   "rust-analyzer",
   "rust-src",
