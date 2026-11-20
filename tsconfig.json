@@ -13,5 +13,10 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["scripts/*.ts", "vscode/*.ts", "linux/zen/*.ts", "agentic/skills/*/scripts/*.ts"]
+  "include": [
+    "scripts/*.ts",
+    "vscode/*.ts",
+    "linux/zen/*.ts",
+    "agentic/pi-config/agent/skills/*/scripts/*.ts"
+  ]
 }

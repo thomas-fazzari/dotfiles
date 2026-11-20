@@ -138,7 +138,7 @@ pacman -Qqe | grep -vxF -e "$(sed -e 's/#.*//' -e 's/[[:space:]]*$//' -e '/^$/d'
 
 [tasks.audit]
 description = "Reports reclaimable disk space, broken dotfile links and system health without changing anything"
-run = "agentic/skills/dd-audit/scripts/audit.ts"
+run = "agentic/pi-config/agent/skills/dd-audit/scripts/audit.ts"
 
 [tasks.doctor]
 description = "Runs every read-only check (links, app dependencies, system health) and fails if any of them does"
@@ -167,7 +167,7 @@ description = "Formats the Lua, shell and TypeScript files"
 run = [
   "stylua nvim themes",
   "shfmt -w $(git ls-files '*.sh')",
-  "oxfmt scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/skills/*/scripts/*.ts",
+  "oxfmt scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/pi-config/agent/skills/*/scripts/*.ts",
 ]
 
 [tasks.lint]
@@ -177,7 +177,7 @@ stylua --check nvim themes
 sh=$(git ls-files '*.sh')
 shellcheck $sh
 shfmt -d $sh
-ts="scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/skills/*/scripts/*.ts"
+ts="scripts/*.ts vscode/*.ts linux/zen/*.ts agentic/pi-config/agent/skills/*/scripts/*.ts"
 oxfmt --check $ts
 tsc -p tsconfig.json
 bun run oxlint --config oxlint.json --deny-warnings --report-unused-disable-directives $ts

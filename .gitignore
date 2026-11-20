@@ -44,21 +44,6 @@
 !/agentic/
 !/agentic/pi-config
 
-# Private unless listed here
-!/agentic/skills/
-!/agentic/skills/decision-review/
-!/agentic/skills/decision-review/**
-!/agentic/skills/prose-cleanup/
-!/agentic/skills/prose-cleanup/**
-!/agentic/skills/show-me/
-!/agentic/skills/show-me/**
-!/agentic/skills/socratic-tutor/
-!/agentic/skills/socratic-tutor/**
-!/agentic/skills/pi-self-improve/
-!/agentic/skills/pi-self-improve/**
-!/agentic/skills/wallpaper-recolor/
-!/agentic/skills/wallpaper-recolor/**
-
 # Generated files and local settings stay ignored inside allowed dirs
 **/.DS_Store
 **/node_modules/
@@ -66,4 +51,5 @@
 **/.env.*
 /nvim/lazy-lock.json
 /themes/current
-/agentic/skills/pi-self-improve/logbook.md
+/macos/stablebar/packages/
+/macos/stablebar/amphetamine-duration

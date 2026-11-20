@@ -544,5 +544,33 @@
       "style": { "foreground": "@token.textMuted" }
     }
   ],
-  "widgetOrder": ["spaces", "app", "now-playing", "system", "clock", "battery", "control-center"]
+  "widgetOrder": [
+    "spaces",
+    "app",
+    "now-playing",
+    "system",
+    "clock",
+    "battery",
+    "control-center",
+    "amphetamine"
+  ],
+  "packages": [
+    {
+      "enabled": true,
+      "id": "amphetamine",
+      "settings": {
+        "barDisplay": "status",
+        "clickAction": "toggle",
+        "displaySleep": "allow",
+        "duration": "60"
+      },
+      "version": "1.2.2"
+    }
+  ],
+  "widgetOverrides": {
+    "amphetamine": {
+      "enabled": true,
+      "position": "right"
+    }
+  }
 }
