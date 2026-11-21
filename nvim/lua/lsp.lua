@@ -1,7 +1,6 @@
 -- Server settings live in lsp/<name>.lua and merge over nvim-lspconfig's defaults.
 -- C# (roslyn.nvim) and Rust (rustaceanvim) start their own servers
 vim.lsp.enable {
-  "basedpyright",
   "bashls",
   "cssls",
   "fish_lsp",
@@ -17,6 +16,7 @@ vim.lsp.enable {
   "tinymist",
   "tombi",
   "tsc",
+  "ty",
   "yamlls",
 }
 

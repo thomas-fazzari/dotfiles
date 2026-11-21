@@ -43,7 +43,6 @@ lua-language-server = "latest"
 mr-boxington = "latest"
 ninja = "latest"
 node = "26"
-"npm:basedpyright" = "latest"
 "npm:bash-language-server" = "latest"
 "npm:fish-lsp" = "latest"
 "npm:perlnavigator-server" = { version = "latest", allow_low_downloads = true }
@@ -74,6 +73,7 @@ tinymist = "latest"
 tombi = "latest"
 topgrade = "latest"
 tree-sitter = "latest"
+ty = "latest"
 typst = "latest"
 typstyle = "latest"
 uv = "latest"
@@ -159,7 +159,7 @@ description = "Rebuilds linux/zen/user.js from the latest BetterZen plus linux/z
 run = "linux/zen/update-userjs.ts"
 
 [tasks.deps]
-description = "Installs the type definitions and the type-aware linter of the TypeScript scripts"
+description = "Installs the dependencies, type definitions and type-aware linter of the TypeScript scripts"
 run = "bun install"
 
 [tasks.fmt]
@@ -221,7 +221,8 @@ description = "Installs the mise-managed tools listed under [tools]"
 run = "mise install"
 
 [tasks.vscode]
-description = "Installs the VS Code extensions listed in vscode/extensions.txt"
+description = "Creates the VS Code profiles of vscode/extensions.yaml and installs their extensions"
+depends = ["deps"]
 run = "vscode/setup-extensions.ts"
 
 [tasks.wallpaper]

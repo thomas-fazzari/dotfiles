@@ -1,0 +1,73 @@
+base:
+  - vscodevim.vim
+  - tobias-z.vscode-harpoon
+  - sleistner.vscode-fileutils
+  - editorconfig.editorconfig
+  - usernamehw.errorlens
+  - nabeelvalley.easyzoom
+  - vincesalvino.dark-plus-black
+  # - enkia.tokyo-night
+  - pkief.material-icon-theme
+  - pkief.material-product-icons
+  # - thang-nm.flow-icons
+  - ibm.output-colorizer
+  - oxc.oxc-vscode # For HTML, CSS, JSON, YAML, Markdown and TOML
+  - redhat.vscode-yaml
+  - tamasfe.even-better-toml
+  - davidanson.vscode-markdownlint
+  # - kdl-org.kdl
+  - codezombiech.gitignore
+  - mechatroner.rainbow-csv
+  - alexcvzz.vscode-sqlite
+  - tomoki1207.pdf
+  - hverlin.mise-vscode
+  # - fill-labs.dependi
+  - jeff-hykin.better-dockerfile-syntax
+  # - ms-azuretools.vscode-containers
+  - ms-vscode-remote.remote-containers
+  - sumneko.lua
+  - actboy168.lua-debug
+  - johnnymorganz.stylua
+
+profiles:
+  # TODO: go full vscodium once dotrush supports C#15
+  csharp.dotrush:
+    - nromanov.dotrush
+    - csharpier.csharpier-vscode
+
+  csharp.devkit:
+    - ms-dotnettools.csdevkit
+    - ms-dotnettools.csharp
+    - ms-dotnettools.vscode-dotnet-runtime
+    - csharpier.csharpier-vscode
+    - microsoft-aspire.aspire-vscode
+
+  # also installs ms-dotnettools.csharp
+  fsharp:
+    - ionide.ionide-fsharp
+
+  go:
+    - golang.go
+
+  # ms-python.python's pack also installs Pylance
+  # ty turns off its language server
+  python:
+    - astral-sh.ty
+    - charliermarsh.ruff
+    - ms-python.python
+    - ms-python.debugpy
+    - ms-python.vscode-python-envs
+
+  rust:
+    - rust-lang.rust-analyzer
+    - dustypomerleau.rust-syntax
+    - vadimcn.vscode-lldb
+    # - polymeilex.wgsl
+    # - doublebuffer.metal-shader
+
+  web:
+    - oven.bun-vscode
+    - stylelint.vscode-stylelint
+    - sporiley.css-auto-prefix
+    - vitest.explorer
+    - yoavbls.pretty-ts-errors

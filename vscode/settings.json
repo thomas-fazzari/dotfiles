@@ -8,42 +8,6 @@
   "editor.fontLigatures": true,
   // Editor Appearance
   "workbench.colorTheme": "Dark+ Black",
-  "workbench.colorCustomizations": {
-    "[Tokyo Night]": {
-      "editor.background": "#161722",
-      "notebook.editorBackground": "#161722",
-      "peekViewEditor.background": "#161722",
-      "editorPane.background": "#161722",
-      "activityBar.background": "#161722",
-      "sideBar.background": "#161722",
-      "sideBarSectionHeader.background": "#161722",
-      "editorGroupHeader.tabsBackground": "#161722",
-      "editorGroupHeader.noTabsBackground": "#161722",
-      "tab.activeBackground": "#161722",
-      "tab.inactiveBackground": "#161722",
-      "breadcrumb.background": "#161722",
-      "panel.background": "#161722",
-      "terminal.background": "#161722",
-      "statusBar.background": "#161722",
-      "statusBar.noFolderBackground": "#161722",
-      "titleBar.activeBackground": "#161722",
-      "titleBar.inactiveBackground": "#161722",
-      "editorWidget.background": "#161722",
-      "editorHoverWidget.background": "#161722",
-      "editorSuggestWidget.background": "#161722",
-      "breadcrumbPicker.background": "#161722",
-      "menu.background": "#161722",
-      "notifications.background": "#161722",
-      "notificationCenterHeader.background": "#161722",
-      "quickInput.background": "#161722",
-      "editorWidget.border": "#292e42",
-      "editorHoverWidget.border": "#292e42",
-      "editorSuggestWidget.border": "#292e42",
-      "menu.border": "#292e42",
-      "notifications.border": "#292e42",
-      "widget.border": "#292e42",
-    },
-  },
   "editor.tokenColorCustomizations": {
     "[Dark+ Black]": {
       "textMateRules": [
@@ -104,16 +68,16 @@
     "*.targets": "xml",
     "*.xaml": "xml",
   },
+  "json.schemas": [
+    { "fileMatch": ["**/vscode/settings.json"], "url": "vscode://schemas/settings/user" },
+    { "fileMatch": ["**/vscode/keybindings.json"], "url": "vscode://schemas/keybindings" },
+  ],
   "files.exclude": {
     "**/.vs": true,
     "**/__pycache__": true,
     "**/node_modules": true,
-    "**/dist": true,
-    "**/build": true,
     "**/.cache": true,
-    "**/out": true,
     "**/obj": true,
-    "**/coverage": true,
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -133,9 +97,6 @@
   "search.followSymlinks": false,
   "search.smartCase": true,
   "search.exclude": {
-    "**/.next": true,
-    "**/.svelte-kit": true,
-    "**/.turbo": true,
     "**/.ruff_cache": true,
     "**/.pytest_cache": true,
   },
@@ -185,11 +146,6 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-  // Svelte
-  "svelte.enable-ts-plugin": true,
-  // Python
-  "python.analysis.typeCheckingMode": "basic",
-  "python.analysis.autoImportCompletions": true,
   // Go
   "go.lintTool": "golangci-lint-v2",
   "go.lintFlags": ["--fast-only"],
@@ -210,8 +166,6 @@
     "target/rust-analyzer",
     "--message-format=json",
   ],
-  // Perl
-  "perlnavigator.perlPath": "/opt/homebrew/bin/perl",
   // Formatters
   "csharpier.dev.disableCSharpierServer": true,
   "oxc.path.oxfmt": "/Users/thomas/.local/share/mise/shims/oxfmt",
@@ -219,9 +173,6 @@
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode",
     "editor.inlayHints.enabled": "off",
-  },
-  "[xml]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode",
   },
   "[fsharp]": {
     "editor.defaultFormatter": "Ionide.Ionide-fsharp",
@@ -260,13 +211,7 @@
     },
   },
   "[lua]": {
-    "editor.defaultFormatter": "sumneko.lua",
-  },
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode",
-  },
-  "[typst]": {
-    "editor.defaultFormatter": "myriad-dreamin.tinymist",
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
   },
   // Vim Motions
   "keyboard.dispatch": "keyCode",

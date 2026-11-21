@@ -2,15 +2,6 @@
   "folders": [{ "path": "." }],
   "settings": {
     "Lua.diagnostics.disable": ["undefined-global", "undefined-doc-name", "different-requires"],
-    "json.schemas": [
-      { "fileMatch": ["**/vscode/settings.json"], "url": "vscode://schemas/settings/user" },
-      {
-        "fileMatch": ["**/vscode/keybindings.json"],
-        "url": "vscode://schemas/keybindings",
-      },
-    ],
-    "kdl.enable": false,
-    "[lua]": { "editor.defaultFormatter": "JohnnyMorganz.stylua" },
     "files.associations": {
       "**/git/.gitignore_global": "ignore",
       ".perltidyrc": "properties",

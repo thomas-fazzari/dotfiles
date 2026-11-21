@@ -953,12 +953,6 @@ url = "https://unofficial-builds.nodejs.org/download/release/v26.13.1/node-v26.1
 checksum = "sha256:aec2514ea1ceb2ba52455e9ec65986f6749a06dd759e5db2a72e6889668c9735"
 url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-darwin-arm64.tar.gz"
 
-[[tools."npm:basedpyright"]]
-version = "1.40.2"
-aube = { path = ".mise/locks/npm-basedpyright/1.40.2", digest = "sha256:8116b433fddb365461054ea4757a09368720191eef85831af468fbe1300ab870" }
-backend = "npm:basedpyright"
-specifiers = ["latest"]
-
 [[tools."npm:bash-language-server"]]
 version = "5.8.1"
 aube = { path = ".mise/locks/npm-bash-language-server/5.8.1", digest = "sha256:8884e71e19a3bb70df45b356a06194f6c0cf3e99f83f1332f8ca26a62eacb6ef" }
@@ -1526,6 +1520,41 @@ provenance = "github-attestations"
 checksum = "sha256:5a08b66e5713b0c69691611250b2191d07139647a3c6e39ba85954284b634d2d"
 url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.27.2/tree-sitter-macos-arm64.gz"
 url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/720450878"
+provenance = "github-attestations"
+
+[[tools.ty]]
+version = "0.0.107"
+backend = "aqua:astral-sh/ty"
+specifiers = ["latest"]
+
+[tools.ty."platforms.linux-x64"]
+checksum = "sha256:f93e1f3e45ec81b3ce21473d541eb94470546928499415fc263f2858d65f28af"
+url = "https://github.com/astral-sh/ty/releases/download/0.0.107/ty-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/ty/releases/assets/765014836"
+provenance = "github-attestations"
+
+[tools.ty."platforms.linux-x64-baseline"]
+checksum = "sha256:f93e1f3e45ec81b3ce21473d541eb94470546928499415fc263f2858d65f28af"
+url = "https://github.com/astral-sh/ty/releases/download/0.0.107/ty-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/ty/releases/assets/765014836"
+provenance = "github-attestations"
+
+[tools.ty."platforms.linux-x64-musl"]
+checksum = "sha256:c98b2c3767d44161b7634ff8aa7f0dfc3db840fc5585ccab20cc90a49ad54d93"
+url = "https://github.com/astral-sh/ty/releases/download/0.0.107/ty-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/ty/releases/assets/765014853"
+provenance = "github-attestations"
+
+[tools.ty."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:c98b2c3767d44161b7634ff8aa7f0dfc3db840fc5585ccab20cc90a49ad54d93"
+url = "https://github.com/astral-sh/ty/releases/download/0.0.107/ty-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/ty/releases/assets/765014853"
+provenance = "github-attestations"
+
+[tools.ty."platforms.macos-arm64"]
+checksum = "sha256:5b514ec3271383263250481b139c2eb59021ca674866b267f37bb988dbea52c9"
+url = "https://github.com/astral-sh/ty/releases/download/0.0.107/ty-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/ty/releases/assets/765014453"
 provenance = "github-attestations"
 
 [[tools.typst]]

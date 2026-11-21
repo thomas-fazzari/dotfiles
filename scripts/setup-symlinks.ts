@@ -87,8 +87,7 @@ const rendered: Record<typeof os, Copy[]> = {
       (source) =>
         source
           .replaceAll("/Users/thomas/Library/Application Support/mbx", `${home}/.local/share/mbx`)
-          .replaceAll("/Users/thomas", home)
-          .replaceAll("/opt/homebrew/bin/perl", "/usr/bin/perl"),
+          .replaceAll("/Users/thomas", home),
     ],
   ],
 };
