@@ -51,5 +51,3 @@
 **/.env.*
 /nvim/lazy-lock.json
 /themes/current
-/macos/stablebar/packages/
-/macos/stablebar/amphetamine-duration

@@ -2,8 +2,6 @@
 #   brew bundle --file ~/Dev/dotfiles/macos/Brewfile
 
 tap "dmtrKovalenko/fff"
-tap "nikitabobko/tap"
-tap "seb-graf/tap"
 
 # Core CLI (rest is in mise.toml)
 brew "btop"
@@ -50,8 +48,6 @@ cask "alfred"
 cask "bitwarden"
 cask "claude"
 cask "claude-code"
-cask "nikitabobko/tap/aerospace"
-cask "seb-graf/tap/stablebar"
 cask "ghostty"
 cask "helium-browser"
 cask "keka"
@@ -59,6 +55,7 @@ cask "kid3"
 cask "mullvad-vpn"
 cask "netnewswire"
 cask "obsidian"
+cask "omniwm"
 cask "onlyoffice"
 cask "orbstack"
 cask "pearcleaner"

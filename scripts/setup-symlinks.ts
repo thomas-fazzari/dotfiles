@@ -39,9 +39,10 @@ const links: Record<typeof os, Link[]> = {
     ["Library/Application Support/Code/User/settings.json", "vscode/settings.json"],
     ["Library/Application Support/Code/User/keybindings.json", "vscode/keybindings.json"],
     [".config/ghostty/os.ghostty", "macos/ghostty.conf"],
-    [".config/aerospace/aerospace.toml", "macos/aerospace/aerospace.toml"],
+    [".config/omniwm/settings.toml", "macos/omniwm/settings.toml"],
+    [".config/omniwm/shell/shell.toml", "macos/omniwm/shell/shell.toml"],
+    [".config/omniwm/shell/dotfiles", "macos/omniwm/shell/dotfiles"],
     [".config/rex/init.lua", "terminal/rex/init.lua"],
-    [".config/stablebar", "macos/stablebar"],
     [
       "Library/Application Support/Alfred/Alfred.alfredpreferences/preferences/features/websearch/prefs.plist",
       "macos/torrenting/alfred/websearch.plist",
