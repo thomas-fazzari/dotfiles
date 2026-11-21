@@ -67,6 +67,7 @@
     "*.slnx": "xml",
     "*.targets": "xml",
     "*.xaml": "xml",
+    "*.luau": "lua",
   },
   "json.schemas": [
     { "fileMatch": ["**/vscode/settings.json"], "url": "vscode://schemas/settings/user" },

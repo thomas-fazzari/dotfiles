@@ -79,6 +79,11 @@ const rendered: Record<typeof os, Copy[]> = {
       "macos/torrenting/launchd/local.proton-qbittorrent.plist",
       (source) => source,
     ],
+    [
+      "Library/LaunchAgents/local.hide-menubar.plist",
+      "macos/menubar/local.hide-menubar.plist",
+      (source) => source,
+    ],
   ],
   linux: [
     [

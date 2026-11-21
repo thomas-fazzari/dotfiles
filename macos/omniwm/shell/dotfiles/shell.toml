@@ -1,9 +1,12 @@
 # Overrides OmniWM's managed default/ profile, which also shadows [workspaceBar] in settings.toml.
 # With a single workspace, the workspaces widget shows the open apps' icons.
-leading = ["apple-menu", "app-menu", "omniwm", "workspaces"]
+leading = ["edge-spacer", "apple-menu", "omniwm", "workspaces"]
 center = []
-trailing = ["media", "volume", "wifi", "battery-details", "control-center", "system-stats", "clock"]
+trailing = ["media", "volume", "wifi", "battery-details", "control-center", "system-stats", "clock", "edge-spacer"]
 
 [workspaceBar]
+transparentBackground = true
+backgroundOpacity = 0
+showItemBackgrounds = false
 showLabels = false
 hideEmptyWorkspaces = true
